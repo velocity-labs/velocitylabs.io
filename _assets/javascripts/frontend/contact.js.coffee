@@ -28,82 +28,32 @@ $ ->
       $(element).closest('.form-group').removeClass 'has-error'
 
     , submitHandler: (form) =>
-      originalButtonText = $(@).find('button[type=submit]').html()
-      $(@).find('button[type=submit]').prop('disabled', true).html('Submitting...')
+      $submitBtn         = $(form).find('button[type=submit]')
+      originalButtonText = $submitBtn.html()
 
-      htmlBody = """
-        <div style="font-family:Helvetica;">
-          <h2>Contact Information</h2>
-
-          <table style="font-size:11pt;">
-            <tbody>
-              <tr>
-                <td width="25%">First name:</td>
-                <td>#{$(@).find('input#first_name').val()}</td>
-              </tr>
-              <tr>
-                <td>Last name:</td>
-                <td>#{$(@).find('input#last_name').val()}</td>
-              </tr>
-              <tr>
-                <td>Company:</td>
-                <td>#{$(@).find('input#company').val()}</td>
-              </tr>
-              <tr>
-                <td>Email:</td>
-                <td>#{$(@).find('input#email').val()}</td>
-              </tr>
-              <tr>
-                <td>Phone:</td>
-                <td>#{$(@).find('input#phone').val()}</td>
-              </tr>
-              <tr>
-                <td>Budget:</td>
-                <td>#{$(@).find('select#budget').val()}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h2>Message</h2>
-          <p style="font-size:11pt;">#{$(@).find('textarea#message').val()}</p>
-        </div>
-      """
+      $submitBtn.prop('disabled', true).html('Submitting...')
 
       textBody = """
         Contact Information
         ====================
 
-        First name: #{$(@).find('input#first_name').val()}
-        Last name:  #{$(@).find('input#last_name').val()}
-        Company:    #{$(@).find('input#company').val()}
-        Email:      #{$(@).find('input#email').val()}
-        Phone:      #{$(@).find('input#phone').val()}
-        Budget:     #{$(@).find('select#budget').val()}
+        First name: #{$(form).find('input#first_name').val()}
+        Last name:  #{$(form).find('input#last_name').val()}
+        Company:    #{$(form).find('input#company').val()}
+        Email:      #{$(form).find('input#email').val()}
+        Phone:      #{$(form).find('input#phone').val()}
+        Budget:     #{$(form).find('select#budget').val()}
 
         Message
         ====================
 
-        #{$(@).find('textarea#message').val()}
+        #{$(form).find('textarea#message').val()}
       """
 
       $.ajax
         type:  "POST"
-        , url: "https://mandrillapp.com/api/1.0/messages/send.json"
-        , data: {
-          key: "xalMwI5ohKF58bhUqvVuGg"
-          , message: {
-            from_email: $(@).find('input#email').val()
-            , to: [{
-                email:  "contact@velocitylabs.io"
-                , name: "Velocity Labs"
-                , type: "to"
-              }]
-            , autotext: true
-            , subject: "A contact form was received"
-            , html: htmlBody
-            , text: textBody
-          }
-        }
+        , url: $(form).prop('action')
+        , data: $(form).serializeArray()
         , success: (data, status, xhr) ->
           if data[0].status == "rejected" || data[0].status == "invalid"
             $('#contact-form-error').html """

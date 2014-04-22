@@ -1,10 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'jekyll'
-gem 'jekyll-assets'
-gem 'maruku'
+ruby '2.1.1'
+
+gem 'heroku'
+gem 'mandrill-api'
 gem 'rake'
-gem 'coffee-script'
-gem 'sass'
-gem 'uglifier'
-gem 'github-pages'
+gem 'sinatra'
+gem 'thin'
+
+group :development do
+  gem 'coffee-script'
+  gem 'foreman'
+  gem 'jekyll'
+  gem 'jekyll-assets'
+  gem 'maruku'
+  gem 'sass'
+  gem 'uglifier'
+end

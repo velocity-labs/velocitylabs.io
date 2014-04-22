@@ -1,0 +1,2 @@
+jekyll:  jekyll build --watch
+web:     bundle exec ruby main.rb -p $PORT
