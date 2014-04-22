@@ -1,0 +1,119 @@
+#intro .carousel-caption-center h1,
+#intro .carousel-caption-center h2,
+#intro .carousel-caption-center p {
+  color: #FFF;
+}
+
+#testimonials {
+  .carousel {
+    blockquote {
+      p {
+        line-height: 1.5;
+      }
+
+      img {
+        margin-top: 8px;
+      }
+    }
+  }
+}
+
+.cbp-af-header,
+.cbp-af-header h1,
+.cbp-af-header .nav a {
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+#contact-form-error,
+#contact-form-success {
+  margin: 2em auto 0em;
+  width: 600px;
+
+  .close {
+    margin-left: 1em;
+  }
+}
+
+.contact-form {
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .form-control {
+    &[type=text] {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      height: 50px;
+      line-height: 25px;
+      padding: 0 0 0 20px;
+      width: 100%;
+    }
+
+    &.first, &.last {
+      float: left;
+      width: 50%;
+      margin: 0;
+    }
+
+    &.first {
+      border-radius: 4px 0 0 0;
+    }
+
+    &.last {
+      border-left: 0;
+      border-radius: 0 4px 0 0;
+    }
+
+    &.company, &.email, &.phone, &.budget {
+      border-top: 0;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 0;
+    }
+
+    &:focus {
+      outline: none;
+      background: #f1f1f1;
+      color: rgba(51, 51, 51, 0.7);
+    }
+  }
+
+  div.bootstrap-select.budget {
+    height: 50px;
+    line-height: 25px;
+    margin: 0;
+
+    .btn.selectpicker {
+      border-radius: 0;
+      background: transparent;
+      border: none;
+      color: #999;
+      height: 50px;
+      line-height: 25px;
+      margin-top: 0;
+      padding: 0 0 0 20px;
+      text-transform: initial;
+      width: 100%;
+    }
+  }
+}
+
+.has-error .form-control {
+  border-color: rgba(0,0,0,0.1);
+  border-right-color: #a94442 !important;
+  border-right-width: 3px !important;
+
+  &:focus {
+    border-color: rgba(0,0,0,0.1);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #contact-form-error,
+  #contact-form-success {
+    width: 100%;
+    text-align: left;
+  }
+}

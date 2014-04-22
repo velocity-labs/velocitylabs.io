@@ -1,0 +1,43 @@
+<section class="section-content section-isotope separator" id="projects">
+  <div class="page-header text-center">
+    <h3>Projects</h3>
+    <h2>Our latest work</h2>
+  </div>
+
+  <div class="container">
+    <div id="filters" class="button-group text-center">
+      <button data-filter-value="*" class="active">show all</button>
+      {% assign categories = site.data.projects | get_categories %}
+      {% for category in categories %}
+        <button data-filter-value=".{{ category }}">{{ category }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="row demo-3">
+      <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".portfolio-item" }'>
+        {% for project in site.data.projects limit: 9 %}
+          <div class="col-sm-6 col-md-4 portfolio-item {{ project.categories | join: ' ' | downcase }}">
+            <figure>
+              <!-- Thumb Info -->
+              <div class="info">
+                <h3>{{ project.title }}</h3>
+                <span>{{ project.description }}</span>
+              </div>
+              <!-- Thumbnail -->
+              <img src="{{ project.title | thumb_image_path }}" alt="{{ project.title }}">
+              <!-- Thumb links -->
+              <figcaption>
+                <a href="{{ project.title | full_image_path }}" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview">
+                  <i class="fa fa-plus"></i>
+                </a>
+                <a href="{{ project.website }}" class="link tooltips" data-toggle="tooltip" data-placement="bottom" title="Open Website">
+                  <i class="fa fa-external-link"></i>
+                </a>
+              </figcaption>
+            </figure>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

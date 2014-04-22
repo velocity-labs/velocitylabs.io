@@ -1,0 +1,19 @@
+@import "theme/_variables.css.scss";
+
+div.cookiebanner {
+  text-align: center;
+}
+
+.copyright {
+  color: #C9CACC;
+  font-size: 0.8em;
+  margin-top: 2em;
+
+  a {
+    color: #C9CACC;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

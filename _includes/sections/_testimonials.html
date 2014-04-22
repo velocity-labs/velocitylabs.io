@@ -1,0 +1,46 @@
+<section id="testimonials" class="dark">
+  <div class="page-header text-center">
+    <h3>Testimonials</h3>
+    <h2>What do our clients say?</h2>
+  </div>
+
+  <div class="container">
+    <div class='row'>
+      <div class='col-md-offset-2 col-md-8'>
+        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+
+          <!-- Bottom Carousel Indicators -->
+          <ol class="carousel-indicators">
+            {% for testimonial in site.data.testimonials %}
+              <li data-target="#quote-carousel" data-slide-to="{{ forloop.index0 }}" class="active"></li>
+            {% endfor %}
+          </ol>
+
+          <!-- Carousel Slides / Quotes -->
+          <div class="carousel-inner">
+            {% for testimonial in site.data.testimonials %}
+              <div class="item {% if forloop.index0 == 0 %}active{% endif %}">
+                <blockquote>
+                  <div class="row">
+                    <div class="col-sm-3 text-center">
+                      <img class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=160">
+                    </div>
+                    <div class="col-sm-9">
+                      <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
+                      <p><small>{{ testimonial.name }} - <a href="{{ testimonial.link.href }}" target="_blank">{{ testimonial.link.text }}</a></small></p>
+                    </div>
+                  </div>
+                </blockquote>
+              </div>
+            {% endfor %}
+          </div>
+
+          <!-- Carousel Buttons Next/Prev -->
+          <a data-slide="prev" href="#quote-carousel" class="left carousel-control visible-md visible-lg"><i class="fa fa-chevron-left"></i></a>
+          <a data-slide="next" href="#quote-carousel" class="right carousel-control  visible-md visible-lg"><i class="fa fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>

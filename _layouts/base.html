@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="ie9" lang="en"> <![endif]-->
+<!--[if IE 10]> <html class="ie10" lang="en"> <![endif]-->
+<!--[if (gt IE 10)|!(IE)]> <html lang="en"> <![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.inc.title }}{% endif %}">
+
+    <meta property="og:site_name" content="{{ site.inc.title }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.inc.title }}{% endif %}"/>
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+
+    {% if page.cover_image %}
+      <meta property="og:image" content="{{ site.url }}/images/{{ page.cover_image }}"/>
+
+      {% if page.main_image %}
+        <meta property="og:image" content="{{ site.url }}/images/{{ page.main_image }}"/>
+      {% endif %}
+
+      <meta property="og:image" content="{{ site.url }}/images/{{ site.inc.logo }}"/>
+    {% endif %}
+
+    {% if page.excerpt %}
+      <meta property="og:description" content="{{ page.excerpt }}"/>
+      <meta name="description" content="{{ page.excerpt }}"/>
+    {% endif %}
+
+    <title>{% if page.title %}{{ page.title }} | {{ site.inc.title }}{% else %}{{ site.inc.subtitle }} | {{ site.inc.title }}{% endif %}</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    {% if site.inc.google_font %}
+      <link href="https://fonts.googleapis.com/css?family={{ site.inc.google_font }}" rel="stylesheet" type="text/css">
+    {% endif %}
+
+    {% stylesheet main %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/images/{{ site.inc.logo }}"/>
+
+    <link href="{{ site_url }}/feed.xml" rel="alternate" type="application/rss+xml" title="{{ site.inc.title }}" />
+
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    {% if page.site.gplus %}<link rel="publisher" href="https://plus.google.com/{{ site.inc.gplus }}">{% endif %}
+    {% if page.author.gplus %}<link rel="author" href="https://plus.google.com/{{ page.author.gplus }}">{% endif %}
+  </head>
+
+  <body>
+    <div class="preloader">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+
+    {% include _nav.html %}
+    {{ content }}
+    {% include _footer.html %}
+    {% include _scripts.html %}
+  </body>
+</html>
