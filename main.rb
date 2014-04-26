@@ -3,6 +3,10 @@
   require 'rubygems'
   require 'sinatra'
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 ## Global Settings ##
   set :public_folder, Proc.new { File.join(root, "_site") }
   set :protection, except: :frame_options
