@@ -3,28 +3,35 @@
   require 'rubygems'
   require 'sinatra'
 
-configure :production do
-  require 'newrelic_rpm'
-end
+  configure :production do
+    require 'newrelic_rpm'
+  end
+
+  # disable sinatra static, otherwise some paths bypass this and their headers aren't set
+  disable :static
+
+  # gzip everything, except files with extensions below (images)
+  use Rack::DeflaterWithExclusions, :exclude => proc { |env|
+    [ ".jpg", ".png", ".ico" ].include? File.extname(env['PATH_INFO'])
+  }
+
+  before do
+    if ENV['RACK_ENV'] == 'production'
+      expires 3600, :public, :must_revalidate
+
+      unless request.path_info[1].nil?
+        if request.path_info.split('/')[1].include? 'assets'
+          expires 21120000, :public, :must_revalidate
+        end
+      end
+    end
+  end
 
 ## Global Settings ##
   set :public_folder, Proc.new { File.join(root, "_site") }
   set :protection, except: :frame_options
 
   IP_BLACKLIST = %w()
-
-## Configuration ##
-  # configure :production do
-  #   require 'newrelic_rpm'
-  # end
-
-## Before callback ##
-  # Added headers for Varnish
-  before do
-    if ENV['RACK_ENV'] == 'production' and request.path != '/blog'
-      response.headers['Cache-Control'] = 'public, max-age=259200'
-    end
-  end
 
 ## Error Handling
   not_found do

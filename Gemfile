@@ -12,8 +12,8 @@ gem 'newrelic_rpm'
 gem 'rake'
 gem 'sass'
 gem 'sinatra'
-gem 'thin'
 gem 'uglifier'
+gem 'unicorn'
 
 group :development do
   gem 'foreman'

@@ -31,17 +31,16 @@ inc:
 
   # Sharing settings
   sharing:
-    twitter:    true
+    twitter:    false
     facebook:   false
-    github:     true
+    github:     false
     gplus:      false
     hn:         false
 
 
  # Analytics
   analytics:
-    google: false # Add tracking code in _includes/_google-analytics.html
-
+    google: true # Add tracking code in _includes/_google-analytics.html
 
   # Google Fonts
   # eg. 'Droid+Sans:400,700|Droid+Serif:400,700'
@@ -128,6 +127,6 @@ assets:
   js_compressor: uglifier
   css_compressor: sass
   cachebust: none
-  cache: false
+  cache: true
   gzip: [ text/css, application/javascript ]
   debug: false
