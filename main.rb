@@ -1,7 +1,6 @@
 require "rubygems"
 require "bundler"
 require 'mandrill'
-require './deflate'
 Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
 
 configure :production do
@@ -10,19 +9,14 @@ end
 
 before do
   if ENV['RACK_ENV'] == 'production'
-    expires 3600, :public, :must_revalidate
-
-    unless request.path_info[1].nil?
-      if request.path_info.split('/')[1].include? 'assets'
-        expires 21120000, :public, :must_revalidate
-      end
-    end
+    cache_control :public, :must_revalidate, max_age: 60 * 60 * 24
   end
 end
 
 ## Global Settings ##
 set :public_folder, Proc.new { File.join(root, "_site") }
 set :protection, except: :frame_options
+set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
 
 IP_BLACKLIST = %w()
 

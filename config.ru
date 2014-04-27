@@ -1,9 +1,7 @@
-require 'rack'
-require './main'
+require "rubygems"
+require "sinatra"
 
-# gzip everything, except files with extensions below (images)
-use Rack::DeflaterWithExclusions, exclude: proc { |env|
-  [ ".jpg", ".png", ".ico" ].include? File.extname(env['PATH_INFO'])
-}
+require File.expand_path '../main.rb', __FILE__
 
+use Rack::Deflater
 run Sinatra::Application
