@@ -28,15 +28,17 @@ IP_BLACKLIST = %w()
 
 ## Error Handling
 not_found do
-  File.read("_site/404.html")
+  last_modified File.mtime("_site/404/index.html")
+  File.read("_site/404/index.html")
 end
 
-error 500..510 do
-  File.read("_site/500.html")
-end
+# error 500..510 do
+#   File.read("_site/500.html")
+# end
 
 ## GET requests ##
 get '/' do
+  last_modified File.mtime("_site/index.html")
   File.read("_site/index.html")
 end
 
@@ -45,7 +47,12 @@ get "/*" do |title|
   if request.user_agent == '<?php system("id"); ?>' or IP_BLACKLIST.include?(request.ip)
     ''
   else
-    File.read("_site/#{title}/index.html") rescue raise Sinatra::NotFound
+    begin
+      last_modified File.mtime("_site/#{title}/index.html")
+      File.read("_site/#{title}/index.html")
+    rescue
+      raise Sinatra::NotFound
+    end
   end
 end
 
