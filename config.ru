@@ -1,16 +1,9 @@
-# extended version of rack::deflate, which allows filtering for what to gzip
-module Rack
-  class DeflaterWithExclusions < Deflater
-    def initialize(app, options = {})
-      @app = app
-      @exclude = options[:exclude]
-    end
-    def call(env)
-      if @exclude && @exclude.call(env)
-        @app.call(env)
-      else
-        super(env)
-      end
-    end
-  end
-end
+require 'rack'
+require './main'
+
+# gzip everything, except files with extensions below (images)
+use Rack::DeflaterWithExclusions, exclude: proc { |env|
+  [ ".jpg", ".png", ".ico" ].include? File.extname(env['PATH_INFO'])
+}
+
+run Sinatra::Application
