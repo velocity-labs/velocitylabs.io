@@ -15,4 +15,6 @@ $(document).ready(function(){
       $('.budget.bootstrap-select .filter-option').css({ color: '#999' });
     }
   });
+
+  setTimeout(function() { $('.preloader').fadeOut(1000); }, 1000);
 });
