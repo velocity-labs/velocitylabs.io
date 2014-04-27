@@ -16,5 +16,5 @@ $(document).ready(function(){
     }
   });
 
-  setTimeout(function() { $('.preloader').fadeOut(1000); }, 1000);
+  setTimeout(function() { $('.preloader').fadeOut(500); }, 1000);
 });
