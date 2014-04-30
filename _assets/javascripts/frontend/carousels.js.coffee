@@ -1,6 +1,11 @@
 $ ->
-  height = 0
-  for item in $('#quote-carousel .item')
-    height = Math.max(height, $(item).height())
+  height = 300
 
-  $('#quote-carousel .item').height(height)
+  for item in $('#quote-carousel .item')
+    height = Math.max(height, $(item).height() + 50)
+    console.log "Item: #{$(item).find('small a').attr('href')} - #{$(item).height() + 50}"
+
+  console.log "Height: #{height}"
+
+  for item in $('#quote-carousel .item')
+    $(item).height(height)

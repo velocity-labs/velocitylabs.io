@@ -2,7 +2,7 @@
    ---------------------------- */
 
 $(window).load(function(){
-    init();
+  init();
 });
 
 $(document).ready(function() {
@@ -205,27 +205,29 @@ function scrollAnchor() {
 /* --- One Page Scroll ------------------- */
 
 function onePageScroll() {
-  var offset = 30;
-  if(screen.width < 767) offset = 0;
+  if($('#home').length > 0) {
+    var offset = 30;
+    if(screen.width < 767) offset = 0;
 
-  $('.nav').onePageNav({
-      currentClass: 'current',
-      changeHash: false,
-      scrollSpeed: 650,
-      scrollOffset: offset,
-      scrollThreshold: 0.5,
-      filter: ':not(.login, .signup)',
-      easing: 'swing',
-      begin: function() {
-          //I get fired when the animation is starting
-      },
-      end: function() {
-          //I get fired when the animation is ending
-      },
-      scrollChange: function($currentListItem) {
-          //I get fired when you enter a section and I pass the list item of the section
-      }
-  });
+    $('.nav').onePageNav({
+        currentClass: 'current',
+        changeHash: false,
+        scrollSpeed: 650,
+        scrollOffset: offset,
+        scrollThreshold: 0.5,
+        filter: ':not(.login, .signup)',
+        easing: 'swing',
+        begin: function() {
+            //I get fired when the animation is starting
+        },
+        end: function() {
+            //I get fired when the animation is ending
+        },
+        scrollChange: function($currentListItem) {
+            //I get fired when you enter a section and I pass the list item of the section
+        }
+    });
+  }
 }
 
 

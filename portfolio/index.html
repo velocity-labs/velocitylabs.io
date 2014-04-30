@@ -1,10 +1,10 @@
-<section class="section-content section-isotope separator" id="projects">
+---
+layout: inner
+---
+
+<section class="separator" id="projects">
   <div class="page-header text-center">
-    <h3>Projects</h3>
-    <h2>
-      Our latest work
-      <a href="/portfolio" title="See all projects" class="tooltips"><i class="fa fa-arrow-circle-right"></i></a>
-    </h2>
+    <h2>Projects we've worked on</h2>
   </div>
 
   <div class="container">
@@ -18,7 +18,7 @@
 
     <div class="row demo-3">
       <div id="portfolio" class="js-isotope grid cs-style-1" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".portfolio-item" }'>
-        {% for project in site.data.projects limit: 6 %}
+        {% for project in site.data.projects %}
           <div class="col-sm-6 col-md-4 portfolio-item {{ project.categories | join: ' ' | downcase }}">
             <figure>
               <!-- Thumb Info -->
