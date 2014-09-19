@@ -15,3 +15,12 @@
     twitter: "https://www.twitter.com/curtism"
   name: "Curtis Miller"
   title: "Founder & CEO"
+
+- avatar: "d5e190845525aa75c8da275c072c23be"
+  bio:
+    Writer of code, loves functional programming and riding bikes.
+  links:
+    github: "https://github.com/dukedave"
+    twitter: "https://www.twitter.com/davetapley"
+  name: "Dave Tapley"
+  title: "Programmer"
