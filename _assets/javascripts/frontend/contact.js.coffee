@@ -81,9 +81,10 @@ $ ->
             $('#contact-form-error').html """
               <div class='alert alert-danger'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <strong>Sorry #{$("input#first_name").val()} it seems the mail server is not responding...</strong>
-                Could you please email us directly to <a target="_blank" href='mailto:contact@velocitylabs.io?body=#{encodeURIComponent(textBody)}'>contact@velocitylabs.io</a>?
+                <strong>Sorry #{$("input#first_name").val()}, it seems the mail server is not responding...</strong>
+                Could you please send an email directly to <a target="_blank" href='mailto:contact@velocitylabs.io?body=#{encodeURIComponent(textBody)}'>contact@velocitylabs.io</a>?
               </div>
             """
         , complete: () ->
           $('#contactForm button[type=submit]').prop('disabled', false).html(originalButtonText)
+          _gaq.push(['_trackEvent', 'Contact Form', 'Submitted', 'From Homepage', $('#budget option:selected').val()]);
