@@ -251,49 +251,49 @@ blockquote {
 .dropdown-menu > .active > a:focus {
   background-color: #202127;
 }
-.preloader {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: #2b2d35;
-  /* background-color is important, or it will be see-through, and we don't want that! */
-  text-align: center;
-  z-index: 9999999;
-}
-.preloader .spinner {
-  margin: 100px auto 0;
-  width: 70px;
-  height: 70px;
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-.preloader .spinner > div {
-  width: 18px;
-  height: 18px;
-  background-color: white;
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-  animation: bouncedelay 1.4s infinite ease-in-out;
-  /* Prevent first frame from flickering when animation starts */
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.preloader .spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-.preloader .spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-}
+// .preloader {
+//   position: fixed;
+//   top: 0px;
+//   left: 0px;
+//   width: 100%;
+//   height: 100%;
+//   background-color: #2b2d35;
+//   /* background-color is important, or it will be see-through, and we don't want that! */
+//   text-align: center;
+//   z-index: 9999999;
+// }
+// .preloader .spinner {
+//   margin: 100px auto 0;
+//   width: 70px;
+//   height: 70px;
+//   text-align: center;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+//   margin: auto;
+// }
+// .preloader .spinner > div {
+//   width: 18px;
+//   height: 18px;
+//   background-color: white;
+//   border-radius: 100%;
+//   display: inline-block;
+//   -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+//   animation: bouncedelay 1.4s infinite ease-in-out;
+//   /* Prevent first frame from flickering when animation starts */
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
+// }
+// .preloader .spinner .bounce1 {
+//   -webkit-animation-delay: -0.32s;
+//   animation-delay: -0.32s;
+// }
+// .preloader .spinner .bounce2 {
+//   -webkit-animation-delay: -0.16s;
+//   animation-delay: -0.16s;
+// }
 @-webkit-keyframes bouncedelay {
   0%,
   80%,
