@@ -1,65 +1,16 @@
 /* -- Full Screen Viewport Container
    ---------------------------- */
-
 $(window).load(function(){
-  init();
+  onePageScroll();
+  scrollAnchor();
 });
 
 $(document).ready(function() {
-  fullScreenContainer();
   owlCarousel();
   magnificPopup();
 });
 
-
-
-/* --- initialize functions on window load here -------------- */
-
-function init() {
-  onePageScroll();
-  scrollAnchor();
-}
-
-
-
-/* --- Full Screen Container ------------- */
-
-function fullScreenContainer() {
-
-  // Set Initial Screen Dimensions
-
-  var screenWidth = $(window).width() + "px";
-  var screenHeight = $(window).height() + "px";
-
-  $("#intro, #intro .item, #intro-video").css({
-    width: screenWidth,
-    height: screenHeight
-  });
-
-  // Every time the window is resized...
-
-  $(window).resize( function () {
-
-    // Fetch Screen Dimensions
-
-    var screenWidth = $(window).width() + "px";
-    var screenHeight = $(window).height() + "px";
-
-    // Set Slides to new Screen Dimensions
-
-    $("#intro, #intro .item, #intro-video, #intro-video .item").css({
-      width: screenWidth,
-      height: screenHeight
-    });
-
-  });
-
-}
-
-
-
 /* --- owlCarousel ------------- */
-
 function owlCarousel() {
     $("#intro").owlCarousel({
       lazyLoad: true,
@@ -75,19 +26,11 @@ function owlCarousel() {
     });
 }
 
-
-
-
 /* --- scrollReveal ------------------- */
-
 window.scrollReveal = new scrollReveal();
 
-
-
 /* --- magnific popup ------------------- */
-
 function magnificPopup() {
-
   // Gallery
   $('.popup-gallery').magnificPopup({
     type: 'image',
@@ -158,10 +101,7 @@ function magnificPopup() {
 	});
 }
 
-
-
 /* --- Isotope ------------------- */
-
 function isotope() {
  var $container = $('#portfolio');
 
@@ -183,9 +123,7 @@ function isotope() {
  });
 }
 
-
 /* --- Scroll to Anchor ------------------- */
-
 function scrollAnchor() {
   // scroll to specific anchor
   $('.scroll').click(function() {
@@ -203,7 +141,6 @@ function scrollAnchor() {
 }
 
 /* --- One Page Scroll ------------------- */
-
 function onePageScroll() {
   if($('#home').length > 0) {
     var offset = 30;
@@ -229,7 +166,6 @@ function onePageScroll() {
     });
   }
 }
-
 
 $(window).scroll(function() {
   var windowpos = $(window).scrollTop() ;
@@ -271,8 +207,7 @@ $(function() {
 	}
 });
 
-
 /*When clicking on Full hide fail/success boxes */
 $('#name').focus(function() {
-     $('#success').html('');
-  });
+  $('#success').html('');
+});

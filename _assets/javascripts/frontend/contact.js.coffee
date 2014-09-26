@@ -1,4 +1,11 @@
 $ ->
+  $('select').selectpicker()
+  $('select.budget.selectpicker').on 'change', () ->
+    if $(this).val() != ''
+      $('.budget.bootstrap-select .filter-option').css color: '#555'
+    else
+      $('.budget.bootstrap-select .filter-option').css color: '#999'
+
   $(".contact-button").on "click", () ->
     $(this).toggleClass "active"
     $("#contact-form-error").html("")
