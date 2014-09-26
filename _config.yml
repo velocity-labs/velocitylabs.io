@@ -14,7 +14,7 @@ inc:
   gplus:
   about_link:   http://velocitylabs.io/about/
   address:
-    street:     1027 E. Washington St.
+    street:     "1027 E. Washington St. #107"
     city:       Phoenix
     state:      AZ
     zip:        85034
