@@ -6,13 +6,6 @@ $ ->
     else
       $('.budget.bootstrap-select .filter-option').css color: '#999'
 
-  $(".contact-button").on "click", () ->
-    $(this).toggleClass "active"
-    $("#contact-form-error").html("")
-    $("#contact-form-success").html("")
-    $(".contact-form").slideToggle 300, () ->
-      $("html,body").animate { scrollTop: $("#contact").offset().top - 30 }, 650
-
   $("#contactForm").validate
     errorElement: "span"
     , errorClass: "help-block"

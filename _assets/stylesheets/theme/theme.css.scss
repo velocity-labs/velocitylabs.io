@@ -1922,22 +1922,11 @@ section .overlay-text {
     min-width: 300px;
   }
 }
-.contact-button:focus {
-  outline: 0;
-}
-.contact-button.active {
-  background: none !important;
-  border-color: #cdcdcd !important;
-  color: #cdcdcd !important;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
 .contact-form {
   width: 600px;
   margin: 2em auto;
   overflow: hidden;
   border-radius: 4px;
-  display: none;
 }
 .contact-form .message,
 .contact-form .contact,
