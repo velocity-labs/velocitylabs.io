@@ -1,4 +1,5 @@
 _site/
 .env
 .jekyll-assets-cache
+.sass-cache
 log/*

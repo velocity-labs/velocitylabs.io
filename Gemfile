@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 gem 'coffee-script'
-gem 'heroku'
-gem 'jekyll'
+gem 'jekyll', '~> 2.4.0'
 gem 'jekyll-assets'
 gem 'jekyll-minify-html'
 gem 'mandrill-api'
@@ -18,4 +17,5 @@ gem 'unicorn'
 
 group :development do
   gem 'foreman'
+  gem 'byebug'
 end
