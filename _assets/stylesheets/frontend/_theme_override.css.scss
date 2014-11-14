@@ -18,9 +18,22 @@
   }
 }
 
+.navbar-brand {
+  padding-top: 0px;
+}
+
+.navbar-brand img {
+  width: 80px;
+}
+
+.cbp-af-header-shrink .navbar-brand img {
+  width: 50px;
+}
+
 .cbp-af-header,
 .cbp-af-header h1,
-.cbp-af-header .nav a {
+.cbp-af-header .nav a,
+.cbp-af-header .navbar-brand img {
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   transition: all 0.25s ease;
