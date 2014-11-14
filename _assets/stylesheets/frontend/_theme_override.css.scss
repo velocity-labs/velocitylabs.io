@@ -19,15 +19,27 @@
 }
 
 .navbar-brand {
+  line-height: 80px;
   padding-top: 0px;
+
+  img {
+    vertical-align: top;
+    width: 80px;
+  }
 }
 
-.navbar-brand img {
-  width: 80px;
-}
+.cbp-af-header-shrink {
+  .navbar-brand {
+    line-height: 50px;
 
-.cbp-af-header-shrink .navbar-brand img {
-  width: 50px;
+    img {
+      width: 50px;
+
+          -ms-transform: rotate(-90deg); /* IE 9 */
+      -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+              transform: rotate(-90deg);
+    }
+  }
 }
 
 .cbp-af-header,
@@ -37,6 +49,11 @@
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   transition: all 0.25s ease;
+}
+
+.cbp-af-header h1,
+.cbp-af-header .nav a {
+  line-height: 100px;
 }
 
 #contact-form-error,
