@@ -186,6 +186,13 @@
   }
 }
 
+.footer-logo {
+  img {
+    margin-right: 2em;
+    width: 120px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   #contact-form-error,
   #contact-form-success {
