@@ -27,7 +27,7 @@
                 <span>{{ project.description }}</span>
               </div>
               <!-- Thumbnail -->
-              <img width="350" height="262" src="{{ project.title | thumb_image_path }}" alt="{{ project.title }}">
+              <img src="{{ project.title | thumb_image_path }}" alt="{{ project.title }}">
               <!-- Thumb links -->
               <figcaption>
                 <a href="{{ project.title | full_image_path }}" class="preview tooltips popup-gallery" data-toggle="tooltip" data-placement="bottom" title="Preview">
