@@ -32,6 +32,13 @@ end
 
 ## GET requests ##
 get '/' do
+  if params[:ref]
+    match = params[:ref].match(/(.*?)\/(.*)/)
+    if match && match[2]
+      redirect "/#{match[2]}?ref=#{match[1]}"
+    end
+  end
+
   last_modified File.mtime("_site/index.html")
   File.read("_site/index.html")
 end
@@ -45,7 +52,12 @@ get "/*" do |title|
       last_modified File.mtime("_site/#{title}/index.html")
       File.read("_site/#{title}/index.html")
     rescue
-      raise Sinatra::NotFound
+      if params[:ref] =~ /flatterline/i
+        last_modified File.mtime("_site/index.html")
+        File.read("_site/index.html")
+      else
+        raise Sinatra::NotFound
+      end
     end
   end
 end
