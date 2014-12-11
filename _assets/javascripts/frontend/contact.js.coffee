@@ -87,4 +87,4 @@ $ ->
             """
         , complete: () ->
           $('#contactForm button[type=submit]').prop('disabled', false).html(originalButtonText)
-          _gaq.push(['_trackEvent', 'Contact Form', 'Submitted', 'From Homepage', $('#budget option:selected').val()]);
+          ga('send', 'event', 'Contact Form', 'Submitted', 'From Homepage', { budget: $('#budget option:selected').val() });
