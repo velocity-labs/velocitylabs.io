@@ -1,7 +1,7 @@
 # Jekyll sitemap page generator.
 # http://recursive-design.com/projects/jekyll-plugins/
 #
-# Version: 0.1.8 (201108151628)
+# Version: 0.2.4 (201210160037)
 #
 # Copyright (c) 2010 Dave Perrett, http://recursive-design.com/
 # Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
@@ -18,7 +18,6 @@ require 'pathname'
 require 'zlib'
 
 module Jekyll
-
   # Monkey-patch an accessor for a page's containing folder, since
   # we need it to generate the sitemap.
   class Page
@@ -26,6 +25,7 @@ module Jekyll
       @dir
     end
   end
+
 
   # Sub-class Jekyll::StaticFile to allow recovery from unimportant exception
   # when writing the sitemap file.
@@ -36,24 +36,18 @@ module Jekyll
     end
   end
 
+
   # Generates a sitemap.xml file containing URLs of all pages and posts.
   class SitemapGenerator < Generator
     safe true
-    priority :lowest
+    priority :low
 
     # Generates the sitemap.xml file.
     #
     #  +site+ is the global Site object.
     def generate(site)
-      # Create the destination folder if necessary.
-      site_folder = site.config['destination']
-      unless File.directory?(site_folder)
-        p = Pathname.new(site_folder)
-        p.mkdir
-      end
-
       # Write the contents of sitemap.xml.
-      File.open(File.join(site_folder, 'sitemap.xml'), 'w') do |f|
+      File.open(File.join(site.source, 'sitemap.xml'), 'w') do |f|
         f.write(generate_header())
         f.write(generate_content(site))
         f.write(generate_footer())
@@ -61,18 +55,18 @@ module Jekyll
       end
 
       # GZip the sitemap
-      File.open(File.join(site_folder, 'sitemap.xml.gz'), 'w') do |f|
+      File.open(File.join(site.source, 'sitemap.xml.gz'), 'w') do |f|
         gz = ::Zlib::GzipWriter.new(f)
-        gz.write IO.binread(File.join(site_folder, 'sitemap.xml'))
+        gz.write IO.binread(File.join(site.source, 'sitemap.xml'))
         gz.close
       end
 
       # Add a static file entry for the zip file, otherwise Site::cleanup will remove it.
-      site.static_files << Jekyll::StaticSitemapFile.new(site, site.dest, '/', 'sitemap.xml')
-      site.static_files << Jekyll::StaticSitemapFile.new(site, site.dest, '/', 'sitemap.xml.gz')
+      site.static_files << Jekyll::StaticSitemapFile.new(site, site.source, '/', 'sitemap.xml')
+      site.static_files << Jekyll::StaticSitemapFile.new(site, site.source, '/', 'sitemap.xml.gz')
     end
 
-  private
+    private
 
     # Returns the XML header.
     def generate_header
@@ -85,54 +79,52 @@ module Jekyll
     def generate_content(site)
       result = ''
 
+      # The root URL
+      result += entry("#{site.config['url']}/", File.mtime(site.source + '/index.html'), { priority: 1.0 }, site)
+
       # First, try to find any stand-alone pages.
       site.pages.each { |page|
-        path     = page.subfolder + '/' + page.name
-        mod_date = (File.exists?(site.source + path) ? File.mtime(site.source + path) : Time.now)
+        path = page.subfolder + '/' + page.name
+
+        # Skip files that don't exist yet (e.g. paginator pages)
+        next unless FileTest.exist?(path)
+
+        mod_date = File.mtime(site.source + path)
 
         # Use the user-specified permalink if one is given.
         if page.permalink
           path = page.permalink
         else
           # Be smart about the output filename.
-          path.gsub!(/.md$/, ".html")
+          path.gsub!(/.md$/, '.html')
         end
 
-        # Ignore SASS, SCSS, CSS and YML files
-        if path =~ /\.(sass|scss|css|yml)$/ || path =~ /^\/(blog|404)/
-          next
-        end
+        # Ignore SASS, SCSS, and CSS files
+        next if path =~ /.(sass|scss|css)$/
 
         # Remove the trailing 'index.html' if there is one, and just output the folder name.
-        if path=~/\/index.html$/
-            path = path[0..-12] == '' ? '/' : path[0..-12]
-        end
+        path = path[0..-11] if path =~ /\/index.html$/
 
-        if page.data.has_key?('changefreq')
-          changefreq = page.data["changefreq"]
-        else
-          changefreq = ""
-        end
-
-        unless path =~/error/
-          result += entry(path, mod_date, changefreq, site)
-        end
+        result += entry("#{site.config['url']}#{path}", mod_date, get_attrs(page), site) unless path =~ /error/
       }
 
       # Next, find all the posts.
       # posts = site.site_payload['site']['posts']
       # for post in posts do
-      #   if post.data.has_key?('changefreq')
-      #     changefreq = post.data["changefreq"]
-      #   else
-      #     changefreq = "never"
-      #   end
-      #   url = post.url
-      #   url = url[0..-11] if url=~/\/index.html$/
-      #   result += entry(url, post.date, changefreq, site)
+      #   url     = post.url
+      #   url     = '/' + url unless url =~ /^\//
+      #   url     = url[0..-11] if url=~/\/index.html$/
+      #   result += entry(url, post.date, get_attrs(post), site)
       # end
 
       result
+    end
+
+    def get_attrs( page )
+      attrs              = Hash.new
+      attrs[:changefreq] = page.data['changefreq'] if page.data.has_key?('changefreq')
+      attrs[:priority]   = page.data['priority'] if page.data.has_key?('priority')
+      attrs
     end
 
     # Returns the XML footer.
@@ -147,16 +139,16 @@ module Jekyll
     #  +changefreq+ is the frequency with which the page is expected to change (this information is used by
     #    e.g. the Googlebot). This may be specified in the page's YAML front matter. If it is not set, nothing
     #    is output for this property.
-    def entry(path, date, changefreq, site)
+    def entry(path, date, attrs, site)
       # Remove the trailing slash from the baseurl if it is present, for consistency.
       baseurl = site.config['baseurl']
       baseurl = baseurl[0..-2] if baseurl=~/\/$/
 
       "
   <url>
-      <loc>#{site.config['domain']}#{baseurl}#{path}</loc>
-      <lastmod>#{date.strftime("%Y-%m-%d")}</lastmod>#{if changefreq.length > 0
-          "\n      <changefreq>#{changefreq}</changefreq>" end}
+    <loc>#{baseurl}#{path}</loc>
+    <lastmod>#{date.strftime("%Y-%m-%d")}</lastmod>
+" + attrs.map { |k,v| "    <#{k}>#{v}</#{k}>" }.join("\n") + "
   </url>"
     end
 

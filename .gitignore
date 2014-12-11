@@ -3,3 +3,5 @@ _site/
 .jekyll-assets-cache
 .sass-cache
 log/*
+sitemap.xml
+sitemap.xml.gz
