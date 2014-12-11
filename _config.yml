@@ -2,6 +2,7 @@ inc:
   # Blog Information
   title:        "Velocity Labs"
   subtitle:     "Ruby on Rails Developers | Custom Software Solutions"
+  description:  "Velocity Labs specializes in custom web application development using Ruby on Rails."
   cover_image:  blog-cover.jpg
   logo:         logo.png
 

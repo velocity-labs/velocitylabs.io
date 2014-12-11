@@ -27,6 +27,9 @@
     {% if page.excerpt %}
       <meta property="og:description" content="{{ page.excerpt }}"/>
       <meta name="description" content="{{ page.excerpt }}"/>
+    {% else %}
+      <meta property="og:description" content="{{ site.inc.description }}"/>
+      <meta name="description" content="{{ site.inc.description }}"/>
     {% endif %}
 
     <title>{% if page.title %}{{ page.title }} | {{ site.inc.title }}{% else %}{{ site.inc.subtitle }} | {{ site.inc.title }}{% endif %}</title>
