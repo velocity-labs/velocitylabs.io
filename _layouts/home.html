@@ -2,38 +2,7 @@
 layout: base
 ---
 <div id="home">
-  <!-- Nav Section
-  ================================================== -->
-  <div class="navbar-wrapper cbp-af-header">
-    <div class="container">
-      <!-- Fixed navbar -->
-      <div class="navbar cbp-af-inner" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <h1><a class="navbar-brand scroll" href="#intro">
-                <img src='{% asset_path logo.svg %}'>
-                Velocity Labs
-            </a></h1>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav pull-right">
-              <li><a href="#about">About</a></li>
-              <li><a href="#testimonials">Testimonials</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li class="hidden-sm"><a href="#team">Team</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include _nav.html %}
 
   <!-- Hero Section
   ================================================== -->
