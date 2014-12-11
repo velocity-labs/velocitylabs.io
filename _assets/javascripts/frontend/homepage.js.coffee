@@ -9,3 +9,6 @@ resize = () ->
 $ ->
   resize()
   $(window).resize resize
+
+  if document.referrer.match /flatterline/i
+    $('#intro .hero h2').before "<div class=\"alert alert-success\"><div style=\"text-transform: uppercase;\">Welcome Flatterline visitor!</div>We recently merged with another awesome development company and became Velocity Labs!</div>"
