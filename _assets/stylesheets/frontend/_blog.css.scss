@@ -1,12 +1,12 @@
 #blog {
   #intro {
-    margin-top: 70px;
     text-align: center;
-    padding: 2em;
+    padding: 120px 3em 50px;
     background-color: #2b2d35;
     color: white;
 
     h4 {
+      line-height: 1.5em;
       margin-bottom: 2em;
     }
 
@@ -15,7 +15,6 @@
         background: transparent;
         border: 1px solid white;
         color: white;
-        margin-left: 1em;
         padding: 0.5em 1em;
 
         &:hover {
@@ -44,6 +43,7 @@
     border-top: 1px solid #e9e9e9;
     margin-top: 2em;
     padding-top: 2em;
+    text-align: left;
 
     p {
       margin-bottom: 1.5em;
@@ -91,4 +91,12 @@
   font-size: 1.4em;
   line-height: 1.45em;
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  #blog {
+    #intro {
+      padding: 70px 3em;
+    }
+  }
 }

@@ -211,13 +211,25 @@ pre {
     text-align: left;
   }
 
-  .cbp-af-header h1 a {
-    font-size: 16px;
-    line-height: 30px;
-    margin: 1.3em 0;
+  .cbp-af-header {
+    background-color: #2b2d35;
+    height: 70px;
+    position: fixed;
 
-    img {
-      width: 28px;
+    h1,
+    .nav a {
+      line-height: initial;
+    }
+
+    h1 a {
+      font-size: 16px;
+      line-height: 30px;
+      margin: 1.3em 0;
+      padding: 0;
+
+      img {
+        width: 28px;
+      }
     }
   }
 
