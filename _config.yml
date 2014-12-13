@@ -1,10 +1,15 @@
 inc:
-  # Blog Information
+  # Site Information
   title:        "Velocity Labs"
   subtitle:     "Ruby on Rails Developers | Custom Software Solutions"
   description:  "Velocity Labs specializes in custom web application development using Ruby on Rails."
   cover_image:  blog-cover.jpg
   logo:         logo.png
+
+  # Blog Information
+  blog:
+    title: "The Lab Notebook"
+    subtitle: "brought to you by <a href=\"http://velocitylabs.io/\">Velocity Labs</a>"
 
   # Company information
   company:      Velocity Labs
@@ -66,9 +71,9 @@ highlighter: pygments
 
 relative_permalinks: true
 
-permalink:     pretty
-paginate_path: 'page:num'
-paginate:      10
+permalink:     /blog/:year/:month/:day/:title
+paginate_path: 'blog/:num'
+paginate:      5
 
 markdown:      kramdown
 markdown_ext:  markdown,mkd,mkdn,md

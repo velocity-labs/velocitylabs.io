@@ -21,11 +21,14 @@
           <ul class="list-unstyled">
             <li><a href="/#about" class="scroll">About Us</a></li>
             <li><a href="/#team" class="scroll">Our Team</a></li>
+            <li><a href="/blog">Our Blog</a></li>
+            <li><a href="/#contact">Contact Us</a></li>
             <!-- <li><a href="#">Jobs&emsp;<span class="label label-info">We're hiring!</span></a></li> -->
           </ul>
         </div>
       </div>
     </div>
+
     <div class="row">
       <div class="col-lg-12 text-center">
         {% if site.inc.twitter %}
@@ -51,15 +54,16 @@
         </a>
       </div>
 
-      <div class="col-lg-12 text-center copyright">
-        <p class="muted">&copy; {{ site.time | date: "%Y" }} {{ site.inc.company }}</p>
-
-        <p>
-          Night Sky image courtesy of
-          <a href="http://www.flickr.com/photos/scotbot/9646495326/">Scott Wylie</a>
-          under <a href="https://creativecommons.org/licenses/by/2.0/">CC by 2.0, some rights reserved.</a>
-        </p>
-      </div>
     </div>
   </div>
 </footer>
+
+<div class="text-center copyright">
+  <p class="muted">&copy; {{ site.time | date: "%Y" }} {{ site.inc.company }}</p>
+
+  <p>
+    Night Sky image courtesy of
+    <a href="http://www.flickr.com/photos/scotbot/9646495326/">Scott Wylie</a>
+    under <a href="https://creativecommons.org/licenses/by/2.0/">CC by 2.0, some rights reserved.</a>
+  </p>
+</div>

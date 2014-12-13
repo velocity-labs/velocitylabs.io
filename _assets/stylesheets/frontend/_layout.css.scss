@@ -5,13 +5,9 @@ div.cookiebanner {
 }
 
 .copyright {
-  color: #C9CACC;
-  font-size: 0.8em;
-  margin-top: 2em;
+  margin: 2em 0;
 
   a {
-    color: #C9CACC;
-
     &:hover {
       color: $primary-color;
     }
@@ -22,4 +18,9 @@ div.cookiebanner {
   #contact {
     margin-top: 2em;
   }
+}
+
+.pagination {
+  display: block;
+  text-align: center;
 }

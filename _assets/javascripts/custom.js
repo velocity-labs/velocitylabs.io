@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 /* --- owlCarousel ------------- */
 function owlCarousel() {
-    $("#intro").owlCarousel({
+    $("#home #intro").owlCarousel({
       lazyLoad: true,
       lazyEffect: "fade",
       singleItem: true,

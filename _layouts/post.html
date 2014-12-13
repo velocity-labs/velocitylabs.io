@@ -1,6 +1,7 @@
 ---
 layout: base
 ---
+{% include _small_nav.html %}
 
 <article itemscope itemtype="http://schema.org/BlogPosting" class="post">
   {% if page.cover_image %}
@@ -15,7 +16,7 @@ layout: base
       </h1>
 
       <div class="meta text-muted">
-        by <a itemprop="author" href="{{ page.author.link }}" title="{{ page.author.name }}">{{ page.author.name }}</a>
+        by <a itemprop="author" href="https://twitter.com/{{ page.author.twitter }}" title="{{ page.author.name }}">{{ page.author.name }}</a>
         &mdash;
         <meta itemprop="datePublished" content="{{ page.date | date: "%Y-%d-%B" }}"> {{ page.date | date: "%B %d, %Y" }}
       </div>
@@ -25,7 +26,7 @@ layout: base
       {% endif %}
     </header>
 
-    <section itemprop="articleBody">
+    <section class="post-body" itemprop="articleBody">
       {{ content }}
     </section>
 
