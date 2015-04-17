@@ -43,7 +43,6 @@ inc:
     gplus:      false
     hn:         false
 
-
  # Analytics
   analytics:
     google: true # Add tracking code in _includes/_google-analytics.html
