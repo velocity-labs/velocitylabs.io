@@ -10,34 +10,45 @@ layout: base
   {% endif %}
 
   <div class="container">
-    <header>
-      <h1 itemprop="name">
-        <a itemprop="url" href="{{ page.url }}">{{ page.title }}</a>
-      </h1>
+    <div class="col-lg-8 col-lg-offset-2">
+      <header class="text-center">
+        <h1 itemprop="name">
+          <a itemprop="url" href="{{ page.url }}">{{ page.title }}</a>
+        </h1>
 
-      <div class="meta text-muted">
-        by <a itemprop="author" href="https://twitter.com/{{ page.author.twitter }}" title="{{ page.author.name }}">{{ page.author.name }}</a>
-        &mdash;
-        <meta itemprop="datePublished" content="{{ page.date | date: "%Y-%d-%B" }}"> {{ page.date | date: "%B %d, %Y" }}
-      </div>
+        <div class="meta text-muted">
+          by <a itemprop="author" href="https://twitter.com/{{ page.author.twitter }}" title="{{ page.author.name }}">{{ page.author.name }}</a>
+          &mdash;
+          <meta itemprop="datePublished" content="{{ page.date | date: "%Y-%d-%B" }}"> {{ page.date | date: "%B %d, %Y" }}
+        </div>
 
-      {% if page.subtitle %}
-        <h3 itemprop="headline">{{ page.subtitle }}</h3>
-      {% endif %}
-    </header>
+        {% if page.subtitle %}
+          <h3 itemprop="headline">{{ page.subtitle }}</h3>
+        {% endif %}
+      </header>
 
-    <section class="post-body" itemprop="articleBody">
-      {{ content }}
-    </section>
-
-    <section>
-      {% include _social.html %}
-    </section>
-
-    {% if site.inc.disqus.shortname %}
-      <section>
-        {% include _disqus.html %}
+      <section class="post-body" itemprop="articleBody">
+        {{ content }}
       </section>
-    {% endif %}
+
+      <section class="hire-us text-center">
+        <h3 class="lead">Need help with your project?</h3>
+        <p>
+          We specialize in Ruby on Rails and JavaScript projects. Code audits, maintenance and feature development on existing apps, or new application development. We've got you covered.
+        </p>
+        <p><a class="btn btn-lg btn-primary" href="/#contact" role="button">Get in touch!</a></p>
+      </section>
+
+  <!--     <section>
+        {% include _social.html %}
+      </section>
+
+      {% if site.inc.disqus.shortname %}
+        <section>
+          {% include _disqus.html %}
+        </section>
+      {% endif %}
+   -->
+    </div>
   </div>
 </article>
