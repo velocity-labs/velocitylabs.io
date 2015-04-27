@@ -1,29 +1,22 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.3.8)
-    blankslate (2.1.2.4)
     byebug (4.0.5)
       columnize (= 0.9.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
-    classifier-reborn (2.0.3)
-      fast-stemmer (~> 1.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1)
+    coffee-script-source (1.9.1.1)
     colorator (0.1)
     columnize (0.9.0)
     css_press (0.3.2)
       csspool-st (= 3.1.2)
       json
     csspool-st (3.1.2)
-    excon (0.45.1)
+    excon (0.45.3)
     execjs (2.5.2)
-    fast-stemmer (1.0.2)
-    fastimage (1.6.8)
-      addressable (~> 2.3, >= 2.3.5)
     ffi (1.9.8)
     foreman (0.78.0)
       thor (~> 0.19.1)
@@ -34,32 +27,21 @@ GEM
       multi_css (>= 0.1.0)
       multi_js (>= 0.1.0)
     htmlentities (4.3.3)
-    jekyll (2.4.0)
-      classifier-reborn (~> 2.0)
+    jekyll (3.0.0.pre.beta2)
       colorator (~> 0.1)
-      jekyll-coffeescript (~> 1.0)
-      jekyll-gist (~> 1.0)
-      jekyll-paginate (~> 1.0)
       jekyll-sass-converter (~> 1.0)
       jekyll-watch (~> 1.1)
       kramdown (~> 1.3)
-      liquid (~> 2.6.1)
+      liquid (~> 3.0)
       mercenary (~> 0.3.3)
-      pygments.rb (~> 0.6.0)
-      redcarpet (~> 3.1)
+      rouge (~> 1.7)
       safe_yaml (~> 1.0)
-      toml (~> 0.1.0)
-    jekyll-assets (0.14.0)
-      fastimage (~> 1.6)
-      jekyll (~> 2.0)
-      mini_magick (~> 4.1)
+    jekyll-assets (0.9.2)
+      jekyll (>= 1.0.0, < 3.0.0)
       sass (~> 3.2)
       sprockets (~> 2.10)
       sprockets-helpers
       sprockets-sass
-    jekyll-coffeescript (1.0.1)
-      coffee-script (~> 2.2)
-    jekyll-gist (1.2.1)
     jekyll-minify-html (1.1.0)
       html_press (~> 0.8.2)
       jekyll (>= 0.12)
@@ -71,7 +53,7 @@ GEM
     json (1.8.2)
     kgio (2.9.3)
     kramdown (1.6.0)
-    liquid (2.6.2)
+    liquid (3.0.1)
     listen (2.10.0)
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
@@ -81,19 +63,12 @@ GEM
       json (>= 1.7.7, < 2.0)
     maruku (0.7.2)
     mercenary (0.3.5)
-    mini_magick (4.2.1)
     multi_css (0.1.0)
       css_press
     multi_js (0.1.0)
       uglifier (~> 2)
     multi_json (1.11.0)
     newrelic_rpm (3.11.2.286)
-    parslet (1.5.0)
-      blankslate (~> 2.0)
-    posix-spawn (0.3.11)
-    pygments.rb (0.6.3)
-      posix-spawn (~> 0.3.6)
-      yajl-ruby (~> 1.2.0)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
@@ -102,7 +77,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    redcarpet (3.2.3)
+    rouge (1.8.0)
     safe_yaml (1.0.4)
     sass (3.4.13)
     sinatra (1.4.6)
@@ -123,16 +98,13 @@ GEM
     tilt (1.4.1)
     timers (4.0.1)
       hitimes
-    toml (0.1.2)
-      parslet (~> 1.5.0)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.8.3)
+    unicorn (4.9.0)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
@@ -141,9 +113,10 @@ DEPENDENCIES
   byebug
   coffee-script
   foreman
-  jekyll (~> 2.4.0)
+  jekyll (~> 3.0.0.beta1)
   jekyll-assets
   jekyll-minify-html
+  jekyll-paginate
   mandrill-api
   maruku
   newrelic_rpm
