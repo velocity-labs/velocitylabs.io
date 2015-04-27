@@ -1,97 +1,61 @@
-inc:
-  # Site Information
-  title:        "Velocity Labs"
-  subtitle:     "Ruby on Rails Developers | Custom Software Solutions"
-  description:  "Velocity Labs specializes in custom web application development using Ruby on Rails."
-  cover_image:  blog-cover.jpg
-  logo:         logo.png
-
-  # Blog Information
-  blog:
-    title: "The Lab Notebook"
-    subtitle: "brought to you by <a href=\"http://velocitylabs.io/\">Velocity Labs</a>"
-
-  # Company information
-  company:      Velocity Labs
-  url:          http://velocitylabs.io/
-  facebook:
-  github:       velocity-labs
-  twitter:      velocitylabs
-  gplus:
-  about_link:   http://velocitylabs.io/about/
-  address:
-    street:     "1027 E. Washington St. #107"
-    city:       Phoenix
-    state:      AZ
-    zip:        85034
-  phone:        (602) 633-5049
-
-  # Product Information
-  # product_link: http://incorporated.sendtoinc.com/
-  # tagline:      "Get a modern blog for your company"
-
-  # Comments
-  disqus:
-    # Eg. "exampleblog" Set to false to disable comments
-    shortname:  false
-
-  # Sharing settings
-  sharing:
-    twitter:    false
-    facebook:   false
-    github:     false
-    gplus:      false
-    hn:         false
-
- # Analytics
-  analytics:
-    google: true # Add tracking code in _includes/_google-analytics.html
-
-  # Google Fonts
-  # eg. 'Droid+Sans:400,700|Droid+Serif:400,700'
-  google_font: 'Montserrat:400,700|Open+Sans:400,300,700'
-
-  # Setup your fonts, colors etc at _assets/stylesheets/main.scss
-
-url:         http://velocitylabs.io
+# Where things are
 source:      .
 destination: ./_site
 plugins:     ./_plugins
 layouts:     ./_layouts
-include:     ['.htaccess']
-exclude:     ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor']
-timezone:    nil
+data_source: ./_data
+collections: null
 
-# Show future posts
-future:      false
-show_drafts: nil
+# Handling Reading
+safe:         false
+include:      [".htaccess"]
+exclude:      ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor']
+keep_files:   [".git", ".svn"]
+encoding:     "utf-8"
+
+# Filtering Content
+show_drafts: null
 limit_posts: 0
-highlighter: pygments
+future:      false
+unpublished: false
 
-relative_permalinks: true
+# Plugins
+whitelist: []
+gems:      ['jekyll-paginate']
 
+# Conversion
+markdown:     kramdown
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+highlighter:  rouge
+lsi:          false
+excerpt_separator: "\n\n"
+
+# Serving
+detach:  false
+port:    4000
+host:    127.0.0.1
+baseurl: "" # does not include hostname
+
+# Backwards-compatibility
+relative_permalinks: false
+
+# Outputting
 permalink:     /blog/:year/:month/:day/:title
-paginate_path: 'blog/:num'
+paginate_path: /blog/:num
 paginate:      5
+timezone:      null
 
-markdown:      kramdown
-markdown_ext:  markdown,mkd,mkdn,md
-textile_ext:   textile
+quiet:    false
+defaults: []
 
-excerpt_separator: "<!-- more -->"
-
-safe:        false
-host:        0.0.0.0
-port:        4000
-baseurl:     /
-lsi:         false
-
+# Markdown Processors
 maruku:
   use_tex:    false
   use_divs:   false
   png_engine: blahtex
   png_dir:    images/latex
   png_url:    /images/latex
+  fenced_code_blocks: true
 
 rdiscount:
   extensions: []
@@ -100,29 +64,24 @@ redcarpet:
   extensions: []
 
 kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  use_coderay: false
+  auto_ids:       true
+  footnote_nr:    1
+  entity_output:  as_char
+  toc_levels:     1..6
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
 
   coderay:
-    coderay_wrap: div
-    coderay_line_numbers: inline
-    coderay_line_numbers_start: 1
-    coderay_tab_width: 4
-    coderay_bold_every: 10
-    coderay_css: style
+    coderay_wrap:              div
+    coderay_line_numbers:      inline
+    coderay_line_number_start: 1
+    coderay_tab_width:         4
+    coderay_bold_every:        10
+    coderay_css:               style
 
-redcloth:
-  hard_breaks: true
-
-#
-# jekyll-assets: see more at https://github.com/ixti/jekyll-assets
-#
+## jekyll-assets: ##
+# see more at https://github.com/ixti/jekyll-assets
 assets:
-
   dirname: assets
   baseurl: /assets/
   sources:
@@ -137,3 +96,26 @@ assets:
   debug: false
 
 minfy_html: true
+
+## Company ##
+company:
+  address:
+    street:    "1027 E. Washington St. #107"
+    city:      Phoenix
+    state:     AZ
+    zip:       85034
+  cover_image: blog-cover.jpg
+  description: Velocity Labs specializes in custom web application development using Ruby on Rails.
+  social:
+    github:    velocity-labs
+    twitter:   velocitylabs
+  logo:        logo.png
+  name:        Velocity Labs
+  phone:       (602) 633-5049
+  subtitle:    Ruby on Rails Developers | Custom Software Solutions
+  url:         http://velocitylabs.io/
+
+## Blog ##
+blog:
+  title:    The Lab Notebook
+  subtitle: "brought to you by <a href=\"http://velocitylabs.io/\">Velocity Labs</a>"

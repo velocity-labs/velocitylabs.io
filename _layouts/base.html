@@ -8,38 +8,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.inc.title }}{% endif %}">
+    <meta name="title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.company.name }}{% endif %}">
 
-    <meta property="og:site_name" content="{{ site.inc.title }}">
-    <meta property="og:title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.inc.title }}{% endif %}"/>
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
-
-    {% if page.cover_image %}
-      <meta property="og:image" content="{{ site.url }}/images/{{ page.cover_image }}"/>
-
-      {% if page.main_image %}
-        <meta property="og:image" content="{{ site.url }}/images/{{ page.main_image }}"/>
-      {% endif %}
-
-      <meta property="og:image" content="{{ site.url }}/images/{{ site.inc.logo }}"/>
-    {% endif %}
+    <meta property="og:site_name" content="{{ site.company.name }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.company.name }}{% endif %}"/>
+    <meta property="og:url" content="{{ site.company.url }}{{ page.url }}"/>
 
     {% if page.excerpt %}
       <meta property="og:description" content="{{ page.excerpt }}"/>
       <meta name="description" content="{{ page.excerpt }}"/>
     {% else %}
-      <meta property="og:description" content="{{ site.inc.description }}"/>
-      <meta name="description" content="{{ site.inc.description }}"/>
+      <meta property="og:description" content="{{ site.company.description }}"/>
+      <meta name="description" content="{{ site.company.description }}"/>
     {% endif %}
 
-    <title>{% if page.title %}{{ page.title }} | {{ site.inc.title }}{% else %}{{ site.inc.subtitle }} | {{ site.inc.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.company.subtitle }}{% endif %} | {{ site.company.name }}</title>
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
-    {% if site.inc.google_font %}
-      <link href="https://fonts.googleapis.com/css?family={{ site.inc.google_font }}" rel="stylesheet" type="text/css">
-    {% endif %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700" rel="stylesheet" type="text/css">
 
     {% stylesheet main %}
 
@@ -50,13 +37,11 @@
     <![endif]-->
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="/images/{{ site.inc.logo }}"/>
+    <link rel="apple-touch-icon" href="/images/{{ site.company.logo }}"/>
 
-    <link href="{{ site_url }}/feed.xml" rel="alternate" type="application/rss+xml" title="{{ site.inc.title }}" />
+    <link href="{{ site_url }}/feed.xml" rel="alternate" type="application/rss+xml" title="{{ site.company.name }}" />
 
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-    {% if page.site.gplus %}<link rel="publisher" href="https://plus.google.com/{{ site.inc.gplus }}">{% endif %}
-    {% if page.author.gplus %}<link rel="author" href="https://plus.google.com/{{ page.author.gplus }}">{% endif %}
+    <link rel="canonical" href="{{ site.company.url }}{{ page.url }}">
   </head>
 
   <body>
