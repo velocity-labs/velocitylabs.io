@@ -36,14 +36,18 @@ To start, launch a small instance of your AMI of choice. Once again, we prefer U
 
 Once the instance is made available ssh to your newly created instance.
 
-    ssh -i identity_file -L 3128:localhost:3128 root@public_ec2_domain_name
+{% highlight shell linenos %}
+ssh -i identity_file -L 3128:localhost:3128 root@public_ec2_domain_name
+{% endhighlight %}
 
 The noteworthy addition to the previous line is `-L 3128:localhost:3128`. This addition to the SSH command will open port 3128 locally and forward all traffic to the remote port 3128 across the open SSH connection.
 
 Once the connection is open you will need to install a proxy, we prefer [squid](http://www.squid-cache.org/). Squid can be installed through the following command:
 
-    aptitude update
-    aptitude install squid
+{% highlight shell linenos %}
+aptitude update
+aptitude install squid
+{% endhighlight %}
 
 The last remaining step is to configure your browser of choice to use proxy `localhost:3128`.
 

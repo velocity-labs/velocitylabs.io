@@ -1,6 +1,6 @@
 ---
 "/Users/curtis/dev/velocitylabs.io/_posts/2009-04-09-what-you-dont-know-is-affecting-your-performance.md":
-  mtime: 2014-12-12 18:35:26.000000000 -07:00
+  mtime: 2015-05-01 17:42:18.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -10,7 +10,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2009-04-23-disposable-proxy-for-secure-coffee-shop-browsing.md":
-  mtime: 2014-12-12 18:35:23.000000000 -07:00
+  mtime: 2015-05-01 17:43:42.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -20,7 +20,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2009-04-27-optimizing-hardware-costs-for-amazon-ec2.md":
-  mtime: 2014-12-12 18:35:20.000000000 -07:00
+  mtime: 2015-05-01 18:04:26.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -50,7 +50,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2009-06-20-desert-code-camp-followup.md":
-  mtime: 2014-12-12 18:35:14.000000000 -07:00
+  mtime: 2015-05-01 18:07:12.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -70,7 +70,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2009-12-16-gathering-requirements-through-story-workshops.md":
-  mtime: 2014-12-12 18:35:08.000000000 -07:00
+  mtime: 2015-05-01 18:09:32.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -90,7 +90,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2011-12-26-agile-goal-setting.md":
-  mtime: 2014-12-12 19:50:14.000000000 -07:00
+  mtime: 2015-05-01 18:11:09.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -100,7 +100,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2012-01-02-AZ-disruptors-funding-for-startups.md":
-  mtime: 2014-12-12 18:34:59.000000000 -07:00
+  mtime: 2015-05-01 18:18:24.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -120,7 +120,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2012-01-09-startup-america-partnership.md":
-  mtime: 2014-12-12 18:34:55.000000000 -07:00
+  mtime: 2015-05-01 18:19:34.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -140,7 +140,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2012-01-19-rapid-pitch-event-at-launchspot.md":
-  mtime: 2014-12-12 19:51:39.000000000 -07:00
+  mtime: 2015-05-01 18:26:27.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -170,7 +170,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2012-01-27-asu-startup-summit-pitches.md":
-  mtime: 2014-12-12 18:34:40.000000000 -07:00
+  mtime: 2015-05-01 18:27:41.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -200,7 +200,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2015-04-10-easily-retrieve-tags-from-a-postgresql-array-in-rails.md":
-  mtime: 2015-04-12 11:53:32.000000000 -07:00
+  mtime: 2015-05-01 18:40:03.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -220,7 +220,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
 "/Users/curtis/dev/velocitylabs.io/_posts/2015-04-20-sti-store.md":
-  mtime: 2015-04-22 16:08:47.000000000 -07:00
+  mtime: 2015-05-01 19:07:20.000000000 -07:00
   deps:
   - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_nav_inner.html"
@@ -274,6 +274,7 @@
   - "/Users/curtis/dev/velocitylabs.io/_includes/_scripts.html"
   - "/Users/curtis/dev/velocitylabs.io/_includes/_google-analytics.html"
   - "/Users/curtis/dev/velocitylabs.io/_layouts/base.html"
+  - "/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html"
 "/Users/curtis/dev/velocitylabs.io/CNAME":
   mtime: 2014-04-22 12:06:52.000000000 -07:00
   deps: []
@@ -308,10 +309,10 @@
   mtime: 2014-04-22 12:06:52.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/log/newrelic_agent.log":
-  mtime: 2015-04-24 18:16:42.000000000 -07:00
+  mtime: 2015-04-27 09:05:32.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/main.rb":
-  mtime: 2015-04-24 18:16:03.000000000 -07:00
+  mtime: 2015-05-01 13:39:11.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/newrelic.yml":
   mtime: 2014-04-25 17:01:59.000000000 -07:00
@@ -320,10 +321,10 @@
   mtime: 2014-04-22 12:24:59.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/sitemap.xml":
-  mtime: 2015-04-24 18:46:42.000000000 -07:00
+  mtime: 2015-05-01 19:08:08.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/sitemap.xml.gz":
-  mtime: 2015-04-24 18:46:42.000000000 -07:00
+  mtime: 2015-05-01 19:08:08.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/unicorn-dev.rb":
   mtime: 2014-04-27 12:32:14.000000000 -07:00
@@ -366,4 +367,13 @@
   deps: []
 "/Users/curtis/dev/velocitylabs.io/_includes/sections/_contact.html":
   mtime: 2014-09-26 14:44:04.000000000 -07:00
+  deps: []
+"/Users/curtis/dev/velocitylabs.io/_layouts/base.html":
+  mtime: 2015-04-24 18:40:08.000000000 -07:00
+  deps: []
+"/Users/curtis/dev/velocitylabs.io/_layouts/home.html":
+  mtime: 2014-12-11 13:57:17.000000000 -07:00
+  deps: []
+"/Users/curtis/dev/velocitylabs.io/_layouts/inner.html":
+  mtime: 2015-04-27 09:05:22.000000000 -07:00
   deps: []

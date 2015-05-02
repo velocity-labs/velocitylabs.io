@@ -63,3 +63,4 @@ We take these stories, estimate the effort we believe it would take to implement
 We find that the story workshop process can often be a cathartic experience for our clients. Not only have they captured all of their ideas regarding the functionality and roles in the system, but they have also had to think critically about why those things are important, or if they even are.
 
 It's a challenging two hours for our development team and our clients, but in the end, it is an essential part of how we build great software.
+

@@ -64,3 +64,4 @@ We use an agile software development process, but it can also be applied to busi
 This agile method is a great way for prioritizing multiple goals and assuring that you're working on the goals that have the highest value.
 
 Of course, all three goal setting methods have a couple things in common; clearly establishing your goals, and constantly evaluating whether or not your actions are contributing to their achievement. That way you know you're on track to success this New Year.
+

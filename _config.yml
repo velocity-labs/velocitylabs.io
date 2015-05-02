@@ -24,7 +24,7 @@ whitelist: []
 gems:      ['jekyll-paginate']
 
 # Conversion
-markdown:     kramdown
+markdown:     redcarpet
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 highlighter:  rouge
 lsi:          false

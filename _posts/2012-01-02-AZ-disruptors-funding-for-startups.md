@@ -60,5 +60,6 @@ We think Phoenix is fortunate to have a group like the AZ Disruptors working to 
 
 If you want more information, here's a video presentation by AZ Disruptors, outlining their incubator program. It runs about 6½ minutes and covers all the main points.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/zlJ8FtsYAtM" frameborder="0" allowfullscreen></iframe>
-
+<div class="text-center">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/zlJ8FtsYAtM" frameborder="0" allowfullscreen></iframe>
+</div>

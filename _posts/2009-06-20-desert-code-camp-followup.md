@@ -20,11 +20,6 @@ As promised, here are the slides from the Understanding Functional Programming s
 
 [Understanding Functional Programming](http://www.slideshare.net/cchandler/understanding-functional-programming?type=presentation)
 
-<object style="margin:0px" width="425" height="355">
-  <param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=functionalprogramming-090616003711-phpapp01&amp;stripped_title=understanding-functional-programming" />
-  <param name="allowFullScreen" value="true"/>
-  <param name="allowScriptAccess" value="always"/>
-  <embed src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=functionalprogramming-090616003711-phpapp01&amp;stripped_title=understanding-functional-programming" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed>
-</object>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/1GTngDpF3CR7mm" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 **What topic(s) would you like to see next time?**

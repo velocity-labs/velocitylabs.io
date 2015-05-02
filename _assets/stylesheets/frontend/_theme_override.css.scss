@@ -4,14 +4,39 @@ li {
   }
 }
 
-pre {
-  background-color: white;
+ol, ul {
+  margin-bottom: 2em;
+
+  li {
+    font-size: 1.1em;
+    font-weight: 200;
+    line-height: 1.75;
+    margin-bottom: 0.5em;
+
+    p {
+      font-size: 1em;
+    }
+  }
+}
+
+section h2 {
+  font-weight: 200;
+}
+
+section p {
+  font-weight: 200;
 }
 
 #intro .carousel-caption-center h1,
 #intro .carousel-caption-center h2,
 #intro .carousel-caption-center p {
   color: #FFF;
+}
+
+
+#intro .carousel-caption-left p,
+#intro-video .carousel-caption-left p {
+  font-weight: 200;
 }
 
 #testimonials {

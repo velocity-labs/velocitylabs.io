@@ -22,7 +22,7 @@ We recently attended the 2012 ASU Startup Summit and were fortunate enough to ha
 
 We realize you may not want to watch all 15 funding pitch videos, so just click on the one you're interested in below, and it will take you to the video of the company doing their funding pitch. Or watch all the funding pitch videos. Just know there are about 2.5 hours of video here; each one is about 10 minutes.
 
-<table>
+<table class="table">
   <tr>
     <td><a href="#renature">ReNature</a></td>
     <td><a href="#arizona-pro-djs">Arizona Pro DJs</a></td>
