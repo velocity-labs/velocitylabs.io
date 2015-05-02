@@ -308,7 +308,7 @@
   mtime: 2014-04-22 12:06:52.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/log/newrelic_agent.log":
-  mtime: 2015-05-01 19:42:41.000000000 -07:00
+  mtime: 2015-05-01 19:57:27.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/main.rb":
   mtime: 2015-05-01 19:26:51.000000000 -07:00
@@ -320,26 +320,14 @@
   mtime: 2014-04-22 12:24:59.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/sitemap.xml":
-  mtime: 2015-05-01 19:42:27.000000000 -07:00
+  mtime: 2015-05-01 19:58:36.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/sitemap.xml.gz":
-  mtime: 2015-05-01 19:42:27.000000000 -07:00
+  mtime: 2015-05-01 19:58:36.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/unicorn-dev.rb":
   mtime: 2014-04-27 12:32:14.000000000 -07:00
   deps: []
 "/Users/curtis/dev/velocitylabs.io/unicorn.rb":
   mtime: 2014-04-27 12:08:11.000000000 -07:00
-  deps: []
-"/Users/curtis/dev/velocitylabs.io/_includes/_small_nav.html":
-  mtime: 2014-12-12 20:56:19.000000000 -07:00
-  deps: []
-"/Users/curtis/dev/velocitylabs.io/_includes/_footer.html":
-  mtime: 2015-04-24 18:21:18.000000000 -07:00
-  deps: []
-"/Users/curtis/dev/velocitylabs.io/_includes/_nav.html":
-  mtime: 2014-12-12 20:49:38.000000000 -07:00
-  deps: []
-"/Users/curtis/dev/velocitylabs.io/_includes/sections/_testimonials.html":
-  mtime: 2014-04-29 19:21:22.000000000 -07:00
   deps: []
