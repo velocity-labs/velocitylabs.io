@@ -40,9 +40,9 @@ baseurl: "" # does not include hostname
 relative_permalinks: false
 
 # Outputting
-permalink:     /blog/:year/:month/:day/:title
+permalink:     /blog/:year/:month/:day/:title/
 paginate_path: /blog/:num
-paginate:      5
+paginate:      10
 timezone:      null
 
 quiet:    false
