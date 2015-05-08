@@ -3,7 +3,7 @@ layout: base
 ---
 {% include _small_nav.html %}
 
-<article itemscope itemtype="http://schema.org/BlogPosting" class="post">
+<article itemscope itemtype="http://schema.org/Article" class="post">
   {% if page.cover_image %}
     <meta itemprop="image" src="/images/{{ page.cover_image }}">
     <div class="post-header-image" style="background-image: url(/images/{{ page.cover_image }});"></div>
@@ -17,7 +17,12 @@ layout: base
         </h1>
 
         <div class="meta text-muted">
-          by <a itemprop="author" href="https://twitter.com/{{ page.author.twitter }}" title="{{ page.author.name }}">{{ page.author.name }}</a>
+          by
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href="https://twitter.com/{{ page.author.twitter }}" rel="author" title="{{ page.author.name }}">
+              <span itemprop="name">{{ page.author.name }}</span>
+            </a>
+          </span>
           &mdash;
           <meta itemprop="datePublished" content="{{ page.date | date: "%Y-%d-%B" }}"> {{ page.date | date: "%B %d, %Y" }}
         </div>
