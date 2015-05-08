@@ -87,7 +87,7 @@ module Jekyll
         path = page.subfolder + '/' + page.name
 
         # Skip files that don't exist yet (e.g. paginator pages)
-        next unless FileTest.exist?(path)
+        next unless FileTest.exist?(site.config['destination'] + path)
 
         mod_date = File.mtime(site.source + path)
 
@@ -109,13 +109,13 @@ module Jekyll
       }
 
       # Next, find all the posts.
-      # posts = site.site_payload['site']['posts']
-      # for post in posts do
-      #   url     = post.url
-      #   url     = '/' + url unless url =~ /^\//
-      #   url     = url[0..-11] if url=~/\/index.html$/
-      #   result += entry(url, post.date, get_attrs(post), site)
-      # end
+      posts = site.site_payload['site']['posts']
+      for post in posts do
+        url     = post.url
+        url     = '/' + url unless url =~ /^\//
+        url     = url[0..-11] if url=~/\/index.html$/
+        result += entry(url, post.date, get_attrs(post), site)
+      end
 
       result
     end
