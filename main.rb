@@ -55,6 +55,16 @@ get "/*" do |title|
       if params[:ref] =~ /flatterline/i
         last_modified File.mtime("_site/index.html")
         File.read("_site/index.html")
+      elsif params[:ref] =~ /burstdev/i
+        case title
+          when /^contact/
+            redirect '/#contact'
+          when /^(projects|pages)/
+            redirect '/portfolio'
+          else
+            last_modified File.mtime("_site/index.html")
+            File.read("_site/index.html")
+        end
       else
         raise Sinatra::NotFound
       end
