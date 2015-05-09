@@ -1,63 +1,37 @@
-# Jekyll Incorporated
-Modern Jekyll based blog. Great for companies, products or anything. See live at [blog.sendtoinc.com](http://blog.sendtoinc.com)
+# Hi, we're Velocity Labs!
 
-## Installation & Usage
-    bundle install
-    jekyll serve --watch
+We're a Ruby on Rails and JavaScript web development company based in
+Phoenix, AZ. You can find us on the web at
+[velocitylabs.io](http://velocitylabs.io) or on twitter
+[@velocitylabs](https://twitter.com/velocitylabs).
 
-_Note: Requires Ruby version 1.9.3 =>. For example use [rbenv](https://github.com/sstephenson/rbenv)_   
-    
-## Configuration
-Edit: _config.yml (general options), main.css (theme colors &amp; fonts)
+## Stuff we like
 
-```
-jekyll-incorporated/
-├── _config.yml
-├── _assets/
-    ├── stylesheets/
-        ├── main.scss
-```
+These are in no particular order and are super random, but enjoy!
 
-_Note: when editing _config.yml, you need to restart jekyll to see the changes.__
+* [Coworking](http://cohoots.com/)
+* [Drum & Bass](https://soundcloud.com/irish-dnb)
+* [Soylent](http://soylent.me/)
+* [Grid Bikes](http://gridbikes.com/)
 
-    
-## Publish to Github Pages
-1. Add your domain to _CNAME_
-2. Edit your repo address at _Rakefile_
-    
-Run rake task. **NOTE: It will deploy the generated site to _gh-pages_ branch overwriting it**    
-``` 
-rake site:publish
-```
+## Projects we work on
 
-## Usage examples
+Of course, there's our
+[web development portfolio](http://velocitylabs.io/portfolio/),
+but we also enjoy working on side projects and open-source. (We'll
+add to this ;)
 
-* Adroll Engineering http://tech.adroll.com/
-* Brace.io blog http://blog.brace.io/
-* Spark.io blog http://blog.spark.io/
-* Department of Better Technology http://blog.dobt.co/
+* [Honeypot-captcha](https://github.com/curtis/honeypot-captcha)
 
-## Authors
+## Hire us!
 
-Originally build for [sendtoinc.com](https://sendtoinc.com), your workspace for sharing and organizing knowledge
+Yes, we're for hire :)
 
-**Karri Saarinen**
+New apps; maintenance of existing apps; code audits; training in Ruby,
+Rails, Javascript, and other technologies; story workshops; and more...
 
-+ [http://twitter.com/karrisaarinen](http://twitter.com/karrisaarinen)
-+ [http://github.com/ksaa](http://github.com/ksaa)
+Although we specialize in Ruby on Rails and JavaScript applications,
+we know some other things as well, so hit us up!
 
-**Jori Lallo**
-
-+ [http://twitter.com/jorilallo](http://twitter.com/jorilallo)
-+ [http://github.com/jorde](http://github.com/jorilallo)
-
-## Todo:
-
-+ Documentation
-+ Less config files
-+ Better deploy scripts
-
-## Copyright and license
-
-Copyright 2013 Kippt Inc. under [The MIT License ](LICENSE)
-
+[By email](mailto:contact@velocitylabs.io) or on twitter
+[@velocitylabs](https://twitter.com/velocitylabs).
