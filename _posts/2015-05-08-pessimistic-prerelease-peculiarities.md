@@ -10,7 +10,9 @@ excerpt:
 layout: post
 published: true
 tags:
-- railsconf
+- semver
+- gems
+- bundler
 title: "Pessimistic Prerelease Peculiarities"
 ---
 
