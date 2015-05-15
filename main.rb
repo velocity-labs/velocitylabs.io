@@ -9,7 +9,7 @@ end
 
 before do
   if ENV['RACK_ENV'] == 'production'
-    cache_control :public, :must_revalidate, max_age: 60 * 60 * 24
+    cache_control :public, :must_revalidate, max_age: 60 * 10
   end
 end
 
