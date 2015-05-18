@@ -12,7 +12,7 @@ excerpt:
   recently that kept my attention, was interesting and fit perfectly
   into my commute.
 layout: post
-published: false
+published: true
 tags:
 - podcasts
 title: "Level Up With a New Podcast"
