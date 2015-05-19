@@ -12,7 +12,7 @@
 
     <meta property="og:site_name" content="{{ site.company.name }}">
     <meta property="og:title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.company.name }}{% endif %}"/>
-    <meta property="og:url" content="{{ site.company.url }}{{ page.url }}"/>
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
 
     {% if page.excerpt %}
       <meta property="og:description" content="{{ page.excerpt }}"/>
@@ -41,7 +41,7 @@
 
     <link href="{{ site_url }}/feed.xml" rel="alternate" type="application/rss+xml" title="{{ site.company.name }}" />
 
-    <link rel="canonical" href="{{ site.company.url }}{{ page.url }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   </head>
 
   <body>

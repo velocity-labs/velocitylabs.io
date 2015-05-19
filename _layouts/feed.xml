@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.blog.title }}</title>
+  <id>{{ site.url }}/</id>
+  <link href="{{ site.url }}"/>
+  <link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <author>
+    <name>{{ site.company.name }}</name>
+  </author>
+
+  {{ content }}
+</feed>
