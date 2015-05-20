@@ -1,3 +1,5 @@
+@import "theme/_variables.css.scss";
+
 li {
   p {
     margin-bottom: 0;
@@ -269,4 +271,9 @@ section p {
   .cbp-af-header h1, .cbp-af-header .nav a {
     margin-left: 0;
   }
+}
+
+code {
+  color: $primary-color;
+  background-color: $primary-background-color;
 }
