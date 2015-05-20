@@ -10,7 +10,7 @@ excerpt:
   recently that had us puzzled. Even though we'd turned off caching,
   we were still seeing cached results. What's going on?!
 layout: post
-published: false
+published: true
 tags:
 - caching
 - rails
