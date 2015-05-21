@@ -1,3 +1,5 @@
+@import "theme/_variables.css.scss";
+
 #blog {
   #intro {
     text-align: center;
@@ -18,8 +20,8 @@
         padding: 0.5em 1em;
 
         &:hover {
-          background-color: #ffba43;
-          border-color: #ffba43;
+          background-color: $primary-color;
+          border-color: $primary-color;
           color: white;
         }
       }
@@ -51,21 +53,23 @@
 
     & > p {
       margin-bottom: 1.5em;
+
+      a {
+        border-bottom: 1px solid rgba(255, 186, 67, 0.25);
+      }
     }
   }
 }
 
 .hire-us {
-  border: 1px solid #ccc;
-  background-color: #fff;
+  border-top: 1px solid #ccc;
   margin-bottom: 50px;
-  padding: 1em 2em;
 
   .btn-primary {
-    background: #ffba43;
+    background: $primary-color;
 
     &:hover {
-      background: #ffa710;
+      background: $btn-hover;
     }
   }
 }
