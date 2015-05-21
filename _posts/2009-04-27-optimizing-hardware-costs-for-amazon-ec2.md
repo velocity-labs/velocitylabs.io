@@ -34,11 +34,15 @@ The technique uses [linear programming](http://en.wikipedia.org/wiki/Linear_prog
 
 First, install the GLPK. On Ubuntu execute the command
 
-    sudo aptitude install glpk
+{% highlight shell %}
+sudo aptitude install glpk
+{% endhighlight %}
 
 on Mac OS X execute the command
 
-    sudo port install glpk
+{% highlight shell %}
+sudo port install glpk
+{% endhighlight %}
 
 Next, create the following as `cloud_cost.txt`.
 
@@ -117,7 +121,9 @@ The model requires the specification of two variables: total number of EC2 Compu
 
 When you're ready, execute the solver using the following command:
 
-    glpsol --model cloud_cost.txt --output result.txt
+{% highlight shell %}
+glpsol --model cloud_cost.txt --output result.txt
+{% endhighlight %}
 
 ### Analyzing the results
 

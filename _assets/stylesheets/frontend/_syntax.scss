@@ -18,7 +18,7 @@ green     #859900  operators, other keywords
 
 .post-body .highlight { background-color: #002b36; color: #93a1a1; margin-bottom: 2em; }
 .highlight pre { background: transparent; border: none; padding: 10px 15px; }
-.highlight pre code { word-break: break-word; }
+.highlight pre code { color: #93a1a1; font-family: Menlo,Monaco,Consolas,"Courier New",monospace; word-break: break-word; }
 .highlight pre code.language- {
   display: block;
   padding: 8px;
