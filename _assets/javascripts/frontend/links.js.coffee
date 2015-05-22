@@ -1,6 +1,6 @@
 $ ->
   # Open external links in a new tab/window
-  $('a').each ->
+  $('.post-body a').each ->
     a = new RegExp(window.location.host + '|mailto:|tel:')
     if !a.test(this.href)
       $(this).attr 'rel', $.trim([$(this).attr('rel'), 'external'].join(' '))
