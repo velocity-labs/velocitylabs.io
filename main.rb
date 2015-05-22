@@ -74,76 +74,85 @@ end
 
 ## POST requests ##
 post '/contact-form/?' do
-  m = Mandrill::API.new
+  if params['hp-input'].nil? || params['hp-input'].empty?
+    m = Mandrill::API.new
 
-  htmlBody = %Q{
-    <div style="font-family:Helvetica;">
-      <h2>Contact Information</h2>
+    htmlBody = %Q{
+      <div style="font-family:Helvetica;">
+        <h2>Contact Information</h2>
 
-      <table style="font-size:11pt;">
-        <tbody>
-          <tr>
-            <td width="25%">First name:</td>
-            <td>#{params[:first_name]}</td>
-          </tr>
-          <tr>
-            <td>Last name:</td>
-            <td>#{params[:last_name]}</td>
-          </tr>
-          <tr>
-            <td>Company:</td>
-            <td>#{params[:company]}</td>
-          </tr>
-          <tr>
-            <td>Email:</td>
-            <td>#{params[:email]}</td>
-          </tr>
-          <tr>
-            <td>Phone:</td>
-            <td>#{params[:phone]}</td>
-          </tr>
-          <tr>
-            <td>Budget:</td>
-            <td>#{params[:budget]}</td>
-          </tr>
-        </tbody>
-      </table>
+        <table style="font-size:11pt;">
+          <tbody>
+            <tr>
+              <td width="25%">First name:</td>
+              <td>#{params[:first_name]}</td>
+            </tr>
+            <tr>
+              <td>Last name:</td>
+              <td>#{params[:last_name]}</td>
+            </tr>
+            <tr>
+              <td>Company:</td>
+              <td>#{params[:company]}</td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td>#{params[:email]}</td>
+            </tr>
+            <tr>
+              <td>Phone:</td>
+              <td>#{params[:phone]}</td>
+            </tr>
+            <tr>
+              <td>Budget:</td>
+              <td>#{params[:budget]}</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <h2>Message</h2>
-      <p style="font-size:11pt;">#{params[:message]}</p>
-    </div>
-  }
+        <h2>Message</h2>
+        <p style="font-size:11pt;">#{params[:message]}</p>
+      </div>
+    }
 
-  textBody = %Q{
-    Contact Information
-    ====================
+    textBody = %Q{
+      Contact Information
+      ====================
 
-    First name: #{params[:first_name]}
-    Last name:  #{params[:last_name]}
-    Company:    #{params[:company]}
-    Email:      #{params[:email]}
-    Phone:      #{params[:phone]}
-    Budget:     #{params[:budget]}
+      First name: #{params[:first_name]}
+      Last name:  #{params[:last_name]}
+      Company:    #{params[:company]}
+      Email:      #{params[:email]}
+      Phone:      #{params[:phone]}
+      Budget:     #{params[:budget]}
 
-    Message
-    ====================
+      Message
+      ====================
 
-    #{params[:message]}
-  }
+      #{params[:message]}
+    }
 
-  message = {
-    subject:    "A contact form was received",
-    from_email: params[:email],
-    from_name:  "#{params[:first_name]} #{params[:last_name]}",
-    text:       textBody,
-    to: [{
+    message = {
+      subject:    "A contact form was received",
+      from_email: params[:email],
+      from_name:  "#{params[:first_name]} #{params[:last_name]}",
+      text:       textBody,
+      to: [{
+        email: "contact@velocitylabs.io",
+        name:  "Velocity Labs"
+      }],
+      html: htmlBody
+    }
+
+    response = m.messages.send message
+  else
+    response = [{
       email: "contact@velocitylabs.io",
-      name:  "Velocity Labs"
-    }],
-    html: htmlBody
-  }
-
-  response = m.messages.send message
+      status: "sent",
+      _id: "1234",
+      reject_reason: nil
+    }]
+  end
 
   content_type :json
   status 200
