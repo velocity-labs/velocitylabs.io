@@ -7,6 +7,12 @@ configure :production do
   require 'newrelic_rpm'
 end
 
+configure :production, :development do
+  file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
+  file.sync = true
+  use Rack::CommonLogger, file
+end
+
 before do
   if ENV['RACK_ENV'] == 'production'
     cache_control :public, :must_revalidate, max_age: 60 * 10
@@ -152,6 +158,11 @@ post '/contact-form/?' do
       _id: "1234",
       reject_reason: nil
     }]
+
+    logger.error '*'*100
+    logger.error "HONEYPOT CAPTCHA CAUGHT SOME SPAM!"
+    logger.error params.to_s
+    logger.error '*'*100
   end
 
   content_type :json
