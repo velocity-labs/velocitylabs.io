@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+ruby '2.2.2'
 
 gem 'coffee-script'
 gem 'jekyll', '~> 3.0.0.beta1'
