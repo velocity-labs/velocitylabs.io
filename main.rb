@@ -135,8 +135,8 @@ post '/contact-form/?' do
     message = {
       subject:    "A contact form was received",
       from_email: "contact@velocitylabs.io",
-      from_name:  "#{params[:first_name]} #{params[:last_name]}",
-      headers:    { "Reply-To" => params[:email] },
+      from_name:  "Velocity Labs Contact Form",
+      headers:    { "Reply-To" => "#{params[:first_name]} #{params[:last_name]} <#{params[:email]}>" },
       text:       textBody,
       to: [{
         email: "contact@velocitylabs.io",
