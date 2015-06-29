@@ -2,7 +2,7 @@ resize = () ->
   screenWidth  = $(window).width() + "px"
   screenHeight = $(window).height() + "px"
 
-  $("#home #intro, #home #intro .item, #home #intro-video, #home #intro-video .item").css
+  $("#intro, #intro .item, #intro-video, #intro-video .item").css
     width: screenWidth
     height: screenHeight
 

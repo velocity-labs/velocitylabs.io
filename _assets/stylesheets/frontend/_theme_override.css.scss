@@ -16,8 +16,15 @@ a {
   }
 }
 
-.btn:hover {
-  opacity: 1;
+.hero {
+  background-attachment: fixed!important;
+}
+
+.btn {
+  white-space: normal;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 a.carousel-control,
@@ -68,6 +75,10 @@ section p {
   font-weight: 400;
 }
 
+section.content p {
+  margin-bottom: 1em;
+}
+
 #intro .carousel-caption-center h1,
 #intro .carousel-caption-center h2,
 #intro .carousel-caption-center p {
@@ -100,6 +111,7 @@ section p {
   padding-top: 0px;
 
   img {
+    display: inline-block;
     vertical-align: top;
     width: 80px;
   }

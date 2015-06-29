@@ -1,0 +1,303 @@
+---
+contact:
+  button: Click Here to Make Your Web App An Asset
+excerpt:
+  Your Rails application is an investment in your business.
+  We'll help you keep that investment working for you.
+heading: Keep Your Web Application Working For Your Business
+layout: landing
+lead:
+  If your business has made a significant investment in getting a web application
+  launched, yet lack in-house expertize to maintain it, we can help.
+title: Ruby on Rails Application Maintenance
+---
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <h2 class="text-center">
+          <blockquote>
+            "We launched months ago, but afterward, our developer moved on and we failed
+            to maintain our application. Now we're having issues."
+          </blockquote>
+        </h2>
+
+        <p>Does this sound familiar?</p>
+
+        <p>
+          By creating software, you've made a significant investment in your business.
+          It might be your core business, something that compliments your business, or
+          an internal tool to enable better business decisions. Whatever the case,
+          launching is only the beginning. <i>It's the easy part.</i>
+        </p>
+
+        <p>
+          As time goes on, users will discover bugs that you weren't aware existed,
+          they'll use the system in ways you didn't intend, and problems will surface.
+          Additionally, the software upon which your system is built will get out of date,
+          exposing your business to security issues that can be exploited and placing your
+          users' information at risk.
+        </p>
+
+        <p>
+          Sadly, this is not uncommon. Many web applications live in a state of perpetual
+          abandonment.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1">
+        {% assign testimonials = site.data.testimonials | where:"name","Aaron Post" %}
+        {% for testimonial in testimonials limit: 1 %}
+          <blockquote>
+            <div class="row">
+              <div class="col-sm-3 text-center">
+                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+              </div>
+              <div class="col-sm-9">
+                <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
+                <p><small>{{ testimonial.name }} - <a href="{{ testimonial.link.href }}" target="_blank">{{ testimonial.link.text }}</a></small></p>
+              </div>
+            </div>
+          </blockquote>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <h3 class="text-center">You Have Options</h3>
+
+        <p>
+          You want to keep your web application working for your business, so what do you do?
+        </p>
+
+        <p>
+          <u>Have one of your existing employees maintain the application?</u>
+          This is great if you already have developers, but it means shifting their time away
+          from existing projects and deadlines. Most businesses aren't in a position to do this.
+        </p>
+
+        <p>
+          <u>Hire a freelancer?</u>
+          Most freelancers are expensive, with low availability, and typically look for larger,
+          more lucrative projects.
+        </p>
+
+        <p>
+          <u>Hire a full-time developer?</u>
+          Even if you locate a good developer, is there enough work to keep them busy full time?
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1">
+        {% assign testimonials = site.data.testimonials | where:"name","Andrew Hyde" %}
+        {% for testimonial in testimonials limit: 1 %}
+          <blockquote>
+            <div class="row">
+              <div class="col-sm-3 text-center">
+                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+              </div>
+              <div class="col-sm-9">
+                <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
+                <p><small>{{ testimonial.name }} - <a href="{{ testimonial.link.href }}" target="_blank">{{ testimonial.link.text }}</a></small></p>
+              </div>
+            </div>
+          </blockquote>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <h3 class="text-center">Let The Experts Maintain Your Application</h3>
+
+        <p>
+          Your core business is not web application development, but
+          ours is! We offer a monthly, full-service application maintenance
+          package that includes:
+        </p>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <h4>
+              <i class="fa fa-heartbeat"></i>
+              Application Monitoring
+            </h4>
+
+            <p>
+              We'll monitor the health of your application to ensure you stay
+              running and trouble free.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <h4>
+              <i class="fa fa-database"></i>
+              Automated Backups
+            </h4>
+
+            <p>
+              Losing data can be catastrophic to a business. We'll make sure
+              offsite data backups are regularly executed and can be restored.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <h4>
+              <i class="fa fa-bug"></i>
+              Exception Monitoring
+            </h4>
+
+            <p>
+              We'll monitor your application to detect problems, fix them, and
+              write regression tests to ensure they don't happen again.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <h4>
+              <i class="fa fa-lock"></i>
+              Security Patches
+            </h4>
+
+            <p>
+              Chances are, your software is out-of-date, including the software
+              the powers your servers. We'll take stock of your entire infrastructure
+              and get things up-to-date.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1">
+        {% assign testimonials = site.data.testimonials | where:"name","Robert Wallace" %}
+        {% for testimonial in testimonials limit: 1 %}
+          <blockquote>
+            <div class="row">
+              <div class="col-sm-3 text-center">
+                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+              </div>
+              <div class="col-sm-9">
+                <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
+                <p><small>{{ testimonial.name }} - <a href="{{ testimonial.link.href }}" target="_blank">{{ testimonial.link.text }}</a></small></p>
+              </div>
+            </div>
+          </blockquote>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <h3 class="text-center">How Much Does It Cost?</h3>
+
+        <p>
+          Currently, our Ruby on Rails Application Maintenance service is only
+          <b>$1,000 / month for the first host, plus $250 / month for each
+          additional host</b>. This price may change in the future, but you'll
+          always pay the same rate you secured, for the duration of the engagement.
+        </p>
+
+        <p>
+          You can also try us for a month. If you aren't satisfied, we'll refund
+          your money and call it a day. Anything we did in that first month is yours
+          to keep.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1">
+        {% assign testimonials = site.data.testimonials | where:"name","Linda Ruehlman" %}
+        {% for testimonial in testimonials limit: 1 %}
+          <blockquote>
+            <div class="row">
+              <div class="col-sm-3 text-center">
+                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+              </div>
+              <div class="col-sm-9">
+                <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
+                <p><small>{{ testimonial.name }} - <a href="{{ testimonial.link.href }}" target="_blank">{{ testimonial.link.text }}</a></small></p>
+              </div>
+            </div>
+          </blockquote>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <h3 class="text-center">Are You Ready To Get Started?</h3>
+
+        <p>
+          Fill out the form below and we'll get back to you quickly to
+          discuss your application. We've helped many companies and are
+          confident we'll be able to help you, too.
+        </p>
+
+        <div id="contact-form-success"></div> <!-- For success/fail messages -->
+
+        <div class='contact-form'>
+          <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate>
+            <div class='name form-group'>
+              <input class='form-control first' placeholder='First Name' type="text" id="first_name" name="first_name">
+              <input class='form-control last' placeholder='Last Name' type="text" id="last_name" name="last_name">
+            </div>
+
+            <div class="form-group">
+              <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
+            </div>
+
+            <input name="message" type="hidden" value="Application maintenance inquiry.">
+            <input name="hp-input" placeholder="Do not fill" type="text">
+
+            <div id="contact-form-error"></div> <!-- For success/fail messages -->
+
+            <footer class="submit-button">
+              <button type="submit">Schedule Your Initial Appointment</button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
