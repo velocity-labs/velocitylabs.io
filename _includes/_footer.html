@@ -1,31 +1,39 @@
 <footer class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12">
-        <div class="col-sm-9 col-md-9">
-          <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
-            <img src="{% asset_path logo.svg %}" itemprop="logo" />
-            <h2 itemprop="name">{{ site.company.name }}</h2>
-            <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-              <span itemprop="streetAddress">{{ site.company.address.street }}</span>
-              <br />
-              <span itemprop="addressLocality">{{ site.company.address.city }}</span>,
-              <span itemprop="addressRegion">{{ site.company.address.state }}</span>
-              <span itemprop="postalCode">{{ site.company.address.zip }}</span>
-            </p>
-            <p itemprop="telephone">{{ site.company.phone }}</p>
-          </div>
+      <div class="col-lg-6">
+        <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
+          <img src="{% asset_path logo.svg %}" itemprop="logo" />
+          <h2 itemprop="name">{{ site.company.name }}</h2>
+          <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">{{ site.company.address.street }}</span>
+            <br />
+            <span itemprop="addressLocality">{{ site.company.address.city }}</span>,
+            <span itemprop="addressRegion">{{ site.company.address.state }}</span>
+            <span itemprop="postalCode">{{ site.company.address.zip }}</span>
+          </p>
+          <p itemprop="telephone">{{ site.company.phone }}</p>
         </div>
-        <div class="col-sm-3 col-md-3">
-          <h3>Company</h3>
-          <ul class="list-unstyled">
-            <li><a href="/#about" class="scroll">About Us</a></li>
-            <li><a href="/#team" class="scroll">Our Team</a></li>
-            <li><a href="/blog">Our Blog</a></li>
-            <li><a href="/#contact" class="scroll">Contact Us</a></li>
-            <!-- <li><a href="#">Jobs&emsp;<span class="label label-info">We're hiring!</span></a></li> -->
-          </ul>
-        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <h3>Services</h3>
+        <ul class="list-unstyled">
+          <li><a href="/#about" class="scroll">Web Application Development</a></li>
+          <li><a href="/ruby-on-rails/maintenance/">Web Application Maintenance</a></li>
+          <li><a href="/ruby-on-rails/code-audits/">Code Audits</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h3>Company</h3>
+        <ul class="list-unstyled">
+          <li><a href="/#about" class="scroll">About Us</a></li>
+          <li><a href="/#team" class="scroll">Our Team</a></li>
+          <li><a href="/blog">Our Blog</a></li>
+          <li><a href="/#contact" class="scroll">Contact Us</a></li>
+          <!-- <li><a href="#">Jobs&emsp;<span class="label label-info">We're hiring!</span></a></li> -->
+        </ul>
       </div>
     </div>
 

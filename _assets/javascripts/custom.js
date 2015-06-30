@@ -6,25 +6,25 @@ $(window).load(function(){
 });
 
 $(document).ready(function() {
-  owlCarousel();
+  // owlCarousel();
   magnificPopup();
 });
 
 /* --- owlCarousel ------------- */
-function owlCarousel() {
-    $("#home #intro").owlCarousel({
-      lazyLoad: true,
-      lazyEffect: "fade",
-      singleItem: true,
-      navigation: true,
-      navigationText : ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-      slideSpeed : 450,
-      pagination: false,
-      transitionStyle: "fade",
-      theme: "owl-theme-featured"
+// function owlCarousel() {
+//     $("#home #intro").owlCarousel({
+//       lazyLoad: true,
+//       lazyEffect: "fade",
+//       singleItem: true,
+//       navigation: true,
+//       navigationText : ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+//       slideSpeed : 450,
+//       pagination: false,
+//       transitionStyle: "fade",
+//       theme: "owl-theme-featured"
 
-    });
-}
+//     });
+// }
 
 /* --- scrollReveal ------------------- */
 window.scrollReveal = new scrollReveal();
