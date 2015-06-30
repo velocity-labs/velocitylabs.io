@@ -85,6 +85,7 @@ $ ->
                 Could you please send an email directly to <a target="_blank" href='mailto:contact@velocitylabs.io?body=#{encodeURIComponent(textBody)}'>contact@velocitylabs.io</a>?
               </div>
             """
+
         , complete: () ->
           $('#contactForm button[type=submit]').prop('disabled', false).html(originalButtonText)
-          ga('send', 'event', 'Contact Form', 'Submitted', 'From Homepage', { budget: $('#budget option:selected').val() });
+          ga('send', 'event', $(form).data('form'), 'Submitted');
