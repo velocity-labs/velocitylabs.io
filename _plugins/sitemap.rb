@@ -106,7 +106,7 @@ module Jekyll
         path = path[0..-11] if path =~ /\/index.html$/
         path = path[0..-2]  if path =~ /\/$/
 
-        unless path == '/' || path =~ /error/
+        unless path == '' || path =~ /error/
           result += entry("#{site.config['url']}#{path}", mod_date, get_attrs(page), site)
         end
       }
@@ -118,7 +118,7 @@ module Jekyll
         url     = '/' + url   unless url =~ /^\//
         url     = url[0..-11] if url =~ /\/index.html$/
         url     = url[0..-2]  if url =~ /\/$/
-        result += entry(url, post.date, get_attrs(post), site)
+        result += entry("#{site.config['url']}#{url}", post.date, get_attrs(post), site)
       end
 
       result
@@ -151,8 +151,10 @@ module Jekyll
       "
   <url>
     <loc>#{baseurl}#{path}</loc>
-    <lastmod>#{date.strftime("%Y-%m-%d")}</lastmod>
-" + attrs.map { |k,v| "    <#{k}>#{v}</#{k}>" }.join("\n") + "
+    <lastmod>#{date.strftime("%Y-%m-%d")}</lastmod>" +
+    attrs.map { |k,v| "
+    <#{k}>#{v}</#{k}>"
+    }.join("\n") + "
   </url>"
     end
 
