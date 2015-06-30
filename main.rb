@@ -7,16 +7,16 @@ configure :production do
   require 'newrelic_rpm'
 end
 
-before do
-  if ENV['RACK_ENV'] == 'production'
-    cache_control :public, :must_revalidate, max_age: 60 * 10
-  end
-end
+# before do
+#   if ENV['RACK_ENV'] == 'production'
+#     cache_control :public, :must_revalidate, max_age: 60 * 10
+#   end
+# end
 
 ## Global Settings ##
 set :public_folder, Proc.new { File.join(root, "_site") }
 set :protection, except: :frame_options
-set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
+# set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
 
 IP_BLACKLIST = %w()
 
