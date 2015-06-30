@@ -87,7 +87,7 @@ module Jekyll
         path = page.subfolder + '/' + page.name
 
         # Skip files that don't exist yet (e.g. paginator pages)
-        next unless FileTest.exist?(site.config['destination'] + path)
+        # next unless FileTest.exist?(site.config['destination'] + path)
 
         mod_date = File.mtime(site.source + path)
 
@@ -104,16 +104,20 @@ module Jekyll
 
         # Remove the trailing 'index.html' if there is one, and just output the folder name.
         path = path[0..-11] if path =~ /\/index.html$/
+        path = path[0..-2]  if path =~ /\/$/
 
-        result += entry("#{site.config['url']}#{path}", mod_date, get_attrs(page), site) unless path =~ /error/
+        unless path == '/' || path =~ /error/
+          result += entry("#{site.config['url']}#{path}", mod_date, get_attrs(page), site)
+        end
       }
 
       # Next, find all the posts.
       posts = site.site_payload['site']['posts']
       for post in posts do
         url     = post.url
-        url     = '/' + url unless url =~ /^\//
-        url     = url[0..-11] if url=~/\/index.html$/
+        url     = '/' + url   unless url =~ /^\//
+        url     = url[0..-11] if url =~ /\/index.html$/
+        url     = url[0..-2]  if url =~ /\/$/
         result += entry(url, post.date, get_attrs(post), site)
       end
 
