@@ -1,6 +1,12 @@
 @import "theme/_variables.css.scss";
 
 #landing {
+  #benefits {
+    &> div {
+      min-height: 300px;
+    }
+  }
+
   #intro {
     h1 {
       font-weight: normal;
