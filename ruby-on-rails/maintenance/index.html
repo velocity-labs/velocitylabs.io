@@ -52,29 +52,6 @@ title: Ruby on Rails Application Maintenance
 <section class="dark">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
-        {% assign testimonials = site.data.testimonials | where:"name","Aaron Post" %}
-        {% for testimonial in testimonials limit: 1 %}
-          <blockquote>
-            <div class="row">
-              <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
-              </div>
-              <div class="col-sm-9">
-                <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
-                <p><small>{{ testimonial.name }} - <a href="{{ testimonial.link.href }}" target="_blank">{{ testimonial.link.text }}</a></small></p>
-              </div>
-            </div>
-          </blockquote>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
         <h3 class="text-center">You Have Options</h3>
 
@@ -103,7 +80,102 @@ title: Ruby on Rails Application Maintenance
   </div>
 </section>
 
-<section class="dark">
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <h3 class="text-center">Let The Experts Maintain Your Application</h3>
+
+        <p>
+          <b>Your core business is not web application development</b>, <i>but
+          ours is!</i> We offer a monthly, full-service application maintenance
+          package that includes:
+        </p>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>
+          <i class="fa fa-heartbeat"></i>
+          24/7 Application Monitoring
+        </h4>
+
+        <p>
+          We'll monitor the health of your application to ensure you stay
+          running and trouble free. We use industry proven solutions,
+          ensuring that problems are handle quickly and efficiently.
+        </p>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>
+          <i class="fa fa-lock"></i>
+          Security Patches
+        </h4>
+
+        <p>
+          Chances are, your software is out-of-date, including the software
+          the powers your servers. We'll take stock of your entire infrastructure
+          and get things up-to-date. We'll periodically revisit this task to ensure
+          you're using the latest of all available technologies.
+        </p>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>
+          <i class="fa fa-area-chart"></i>
+          Load Monitoring
+        </h4>
+
+        <p>
+          Your web application is only useful if your users can reach it. Without
+          the proper amount of resources allocated to your software, some users
+          can get shut out, unable to reach the site. We'll monitor the load and
+          adjust as necessary.
+        </p>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>
+          <i class="fa fa-database"></i>
+          Automated Backups
+        </h4>
+
+        <p>
+          Losing data can be catastrophic to a business. We'll make sure
+          offsite data backups are regularly executed and can be restored.
+        </p>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>
+          <i class="fa fa-bug"></i>
+          Error Detection &amp; Mitigation
+        </h4>
+
+        <p>
+          We'll instrument your application with state-of-the-art error detection
+          software to detect problems as they happen. We'll triage, fix, and
+          test to ensure the error doesn't happen again.
+        </p>
+      </div>
+
+      <div class="col-lg-4">
+        <h4>
+          <i class="fa fa-tasks"></i>
+          Unlimited Small Tasks
+        </h4>
+
+        <p>
+          If there are other small (1 hour) tasks that need to be done to
+          make your software work better on behalf of your business, then
+          we'll take care of those too.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark testimonial">
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-lg-offset-1">
@@ -130,116 +202,32 @@ title: Ruby on Rails Application Maintenance
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
-        <h3 class="text-center">Let The Experts Maintain Your Application</h3>
-
-        <p>
-          Your core business is not web application development, but
-          ours is! We offer a monthly, full-service application maintenance
-          package that includes:
-        </p>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <h4>
-              <i class="fa fa-heartbeat"></i>
-              Application Monitoring
-            </h4>
-
-            <p>
-              We'll monitor the health of your application to ensure you stay
-              running and trouble free.
-            </p>
-          </div>
-
-          <div class="col-lg-6">
-            <h4>
-              <i class="fa fa-database"></i>
-              Automated Backups
-            </h4>
-
-            <p>
-              Losing data can be catastrophic to a business. We'll make sure
-              offsite data backups are regularly executed and can be restored.
-            </p>
-          </div>
-
-          <div class="col-lg-6">
-            <h4>
-              <i class="fa fa-bug"></i>
-              Exception Monitoring
-            </h4>
-
-            <p>
-              We'll monitor your application to detect problems, fix them, and
-              write regression tests to ensure they don't happen again.
-            </p>
-          </div>
-
-          <div class="col-lg-6">
-            <h4>
-              <i class="fa fa-lock"></i>
-              Security Patches
-            </h4>
-
-            <p>
-              Chances are, your software is out-of-date, including the software
-              the powers your servers. We'll take stock of your entire infrastructure
-              and get things up-to-date.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
-        {% assign testimonials = site.data.testimonials | where:"name","Robert Wallace" %}
-        {% for testimonial in testimonials limit: 1 %}
-          <blockquote>
-            <div class="row">
-              <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
-              </div>
-              <div class="col-sm-9">
-                <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
-                <p><small>{{ testimonial.name }} - <a href="{{ testimonial.link.href }}" target="_blank">{{ testimonial.link.text }}</a></small></p>
-              </div>
-            </div>
-          </blockquote>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
         <h3 class="text-center">How Much Does It Cost?</h3>
 
         <p>
           Currently, our Ruby on Rails Application Maintenance service is only
-          <b>$1,000 / month for the first host, plus $250 / month for each
-          additional host</b>. This price may change in the future, but you'll
-          always pay the same rate you secured, for the duration of the engagement.
+          <b>$2,000 / month</b> (assuming you have less than 20,000 active users / month).
+          This price may change in the future, but you'll always pay the same rate
+          you secure today, for the duration of the engagement.
         </p>
 
         <p>
-          You can also try us for a month. If you aren't satisfied, we'll refund
-          your money and call it a day. Anything we did in that first month is yours
-          to keep.
+          When we take over maintenance of your web application, we'll also conduct
+          a <a href="/ruby-on-rails/code-audit">Ruby on Rails Code Audit</a> for <b>FREE</b>.
+          The code audit report will help you gain an understanding of where your
+          application currently stands, as well as include a plan for improvement.
+        </p>
+
+        <p>
+          Try us for a month. There's no fixed term, so you can cancel at any time.
+          <b>If you aren't completely satisfied, we'll refund your money and call it a day</b>. Anything we did in that first month is yours to keep, including the code audit report.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="dark">
+<section class="dark testimonial">
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-lg-offset-1">

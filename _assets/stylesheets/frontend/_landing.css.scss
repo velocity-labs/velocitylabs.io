@@ -17,10 +17,19 @@
       }
     }
 
+    a.btn {
+      font-size: 22px;
+      text-shadow: 1px 1px #666;
+    }
+
     .carousel-caption-center {
       max-height: 50%;
       max-width: none;
     }
+  }
+
+  blockquote {
+    font-size: 20px;
   }
 
   h3 {
@@ -30,11 +39,57 @@
     text-transform: uppercase;
   }
 
+  h4 {
+    color: #337ab7;
+    font-size: 20px;
+    line-height: 28px;
+    vertical-align: top;
+
+    b {
+      line-height: inherit;
+      vertical-align: inherit;
+    }
+
+    .fa {
+      font-size: 1.4em;
+      margin-right: 5px;
+    }
+  }
+
+  p {
+    font-size: 1.4em;
+  }
+
+  ul.checklist {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      color: white;
+      font-size: 1.4em;
+      margin-left: 30px;
+      text-align: left;
+      text-indent: -16px;
+
+      .fa-check {
+        color: #5cb85c;
+        font-size: 1.4em;
+        margin-right: 5px;
+      }
+    }
+  }
+
   .contact-form {
     button {
       font-size: 1.5em;
       margin: 0;
       padding: 0.75em 1em;
+    }
+  }
+
+  .testimonial {
+    p {
+      font-size: 1.1em;
     }
   }
 }
