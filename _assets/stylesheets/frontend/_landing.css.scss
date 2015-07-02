@@ -34,68 +34,82 @@
     text-shadow: 1px 1px #999;
   }
 
-  blockquote {
-    font-size: 20px;
-  }
+  section {
+    &.dark {
+      ul {
+        li {
+          color: white;
+        }
+      }
 
-  h3 {
-    color: $primary-color;
-    font-size: 2em;
-    margin: 1em 0;
-    text-transform: uppercase;
-  }
-
-  h4 {
-    color: #337ab7;
-    font-size: 20px;
-    line-height: 28px;
-    vertical-align: top;
-
-    b {
-      line-height: inherit;
-      vertical-align: inherit;
+      &.testimonial {
+        p {
+          font-size: 1.1em;
+        }
+      }
     }
 
-    .fa {
-      font-size: 1.4em;
-      margin-right: 5px;
+    blockquote {
+      font-size: 20px;
     }
-  }
 
-  p {
-    font-size: 1.4em;
-  }
+    h3 {
+      color: $primary-color;
+      font-size: 2em;
+      margin: 1em 0;
+      text-transform: uppercase;
+    }
 
-  ul.checklist {
-    list-style-type: none;
-    padding: 0;
+    h4 {
+      color: #337ab7;
+      font-size: 20px;
+      line-height: 28px;
+      vertical-align: top;
 
-    li {
-      color: white;
-      font-size: 1.4em;
-      margin-left: 30px;
-      text-align: left;
-      text-indent: -19px;
+      b {
+        line-height: inherit;
+        vertical-align: inherit;
+      }
 
-      .fa-check {
-        color: #5cb85c;
+      .fa {
         font-size: 1.4em;
         margin-right: 5px;
       }
     }
-  }
 
-  .contact-form {
-    button {
-      font-size: 1.5em;
-      margin: 0;
-      padding: 0.75em 1em;
-    }
-  }
-
-  .testimonial {
     p {
-      font-size: 1.1em;
+      font-size: 1.4em;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        font-size: 1.4em;
+        margin: 20px 50px 20px 30px;
+        text-align: left;
+      }
+    }
+
+    ul.checklist {
+      li {
+        text-indent: -19px;
+
+        .fa-check {
+          color: #5cb85c;
+          font-size: 1.4em;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .contact-form {
+      button {
+        font-size: 1.5em;
+        margin: 0;
+        padding: 0.75em 1em;
+      }
     }
   }
 }
