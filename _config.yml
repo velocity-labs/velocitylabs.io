@@ -106,14 +106,14 @@ company:
     state:     AZ
     zip:       85034
   cover_image: blog-cover.jpg
-  description: Velocity Labs specializes in custom web application development using Ruby on Rails.
+  description: Velocity Labs is a Ruby on Rails and JavaScript development company. We specialize in custom web application development projects.
   social:
     github:    velocity-labs
     twitter:   velocitylabs
   logo:        logo.png
   name:        Velocity Labs
   phone:       (602) 633-5049
-  subtitle:    Ruby on Rails Developers | Custom Software Solutions
+  subtitle:    Ruby on Rails Developers | Custom Web Applications
 
 ## Blog ##
 blog:
