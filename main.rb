@@ -84,16 +84,8 @@ post '/contact-form/?' do
         <table style="font-size:11pt;">
           <tbody>
             <tr>
-              <td width="25%">First name:</td>
-              <td>#{params[:first_name]}</td>
-            </tr>
-            <tr>
-              <td>Last name:</td>
-              <td>#{params[:last_name]}</td>
-            </tr>
-            <tr>
-              <td>Company:</td>
-              <td>#{params[:company]}</td>
+              <td width="25%">Name:</td>
+              <td>#{params[:name]}</td>
             </tr>
             <tr>
               <td>Email:</td>
@@ -102,10 +94,6 @@ post '/contact-form/?' do
             <tr>
               <td>Phone:</td>
               <td>#{params[:phone]}</td>
-            </tr>
-            <tr>
-              <td>Budget:</td>
-              <td>#{params[:budget]}</td>
             </tr>
           </tbody>
         </table>
@@ -119,12 +107,9 @@ post '/contact-form/?' do
       Contact Information
       ====================
 
-      First name: #{params[:first_name]}
-      Last name:  #{params[:last_name]}
-      Company:    #{params[:company]}
-      Email:      #{params[:email]}
-      Phone:      #{params[:phone]}
-      Budget:     #{params[:budget]}
+      Name:  #{params[:name]}
+      Email: #{params[:email]}
+      Phone: #{params[:phone]}
 
       Message
       ====================
@@ -136,7 +121,7 @@ post '/contact-form/?' do
       subject:    "A contact form was received",
       from_email: "contact@velocitylabs.io",
       from_name:  "Velocity Labs Contact Form",
-      headers:    { "Reply-To" => "#{params[:first_name]} #{params[:last_name]} <#{params[:email]}>" },
+      headers:    { "Reply-To" => "#{params[:name]} <#{params[:email]}>" },
       text:       textBody,
       to: [{
         email: "contact@velocitylabs.io",

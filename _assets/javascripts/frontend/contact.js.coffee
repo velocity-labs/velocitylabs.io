@@ -1,33 +1,24 @@
 $ ->
-  $('select').selectpicker()
-  $('select.budget.selectpicker').on 'change', () ->
-    if $(this).val() != ''
-      $('.budget.bootstrap-select .filter-option').css color: '#555'
-    else
-      $('.budget.bootstrap-select .filter-option').css color: '#999'
-
   $("#contactForm").validate
     errorElement: "span"
-    , errorClass: "help-block"
-    , errorPlacement: (error, element) ->
+    errorClass: "help-block"
+    errorPlacement: (error, element) ->
       return
 
-    , highlight: (element) ->
+    highlight: (element) ->
       $(element).closest(".form-group").addClass "has-error"
 
-    , rules:
-      first_name: "required"
-      , last_name: "required"
-      , company: "required"
-      , email:
+    rules:
+      name: "required"
+      email:
         email: true
-        , required: true
-      , message: "required"
+        required: true
+      message: "required"
 
-    , unhighlight: (element) ->
+    unhighlight: (element) ->
       $(element).closest('.form-group').removeClass 'has-error'
 
-    , submitHandler: (form) =>
+    submitHandler: (form) =>
       $submitBtn         = $(form).find('button[type=submit]')
       originalButtonText = $submitBtn.html()
 
@@ -37,12 +28,9 @@ $ ->
         Contact Information
         ====================
 
-        First name: #{$(form).find('input#first_name').val()}
-        Last name:  #{$(form).find('input#last_name').val()}
-        Company:    #{$(form).find('input#company').val()}
-        Email:      #{$(form).find('input#email').val()}
-        Phone:      #{$(form).find('input#phone').val()}
-        Budget:     #{$(form).find('select#budget').val()}
+        Name:  #{$(form).find('input#name').val()}
+        Email: #{$(form).find('input#email').val()}
+        Phone: #{$(form).find('input#phone').val()}
 
         Message
         ====================
@@ -70,7 +58,7 @@ $ ->
               $('#contact-form-success').html """
                 <div class='alert alert-success'>
                   <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                  <strong>Thanks #{$("input#first_name").val()}, your message has been sent. We'll get back with you shortly.</strong>
+                  <strong>Thanks! Your message has been sent. We'll get back with you shortly.</strong>
                 </div>
               """
 
@@ -81,7 +69,7 @@ $ ->
             $('#contact-form-error').html """
               <div class='alert alert-danger'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <strong>Sorry #{$("input#first_name").val()}, it seems the mail server is not responding...</strong>
+                <strong>Sorry, it seems the mail server is not responding...</strong>
                 Could you please send an email directly to <a target="_blank" href='mailto:contact@velocitylabs.io?body=#{encodeURIComponent(textBody)}'>contact@velocitylabs.io</a>?
               </div>
             """

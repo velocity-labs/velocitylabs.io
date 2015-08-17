@@ -225,23 +225,22 @@ title: Software Project Story Workshop
           confident we'll be able to help you, too.
         </p>
 
-        <div id="contact-form-success"></div> <!-- For success/fail messages -->
+        <div id="contact-form-success"></div>
 
         <div class='contact-form'>
           <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Story Workshop Form">
-            <div class='name form-group'>
-              <input class='form-control first' placeholder='First Name' type="text" id="first_name" name="first_name">
-              <input class='form-control last' placeholder='Last Name' type="text" id="last_name" name="last_name">
+            <div class='form-group col-lg-8 col-lg-offset-2'>
+              <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-lg-8 col-lg-offset-2">
               <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
             </div>
 
             <input name="message" type="hidden" value="Story Workshop inquiry.">
             <input name="hp-input" placeholder="Do not fill" type="text">
 
-            <div id="contact-form-error"></div> <!-- For success/fail messages -->
+            <div id="contact-form-error"></div>
 
             <footer class="submit-button">
               <button type="submit">Request Your Story Workshop</button>

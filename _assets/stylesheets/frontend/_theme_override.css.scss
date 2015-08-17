@@ -156,8 +156,12 @@ section.content p {
 
 #contact-form-error,
 #contact-form-success {
-  margin: 2em auto 0em;
+  margin: 0 auto;
   width: 600px;
+
+  .alert {
+    margin-bottom: 0;
+  }
 
   .close {
     margin-left: 1em;
@@ -165,41 +169,14 @@ section.content p {
 }
 
 .contact-form {
-  .form-group {
-    margin-bottom: 0;
-  }
-
   input.form-control {
     border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    box-shadow: none;
     height: 50px;
     line-height: 25px;
     padding: 0 0 0 20px;
     width: 100%;
-
-    &.first, &.last {
-      float: left;
-      width: 50%;
-      margin: 0;
-    }
-
-    &.first {
-      border-radius: 4px 0 0 0;
-    }
-
-    &.last {
-      border-left: 0;
-      border-radius: 0 4px 0 0;
-    }
-
-    &.company,
-    &.email,
-    &.phone {
-      border-top: 0;
-      border-left: 1px solid rgba(0, 0, 0, 0.1);
-      border-right: 1px solid rgba(0, 0, 0, 0.1);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 0;
-    }
 
     &:focus {
       outline: none;
@@ -208,31 +185,13 @@ section.content p {
     }
   }
 
-  .form-control.budget {
-    border-top: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  textarea {
     border-radius: 0;
+    height: 180px;
   }
 
-  div.bootstrap-select.budget {
-    height: 50px;
-    line-height: 25px;
-    margin: 0;
-
-    .btn.selectpicker {
-      border-radius: 0;
-      background: transparent;
-      border: none;
-      color: #999;
-      height: 50px;
-      line-height: 50px;
-      margin-top: 0;
-      padding: 0 0 0 20px;
-      text-transform: initial;
-      width: 100%;
-    }
+  footer button {
+    margin-top: 0;
   }
 }
 
