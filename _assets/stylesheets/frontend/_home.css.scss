@@ -1,0 +1,26 @@
+#home {
+  #intro {
+    a.next-section {
+      bottom: 5%;
+      color: #fff;
+      font-size: 25px;
+      font-weight: 100;
+      left: 50%;
+      position: absolute;
+    }
+  }
+
+  .featured {
+    p {
+      font-size: 20px;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    .overlay-bg.black {
+      opacity: 0.75;
+    }
+  }
+}

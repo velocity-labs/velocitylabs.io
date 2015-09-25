@@ -75,8 +75,21 @@ section p {
   font-weight: 400;
 }
 
+section.content h2 {
+  font-size: 35px;
+  font-weight: 800;
+  margin: 1em 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
 section.content p {
   margin-bottom: 1em;
+}
+
+section.dark.with-bg {
+  padding: 50px 0 100px 0;
+  background-position-y: 75%;
 }
 
 #intro .carousel-caption-center h1,
@@ -85,6 +98,17 @@ section.content p {
   color: #FFF;
 }
 
+#intro .carousel-caption-center h1 {
+  font-size: 50px;
+  font-weight: 400;
+}
+
+#intro .carousel-caption-center p {
+  font-size: 28px;
+  font-weight: 200;
+  line-height: 1.4;
+  margin: 1em 0;
+}
 
 #intro .carousel-caption-left p,
 #intro-video .carousel-caption-left p {
@@ -152,6 +176,20 @@ section.content p {
 .cbp-af-header h1,
 .cbp-af-header .nav a {
   line-height: 100px;
+}
+
+.cbp-af-header h1 {
+  letter-spacing: 1px;
+
+  a {
+    img {
+      margin-right: 5px;
+    }
+  }
+}
+
+.cbp-af-header .nav a {
+  font-size: 13px;
 }
 
 #contact-form-error,
@@ -301,4 +339,23 @@ section.content p {
   .cbp-af-header h1, .cbp-af-header .nav a {
     margin-left: 0;
   }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.5em !important;
+  }
+
+  h2 {
+    font-size: 2.1em !important;
+  }
+
+  h3 {
+    font-size: 1.7em !important;
+  }
+
+  p {
+    font-size: 1.5em !important;
+  }
+
 }

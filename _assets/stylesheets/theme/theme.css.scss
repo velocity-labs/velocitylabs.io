@@ -98,7 +98,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -427,7 +427,7 @@ blockquote {
 }
 .cbp-af-header .nav a {
   color: white;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   margin: 0 0 0 20px;
   font-size: 1em;
@@ -1173,10 +1173,7 @@ section .login-overlay {
 .page-header {
   border-bottom: 0;
 }
-#intro-video {
-  background: url(asset_path('theme/bg-videofallback.jpg'));
-  background-size: cover;
-}
+
 #intro .item,
 #intro-video .item {
   height: 100%;

@@ -3,3 +3,23 @@
     margin-top: 2em;
   }
 }
+
+@media (max-width: 480px) {
+  .inner {
+    .icon-bar {
+      background-color: #000;
+    }
+
+    .cbp-af-header {
+      .navbar-header {
+        h1 {
+          margin: 0;
+        }
+      }
+
+      .nav.navbar-nav a {
+        color: white;
+      }
+    }
+  }
+}

@@ -23,3 +23,13 @@ div.cookiebanner {
     padding: 0.5em 1em;
   }
 }
+
+@media (max-width: 480px) {
+  footer.footer {
+    li {
+      a {
+        font-size: 1.5em;
+      }
+    }
+  }
+}
