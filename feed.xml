@@ -1,5 +1,6 @@
 ---
 layout: feed
+sitemap: false
 ---
 
 {% for post in site.posts %}

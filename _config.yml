@@ -9,7 +9,7 @@ collections: null
 # Handling Reading
 safe:         false
 include:      [".htaccess"]
-exclude:      ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor']
+exclude:      ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor', 'README.md', 'Rakefile', 'Procfile.dev', 'unicorn-dev.rb', 'LICENSE', 'CNAME']
 keep_files:   [".git", ".svn"]
 encoding:     "utf-8"
 
@@ -21,7 +21,9 @@ unpublished: false
 
 # Plugins
 whitelist: []
-gems:      ['jekyll-paginate']
+gems:
+  - jekyll-paginate
+  - jekyll-sitemap
 
 # Conversion
 markdown:     redcarpet

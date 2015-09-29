@@ -1,8 +1,29 @@
 ---
 layout: base
+sitemap: false
 ---
 
-<h1>Sorry, we couldn't find that content!</h1>
-<p>
-  <a href="/">Go back home.</a>
-</p>
+<div class="inner">
+  {% include _small_nav.html %}
+
+  <section class="text-center">
+    <div class="page-header">
+      <h2>
+        <i class="fa fa-exclamation-circle"></i>
+        Sorry, we couldn't find that content!
+      </h2>
+    </div>
+
+    <p class="lead">
+      Oh no! You've encountered a 404, page not found.
+      Not to worry though, just head back to the homepage
+      and try again.
+    </p>
+    <p>
+      <a href="/" class="btn btn-primary">
+        <i class="fa fa-arrow-left"></i>
+        Go to the homepage
+      </a>
+    </p>
+  </section>
+</div>
