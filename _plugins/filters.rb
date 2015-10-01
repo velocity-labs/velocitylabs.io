@@ -13,12 +13,12 @@ module VelocityLabs
     end
 
     def full_image_path title
-      title = title.gsub(/\ /, '_')
+      title = title.gsub(/[^0-9a-z\_\s]/i, '').gsub(/\ /, '_')
       File.exist?(File.expand_path("./_assets/images/projects/#{title}/full.png")) ? asset_path("projects/#{title}/full.png") : thumb_image_path(title)
     end
 
     def thumb_image_path title
-      title = title.gsub(/\ /, '_')
+      title = title.gsub(/[^0-9a-z\_\s]/i, '').gsub(/\ /, '_')
       asset_path "projects/#{title}/thumb.png"
     end
   end
