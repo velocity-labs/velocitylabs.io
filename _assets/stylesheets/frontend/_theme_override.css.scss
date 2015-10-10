@@ -204,9 +204,15 @@ section.dark.with-bg {
   .close {
     margin-left: 1em;
   }
+
+  a {
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
 
-.contact-form {
+.contact-form, #subscription-form {
   input.form-control {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0;
@@ -297,6 +303,18 @@ section.dark.with-bg {
     margin-right: 2em;
     width: 120px;
   }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#faq {
+  margin-top: 50px;
+}
+
+button#purchase {
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {

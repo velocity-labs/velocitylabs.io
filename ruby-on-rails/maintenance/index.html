@@ -256,8 +256,116 @@ title: Ruby on Rails Application Maintenance
       <div class="col-lg-8 col-lg-offset-2">
         <h3 class="text-center">Are You Ready To Get Started?</h3>
 
+        <div class="row">
+          <p class="col-lg-12">We take payment by credit card, and offer a risk-free 30 day money back guarantee - if you're not ecstatic with how we're looking after your app, then we don't want your money.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <p class="text-center bold">
+              Turn Your App From A Liability Into An Asset!
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8">
+            <form action="/charge" method="post" id="subscription-form" class="payment" novalidate>
+              <div class='form-group col-lg-8 col-lg-offset-2'>
+                <img src="{% asset_path credit-cards.png %}" />
+              </div>
+
+              <div class='form-group col-lg-8 col-lg-offset-2'>
+                <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
+              </div>
+
+              <div class='form-group col-lg-8 col-lg-offset-2'>
+                <input class='form-control company' placeholder='Company' type="text" id="company" name="company">
+              </div>
+
+              <div class='form-group col-lg-8 col-lg-offset-2'>
+                <input class='form-control phone' placeholder='Phone Number' type="tel" id="phone" name="phone">
+              </div>
+
+              <div class='form-group col-lg-8 col-lg-offset-2'>
+                <input class='form-control name' value="Amount: $1500.00 / month" type="text" id="name" name="name" disabled>
+              </div>
+
+              <div class='form-group col-lg-8 col-lg-offset-2'>
+
+                <button type="submit" id="purchase" class="btn btn-info">
+                  <i class="fa fa-lock"></i>&nbsp;&nbsp;Start Now
+                </button>
+
+                <script src="https://checkout.stripe.com/checkout.js"></script>
+
+              </div>
+
+            </form>
+          </div>
+
+          <div class="col-lg-4">
+            <div id="guarantee"></div>
+            <img src="{% asset_path guarantee.png %}" itemprop="logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="faq" class="col-lg-10 col-lg-offset-1">
+        <h2 class=" text-center">Frequently Asked Questions</h2>
+
         <p>
-          Fill out the form below and we'll get back to you quickly to
+          <strong>When you say "small tasks are included", what do you mean by "small tasks"?</strong>
+          <span>This would include any dev or ops task that takes an hour or so to complete.  We know a big job when we see one and will let you know but in general, we're pretty flexible.</span></p>
+
+        <p>
+          <strong>Will you fix any crash/bug that happens?</strong>
+          <span>Yep, or at least do our best to try depending on the complexity of the issue!</span>
+        </p>
+
+        <p>
+          <strong>We have our own developer(s) in-house who are working on the app, is Velocity Labs Maintenance a good fit for us?</strong>
+          <span>No, Velocity Labs Maintenance is designed for companies that had an outside developer or agency build their app and lack the inhouse expertise to make the most of it.</span>
+        </p>
+
+        <p>
+          <strong>If I cancel, are the accounts and data you've collected transferrable to me?</strong>
+          <span>They sure are! If you decide to move on, we will arrange to have all the accounts transferred to you. This will obviously involve you taking on the billing for the various accounts. If you choose to not continue with the accounts we will, to the best of our ability (and if the services support it), export your data and provide it to you.</span>
+        </p>
+
+        <p>
+          <strong>Will you sign my NDA?</strong>
+          <span>Maybe, we actually have a pretty awesome one ourselves, <a href="/downloads/VelocityLabsNDATemplate.pdf">Mutual Non-Disclosure</a></span>
+        </p>
+
+        <p>
+          <strong>Do you have a discount for Non-Profits?</strong>
+          <span>Yes</span>
+        </p>
+
+        <p>
+          <strong>Can you invoice me instead of having a credit card on file?</strong>
+          <span>Yes, but only if you pre-pay for a year.</span>
+        </p>
+
+        <p>
+          <strong>Will you sign our contract/work-for-hire/IP assignment, etc documents?</strong>
+          <span>No, Velocity Labs Maintenance service is bound by the following <a href="/ruby-on-rails/maintenance/terms.html">Terms & Conditions</a>, which we believe should cover your concerns in terms of who owns what, liability, etc. (If not, please feel free to contact us about the issue you're concerned about.)</span>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <p>
+          Still not sure?  Fill out the form below and we'll get back to you quickly to
           discuss your application. We've helped many companies and are
           confident we'll be able to help you, too.
         </p>
@@ -266,25 +374,32 @@ title: Ruby on Rails Application Maintenance
 
         <div class='contact-form'>
           <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Maintenance Form">
-            <div class='form-group col-lg-8 col-lg-offset-2'>
-              <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
+            <div class="row">
+              <div class='form-group col-lg-8 col-lg-offset-2'>
+                <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
+              </div>
+
+              <div class="form-group col-lg-8 col-lg-offset-2">
+                <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
+              </div>
+
+              <input name="message" type="hidden" value="Application maintenance inquiry.">
+              <input name="hp-input" placeholder="Do not fill" type="text">
             </div>
 
-            <div class="form-group col-lg-8 col-lg-offset-2">
-              <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
+            <div class="row">
+              <div id="contact-form-error"></div> <!-- For success/fail messages -->
+
+              <footer class="submit-button">
+                <button type="submit">Schedule Your Initial Appointment</button>
+              </footer>
             </div>
 
-            <input name="message" type="hidden" value="Application maintenance inquiry.">
-            <input name="hp-input" placeholder="Do not fill" type="text">
-
-            <div id="contact-form-error"></div> <!-- For success/fail messages -->
-
-            <footer class="submit-button">
-              <button type="submit">Schedule Your Initial Consultation</button>
-            </footer>
           </form>
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
