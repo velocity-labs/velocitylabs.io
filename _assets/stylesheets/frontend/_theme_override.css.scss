@@ -317,6 +317,10 @@ button#purchase {
   width: 100%;
 }
 
+#next-steps ul {
+  list-style-type: disc !important;
+}
+
 @media screen and (max-width: 768px) {
   #contact-form-error,
   #contact-form-success {
