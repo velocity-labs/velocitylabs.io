@@ -1,7 +1,7 @@
 $ ->
 
   handler = StripeCheckout.configure
-    key: 'pk_test_SMf650UInyCThOELNsNrb37z',
+    key: '<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>',
     locale: 'auto',
     name: "Velocity Labs",
     description: "Monthly App Maintenance",

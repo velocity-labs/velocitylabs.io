@@ -19,10 +19,8 @@ end
 set :public_folder, Proc.new { File.join(root, "_site") }
 set :protection, except: :frame_options
 # set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
-set :publishable_key, ENV['PUBLISHABLE_KEY']
-set :secret_key, ENV['SECRET_KEY']
 
-Stripe.api_key = settings.secret_key
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
 IP_BLACKLIST = %w()
 
