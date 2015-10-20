@@ -1,4 +1,30 @@
 $ ->
+
+  $("#subscription-form").validate
+    errorElement: "span"
+    errorClass: "help-block"
+    errorPlacement: (error, element) ->
+      return
+
+    highlight: (element) ->
+      $(element).closest(".form-group").addClass "has-error"
+
+    rules:
+      name: "required"
+      company: "required"
+      phone: "required"
+
+    unhighlight: (element) ->
+      $(element).closest('.form-group').removeClass 'has-error'
+
+  $('.stripe-button-el').on 'click', () =>
+    if $("#subscription-form").valid()
+      $('#contact-form-error').html("")
+      return true
+    else
+      $('#contact-form-error').html("Please fill out form completely")
+      return false
+
   $("#contactForm").validate
     errorElement: "span"
     errorClass: "help-block"

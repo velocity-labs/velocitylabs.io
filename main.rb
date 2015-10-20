@@ -1,6 +1,8 @@
-require "rubygems"
-require "bundler"
+require 'rubygems'
+require 'bundler'
 require 'mandrill'
+require 'stripe'
+
 Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
 
 configure :production do
@@ -17,6 +19,8 @@ end
 set :public_folder, Proc.new { File.join(root, "_site") }
 set :protection, except: :frame_options
 # set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
+
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
 IP_BLACKLIST = %w()
 
@@ -55,6 +59,7 @@ get "/*" do |title|
       if params[:ref] =~ /flatterline/i
         last_modified File.mtime("_site/index.html")
         File.read("_site/index.html")
+
       elsif params[:ref] =~ /burstdev/i
         case title
           when /^contact/
@@ -65,6 +70,7 @@ get "/*" do |title|
             last_modified File.mtime("_site/index.html")
             File.read("_site/index.html")
         end
+
       else
         raise Sinatra::NotFound
       end
@@ -73,6 +79,27 @@ get "/*" do |title|
 end
 
 ## POST requests ##
+post '/charge' do
+  puts params
+  customer = Stripe::Customer.create(
+    email: params[:stripeEmail],
+    card: params[:stripeToken],
+    metadata: {
+      phone: params[:phone],
+      company: params[:company],
+      name: params[:name]
+    }
+  )
+
+  customer.subscriptions.create plan: "maintenance-1"
+
+  redirect '/ruby-on-rails/maintenance/thank-you'
+end
+
+error Stripe::CardError do
+  env['sinatra.error'].message
+end
+
 post '/contact-form/?' do
   if params['hp-input'].nil? || params['hp-input'].empty?
     m = Mandrill::API.new

@@ -15,6 +15,7 @@ gem 'rake'
 gem 'redcarpet'
 gem 'sass'
 gem 'sinatra'
+gem 'stripe'
 gem 'uglifier'
 gem 'unicorn'
 

@@ -11,7 +11,6 @@ These are in no particular order and are super random, but enjoy!
 
 * [Coworking](http://cohoots.com/)
 * [Drum & Bass](https://soundcloud.com/irish-dnb)
-* [Soylent](http://soylent.me/)
 * [Grid Bikes](http://gridbikes.com/)
 
 ## Projects we work on
