@@ -257,56 +257,55 @@ title: Ruby on Rails Application Maintenance
         <h3 class="text-center">Are You Ready To Get Started?</h3>
 
         <div class="row">
-          <p class="col-lg-12">We take payment by credit card, and offer a risk-free 30 day money back guarantee - if you're not ecstatic with how we're looking after your app, then we don't want your money.</p>
+          <p class="col-lg-10">
+            We take payment by credit card, and offer a risk-free 30 day money back guarantee - if you're not ecstatic with how we're looking after your app, then we don't want your money.
+          </p>
+
+          <p class='col-lg-2 text-center'>
+            <img src="{% asset_path guarantee.png %}" class="img-responsive" />
+          </p>
         </div>
 
-        <div class="row">
+        <div id="subscribe-cta" class="row">
           <div class="col-lg-12">
             <p class="text-center bold">
               Turn Your App From A Liability Into An Asset!
             </p>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-8 col-lg-offset-2">
             <form action="/charge" method="post" id="subscription-form" class="payment" novalidate>
-              <div class='form-group col-lg-8 col-lg-offset-2'>
-                <img src="{% asset_path credit-cards.png %}" />
-              </div>
-
-              <div class='form-group col-lg-8 col-lg-offset-2'>
+              <div class='form-group'>
                 <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
               </div>
 
-              <div class='form-group col-lg-8 col-lg-offset-2'>
+              <div class='form-group'>
                 <input class='form-control company' placeholder='Company' type="text" id="company" name="company">
               </div>
 
-              <div class='form-group col-lg-8 col-lg-offset-2'>
+              <div class='form-group'>
                 <input class='form-control phone' placeholder='Phone Number' type="tel" id="phone" name="phone">
               </div>
 
-              <div class='form-group col-lg-8 col-lg-offset-2'>
-                <input class='form-control name' value="Amount: $1500.00 / month" type="text" id="name" name="name" disabled>
+              <div class='form-group'>
+                <input class='form-control' value="Amount: $1500.00 / month" type="text" id="amount" name="amount" disabled>
               </div>
 
-              <div class='form-group col-lg-8 col-lg-offset-2'>
-
-                <button type="submit" id="purchase" class="btn btn-info">
+              <div class='form-group'>
+                <button type="submit" id="purchase" class="btn btn-lg btn-success">
                   <i class="fa fa-lock"></i>&nbsp;&nbsp;Start Now
                 </button>
 
+                <div class="text-center">
+                  <small>
+                    By subscribing to this service, you are agreeing to our
+                    <a href="/ruby-on-rails/maintenance/terms">Terms & Conditions</a>.
+                  </small>
+                </div>
+
                 <script src="https://checkout.stripe.com/checkout.js"></script>
-
               </div>
-
             </form>
-          </div>
-
-          <div class="col-lg-4">
-            <div id="guarantee"></div>
-            <img src="{% asset_path guarantee.png %}" itemprop="logo" />
           </div>
         </div>
       </div>
@@ -314,7 +313,7 @@ title: Ruby on Rails Application Maintenance
 
     <div class="row">
       <div id="faq" class="col-lg-10 col-lg-offset-1">
-        <h2 class=" text-center">Frequently Asked Questions</h2>
+        <h3 class=" text-center">Frequently Asked Questions</h3>
 
         <p>
           <strong>When you say "small tasks are included", what do you mean by "small tasks"?</strong>
