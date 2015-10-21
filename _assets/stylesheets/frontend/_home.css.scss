@@ -27,6 +27,12 @@
 
 @media screen and (max-width: 480px) {
   #home {
+    .featured {
+      p {
+        text-align: left;
+      }
+    }
+
     .testimonial {
       p {
         font-size: 1.2em !important;
