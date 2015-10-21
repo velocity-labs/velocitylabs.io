@@ -1,47 +1,49 @@
-<section id="contact" class="cta text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>
-          Are you ready to get started? <span class="highlight">Let us help!</span>
-        </h2>
+{% if page.contact %}
+  <section id="contact" class="cta text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>
+            Are you ready to get started? <span class="highlight">Let us help!</span>
+          </h2>
 
-        <div id="contact-form-success"></div> <!-- For success/fail messages -->
+          <div id="contact-form-success"></div> <!-- For success/fail messages -->
 
-        <div class='contact-form'>
-          <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Contact Form">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class='form-group'>
-                  <input class='form-control' placeholder='Name' type="text" id="name" name="name">
+          <div class='contact-form'>
+            <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Contact Form">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class='form-group'>
+                    <input class='form-control' placeholder='Name' type="text" id="name" name="name">
+                  </div>
+
+                  <div class="form-group">
+                    <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
+                  </div>
+
+                  <div class="form-group">
+                    <input class='form-control phone' placeholder='Phone Number' type='tel' id="phone" name="phone">
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
-                </div>
-
-                <div class="form-group">
-                  <input class='form-control phone' placeholder='Phone Number' type='tel' id="phone" name="phone">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="Tell us a little about your project and what you're looking for in a development firm." id="message" name="message" style="resize:none"></textarea>
+                  </div>
                 </div>
               </div>
 
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <textarea class="form-control" placeholder="Tell us a little about your project and what you're looking for in a development firm." id="message" name="message" style="resize:none"></textarea>
-                </div>
-              </div>
-            </div>
+              <input name="hp-input" placeholder="Do not fill" type="text">
 
-            <input name="hp-input" placeholder="Do not fill" type="text">
+              <div id="contact-form-error"></div> <!-- For success/fail messages -->
 
-            <div id="contact-form-error"></div> <!-- For success/fail messages -->
-
-            <footer class="submit-button">
-              <button type="submit">Send your message</button>
-            </footer>
-          </form>
+              <footer class="submit-button">
+                <button type="submit">Send your message</button>
+              </footer>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+{% endif %}
