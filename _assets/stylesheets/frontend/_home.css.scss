@@ -24,3 +24,14 @@
     }
   }
 }
+
+@media screen and (max-width: 480px) {
+  #home {
+    .testimonial {
+      p {
+        font-size: 1.2em !important;
+        text-align: center;
+      }
+    }
+  }
+}
