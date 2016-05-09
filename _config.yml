@@ -103,10 +103,10 @@ minfy_html: true
 ## Company ##
 company:
   address:
-    street:    "1027 E. Washington St. #107"
+    street:    "221 E. Indianola Ave."
     city:      Phoenix
     state:     AZ
-    zip:       85034
+    zip:       85012
   cover_image: blog-cover.jpg
   description: Velocity Labs is a Ruby on Rails and JavaScript development company. We specialize in custom web application development projects.
   social:
