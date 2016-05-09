@@ -69,15 +69,7 @@ $ ->
         , url: $(form).prop('action')
         , data: $(form).serializeArray()
         , success: (data, status, xhr) ->
-          if data[0].status == "rejected" || data[0].status == "invalid"
-            $('#contact-form-error').html """
-              <div class='alert alert-danger'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <strong>Sorry, there was a problem submitting the form.</strong>
-                Please check your entries and try again. If the problem persists, please email us directly to <a target="_blank" href='mailto:contact@velocitylabs.io?body=#{encodeURIComponent(textBody)}'>contact@velocitylabs.io</a>.
-              </div>
-            """
-          else
+          if data.status == "success"
             $('.contact-form').slideToggle 300, () ->
               $('.contact-button').toggleClass 'active'
 
@@ -90,6 +82,14 @@ $ ->
 
               $('#contact-form-error').html("")
               $('#contactForm').trigger "reset"
+          else
+            $('#contact-form-error').html """
+              <div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                <strong>Sorry, there was a problem submitting the form.</strong>
+                Please check your entries and try again. If the problem persists, please email us directly to <a target="_blank" href='mailto:contact@velocitylabs.io?body=#{encodeURIComponent(textBody)}'>contact@velocitylabs.io</a>.
+              </div>
+            """
 
         , error: (xhr, status, error) ->
             $('#contact-form-error').html """

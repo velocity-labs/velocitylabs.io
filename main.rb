@@ -1,12 +1,25 @@
 require 'rubygems'
 require 'bundler'
-require 'mandrill'
+require 'pony'
 require 'stripe'
 
 Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
 
 configure :production do
   require 'newrelic_rpm'
+
+  Pony.options = {
+    via: :smtp,
+    via_options: {
+      address:              'smtp.sendgrid.net',
+      port:                 '587',
+      domain:               'velocitylabs.io',
+      user_name:            ENV['SENDGRID_USERNAME'],
+      password:             ENV['SENDGRID_PASSWORD'],
+      authentication:       :plain,
+      enable_starttls_auto: true
+    }
+  }
 end
 
 # before do
@@ -102,8 +115,6 @@ end
 
 post '/contact-form/?' do
   if params['hp-input'].nil? || params['hp-input'].empty?
-    m = Mandrill::API.new
-
     htmlBody = %Q{
       <div style="font-family:Helvetica;">
         <h2>Contact Information</h2>
@@ -144,27 +155,22 @@ post '/contact-form/?' do
       #{params[:message]}
     }
 
-    message = {
-      subject:    "A contact form was received",
-      from_email: "contact@velocitylabs.io",
-      from_name:  "Velocity Labs Contact Form",
-      headers:    { "Reply-To" => "#{params[:name]} <#{params[:email]}>" },
-      text:       textBody,
-      to: [{
-        email: "contact@velocitylabs.io",
-        name:  "Velocity Labs"
-      }],
-      html: htmlBody
-    }
+    begin
+      res = Pony.mail(
+        to:        "Velocity Labs <contact@velocitylabs.io>",
+        from:      "contact@velocitylabs.io",
+        reply_to:  "#{params[:name]} <#{params[:email]}>",
+        subject:   "Project contact form from #{params[:name]}",
+        body:      textBody,
+        html_body: htmlBody
+      )
 
-    response = m.messages.send message
+      response = res ? { status: :success } : { status: :failure }
+    rescue => e
+      response = { status: :failure }
+    end
   else
-    response = [{
-      email: "contact@velocitylabs.io",
-      status: "sent",
-      _id: "1234",
-      reject_reason: nil
-    }]
+    response = { status: :success }
 
     puts '*'*100
     puts "HONEYPOT CAPTCHA CAUGHT SOME SPAM!"
