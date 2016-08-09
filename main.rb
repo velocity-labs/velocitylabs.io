@@ -114,7 +114,7 @@ error Stripe::CardError do
 end
 
 post '/contact-form/?' do
-  if params['hp-input'].nil? || params['hp-input'].empty?
+  if (params['hp-input'].nil? || params['hp-input'].empty?) && params['phone'] != '123456'
     htmlBody = %Q{
       <div style="font-family:Helvetica;">
         <h2>Contact Information</h2>
@@ -166,7 +166,7 @@ post '/contact-form/?' do
       )
 
       response = res ? { status: :success } : { status: :failure }
-    rescue => e
+    rescue
       response = { status: :failure }
     end
   else
