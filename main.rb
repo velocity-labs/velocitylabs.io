@@ -114,7 +114,9 @@ error Stripe::CardError do
 end
 
 post '/contact-form/?' do
-  if (params['hp-input'].nil? || params['hp-input'].empty?) && params['phone'] != '123456'
+  recaptcha_response = RestClient.post 'https://www.google.com/recaptcha/api/siteverify', secret: ENV['RECAPTCHA_SECRET_KEY'], response: params['g-recaptcha-response'], remoteip: request.ip
+
+  if recaptcha_response["success"] && (params['hp-input'].nil? || params['hp-input'].empty?)
     htmlBody = %Q{
       <div style="font-family:Helvetica;">
         <h2>Contact Information</h2>
@@ -170,6 +172,7 @@ post '/contact-form/?' do
       response = { status: :failure }
     end
   else
+    byebug if settings.development?
     response = { status: :success }
 
     puts '*'*100
