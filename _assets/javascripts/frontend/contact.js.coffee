@@ -81,7 +81,8 @@ $ ->
               """
 
               $('#contact-form-error').html("")
-              $('#contactForm').trigger "reset"
+              $('#contactForm').trigger("reset")
+              ga('send', 'event', $(form).data('form'), 'Submitted')
           else
             $('#contact-form-error').html """
               <div class='alert alert-danger'>
@@ -102,4 +103,4 @@ $ ->
 
         , complete: () ->
           $('#contactForm button[type=submit]').prop('disabled', false).html(originalButtonText)
-          ga('send', 'event', $(form).data('form'), 'Submitted');
+
