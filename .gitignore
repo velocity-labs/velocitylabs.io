@@ -6,3 +6,5 @@ _site/
 log/*
 sitemap.xml
 sitemap.xml.gz
+/.byebug_history
+/.jekyll-cache

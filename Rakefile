@@ -3,6 +3,7 @@ require "tmpdir"
 
 require "bundler/setup"
 require "jekyll"
+require 'byebug'
 
 GITHUB_REPONAME = "velocity-labs/velocitylabs.io"
 
