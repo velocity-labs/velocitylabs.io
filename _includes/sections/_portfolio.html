@@ -18,7 +18,7 @@
           {% assign full_path=project.title | full_image_path %}
           {% assign thumb_path=project.title | thumb_image_path %}
 
-          <a href="{% asset '{{full_path}}' @path %}" class="popup-gallery popovers" title="{{ project.title }}" data-html="true" data-content="{{ project.description | xml_escape }}">
+          <a href="{% asset '{{full_path}}' @path %}" rel="nofollow" class="popup-gallery popovers" title="{{ project.title }}" data-html="true" data-content="{{ project.description | xml_escape }}">
             <img src="{% asset '{{thumb_path}}' @path %}" alt="{{ project.title }}" class="img-responsive">
           </a>
           <div class="visible-xs">
