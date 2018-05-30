@@ -1,0 +1,35 @@
+!!!
+%html{ xmlns: 'http://www.w3.org/1999/xhtml', lang: 'en', 'xml:lang' => 'en' }
+  %head
+    = render partial: 'layouts/analytics'
+
+    %title= site_title(yield(:title))
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    %meta{ content: 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type' }/
+    %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }/
+    %meta{ content: meta_description, name: 'description' }/
+
+    / Open Graph data
+    %meta{ content: site_title(yield(:title)), property: 'og:title' }/
+    %meta{ content: 'website', property: 'og:type' }/
+    %meta{ content: "https://velocitylabs.io", property: "og:url" }/
+    %meta{ content: meta_description, property: 'og:description' }/
+
+    = yield :seo_links
+
+    %link{ href: "https://velocitylabs.io", hreflang: 'en-us', rel: 'alternate' }/
+
+    %link{ href: 'https://fonts.googleapis.com/css?family=Nunito:400,600,700,800|Roboto:400,500,700', rel: 'stylesheet' }/
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag "theme/boomerang-startup-agency.css", 'theme/override.css', media: 'all', 'data-turbolinks-track': 'reload'
+
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    = render partial: 'layouts/header'
+    = yield
+    = render partial: 'layouts/footer'

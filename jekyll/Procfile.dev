@@ -1,0 +1,2 @@
+jekyll:  jekyll build --watch
+web:     bundle exec unicorn -p $PORT -c ./unicorn-dev.rb

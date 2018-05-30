@@ -1,26 +1,32 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'coffee-script'
-gem 'jekyll',             '~> 3.7.3'
-gem 'jekyll-assets',      '~> 3.0.8', group: :jekyll_plugins
-gem 'jekyll-minify-html', '~> 1.1.0'
-gem 'jekyll-paginate',    '~> 1.1.0'
-gem 'jekyll-sitemap',     '~> 1.2.0'
-gem 'maruku',             '~> 0.7.3'
-gem 'newrelic_rpm'
-gem 'pony',               '~> 1.12'
-gem 'rake'
-gem 'redcarpet',          '~> 3.4.0'
-gem 'rest-client',        '~> 2.0.2'
-gem 'sass',               '~> 3.5.6'
-gem 'sinatra',            '~> 2.0.1'
-gem 'stripe',             '~> 3.11.0'
-gem 'uglifier'#,           '~> 4.1.8'
-gem 'unicorn',            '~> 5.4.0'
-gem 'byebug'
-group :development do
-  gem 'foreman'
+gem 'rails', '~> 5.2'
+gem 'pg',    '~> 1.0'
+gem 'puma',  '~> 3.11'
 
+gem 'bootsnap',          '>= 1.1.0', require: false
+gem 'coffee-rails',      '~> 4.2'
+gem 'geocoder',          '~> 1.4'
+gem 'fog-aws',           '~> 3.0'
+gem 'haml-rails',        '~> 1.0'
+gem 'hashie',            '~> 3.5'
+gem 'high_voltage',      '~> 3.1'
+gem 'httparty',          '~> 0.16'
+gem 'jbuilder',          '~> 2.7'
+gem 'sass-rails',        '~> 5.0'
+gem 'sitemap_generator', '~> 6.0'
+gem 'turbolinks',        '~> 5.1'
+gem 'uglifier',          '~> 4.1'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'foreman'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end

@@ -1,7 +1,5 @@
-require "rubygems"
-require "sinatra"
+# This file is used by Rack-based servers to start the application.
 
-require File.expand_path '../main.rb', __FILE__
+require_relative 'config/environment'
 
-use Rack::Deflater
-run Sinatra::Application
+run Rails.application

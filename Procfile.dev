@@ -1,2 +1,1 @@
-jekyll:  jekyll build --watch
-web:     bundle exec unicorn -p $PORT -c ./unicorn-dev.rb
+web: bundle exec puma -C config/puma.rb
