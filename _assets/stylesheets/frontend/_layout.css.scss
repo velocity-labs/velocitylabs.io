@@ -24,6 +24,15 @@ div.cookiebanner {
   }
 }
 
+footer.footer {
+  li {
+    a {
+      font-weight: 200;
+      margin-bottom: 0;
+    }
+  }
+}
+
 @media (max-width: 480px) {
   footer.footer {
     li {
