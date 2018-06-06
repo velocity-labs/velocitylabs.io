@@ -8,10 +8,9 @@ author:
 excerpt:
   Finding files of a correct size to test with doesn't have to be hard.
 layout: post
-published: false
+published: true
 tags:
 - bash
-- dd
 - unix
 title: "Easily generate test files of any size"
 ---
