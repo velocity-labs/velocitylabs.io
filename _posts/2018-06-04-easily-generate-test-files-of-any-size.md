@@ -1,10 +1,5 @@
 ---
-author:
-  name: Chris Irish
-  twitter: supairish
-  gplus:
-  bio: Dude
-  image: 'https://s.gravatar.com/avatar/132afddcbdf38c93d02334687537242f?s=80'
+author_id: 1
 excerpt:
   Finding files of a correct size to test with doesn't have to be hard.
 layout: post

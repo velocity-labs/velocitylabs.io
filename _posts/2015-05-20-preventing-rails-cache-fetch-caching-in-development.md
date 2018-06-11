@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   We ran into a strange problem in our development environment
   recently that had us puzzled. Even though we'd turned off caching,

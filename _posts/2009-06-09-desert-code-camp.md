@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Desert Code Camp is a locally organized event for developers to present on
   topics they're interested in. This year, we gave two presentations.

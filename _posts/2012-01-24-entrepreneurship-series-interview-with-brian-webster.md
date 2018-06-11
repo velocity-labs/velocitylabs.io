@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   In the second of our Entrepreneurship Series blog posts, we interview
   Brian Webster of Fat Cat Software, who took a self-learning project to a full time development job. Brian shares his insights and challenges about being a developer and founder, his unique position as an iOS developer, the importance of allocating tasks to other people as your business grows, and the importance of allowing user feedback to drive product development.

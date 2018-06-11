@@ -1,10 +1,5 @@
 ---
-author:
-  name: Dave Tapley
-  twitter: davetapley
-  gplus:
-  bio: Programmer
-  image:
+author_id: 3
 excerpt:
   Dave shows how to scope a IDs to tenants, in a multitenant system, using CanCanCan
 layout: post

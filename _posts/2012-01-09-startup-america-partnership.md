@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   The Startup America Partnership offers resources, tools, marketing
   opportunities and access to capital to startups to help America's

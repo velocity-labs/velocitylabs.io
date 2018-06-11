@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 description: Chris Chandler explains the basics of cryptography with 20 slides in 5 minutes. No, really, he does.
 excerpt:
   Hear our (video) take on cryptography in the real world as voiced by

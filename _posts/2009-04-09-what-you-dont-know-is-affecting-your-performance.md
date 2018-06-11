@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Want to eek a little performance out of your current hosting setup? Follow
   these easy steps to decrease swapping.

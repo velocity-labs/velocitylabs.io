@@ -1,10 +1,5 @@
 ---
-author:
-  name: Dave Tapley
-  twitter: davetapley
-  gplus:
-  bio: Programmer
-  image:
+author_id: 3
 excerpt:
   We show that a commonly held assumption about the pessimistic requirement operator isn't necessarily always true, specifically when dealing with prerelease gem versions
 layout: post

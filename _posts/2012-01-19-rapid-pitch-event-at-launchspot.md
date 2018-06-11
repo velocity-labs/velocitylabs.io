@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Launchspot is an incubator in Tempe offering coworking space and funding
   to startups. Read more about how the program works and how to apply.

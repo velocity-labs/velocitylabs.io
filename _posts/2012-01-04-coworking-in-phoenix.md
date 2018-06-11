@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   We're a small company, but we love connecting and contributing to our
   community. That's why we're regular drop-in members at CO+HOOTS coworking

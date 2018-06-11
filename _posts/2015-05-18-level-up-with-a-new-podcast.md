@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Chris keeps telling me I should listen to more podcasts, but I
   keep putting it off. No more! I've made it a goal to create a

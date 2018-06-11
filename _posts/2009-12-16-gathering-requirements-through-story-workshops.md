@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   We use a technique called a story workshop to gather project requirements.
   Find out more about how we use this technique to provide value to our clients.

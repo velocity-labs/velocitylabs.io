@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Wondering what hardware you should provision for your application hosted
   in the cloud with Amazon EC2? We've got you covered with this handy optimal

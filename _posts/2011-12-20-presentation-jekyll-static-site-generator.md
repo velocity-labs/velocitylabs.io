@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Curtis gave a short presentation on the Jekyll static site generator for
   Ruby at the Dec 2011 Ruby AZ meetup. He discussed the benefits, usage and

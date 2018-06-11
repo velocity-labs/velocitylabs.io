@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Jenny Poon &mdash; a woman who admittedly likes to tell people hell no,
   make little children cry and says the best part of being a business

@@ -1,10 +1,5 @@
 ---
-author:
-  name: Dave Tapley
-  twitter: davetapley
-  gplus:
-  bio: Programmer
-  image:
+author_id: 3
 excerpt:
   There's an awkward gotcha when trying to find and replace the empty hash/object with sed
 layout: post

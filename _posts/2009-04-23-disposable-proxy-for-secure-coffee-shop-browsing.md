@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Have you ever used an unsecured wireless connection at a coffeeshop? Find
   out how you're putting your data at risk and the steps you can take to

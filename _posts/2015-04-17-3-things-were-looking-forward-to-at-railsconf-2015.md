@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Velocity Labs is traveling to Atlanta for RailsConf 2015. Here
   are a few things we're excited about for the conference!

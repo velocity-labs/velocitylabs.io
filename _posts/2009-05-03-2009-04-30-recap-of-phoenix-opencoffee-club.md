@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   A recap of the first Phoenix OpenCoffee Club held at Fair Trade in
   downtown Phoenix. Find out what was discussed, pitched and what the

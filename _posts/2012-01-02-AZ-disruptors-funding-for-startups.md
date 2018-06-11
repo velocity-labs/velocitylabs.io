@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   If you're a tech startup company, don't miss this opportunity for funding.
   In exchange for 10% of your startup, AZ Disruptors will give you cash, a

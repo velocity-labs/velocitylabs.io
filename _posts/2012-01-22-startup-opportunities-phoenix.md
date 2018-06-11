@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   Here are three upcoming opportunities in Phoenix to get support, publicity,
   training, and possible funding for your startup. Take a look!

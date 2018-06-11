@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   In the first of our Entrepreneurship Series blog posts, we interview
   Paul Kenjora, an entrepreneur who raised $1.5 million in Arizona for

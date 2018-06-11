@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
     Fifteen startup companies pitch for funding to a panel of three judges
     at the 2012 ASU Startup Summit at SkySong.

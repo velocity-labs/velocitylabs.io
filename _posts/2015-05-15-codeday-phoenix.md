@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   CodeDay is an event geared toward students, where they go from
   idea to app in 24 hours. It's been organized in Phoenix a few

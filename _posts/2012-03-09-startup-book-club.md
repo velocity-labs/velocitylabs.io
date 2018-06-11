@@ -1,10 +1,5 @@
 ---
-author:
-  name: Curtis Miller
-  twitter: curtism
-  gplus:
-  bio: Co-founder & CEO
-  image:
+author_id: 2
 excerpt:
   A monthly book club is starting in downtown Phoenix geared specifically
   toward topics on startups and entrepreneurship. Take a look!

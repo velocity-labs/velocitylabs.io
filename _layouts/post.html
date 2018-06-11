@@ -1,6 +1,8 @@
 ---
 layout: base
 ---
+{% assign authors = site.data.people | where:"id",page.author_id %}
+
 {% include _small_nav.html %}
 
 <article itemscope itemtype="http://schema.org/Article" class="post">
@@ -18,11 +20,13 @@ layout: base
 
         <div class="meta text-muted">
           by
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <a itemprop="url" href="https://twitter.com/{{ page.author.twitter }}" rel="author" title="{{ page.author.name }}">
-              <span itemprop="name">{{ page.author.name }}</span>
-            </a>
-          </span>
+          {% for author in authors limit: 1 %}
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <a itemprop="url" href="{{ author.links.twitter }}" rel="author" title="{{ author.name }}">
+                <span itemprop="name">{{ author.name }}</span>
+              </a>
+            </span>
+          {% endfor %}
           &mdash;
           <meta itemprop="datePublished" content="{{ page.date | date: "%Y-%d-%B" }}"> {{ page.date | date: "%B %d, %Y" }}
         </div>
