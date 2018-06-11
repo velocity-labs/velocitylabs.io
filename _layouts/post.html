@@ -38,6 +38,31 @@ layout: base
 
       <section class="post-body" itemprop="articleBody">
         {{ content }}
+
+        {% for author in authors limit: 1 %}
+          <div class="well author-box">
+            <div class="row">
+              <div class="col-xs-2">
+                <img width="100" height="100" class="img-responsive img-circle" src="https://secure.gravatar.com/avatar/{{ author.avatar }}?r=g&s=120" alt="{{ author.name }}" />
+              </div>
+              <div class="col-xs-10">
+                <div class="row">
+                  <div class="col-xs-8">
+                    <h3>{{ author.name }}</h3>
+                    <h4>{{ author.title }}</h4>
+                  </div>
+                  <div class="col-xs-4 text-right">
+                    {% for link in author.links %}
+                      <a class="icon" href="{{ link[1] }}" target="_blank"><i class="fa fa-{{ link[0] }}"></i></a>
+                    {% endfor %}
+                  </div>
+                </div>
+
+                <p>{{ author.bio }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
       </section>
 
       <section class="hire-us text-center">

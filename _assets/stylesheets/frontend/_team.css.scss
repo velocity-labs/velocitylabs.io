@@ -6,3 +6,28 @@
     width: 40px;
   }
 }
+
+.author-box {
+  padding: 30px;
+
+  h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+  }
+
+  h4 {
+    margin-top: 0;
+    font-size: 1.1em;
+  }
+
+  p {
+    font-size: 1em;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .icon {
+    font-size: 2em;
+    margin-right: 8px;
+  }
+}
