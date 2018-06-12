@@ -23,17 +23,19 @@ As we review your code, we're looking for a few things:
 
 <ul>
   <li>
-    <b>Up-to-date versions of your programming languages, frameworks, and libraries.</b>
-    When you fall behind on versions, you miss security updates, bug fixes and performance improvements.
+    <b>Up-to-date versions of your programming languages, frameworks, and libraries.</b> When you fall behind on versions, you miss security updates, bug fixes and performance improvements.
+  </li>
+  <li>
+    <b>Platform infrastructure.</b> Your application is only as secure as your infrastructure. We'll look at the current versions of your server's OS and applications.
   </li>
   <li>
     <b>Robust test suite.</b> Having a thorough suite of tests means that new bugs are less likely to appear and ensures old bugs are not going to reappear.
   </li>
   <li>
-    <b>Best Practices.</b> Did your previous developers use industry best practices when developing your software? Best practices means that your software is more maintainable and less likely to have bugs.
+    <b>Best practices.</b> Did your previous developers use industry best practices when developing your software? Best practices means that your software is more maintainable and less likely to have bugs.
   </li>
   <li>
-    <b>Application Security.</b> We'll audit your application's security to identify known security vulnerabilities.
+    <b>Application security.</b> We'll audit your application's security to identify known security vulnerabilities.
   </li>
 </ul>
 
