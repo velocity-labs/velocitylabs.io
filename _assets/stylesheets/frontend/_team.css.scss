@@ -8,6 +8,7 @@
 }
 
 .author-box {
+  margin-top: 50px;
   padding: 30px;
 
   h3 {
@@ -26,8 +27,31 @@
     margin: 0;
   }
 
-  .icon {
-    font-size: 2em;
-    margin-right: 8px;
+  .links {
+    text-align: right;
+
+    .icon {
+      font-size: 2em;
+      margin-right: 8px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .author-box {
+    .name {
+      padding: 1em 0;
+      text-align: center;
+    }
+
+    .links {
+      padding: 0 0 1em 0;
+      text-align: center;
+    }
+
+    p {
+      font-size: 0.9em;
+      text-align: center;
+    }
   }
 }

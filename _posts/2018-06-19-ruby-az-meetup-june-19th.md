@@ -19,4 +19,3 @@ The Phoenix Ruby User group is a monthly meeting for Ruby enthusiasts in the Pho
 </blockquote>
 
 Come prepared to share something, if you want, or just sit back and hear what other Phoenix Rubyists are up to. And as always, be sure to say hi to Chris or Curtis if you see us there!
-
