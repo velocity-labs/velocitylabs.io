@@ -101,7 +101,6 @@ company:
     city:      Phoenix
     state:     AZ
     zip:       85012
-  cover_image: blog-cover.jpg
   description: Velocity Labs is a Ruby on Rails and JavaScript development company. We specialize in custom web application development projects.
   social:
     github:    velocity-labs
