@@ -7,30 +7,26 @@ layout: base
 
 <article itemscope itemtype="http://schema.org/Article" class="post">
   <header class="text-center">
-    <div class="container">
-      <div class="col-lg-8 col-lg-offset-2">
-        <h1 itemprop="name">
-          <a itemprop="url" href="{{ page.url }}">{{ page.title }}</a>
-        </h1>
+    <h1 itemprop="name">
+      <a itemprop="url" href="{{ page.url }}">{{ page.title }}</a>
+    </h1>
 
-        <div class="meta text-muted">
-          by
-          {% for author in authors limit: 1 %}
-            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-              <a itemprop="url" href="{{ author.links.twitter }}" rel="author" title="{{ author.name }}">
-                <span itemprop="name">{{ author.name }}</span>
-              </a>
-            </span>
-          {% endfor %}
-          &mdash;
-          <meta itemprop="datePublished" content="{{ page.date | date: "%Y-%d-%B" }}"> {{ page.date | date: "%B %d, %Y" }}
-        </div>
-
-        {% if page.subtitle %}
-          <h3 itemprop="headline">{{ page.subtitle }}</h3>
-        {% endif %}
-      </div>
+    <div class="meta text-muted">
+      by
+      {% for author in authors limit: 1 %}
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <a itemprop="url" href="{{ author.links.twitter }}" rel="author" title="{{ author.name }}">
+            <span itemprop="name">{{ author.name }}</span>
+          </a>
+        </span>
+      {% endfor %}
+      &mdash;
+      <meta itemprop="datePublished" content="{{ page.date | date: "%Y-%d-%B" }}"> {{ page.date | date: "%B %d, %Y" }}
     </div>
+
+    {% if page.subtitle %}
+      <h3 itemprop="headline">{{ page.subtitle }}</h3>
+    {% endif %}
   </header>
 
   <div class="container">
