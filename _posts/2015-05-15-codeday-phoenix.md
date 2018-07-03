@@ -33,6 +33,6 @@ out on the [CodeDay Phoenix website][] or [register for CodeDay][].
 
 See you there!
 
-[favorite coworking space]: http://cohoots.com/
+[favorite coworking space]: https://cohoots.com/
 [CodeDay Phoenix website]: https://codeday.org/phoenix
 [register for CodeDay]: https://codeday.org/phoenix/register

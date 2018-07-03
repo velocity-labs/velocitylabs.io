@@ -9,7 +9,7 @@ Phoenix, AZ. You can find us on the web at
 
 These are in no particular order and are super random, but enjoy!
 
-* [Coworking](http://cohoots.com/)
+* [Coworking](https://cohoots.com/)
 * [Drum & Bass](https://soundcloud.com/irish-dnb)
 * [Grid Bikes](http://gridbikes.com/)
 

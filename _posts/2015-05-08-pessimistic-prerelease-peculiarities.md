@@ -88,4 +88,4 @@ So it seems in the absence of anyway to express *"less than version 2.0 and any 
 
 
 [assumption]: https://robots.thoughtbot.com/rubys-pessimistic-operator
-[prerelease]: http://guides.rubygems.org/patterns/#prerelease-gems
+[prerelease]: https://guides.rubygems.org/patterns/#prerelease-gems

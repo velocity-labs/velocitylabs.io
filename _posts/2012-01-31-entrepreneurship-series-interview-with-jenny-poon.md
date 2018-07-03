@@ -78,7 +78,7 @@ I have lots of collaborators. That's how CO+HOOTS works. You work together with 
 {% pullquote %}
 At first, I was working from home and I was doing great. But as I was growing and hiring on people, I knew it just wasn't going to work from home. Meeting at coffee shops just wasn't going to work either. I talked to a few people and looked into sharing space, just for the sake of small business and not taking crazy risks. So we looked at a few spaces, ran the numbers and it seemed to work. If everyone pitched in, we could pay the rent, pay for a few supplies and everyone could focus on their business and not worry about where they were working out of.
 
-That turned into CO+HOOTS, a [coworking space in downtown Phoenix](http://cohoots.com).
+That turned into CO+HOOTS, a [coworking space in downtown Phoenix](https://cohoots.com).
 
 We gave it a try and its been successful. It's kinda magical&hellip; but honestly, the concept isn't hard to sell, especially for the people who understand coworking and are looking for it. {"When people see what we're doing, they see it's really different."}
 {% endpullquote %}

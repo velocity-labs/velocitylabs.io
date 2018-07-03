@@ -17,7 +17,7 @@ title: "{Event} Startup Book Club"
 ---
 
 There are a lot of great books out there about startups, entrepreneurship
-and small business and a new book club at CO+HOOTS [coworking in Phoenix](http://cohoots.com)
+and small business and a new book club at CO+HOOTS [coworking in Phoenix](https://cohoots.com)
 aims to introduce and discuss some of those books with the local community. The
 meetup will take place on the first Monday of each month for 1 - 1.5 hours.
 

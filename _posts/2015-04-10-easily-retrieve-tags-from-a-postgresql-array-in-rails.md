@@ -41,7 +41,7 @@ Post.pluck('tags').flatten.uniq
 
 Same result as before, but much nicer. We still have that pesky
 `flatten.uniq` hanging off the end, though. PostgreSQL has
-[an array function called `unnest`](http://www.postgresql.org/docs/9.2/static/functions-array.html#ARRAY-FUNCTIONS-TABLE) that will give us the same
+[an array function called `unnest`](https://www.postgresql.org/docs/9.2/static/functions-array.html#ARRAY-FUNCTIONS-TABLE) that will give us the same
 result as our Ruby `flatten` method and `distinct` will ensure
 they're unique.
 
