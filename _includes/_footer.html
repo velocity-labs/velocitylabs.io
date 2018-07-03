@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
-          {% asset logo.svg itemprop='logo' %}
+          {% asset logo.svg itemprop='logo' alt='{{ site.company.name }}' %}
           <h2 itemprop="name">{{ site.company.name }}</h2>
           <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
             <span itemprop="streetAddress">{{ site.company.address.street }}</span>

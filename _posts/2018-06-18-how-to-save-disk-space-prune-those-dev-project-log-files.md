@@ -14,7 +14,7 @@ title: Save disk space by truncating dev log files
 
 Ever wonder where all that disk space is going?
 
-{% asset low-disk.png class="img-responsive" %}
+{% asset low-disk.png class="img-responsive" alt='Low Disk Space' %}
 
 Over the course of a year we touch alot of projects here at Velocity Labs. It's not uncommon for one of us to touch 5+ different code bases in that time.
 
