@@ -1,7 +1,7 @@
 ---
 author_id: 3
 excerpt:
-  There's an awkward gotcha when trying to find and replace the empty hash/object with sed
+  There is an awkward gotcha when trying to find and replace the empty hash/object with sed from the command line.
 layout: post
 published: true
 tags:

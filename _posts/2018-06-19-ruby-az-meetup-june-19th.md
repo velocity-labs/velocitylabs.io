@@ -1,7 +1,7 @@
 ---
 author_id: 2
 excerpt:
-  Ruby::AZ is hosting a meetup on 06/19/2018.
+  Ruby::AZ is hosting a meetup on 06/19/2018. Join fellow Ruby developers for a variety of lightning talks, and share your own!
 layout: post
 published: true
 tags:

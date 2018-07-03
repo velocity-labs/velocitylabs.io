@@ -1,7 +1,7 @@
 ---
 author_id: 1
 excerpt:
-  Finding files of a correct size to test with doesn't have to be hard.
+  Anyone who has implemented file uploads, with file size validations, knows how annoying it is to test. As Chris shows, creating files of a correct size can be fast and easy.
 layout: post
 published: true
 tags:

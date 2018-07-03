@@ -1,8 +1,7 @@
 ---
 author_id: 2
 excerpt:
-  How to select array values easily, and efficiently, from
-  a PostgreSQL array type in Rails.
+  This article will show you how to select array values easily, and efficiently, from a PostgreSQL array type using Ruby on Rails.
 layout: post
 published: true
 tags:

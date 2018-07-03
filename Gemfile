@@ -20,7 +20,7 @@ gem 'stripe',             '~> 3.11.0'
 gem 'uglifier'#,           '~> 4.1.8'
 gem 'unicorn',            '~> 5.4.0'
 gem 'byebug'
+
 group :development do
   gem 'foreman'
-
 end

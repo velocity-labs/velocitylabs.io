@@ -1,7 +1,7 @@
 ---
 author_id: 3
 excerpt:
-  Dave shows how to scope a IDs to tenants, in a multitenant system, using CanCanCan
+  This article shows you how to scope IDs to tenants in a multitenant system, using CanCanCan, in Ruby on Rails.
 layout: post
 published: true
 tags:

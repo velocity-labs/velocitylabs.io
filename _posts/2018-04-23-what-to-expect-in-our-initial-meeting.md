@@ -1,7 +1,7 @@
 ---
 author_id: 2
 excerpt:
-  Here's what you can expect from our initial meeting.
+  This article describes what what you can expect from our initial meeting, what information we're trying to gather and why we're gathering it.
 layout: post
 published: true
 tags:

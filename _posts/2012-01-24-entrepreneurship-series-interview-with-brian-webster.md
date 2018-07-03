@@ -1,8 +1,7 @@
 ---
 author_id: 2
 excerpt:
-  In the second of our Entrepreneurship Series blog posts, we interview
-  Brian Webster of Fat Cat Software, who took a self-learning project to a full time development job. Brian shares his insights and challenges about being a developer and founder, his unique position as an iOS developer, the importance of allocating tasks to other people as your business grows, and the importance of allowing user feedback to drive product development.
+  In the second of our Entrepreneurship Series, we interview Brian Webster of Fat Cat Software. Brian shares his insights about being a developer and founder, the need for delegation as your business grows, and the importance of allowing user feedback to drive product development.
 image:
   url: /images/brian-webster.jpg
   title: Brian Webster

@@ -9,7 +9,7 @@ published: true
 tags:
 - caching
 - rails
-title: "Preventing Rails.cache.fetch From Caching Content in Development"
+title: Prevent Rails From Caching in Development
 ---
 
 In one of our applications, we have some controller code that looks

@@ -1,13 +1,13 @@
 ---
 author_id: 1
 excerpt:
-  It's easy to forget about dev project log files.  Don't let them secretly eat up your disk space.
+  If you deal with multiple projects over time, it's easy to forget about the leftover log files that may be eating up your disk space.
 layout: post
 published: true
 tags:
 - bash
 - unix
-title: "How to save disk space, prune those dev project log files!"
+title: Save disk space by truncating dev log files
 ---
 
 ### The problem
@@ -16,15 +16,9 @@ Ever wonder where all that disk space is going?
 
 {% asset low-disk.png class="img-responsive" %}
 
-Over the course of a year we touch alot of projects here at Velocity Labs.
+Over the course of a year we touch alot of projects here at Velocity Labs. It's not uncommon for one of us to touch 5+ different code bases in that time.
 
-It's not uncommon for one of us to touch 5+ different code bases in that time.
-
-When we're actively working on a project we're running it in development mode, running test specs, etc.
-
-All that contributes to dev and test log files growing larger and larger.
-
-Then we move on to the next project and forget about those files.
+When we're actively working on a project we're running it in development mode, running test specs, etc. All that contributes to dev and test log files growing larger and larger. Then we move on to the next project and forget about those files.
 
 <div class="wp-terminal">
   $ ls -lah /Users/supairish/Projects/best/log/development.log
@@ -37,11 +31,9 @@ Then we move on to the next project and forget about those files.
 
 ### The solution
 
-Well there happens to be a <b>truncate unix command</b> we could use to shorten up these log files.
+Well there happens to be a <b>truncate unix command</b> we could use to shorten up these log files. The only problem is that <b>truncate</b> isn't available on OSX.
 
-The only problem is that <b>truncate</b> isn't available on OSX.
-
-But we can get it via Homebrew + coreutils real quick.
+But we can get the same functionality via Homebrew + coreutils.
 
 <div class="wp-terminal">
   $ brew install coreutils <br>
@@ -83,4 +75,4 @@ So let's check one of our logs and see what size it's at now.
 -rw-r--r--+ 1 supairish  staff     0B Jun  8 16:47 /Users/supairish/Projects/best/log//development.log
 </div>
 
-Oh ya, nice and empty, go forth and reclaim that space from your dev machines!
+Oh yeah, nice and empty, go forth and reclaim that space from your dev machines!
