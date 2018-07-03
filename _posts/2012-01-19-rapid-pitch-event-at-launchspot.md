@@ -19,7 +19,7 @@ LaunchSpot is a tech incubator in Tempe, AZ. Although they got rolling about a y
 
 ### What is the LaunchSpot Rapid Pitch Event?
 
-As a part of the [Tempe Geeks Night Out](http://www.tempe.gov/business/scitechfest/), LaunchSpot will be offering 6 early stage startups the opportunity to pitch entrepreneurs and investors on their idea. They will be given four minutes to pitch and six minutes for Q&A.
+As a part of the [Tempe Geeks Night Out](https://www.facebook.com/TempeGeeks/), LaunchSpot will be offering 6 early stage startups the opportunity to pitch entrepreneurs and investors on their idea. They will be given four minutes to pitch and six minutes for Q&A.
 
 They'll compete to receive a chance to get venture funding and other prizes including free office space at LaunchSpot, legal consultation with lawyers from Wong, Fuji & Carter, PC on business law, legal consultation with Wright Law Group, PLLC on intellectual property law, and more.
 

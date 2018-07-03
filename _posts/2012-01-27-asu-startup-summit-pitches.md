@@ -47,7 +47,7 @@ We realize you may not want to watch all 15 funding pitch videos, so just click 
 
 <h3 id="renature">reNature</h3>
 
-[reNature](http://www.renatureinc.com/) is a Phoenix startup that industrializes the natural processes of decomposition to provide sustainable alternatives to land filling food waste while simultaneously creating alternatives to petrochemical based agricultural products.
+[reNature](https://www.crunchbase.com/organization/renature) is a Phoenix startup that industrializes the natural processes of decomposition to provide sustainable alternatives to land filling food waste while simultaneously creating alternatives to petrochemical based agricultural products.
 
 <iframe title="reNature startup funding pitch" width="560" height="315" src="http://www.youtube.com/embed/WALk7EUiWlI" frameborder="0" allowfullscreen></iframe>
 
@@ -111,7 +111,7 @@ Ellens Technologies pitches their veterinarian app.
 
 <h3 id="bebe-ecoposh">Bebe EcoPosh</h3>
 
-[Bebe EcoPosh](http://www.bebeecoposh.com/) pitches for funding for their green luxury e-boutique for baby.
+[Bebe EcoPosh](https://www.linkedin.com/company/bebe-ecoposh/) pitches for funding for their green luxury e-boutique for baby.
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/b4bvmr5TB9Y" frameborder="0" allowfullscreen></iframe>
 

@@ -35,4 +35,4 @@ It's free to become a Startup America Firm, which provides you with the opportun
      guest blog posts and official Startup America seals for their website
      and social media.
 
-[Sign up for free and become a Startup America Partner]( http://ar.gy/masterrm1) to access the resources and participate in the community.
+[Sign up for free and become a Startup America Partner](http://www.startupamericapartnership.org/) to access the resources and participate in the community.

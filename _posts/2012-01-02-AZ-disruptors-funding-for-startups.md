@@ -22,7 +22,7 @@ If you have a product, prototype, or idea for licensed software, a web-based app
 
 ### The Details
 
-In addition to funding [Blogic](http://www.blogic.com/), and [Member Desk](http://www.memberdesk.com/) last year, AZ Disruptors is looking to fund up to 5 more startups this year.
+In addition to funding Blogic, and [Member Desk](http://www.memberdesk.com/) last year, AZ Disruptors is looking to fund up to 5 more startups this year.
 
 If you apply, be prepared to move to Phoenix (if you're not already here) to complete the program.
 
