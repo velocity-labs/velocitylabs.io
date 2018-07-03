@@ -90,7 +90,8 @@ assets:
     - _assets/stylesheets
     - _assets/images
   gzip: [ text/css, application/javascript ]
-  # debug: false
+  precompile: [ logo-text.png ]
+  # debug: true
 
 minfy_html: true
 
@@ -105,7 +106,7 @@ company:
   social:
     github:    velocity-labs
     twitter:   velocitylabs
-  logo:        logo.png
+  logo:        logo-text.png
   name:        Velocity Labs
   phone:       (602) 633-5049
   subtitle:    Ruby on Rails Developers | Custom Web Applications

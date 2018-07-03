@@ -13,6 +13,12 @@
     <meta property="og:site_name" content="{{ site.company.name }}">
     <meta property="og:title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.company.name }}{% endif %}"/>
     <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+    <meta property="og:image" content="{{ site.url }}{{ assets['logo-text.png'].digest_path }}"/>
+    {% if page.og_type %}
+      <meta property="og:type" content="{{ page.og_type }}"/>
+    {% else %}
+      <meta property="og:type" content="website"/>
+    {% endif %}
 
     {% if page.excerpt %}
       <meta property="og:description" content="{{ page.excerpt }}"/>
