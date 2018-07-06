@@ -15,7 +15,7 @@ layout: base
       by
       {% for author in authors limit: 1 %}
         <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <a itemprop="url" href="{{ author.links.twitter }}" rel="author" title="{{ author.name }}">
+          <a itemprop="url" href="{{ author.links.rss }}" rel="author" title="{{ author.name }}">
             <span itemprop="name">{{ author.name }}</span>
           </a>
         </span>
