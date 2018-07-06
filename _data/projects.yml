@@ -1,3 +1,15 @@
+- categories: [web, api, ops]
+  description:
+    We augmented an internal team to accelerate the development of their large legacy Rails app.
+  title: Tap Inspect
+  website: https://www.tapinspect.com/
+
+- categories: [web, ops]
+  description:
+    Created a web application for short-notice, on-demand, dental temping.
+  title: Princess Dental Staffing
+  website: https://www.princessdentalstaffing.com/
+
 - categories: [web, ops]
   description:
     We took over application maintenance and new feature development after Go Swim launched.
