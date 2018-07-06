@@ -3,6 +3,7 @@
     DnB connoisseur, gamer/collector, high fiver. Loves making awesome things with Ruby, Rails, and JavaScript.
   id: 1
   links:
+    rss: "http://www.christopherirish.com"
     github: "https://github.com/supairish"
     twitter: "https://www.twitter.com/supairish"
   name: "Chris Irish"
@@ -13,6 +14,7 @@
     Startup junkie, Rubyist and gamer. Loves to brainstorm about new ideas.
   id: 2
   links:
+    rss: "http://millarian.com"
     github: "https://github.com/curtis"
     twitter: "https://www.twitter.com/curtism"
   name: "Curtis Miller"
