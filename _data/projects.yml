@@ -10,6 +10,12 @@
   title: Princess Dental Staffing
   website: https://www.princessdentalstaffing.com/
 
+- categories: [web, api, ops]
+  description:
+    We redeveloped the core news platform for the Philadelphia Church of God.
+  title: The Trumpet
+  website: https://www.thetrumpet.com/
+
 - categories: [web, ops]
   description:
     We took over application maintenance and new feature development after Go Swim launched.
