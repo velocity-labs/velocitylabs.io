@@ -331,6 +331,40 @@ button#purchase {
   list-style-type: disc !important;
 }
 
+.btn-outline-primary {
+  color: $primary-color;
+  background-color: transparent;
+  background-image: none;
+  border-color: $primary-color;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+  color: $primary-color;
+  background-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
 @media screen and (max-width: 768px) {
   #contact-form-error,
   #contact-form-success {
@@ -346,6 +380,10 @@ button#purchase {
     h1,
     .nav a {
       line-height: initial;
+    }
+
+    .nav a {
+      font-size: 1.1em;
     }
 
     .navbar-brand {
@@ -365,7 +403,19 @@ button#purchase {
     margin: 0;
     width: 80px;
   }
+
+  .navbar-collapse {
+    border-bottom: 1px solid rgb(102, 102, 102);
+    border-left: 1px solid rgb(102, 102, 102);
+    border-right: 1px solid rgb(102, 102, 102);
+    background-color: rgb(44, 46, 53);
+  }
+
+  .nav>li {
+    text-align: left;
+  }
 }
+
 
 @media screen and (min-width: 767px) and (max-width: 1199px) {
   .cbp-af-header h1, .cbp-af-header .nav a {
