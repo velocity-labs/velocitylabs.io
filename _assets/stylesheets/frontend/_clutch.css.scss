@@ -1,0 +1,16 @@
+.post {
+  .clutch-widget {
+    padding: 25px;
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .post {
+    .clutch-widget {
+      max-width: 100%;
+      float: none!important;
+      padding-left: 0;
+    }
+  }
+}

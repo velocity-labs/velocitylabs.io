@@ -129,6 +129,22 @@
   text-align: center;
 }
 
+blockquote {
+  &.pull-left {
+    margin-right: 50px;
+    max-width: 250px;
+  }
+
+  &.pull-right {
+    margin-left: 50px;
+    max-width: 250px;
+  }
+}
+
+.with-padding {
+  padding: 25px;
+}
+
 @media screen and (max-width: 768px) {
   #blog {
     #intro {
@@ -140,6 +156,29 @@
   .post {
     header {
       padding: 60px 15px;
+    }
+  }
+
+  blockquote {
+
+    &.pull-left {
+      border: 0;
+      float: none!important;
+      font-size: 17.5px;
+      margin: 0 0 20px;
+      max-width: 100%;
+      padding: 10px 20px;
+      text-align: left;
+    }
+
+    &.pull-right {
+      border: 0;
+      float: none!important;
+      font-size: 17.5px;
+      margin: 0 0 20px;
+      max-width: 100%;
+      padding: 10px 20px;
+      text-align: left;
     }
   }
 }
