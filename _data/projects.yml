@@ -16,6 +16,18 @@
   title: The Trumpet
   website: https://www.thetrumpet.com/
 
+- categories: [web, api]
+  description:
+    IoT minimum viable product for heat transfer machines, with a Rails backend API.
+  title: "Stahls'"
+  website: https://www.stahls.com/
+
+- categories: [web, api, ops]
+  description:
+    We create a brand new Rails application to track activities, with a nice backend dashboard.
+  title: Goalistics BEST
+  website: https://best.goalistics.com/
+
 - categories: [web, ops]
   description:
     We took over application maintenance and new feature development after Go Swim launched.
