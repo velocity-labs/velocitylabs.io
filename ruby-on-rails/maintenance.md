@@ -206,7 +206,7 @@ title: Ruby on Rails Application Maintenance
 
         <p>
           Currently, our Ruby on Rails Application Maintenance service is only
-          <b>$1,500 / month</b> (assuming you have less than 10,000 active users / month).
+          <b>$2,500 / month</b> (assuming you have less than 10,000 active users / month).
           This price may change in the future, but you'll always pay the same rate
           you secure today, for the duration of the engagement.
         </p>
@@ -281,7 +281,7 @@ title: Ruby on Rails Application Maintenance
               </div>
 
               <div class='form-group'>
-                <input class='form-control' value="Amount: $1500.00 / month" type="text" id="amount" name="amount" disabled>
+                <input class='form-control' value="Amount: $2500.00 / month" type="text" id="amount" name="amount" disabled>
               </div>
 
               <div class='form-group'>

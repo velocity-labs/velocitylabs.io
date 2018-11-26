@@ -13,6 +13,14 @@
     img {
       width: 325px;
     }
+
+    .portfolio-item {
+      position: relative !important;
+      top: initial !important;
+      left: initial !important;
+
+      text-align: center;
+    }
   }
 }
 

@@ -1,4 +1,22 @@
 .inner {
+  section {
+    header {
+      background: #2b2d35;
+      margin-bottom: 5em;
+      padding: 100px 25%;
+
+      h1 {
+        font-size: 48px;
+        line-height: 1.2;
+        margin-top: 0;
+      }
+
+      .lead {
+        color: white;
+      }
+    }
+  }
+
   #contact {
     margin-top: 2em;
   }

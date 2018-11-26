@@ -104,7 +104,7 @@ post '/charge' do
     }
   )
 
-  customer.subscriptions.create plan: "maintenance-1"
+  customer.subscriptions.create plan: "maintenance-2"
 
   redirect '/ruby-on-rails/maintenance/thank-you'
 end

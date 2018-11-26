@@ -14,12 +14,12 @@
   <div class="demo-3">
     <div id="portfolio" class="grid js-isotope" data-isotope-options='{ "columnWidth": 350, "itemSelector": ".portfolio-item" }'>
       {% for project in site.data.projects limit: 12 %}
-        <div class="col-xs-11 col-sm-6 col-md-3 portfolio-item {{ project.categories | join: ' ' | downcase }}">
+        <div class="col-xs-12 col-sm-6 col-md-3 portfolio-item {{ project.categories | join: ' ' | downcase }}">
           {% assign full_path=project.title | full_image_path %}
           {% assign thumb_path=project.title | thumb_image_path %}
 
           <a href="{% asset '{{full_path}}' @path %}" rel="nofollow" class="popup-gallery popovers" title="{{ project.title }}" data-html="true" data-content="{{ project.description | xml_escape }}">
-            <img src="{% asset '{{thumb_path}}' @path %}" alt="{{ project.title }}" class="img-responsive">
+            <img src="{% asset '{{thumb_path}}' @path %}" alt="{{ project.title }}" class="img-responsive center-block">
           </a>
           <div class="visible-xs">
             <h3>{{ project.title }}</h3>
