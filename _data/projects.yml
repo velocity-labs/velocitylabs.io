@@ -48,11 +48,8 @@
 
 - categories: [web, api, ops]
   description: |
-    We develop all of Valley Metro's transit applications, including
-    <a href="http://trips.valleymetro.org" title="Valley Metro Trip Planner" target="_blank">Trip Planner</a>,
-    <a href="http://routes.valleymetro.org" title="Valley Metro Routes" target="_blank">Route Schedules</a>,
-    <a href="http://http://m.valleymetro.org/" title="Valley Metro Mobile" target="_blank">Mobile Site</a>,
-    and the <a href="https://rubygems.org/gems/ratis" title="Ruby wrapper for ATIS SOAP server" target="_blank">Ratis</a> gem.
+    We develop all of Valley Metro's transit applications, including the Valley Metro Trip Planner, Valley Metro Routes, Valley Metro Mobile,
+    and their RAtis SOAP API gem.
   title:   Valley Metro
   website: http://valleymetro.org/
 
@@ -71,7 +68,7 @@
 
 - categories: [web, ops]
   description:
-    "Developed game-based, marketing site to enable renewal opportunities."
+    Developed game-based, marketing site to enable renewal opportunities.
   title: Verizon
   website: http://countdowntorenew.verizon.com/
 
