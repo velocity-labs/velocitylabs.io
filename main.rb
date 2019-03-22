@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler'
 require 'pony'
 require 'stripe'
+require 'byebug' if settings.development?
 
 Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
 
