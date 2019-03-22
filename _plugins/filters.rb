@@ -1,4 +1,3 @@
-require 'byebug'
 module VelocityLabs
   module Filters
     def array_to_string(array)
