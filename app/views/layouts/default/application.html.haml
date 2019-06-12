@@ -17,9 +17,6 @@
 
   %body{ class: yield(:body_classes) }
     .container
-      - if Rails.env.staging?
-        .staging-msg STAGING
-
       = render 'shared/browse_happy'
       = render 'default/shared/navigation'
       = yield
