@@ -1,24 +1,30 @@
-# README
+Base Rails App
+================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A starter Rails application that has:
 
-Things you may want to cover:
+* Authentication
+* Authorization
+* User profile management
+* Bootstrap/Inspinia theme integration
 
-* Ruby version
+Versions
+-------------
 
-* System dependencies
+See Gemfile.lock
 
-* Configuration
+Getting Started
+---------------
 
-* Database creation
+Grab the latest from the GitHub repository, navigate to the app directory, then run:
 
-* Database initialization
+```
+bundle package
+bundle exec rake db:setup
+```
 
-* How to run the test suite
+Credits
+-------
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+License
+-------

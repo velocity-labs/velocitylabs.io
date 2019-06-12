@@ -9,18 +9,3 @@
 #
 # Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 # about supported directives.
-#
-#= require jquery
-#= require jquery.cookie
-#= require rails-ujs
-
-#= require popper.js/dist/umd/popper.min
-#= require bootstrap/dist/js/bootstrap.min
-#= require bootstrap-select/dist/js/bootstrap-select.min
-
-#= require float-labels.js/dist/float-labels.min
-
-#= require activestorage
-#= require turbolinks
-#= require_tree ./theme
-#= require_tree ./frontend

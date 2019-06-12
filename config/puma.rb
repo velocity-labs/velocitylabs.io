@@ -39,35 +39,35 @@ plugin :tmp_restart
 #   ActiveRecord::Base.establish_connection
 # end
 # Running SSL locally…
-if ENV.fetch("RAILS_ENV") == 'development'
-  unless File.exist?(File.join(File.dirname(__FILE__), 'certs', 'localhost.key'))
-    def generate_root_cert(root_key)
-      root_ca = OpenSSL::X509::Certificate.new
-      root_ca.version = 2 # cf. RFC 5280 - to make it a "v3" certificate
-      root_ca.serial = 0x0
-      root_ca.subject = OpenSSL::X509::Name.parse "/C=BE/O=A1/OU=A/CN=localhost"
-      root_ca.issuer = root_ca.subject # root CA's are "self-signed"
-      root_ca.public_key = root_key.public_key
-      root_ca.not_before = Time.now
-      root_ca.not_after = root_ca.not_before + 2 * 365 * 24 * 60 * 60 # 2 years validity
-      root_ca.sign(root_key, OpenSSL::Digest::SHA256.new)
-      root_ca
-    end
+# if ENV.fetch("RAILS_ENV") == 'development'
+#   unless File.exist?(File.join(File.dirname(__FILE__), 'certs', 'localhost.key'))
+#     def generate_root_cert(root_key)
+#       root_ca = OpenSSL::X509::Certificate.new
+#       root_ca.version = 2 # cf. RFC 5280 - to make it a "v3" certificate
+#       root_ca.serial = 0x0
+#       root_ca.subject = OpenSSL::X509::Name.parse "/C=BE/O=A1/OU=A/CN=localhost"
+#       root_ca.issuer = root_ca.subject # root CA's are "self-signed"
+#       root_ca.public_key = root_key.public_key
+#       root_ca.not_before = Time.now
+#       root_ca.not_after = root_ca.not_before + 2 * 365 * 24 * 60 * 60 # 2 years validity
+#       root_ca.sign(root_key, OpenSSL::Digest::SHA256.new)
+#       root_ca
+#     end
 
-    root_key = OpenSSL::PKey::RSA.new(2048)
-    file = File.new( Rails.root.join('config', 'certs', 'localhost.key'), "wb")
-    file.write(root_key)
-    file.close
+#     root_key = OpenSSL::PKey::RSA.new(2048)
+#     file = File.new( Rails.root.join('config', 'certs', 'localhost.key'), "wb")
+#     file.write(root_key)
+#     file.close
 
-    root_cert = generate_root_cert(root_key)
+#     root_cert = generate_root_cert(root_key)
 
-    file = File.new( Rails.root.join('config','certs', 'localhost.cert'), "wb")
-    file.write(root_cert)
-    file.close
-  end
+#     file = File.new( Rails.root.join('config','certs', 'localhost.cert'), "wb")
+#     file.write(root_cert)
+#     file.close
+#   end
 
-  ssl_bind '0.0.0.0', '8443', {
-    key:  File.join(File.dirname(__FILE__), 'certs', 'localhost.key'),
-    cert: File.join(File.dirname(__FILE__), 'certs', 'localhost.cert')
-  }
-end
+#   ssl_bind '0.0.0.0', '8443', {
+#     key:  File.join(File.dirname(__FILE__), 'certs', 'localhost.key'),
+#     cert: File.join(File.dirname(__FILE__), 'certs', 'localhost.cert')
+#   }
+# end

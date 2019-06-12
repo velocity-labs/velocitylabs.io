@@ -1,0 +1,26 @@
+!!!
+%html{ xmlns: 'http://www.w3.org/1999/xhtml', lang: 'en', 'xml:lang' => 'en' }
+  %head
+    %title= content_for?(:title) ? yield(:title) : current_account.name
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    %meta{ content: 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type' }/
+    %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }/
+    %meta{ content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+
+    = yield :seo_links
+
+    = stylesheet_link_tag 'default/application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'default/application', 'data-turbolinks-track': 'reload'
+
+  %body{ class: yield(:body_classes) }
+    .container
+      - if Rails.env.staging?
+        .staging-msg STAGING
+
+      = render 'shared/browse_happy'
+      = render 'default/shared/navigation'
+      = yield
+      = yield :javascript

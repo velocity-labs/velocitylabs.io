@@ -1,17 +1,9 @@
 {
-  "name": "jobs",
+  "name": "velocitylabs",
   "private": true,
   "dependencies": {
-    "animate.css": "^3.6.1",
-    "bootstrap": "^4.1.1",
-    "bootstrap-select": "^1.13.1",
-    "float-labels.js": "^3.3.3",
-    "font-awesome": "^4.7.0",
-    "hamburgers": "^0.9.3",
-    "jquery": "^3.3.1",
-    "jquery.cookie": "^1.4.1",
-    "jquery.fancybox": "^2.1.5",
-    "popper.js": "^1.14.3",
-    "swiper": "^4.3.0"
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
   }
 }

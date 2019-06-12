@@ -1,0 +1,3 @@
+.nav
+  - Spina::Page.live.all.each do |page|
+    .nav-item{class: ('active' if page == current_page)}= link_to page.menu_title, page.materialized_path

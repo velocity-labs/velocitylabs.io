@@ -1,0 +1,6 @@
+.container
+  .row.justify-content-sm-center
+    .col.col-lg-6
+      .card
+        .card-body
+          = content(:text).try(:html_safe)
