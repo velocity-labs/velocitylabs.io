@@ -117,7 +117,7 @@ GEM
       mail (>= 2.0)
     public_suffix (3.0.3)
     puma (3.12.1)
-    rack (2.0.6)
+    rack (2.0.8)
     rack-protection (2.0.5)
       rack
     rake (12.3.2)
