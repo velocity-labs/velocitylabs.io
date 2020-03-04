@@ -116,7 +116,7 @@ GEM
     pony (1.13)
       mail (>= 2.0)
     public_suffix (3.0.3)
-    puma (3.12.3)
+    puma (3.12.4)
     rack (2.0.8)
     rack-protection (2.0.5)
       rack
