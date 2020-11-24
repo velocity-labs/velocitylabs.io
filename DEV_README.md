@@ -15,4 +15,4 @@ jekyll build --trace
 
 ** Run It
 
-bundle exec unicorn -p 5000 -c ./unicorn-dev.rb
+commands are in Procfiles, use your runner of choice, i.e. Foreman, Overmind, etc
