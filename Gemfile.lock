@@ -83,7 +83,7 @@ GEM
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     json (2.5.1)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     liquid (4.0.3)
     liquid-tag-parser (1.9.0)
