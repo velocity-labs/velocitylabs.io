@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.6.6'
 
+# Dependabot vulnerability fix, remove after capybara updates dependencies
+gem 'addressable',        '>= 2.8.0'
+
 gem 'coffee-script',      '~> 2.4'
 gem 'jekyll',             '~> 3.9.0'
 gem 'jekyll-assets',       group: :jekyll_plugins
