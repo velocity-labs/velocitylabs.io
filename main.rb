@@ -118,7 +118,8 @@ post '/contact-form/?' do
   recaptcha_raw_response = RestClient.post 'https://www.google.com/recaptcha/api/siteverify', secret: ENV['RECAPTCHA_SECRET_KEY'], response: params['g-recaptcha-response'], remoteip: request.ip
   recaptcha = JSON.parse recaptcha_raw_response
 
-  if recaptcha["success"] == true
+  # disable contact for now
+  if false # recaptcha["success"] == true
     htmlBody = %Q{
       <div style="font-family:Helvetica;">
         <h2>Contact Information</h2>
@@ -177,11 +178,11 @@ post '/contact-form/?' do
     byebug if settings.development?
     response = { status: :failure }
 
-    puts '*'*100
-    puts "RECAPTCHA CAUGHT SOME SPAM!"
-    puts params.to_s
-    puts recaptcha.to_s
-    puts '*'*100
+    # puts '*'*100
+    # puts "RECAPTCHA CAUGHT SOME SPAM!"
+    # puts params.to_s
+    # puts recaptcha.to_s
+    # puts '*'*100
   end
 
   content_type :json
