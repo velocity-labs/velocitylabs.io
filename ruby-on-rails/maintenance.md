@@ -241,7 +241,7 @@ title: Ruby on Rails Application Maintenance
 
 <section id="contact">
   <div class="container">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
         <h3 class="text-center">Are You Ready To Get Started?</h3>
 
@@ -298,7 +298,7 @@ title: Ruby on Rails Application Maintenance
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
       <div id="faq" class="col-lg-10 col-lg-offset-1">
