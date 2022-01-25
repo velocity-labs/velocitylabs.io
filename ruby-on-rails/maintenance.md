@@ -205,15 +205,11 @@ title: Ruby on Rails Application Maintenance
         <h3 class="text-center">How Much Does It Cost?</h3>
 
         <p>
-          Currently, our Ruby on Rails Application Maintenance service is only
-          <b>$2,500 / month</b> (assuming you have less than 10,000 active users / month).
-          This price may change in the future, but you'll always pay the same rate
-          you secure today, for the duration of the engagement.
+          It depends on the size and complexity of your application.
         </p>
 
         <p>
-          Try us for a month. There's no fixed term, so you can cancel at any time.
-          <b>If you aren't completely satisfied, we'll refund your money and call it a day</b>. Anything we did in that first month is yours to keep.
+          Get in touch to have us put together a quote for your app
         </p>
       </div>
     </div>
