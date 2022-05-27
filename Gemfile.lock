@@ -40,7 +40,7 @@ GEM
       multi_js (>= 0.1.0)
     htmlentities (4.3.4)
     http-accept (1.7.0)
-    http-cookie (1.0.4)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
     http_parser.rb (0.8.0)
     i18n (0.9.5)
@@ -123,7 +123,7 @@ GEM
     puma (4.3.12)
       nio4r (~> 2.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-protection (2.2.0)
       rack
     rake (12.3.3)
@@ -164,7 +164,7 @@ GEM
       json (>= 1.8.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8.1)
+    unf_ext (0.0.8.2)
 
 PLATFORMS
   ruby
@@ -185,6 +185,7 @@ DEPENDENCIES
   nokogiri (>= 1.13.5)
   pony (~> 1.13)
   puma (~> 4.3.11)
+  rack (~> 2.2.3.1)
   rake (~> 12.3)
   redcarpet (~> 3.5)
   rest-client (~> 2.0)
