@@ -22,7 +22,7 @@ gem 'rake',               '~> 12.3'
 gem 'redcarpet',          '~> 3.5'
 gem 'rest-client',        '~> 2.0'
 gem 'sass',               '~> 3.7'
-gem 'sinatra',            '~> 2.0'
+gem 'sinatra',            '~> 2.2'
 gem 'sprockets',          '~> 3.7' # force sprockets to pre 4.0 as per https://github.com/envygeeks/jekyll-assets/issues/622
 gem 'stripe',             '~> 3.11.0'
 gem 'uglifier',           '~> 2.7'
