@@ -26,7 +26,7 @@ plugins:
   - jekyll-sitemap
 
 # Conversion
-markdown:     redcarpet
+markdown:     kramdown
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 highlighter:  rouge
 lsi:          false
@@ -61,9 +61,6 @@ maruku:
   fenced_code_blocks: true
 
 rdiscount:
-  extensions: []
-
-redcarpet:
   extensions: []
 
 kramdown:
