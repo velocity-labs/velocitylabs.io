@@ -16,7 +16,7 @@ gem 'maruku',             '~> 0.7.3'
 gem 'newrelic_rpm',       '~> 6.2'
 gem 'nokogiri',           '>= 1.13.9'
 gem 'pony',               '~> 1.13'
-gem 'puma',               '~> 4.3.11'
+gem 'puma',               '~> 5.6.8'
 gem 'rack',               '~> 2.2.6.4' # for security patch https://github.com/velocity-labs/velocitylabs.io/security/dependabot/16
 gem 'rake',               '~> 12.3'
 gem 'redcarpet',          '~> 3.5'
