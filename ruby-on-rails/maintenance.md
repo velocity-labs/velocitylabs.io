@@ -251,7 +251,7 @@ title: Ruby on Rails Application Maintenance
           </p>
 
           <p class='col-lg-2 text-center'>
-            {% asset guarantee.png class="img-responsive" alt='{{ site.company.name }} Guarantee' %}
+            <img src="/images/guarantee.png" class="img-responsive" alt="{{ site.company.name }} Guarantee">
           </p>
         </div>
 

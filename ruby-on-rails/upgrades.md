@@ -222,7 +222,7 @@ title: Ruby on Rails Application Upgrades
           </div>
 
           <div class='col-lg-2 text-center'>
-            {% asset guarantee.png class="img-responsive" alt='{{ site.company.name }} Guarantee' %}
+            <img src="/images/guarantee.png" class="img-responsive" alt="{{ site.company.name }} Guarantee">
           </div>
         </div>
 

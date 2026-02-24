@@ -1,0 +1,13 @@
+{
+  "name": "velocitylabs-io",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^6.0",
+    "vite-plugin-ruby": "^5.1",
+    "sass": "^1.83"
+  }
+}

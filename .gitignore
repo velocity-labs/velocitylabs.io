@@ -1,13 +1,12 @@
 .bundle
 .env
-.jekyll-assets-cache
 .jekyll-metadata
-.sass-cache
-/.byebug_history
 /.jekyll-cache
 _site/
 log/*
-node_modules
+node_modules/
+public/vite/
+public/vite-dev/
 sitemap.xml
 sitemap.xml.gz
 tmp

@@ -1,0 +1,44 @@
+@import "theme/variables";
+
+div.cookiebanner {
+  text-align: center;
+}
+
+.copyright {
+  margin: 2em;
+
+  a {
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.pagination {
+  display: block;
+  text-align: center;
+
+  a {
+    border: 1px solid #ffba43;
+    padding: 0.5em 1em;
+  }
+}
+
+footer.footer {
+  li {
+    a {
+      font-weight: 200;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  footer.footer {
+    li {
+      a {
+        font-size: 1.5em;
+      }
+    }
+  }
+}

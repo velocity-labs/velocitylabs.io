@@ -25,8 +25,8 @@ title: Projects
           {% assign full_path=project.title | full_image_path %}
           {% assign thumb_path=project.title | thumb_image_path %}
 
-          <a href="{% asset '{{full_path}}' @path %}" rel="nofollow" class="popup-gallery popovers" title="{{ project.title }}" data-html="true" data-content="{{ project.description | xml_escape }}<br /&gt;<b&gt;Type: {{ project.categories | array_to_sentence_string }}</b&gt;">
-            <img src="{% asset '{{thumb_path}}' @path %}" alt="{{ project.title }}" class="img-responsive center-block">
+          <a href="/images/{{ full_path }}" rel="nofollow" class="popup-gallery popovers" title="{{ project.title }}" data-html="true" data-content="{{ project.description | xml_escape }}<br /&gt;<b&gt;Type: {{ project.categories | array_to_sentence_string }}</b&gt;">
+            <img src="/images/{{ thumb_path }}" alt="{{ project.title }}" class="img-responsive center-block">
           </a>
           <div class="visible-xs">
             <h3>{{ project.title }}</h3>

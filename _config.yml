@@ -9,7 +9,7 @@ collections: null
 # Handling Reading
 safe:         false
 include:      [".htaccess"]
-exclude:      ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor', 'README.md', 'Rakefile', 'Procfile.dev', 'unicorn-dev.rb', 'LICENSE', 'CNAME']
+exclude:      ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor', 'README.md', 'Rakefile', 'Procfile.dev', 'unicorn-dev.rb', 'LICENSE', 'CNAME', 'node_modules', 'package.json', 'package-lock.json', 'vite.config.js', 'docs']
 keep_files:   [".git", ".svn"]
 encoding:     "utf-8"
 
@@ -24,9 +24,10 @@ whitelist: []
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll/vite
 
 # Conversion
-markdown:     redcarpet
+markdown:     kramdown
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 highlighter:  rouge
 lsi:          false
@@ -39,9 +40,6 @@ host:    127.0.0.1
 baseurl: "" # does not include hostname
 url:     http://velocitylabs.io
 
-# Backwards-compatibility
-relative_permalinks: false
-
 # Outputting
 permalink:     /blog/:year/:month/:day/:title/
 paginate_path: /blog/:num
@@ -52,46 +50,13 @@ quiet:    false
 defaults: []
 
 # Markdown Processors
-maruku:
-  use_tex:    false
-  use_divs:   false
-  png_engine: blahtex
-  png_dir:    images/latex
-  png_url:    /images/latex
-  fenced_code_blocks: true
-
-rdiscount:
-  extensions: []
-
-redcarpet:
-  extensions: []
-
 kramdown:
   auto_ids:       true
   footnote_nr:    1
   entity_output:  as_char
   toc_levels:     1..6
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
-
-  coderay:
-    coderay_wrap:              div
-    coderay_line_numbers:      inline
-    coderay_line_number_start: 1
-    coderay_tab_width:         4
-    coderay_bold_every:        10
-    coderay_css:               style
-
-## jekyll-assets: ##
-# see more at https://github.com/ixti/jekyll-assets
-assets:
-  sources:
-    - _assets/javascripts
-    - _assets/stylesheets
-    - _assets/images
-  gzip: [ text/css, application/javascript ]
-  precompile: [ logo-text.png ]
-  # debug: true
+  syntax_highlighter: rouge
 
 minfy_html: true
 

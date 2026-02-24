@@ -1,0 +1,19 @@
+@import "theme/variables";
+
+input[name="hp-input"] {
+  position: absolute;
+  left: -999em;
+}
+
+.g-recaptcha > div {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .submit-button {
+    button {
+      font-size: 1.5em;
+    }
+  }
+}

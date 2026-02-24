@@ -22,7 +22,7 @@ We highly value communication and want to speak with you every day if possible. 
 <h3>Always Be Learning</h3>
 
 <div class="pull-right with-padding">
-  {% asset ruby.png class="img-responsive" alt='Velocity Labs at RailsConf 2017', width=120 %}
+  <img src="/images/ruby.png" class="img-responsive" alt="Velocity Labs at RailsConf 2017" width="120">
 </div>
 
 Technology changes quickly, and we need to be able to keep up with the latest in our field. To accomplish that, we keep ourselves up-to-date on the latest developments in Ruby, Ruby on Rails, and JavaScript.
@@ -51,4 +51,4 @@ Our first reviews have been outstanding, and we’ve already jumped to the top o
 
 Before we get back to working for our clients, we encourage businesses that are thinking about working with us to view our Clutch profile and [read what clients say about Velocity Labs](https://clutch.co/profile/velocity-labs). We also encourage our current and past clients to leave a review for us. Now, back to developing!
 
-{% asset velocity-railsconf-2017.png class="img-responsive" alt='Velocity Labs at RailsConf 2017' %}
+<img src="/images/velocity-railsconf-2017.png" class="img-responsive" alt="Velocity Labs at RailsConf 2017">

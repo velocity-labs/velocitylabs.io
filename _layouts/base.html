@@ -10,7 +10,7 @@
     <meta property="og:site_name" content="{{ site.company.name }}">
     <meta property="og:title" content="{% if page.title %}{{ page.title }} {% else %}{{ site.company.name }}{% endif %}"/>
     <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
-    <meta property="og:image" content="{{ site.url }}{{ assets['logo-text.png'].digest_path }}"/>
+    <meta property="og:image" content="{{ site.url }}/images/logo-text.png"/>
     {% if page.og_type %}
       <meta property="og:type" content="{{ page.og_type }}"/>
     {% else %}
@@ -32,7 +32,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
 
-    {% asset main.scss %}
+    {% vite_client_tag %}
+    {% vite_stylesheet_tag application %}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
