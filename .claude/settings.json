@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(yarn install)",
+      "Bash(yarn build)",
+      "Bash(yarn add *)",
+      "Bash(yarn remove *)",
+      "Bash(bundle install)",
+      "Bash(bundle exec puma *)",
+      "Bash(jekyll build *)",
+      "Bash(env -i HOME=\"$HOME\" *jekyll build*)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git branch *)",
+      "Bash(git stash *)",
+      "Bash(ls *)",
+      "mcp__chrome-devtools__*"
+    ],
+    "deny": [
+      "Read(.env)"
+    ]
+  }
+}

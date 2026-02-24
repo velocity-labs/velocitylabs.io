@@ -11,3 +11,4 @@ sitemap.xml
 sitemap.xml.gz
 tmp
 vendor/cache
+.claude/settings.local.json
