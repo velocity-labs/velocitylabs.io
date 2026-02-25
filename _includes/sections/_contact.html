@@ -10,7 +10,37 @@
           <div id="contact-form-success"></div> <!-- For success/fail messages -->
 
           <div class='contact-form'>
+            <form action="/contact-form" name="sentMessage" id="contactForm" novalidate data-form="Contact Form" data-recaptcha-key="{{ site.recaptcha_v3_site_key }}">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class='form-group'>
+                    <input class='form-control' placeholder='Name' type="text" id="name" name="name">
+                  </div>
 
+                  <div class="form-group">
+                    <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
+                  </div>
+
+                  <div class="form-group">
+                    <input class='form-control phone' placeholder='Phone Number' type='tel' id="phone" name="phone">
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="Give us a brief description of your project" id="message" name="message" style="resize:none"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <input name="hp-input" placeholder="Do not fill" type="text">
+
+              <div id="contact-form-error"></div>
+
+              <footer class="submit-button">
+                <button type="submit">Send your message</button>
+              </footer>
+            </form>
           </div>
         </div>
       </div>

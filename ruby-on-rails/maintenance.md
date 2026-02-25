@@ -93,7 +93,7 @@ title: Ruby on Rails Application Maintenance
         </p>
       </div>
 
-      <div id="benefits">
+      <div id="benefits" class="row">
         <div class="col-lg-4">
           <h4>
             <i class="fa fa-tasks"></i>
