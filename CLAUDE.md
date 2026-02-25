@@ -11,6 +11,12 @@ Velocity Labs company website and blog. Hybrid architecture: Jekyll 3.9.0 genera
 ```bash
 # Install dependencies
 bundle install
+yarn install  # Use yarn, not npm
+
+# Package management — always use yarn (not npm)
+yarn add <package>           # add a dependency
+yarn add -D <package>        # add a dev dependency
+yarn remove <package>        # remove a dependency
 
 # Local development (Foreman is unreliable — use two terminals instead)
 jekyll build --watch          # Terminal 1: rebuilds _site/ on changes
@@ -18,6 +24,9 @@ bundle exec puma -t 5:5 -p 3000  # Terminal 2: serves at http://localhost:3000
 
 # One-off build
 jekyll build --trace
+
+# Claude Code jekyll build (RVM doesn't auto-switch in subshells)
+env -i HOME="$HOME" PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bash -l -c 'jekyll build --trace'
 ```
 
 There is no test suite or linter configured.

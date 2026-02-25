@@ -8,7 +8,7 @@ title: Velocity Labs Terms of Service
 <section id="terms">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <div class="page-header text-center">
           <h1>Velocity Labs Terms of Service</h1>
         </div>

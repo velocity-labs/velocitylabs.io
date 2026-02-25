@@ -1,11 +1,8 @@
 // Theme
 @import "theme/theme";
-@import "theme/magnific-popup";
-
-// Vendor
-@import "vendor/bootstrap-select.min";
 
 // Frontend partials
+@import "frontend/lightbox";
 @import "frontend/blog";
 @import "frontend/clutch";
 @import "frontend/contact";

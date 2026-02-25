@@ -3,39 +3,28 @@
 }
 
 #portfolio {
-  img {
-    width: 313px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .portfolio-item {
+    margin-bottom: 20px;
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
   }
 }
 
 @media (max-width: 767px) {
   #portfolio {
-    img {
-      width: 325px;
-    }
-
     .portfolio-item {
-      position: relative !important;
-      top: initial !important;
-      left: initial !important;
-
       text-align: center;
-    }
-  }
-}
 
-@media (min-width: 768px) and (max-width: 991px) {
-  #portfolio {
-    img {
-      width: 344px;
-    }
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  #portfolio {
-    img {
-      width: 216px;
+      img {
+        max-width: 325px;
+      }
     }
   }
 }

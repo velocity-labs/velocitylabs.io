@@ -5,24 +5,24 @@
 
   <div class="container">
     <div class='row'>
-      <div class='col-md-offset-2 col-md-8'>
-        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+      <div class='offset-md-2 col-md-8'>
+        <div class="carousel slide" data-bs-ride="carousel" id="quote-carousel">
 
           <!-- Bottom Carousel Indicators -->
           <ol class="carousel-indicators">
             {% for testimonial in site.data.testimonials limit: 5 %}
-              <li data-target="#quote-carousel" data-slide-to="{{ forloop.index0 }}" class="active"></li>
+              <button type="button" data-bs-target="#quote-carousel" data-bs-slide-to="{{ forloop.index0 }}" {% if forloop.index0 == 0 %}class="active" aria-current="true"{% endif %}></button>
             {% endfor %}
           </ol>
 
           <!-- Carousel Slides / Quotes -->
           <div class="carousel-inner">
             {% for testimonial in site.data.testimonials limit: 5 %}
-              <div class="testimonial item {% if forloop.index0 == 0 %}active{% endif %}">
+              <div class="testimonial carousel-item {% if forloop.index0 == 0 %}active{% endif %}">
                 <blockquote>
                   <div class="row">
                     <div class="col-sm-3 text-center">
-                      <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100" alt="{{ testimonial.name }}">
+                      <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100" alt="{{ testimonial.name }}">
                     </div>
                     <div class="col-sm-9">
                       <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
@@ -35,8 +35,8 @@
           </div>
 
           <!-- Carousel Buttons Next/Prev -->
-          <a data-slide="prev" href="#quote-carousel" class="left carousel-control visible-md visible-lg"><i class="fa fa-chevron-left"></i></a>
-          <a data-slide="next" href="#quote-carousel" class="right carousel-control  visible-md visible-lg"><i class="fa fa-chevron-right"></i></a>
+          <button type="button" data-bs-slide="prev" data-bs-target="#quote-carousel" class="carousel-control-prev d-none d-md-flex"><i class="fa fa-chevron-left"></i></button>
+          <button type="button" data-bs-slide="next" data-bs-target="#quote-carousel" class="carousel-control-next d-none d-md-flex"><i class="fa fa-chevron-right"></i></button>
         </div>
       </div>
     </div>

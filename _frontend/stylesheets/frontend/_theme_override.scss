@@ -27,7 +27,6 @@ a {
   }
 }
 
-a.carousel-control,
 a.icon,
 .navbar a,
 .page-header a {
@@ -211,7 +210,7 @@ section.dark.with-bg {
     margin-bottom: 0;
   }
 
-  .close {
+  .btn-close {
     margin-left: 1em;
   }
 
@@ -250,12 +249,10 @@ section.dark.with-bg {
 }
 
 .has-error .form-control {
-  border-color: rgba(0,0,0,0.1);
-  border-right-color: #a94442 !important;
-  border-right-width: 3px !important;
+  border-color: #a94442 !important;
 
   &:focus {
-    border-color: rgba(0,0,0,0.1);
+    border-color: #843534 !important;
   }
 }
 
@@ -294,16 +291,6 @@ section.dark.with-bg {
         color: black;
       }
     }
-  }
-}
-
-.owl-theme-main .owl-item .item {
-  h3 {
-    font-family: "Open Sans";
-  }
-
-  p {
-    padding: 0 1em;
   }
 }
 

@@ -10,7 +10,7 @@ title: The Lab Notebook Blog
       {% unless post.draft %}
         {% assign authors = site.data.people | where:"id",post.author_id %}
         <div class="row">
-          <div class="col-md-8 col-md-offset-2">
+          <div class="col-md-8 offset-md-2">
             <h2 class="title"><a href="{{ post.url }}" rel="prefetch">{{ post.title }}</a></h2>
             <p>{{ post.excerpt }}</p>
             <a href="{{ post.url }}" rel="prefetch" class="btn btn-outline-primary">Read The Article &raquo;</a>

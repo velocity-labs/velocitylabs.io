@@ -1,27 +1,22 @@
 <div class="container">
   <!-- Fixed navbar -->
-  <div class="navbar cbp-af-inner" role="navigation">
+  <nav class="navbar navbar-expand-md cbp-af-inner" role="navigation">
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand scroll" href="/#intro">
-          <img src="/images/logo.svg" alt="{{ site.company.name }}">
-          Velocity Labs
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav pull-right">
+      <a class="navbar-brand scroll" href="/#intro">
+        <img src="/images/logo.svg" alt="{{ site.company.name }}">
+        Velocity Labs
+      </a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="main-navbar">
+        <ul class="nav navbar-nav ms-auto">
           <li><a href="/#about" rel="nofollow" >About</a></li>
           <li><a href="/#projects" rel="nofollow" >Projects</a></li>
-          <!-- <li class="hidden-sm"><a href="/#team">Team</a></li> -->
+          <!-- <li class="d-none d-sm-block"><a href="/#team">Team</a></li> -->
           <li><a class="contact-us" href="/#contact" rel="nofollow" >Contact Us</a></li>
         </ul>
       </div>
     </div>
-  </div>
+  </nav>
 </div>

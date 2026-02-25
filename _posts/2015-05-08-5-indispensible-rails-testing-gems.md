@@ -67,7 +67,7 @@ helps us understand where and when we've slacked off on testing in
 a nicely consumable HTML format.
 
 <a href="http://colszowka.github.com/simplecov/devise_result-0.5.3.png">
-  <img src="https://cloud.githubusercontent.com/assets/137793/17071162/db6f253e-502d-11e6-9d84-e40c3d75f333.png" alt="SimpleCov coverage report" class="img-responsive">
+  <img src="https://cloud.githubusercontent.com/assets/137793/17071162/db6f253e-502d-11e6-9d84-e40c3d75f333.png" alt="SimpleCov coverage report" class="img-fluid">
 </a>
 
 Additionally, by setting the

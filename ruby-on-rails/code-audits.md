@@ -16,7 +16,7 @@ title: Ruby on Rails Code Audit
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h2 class="text-center">
           <blockquote>
             "We outsourced our development and the team says we're just about
@@ -46,7 +46,7 @@ title: Ruby on Rails Code Audit
 <section class="dark">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">Full-Service Ruby on Rails Code Audits</h3>
         <p>
           The team at Velocity Labs has been working with Rails since 2007.
@@ -99,7 +99,7 @@ title: Ruby on Rails Code Audit
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">How Much Does It Cost?</h3>
 
         <p>
@@ -127,13 +127,13 @@ title: Ruby on Rails Code Audit
 <section class="dark testimonial">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
+      <div class="col-lg-10 offset-lg-1">
         {% assign testimonials = site.data.testimonials | where:"name","Robert Wallace" %}
         {% for testimonial in testimonials limit: 1 %}
           <blockquote>
             <div class="row">
               <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+                <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
               </div>
               <div class="col-sm-9">
                 <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
@@ -150,7 +150,7 @@ title: Ruby on Rails Code Audit
 <section id="contact">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">Are You Ready To Get Started?</h3>
 
         <p>
@@ -163,11 +163,11 @@ title: Ruby on Rails Code Audit
 
         <div class='contact-form'>
           <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Code Audit Form">
-            <div class='form-group col-lg-8 col-lg-offset-2'>
+            <div class='form-group col-lg-8 offset-lg-2'>
               <input class='name form-control' placeholder='Name' type="text" id="name" name="name">
             </div>
 
-            <div class="form-group col-lg-8 col-lg-offset-2">
+            <div class="form-group col-lg-8 offset-lg-2">
               <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
             </div>
 

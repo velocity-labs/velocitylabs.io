@@ -7,7 +7,7 @@ title: Ruby on Rails Application Maintenance Terms
 <section id="terms">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h2 class="text-center">{{ page.title }}</h2>
 
         <p>

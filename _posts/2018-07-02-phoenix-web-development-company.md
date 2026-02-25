@@ -21,8 +21,8 @@ We highly value communication and want to speak with you every day if possible. 
 
 <h3>Always Be Learning</h3>
 
-<div class="pull-right with-padding">
-  <img src="/images/ruby.png" class="img-responsive" alt="Velocity Labs at RailsConf 2017" width="120">
+<div class="float-end with-padding">
+  <img src="/images/ruby.png" class="img-fluid" alt="Velocity Labs at RailsConf 2017" width="120">
 </div>
 
 Technology changes quickly, and we need to be able to keep up with the latest in our field. To accomplish that, we keep ourselves up-to-date on the latest developments in Ruby, Ruby on Rails, and JavaScript.
@@ -35,7 +35,7 @@ Our clients can rest assured they're taken care of from a technical standpoint. 
 
 <h3>Stay Flexible and Adjust Based on the Needs of Your Customers</h3>
 
-<blockquote class="pull-right">Our solution was developed and launched early and efficiently. The final result was very popular with our end users. - Valley Metro</blockquote>
+<blockquote class="float-end">Our solution was developed and launched early and efficiently. The final result was very popular with our end users. - Valley Metro</blockquote>
 
 Part of our development process includes getting a minimum viable product in the hands of users as quickly as possible. The longer you wait to gain feedback from your customers, the more likely it is you're concentrating on the wrong functionality.
 
@@ -43,7 +43,7 @@ We encourage all of our clients to launch with the simplest product that provide
 
 <h3>Need More Proof?</h3>
 
-<div class="clutch-widget pull-left" data-url="https://clutch.co" data-widget-type="2" data-height="50" data-clutchcompany-id="478268"></div>
+<div class="clutch-widget float-start" data-url="https://clutch.co" data-widget-type="2" data-height="50" data-clutchcompany-id="478268"></div>
 
 Our reviews, along with [our portfolio](/portfolio) give potential partners a great idea of our capabilities and what it is like to work with us.
 
@@ -51,4 +51,4 @@ Our first reviews have been outstanding, and we’ve already jumped to the top o
 
 Before we get back to working for our clients, we encourage businesses that are thinking about working with us to view our Clutch profile and [read what clients say about Velocity Labs](https://clutch.co/profile/velocity-labs). We also encourage our current and past clients to leave a review for us. Now, back to developing!
 
-<img src="/images/velocity-railsconf-2017.png" class="img-responsive" alt="Velocity Labs at RailsConf 2017">
+<img src="/images/velocity-railsconf-2017.png" class="img-fluid" alt="Velocity Labs at RailsConf 2017">

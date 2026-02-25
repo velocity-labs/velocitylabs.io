@@ -1,8 +1,9 @@
-$(function() {
-  $('.tooltips').tooltip();
-  $('.popovers').popover({
-    container: 'body',
-    placement: 'auto',
-    trigger: 'hover'
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.popovers').forEach(el => {
+    new bootstrap.Popover(el, {
+      container: 'body',
+      placement: 'auto',
+      trigger: 'hover'
+    });
   });
 });

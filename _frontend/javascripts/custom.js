@@ -1,213 +1,182 @@
 /* -- Full Screen Viewport Container
    ---------------------------- */
-$(window).load(function(){
+window.addEventListener('load', () => {
   onePageScroll();
   scrollAnchor();
 });
 
-$(document).ready(function() {
-  // owlCarousel();
-  magnificPopup();
+document.addEventListener('DOMContentLoaded', () => {
+  initLightbox();
+  initPortfolioFilter();
 });
 
-/* --- owlCarousel ------------- */
-// function owlCarousel() {
-//     $("#home #intro").owlCarousel({
-//       lazyLoad: true,
-//       lazyEffect: "fade",
-//       singleItem: true,
-//       navigation: true,
-//       navigationText : ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-//       slideSpeed : 450,
-//       pagination: false,
-//       transitionStyle: "fade",
-//       theme: "owl-theme-featured"
+/* --- Lightbox (replaces Magnific Popup) ------------------- */
+function initLightbox() {
+  const galleries = document.querySelectorAll('.popup-gallery');
+  if (galleries.length === 0) return;
 
-//     });
-// }
+  // Build gallery items array
+  const items = Array.from(galleries).map(el => ({
+    src: el.getAttribute('href'),
+    title: el.getAttribute('title') || '',
+    el: el
+  }));
 
-/* --- scrollReveal ------------------- */
-window.scrollReveal = new scrollReveal();
+  // Create dialog element
+  const dialog = document.createElement('dialog');
+  dialog.className = 'lightbox-dialog';
 
-/* --- magnific popup ------------------- */
-function magnificPopup() {
-  // Gallery
-  $('.popup-gallery').magnificPopup({
-    type: 'image',
-    tLoading: 'Loading image #%curr%...',
-    mainClass: 'mfp-fade',
-    disableOn: 700,
-    removalDelay: 160,
-    gallery: {
-      enabled: true,
-      navigateByImgClick: true,
-      preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-    },
-    image: {
-      tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-      verticalFit: false
-    },
-    callbacks: {
-      close: function() {
-        $('.portfolio-item figure figcaption').removeClass('active');
-        $('.portfolio-item figure .info').removeClass('active');
-      }
-    }
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'lightbox-close';
+  closeBtn.setAttribute('aria-label', 'Close');
+  closeBtn.textContent = '\u00D7';
+
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'lightbox-prev';
+  prevBtn.setAttribute('aria-label', 'Previous');
+  prevBtn.textContent = '\u2039';
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'lightbox-next';
+  nextBtn.setAttribute('aria-label', 'Next');
+  nextBtn.textContent = '\u203A';
+
+  const counter = document.createElement('div');
+  counter.className = 'lightbox-counter';
+
+  const img = document.createElement('img');
+  img.alt = '';
+
+  dialog.appendChild(closeBtn);
+  dialog.appendChild(prevBtn);
+  dialog.appendChild(img);
+  dialog.appendChild(nextBtn);
+  dialog.appendChild(counter);
+  document.body.appendChild(dialog);
+
+  let currentIndex = 0;
+
+  function show(index) {
+    currentIndex = index;
+    img.src = items[index].src;
+    img.alt = items[index].title;
+    counter.textContent = (index + 1) + ' of ' + items.length;
+    prevBtn.style.display = items.length > 1 ? '' : 'none';
+    nextBtn.style.display = items.length > 1 ? '' : 'none';
+  }
+
+  // Open on click (respect disableOn: 700)
+  galleries.forEach((el, i) => {
+    el.addEventListener('click', (e) => {
+      if (window.innerWidth < 700) return;
+      e.preventDefault();
+      show(i);
+      dialog.showModal();
+    });
   });
 
-  $('.portfolio-item figcaption a.preview').click(function(){
-    $(this).parent().addClass('active');
-    $(this).parent().siblings('.info').addClass('active');
+  closeBtn.addEventListener('click', () => dialog.close());
+
+  prevBtn.addEventListener('click', () => {
+    show((currentIndex - 1 + items.length) % items.length);
   });
 
-  // Zoom Gallery
-
-  $('.zoom-modal').magnificPopup({
-    type: 'image',
-    mainClass: 'mfp-with-zoom', // this class is for CSS animation below
-
-    zoom: {
-      enabled: true, // By default it's false, so don't forget to enable it
-
-      duration: 300, // duration of the effect, in milliseconds
-      easing: 'ease-in-out', // CSS transition easing function
-
-      // The "opener" function should return the element from which popup will be zoomed in
-      // and to which popup will be scaled down
-      // By defailt it looks for an image tag:
-      opener: function(openerElement) {
-        // openerElement is the element on which popup was initialized, in this case its <a> tag
-        // you don't need to add "opener" option if this code matches your needs, it's defailt one.
-        return openerElement.is('i') ? openerElement : openerElement.find('i');
-      }
-    }
-
+  nextBtn.addEventListener('click', () => {
+    show((currentIndex + 1) % items.length);
   });
 
-  $('.popup-modal').magnificPopup({
-		type: 'inline',
+  // Close on backdrop click
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
 
-		fixedContentPos: false,
-		fixedBgPos: true,
-
-		overflowY: 'auto',
-
-		closeBtnInside: true,
-		preloader: false,
-
-		midClick: true,
-		removalDelay: 300,
-		mainClass: 'my-mfp-slide-bottom'
-	});
+  // Keyboard navigation
+  dialog.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
 }
 
-/* --- Isotope ------------------- */
-function isotope() {
- var $container = $('#portfolio');
+/* --- Portfolio Filter (replaces Isotope) ------------------- */
+function initPortfolioFilter() {
+  const container = document.getElementById('portfolio');
+  const filtersEl = document.getElementById('filters');
+  if (!container || !filtersEl) return;
 
- // init
- $container.imagesLoaded( function(){
-   $container.isotope({
-     // options
-     itemSelector: '.portfolio-item',
-     layoutMode: 'fitRows'
-   });
- });
+  filtersEl.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'BUTTON') return;
 
- // filter items on button click
- $('#filters').on( 'click', 'button', function( event ) {
-   var filterValue = $(this).attr('data-filter-value');
-   $container.isotope({ filter: filterValue });
-   $('#filters button').removeClass('active');
-   $(this).addClass('active');
- });
+    const filterValue = e.target.getAttribute('data-filter-value');
+
+    container.querySelectorAll('.portfolio-item').forEach(item => {
+      if (filterValue === '*' || item.classList.contains(filterValue.replace('.', ''))) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    filtersEl.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+  });
 }
 
 /* --- Scroll to Anchor ------------------- */
 function scrollAnchor() {
-  // scroll to specific anchor
-  $('.scroll').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top - 30
-        }, 650);
-        return false;
+  document.querySelectorAll('.scroll').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (location.pathname.replace(/^\//, '') === el.pathname.replace(/^\//, '') &&
+          location.hostname === el.hostname) {
+        const target = document.querySelector(el.hash);
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({
+            top: target.getBoundingClientRect().top + window.scrollY - 30,
+            behavior: 'smooth'
+          });
+        }
       }
-    }
+    });
   });
 }
 
-/* --- One Page Scroll ------------------- */
+/* --- One Page Scroll (replaces jQuery One Page Nav) ------------------- */
 function onePageScroll() {
-  if($('#home').length > 0) {
-    var offset = 30;
-    if(screen.width < 767) offset = 0;
+  if (!document.getElementById('home')) return;
 
-    $('.nav').onePageNav({
-        currentClass: 'current',
-        changeHash: false,
-        scrollSpeed: 650,
-        scrollOffset: offset,
-        scrollThreshold: 0.5,
-        filter: ':not(.login, .signup)',
-        easing: 'swing',
-        begin: function() {
-            //I get fired when the animation is starting
-        },
-        end: function() {
-            //I get fired when the animation is ending
-        },
-        scrollChange: function($currentListItem) {
-            //I get fired when you enter a section and I pass the list item of the section
-        }
+  const navLinks = document.querySelectorAll('.nav a[href^="/#"]');
+  const sections = [];
+
+  navLinks.forEach(link => {
+    const hash = link.getAttribute('href').replace('/', '');
+    const section = document.querySelector(hash);
+    if (section) sections.push({ el: section, link: link.closest('li') });
+  });
+
+  if (sections.length === 0) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.nav li.current').forEach(li => li.classList.remove('current'));
+        const match = sections.find(s => s.el === entry.target);
+        if (match && match.link) match.link.classList.add('current');
+      }
     });
-  }
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => observer.observe(s.el));
 }
 
-$(window).scroll(function() {
-  var windowpos = $(window).scrollTop() ;
-
-  if (windowpos <= 500) {
-      $('.nav li.current').removeClass('current');
+window.addEventListener('scroll', () => {
+  if (window.scrollY <= 500) {
+    document.querySelectorAll('.nav li.current').forEach(el => el.classList.remove('current'));
   }
-});
-
-//Placeholder fixed for Internet Explorer
-$(function() {
-	var input = document.createElement("input");
-	if(('placeholder' in input)==false) {
-		$('[placeholder]').focus(function() {
-			var i = $(this);
-			if(i.val() == i.attr('placeholder')) {
-				i.val('').removeClass('placeholder');
-				if(i.hasClass('password')) {
-					i.removeClass('password');
-					this.type='password';
-				}
-			}
-		}).blur(function() {
-			var i = $(this);
-			if(i.val() == '' || i.val() == i.attr('placeholder')) {
-				if(this.type=='password') {
-					i.addClass('password');
-					this.type='text';
-				}
-				i.addClass('placeholder').val(i.attr('placeholder'));
-			}
-		}).blur().parents('form').submit(function() {
-			$(this).find('[placeholder]').each(function() {
-				var i = $(this);
-				if(i.val() == i.attr('placeholder'))
-					i.val('');
-			})
-		});
-	}
 });
 
 /*When clicking on Full hide fail/success boxes */
-$('#name').focus(function() {
-  $('#success').html('');
-});
+const nameInput = document.getElementById('name');
+const successEl = document.getElementById('success');
+if (nameInput && successEl) {
+  nameInput.addEventListener('focus', () => { successEl.textContent = ''; });
+}

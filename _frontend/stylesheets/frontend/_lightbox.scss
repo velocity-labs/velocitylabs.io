@@ -1,0 +1,90 @@
+.lightbox-dialog {
+  border: none;
+  background: transparent;
+  padding: 0;
+  box-sizing: border-box;
+  width: 90vw;
+  max-width: 1100px;
+  min-width: min(90vw, 1100px);
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::backdrop {
+    background: rgba(11, 11, 11, 0.8);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0.65;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    padding: 0;
+    z-index: 2;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 3em;
+    cursor: pointer;
+    opacity: 0.65;
+    padding: 10px;
+    z-index: 1;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .lightbox-prev {
+    left: 10px;
+  }
+
+  .lightbox-next {
+    right: 10px;
+  }
+
+  .lightbox-counter {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    color: #ccc;
+    font-size: 12px;
+    line-height: 18px;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 900px) {
+  .lightbox-dialog {
+    .lightbox-prev,
+    .lightbox-next {
+      font-size: 2em;
+    }
+  }
+}

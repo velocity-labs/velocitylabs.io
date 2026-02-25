@@ -16,7 +16,7 @@ title: Software Project Story Workshop
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h2 class="text-center">
           <blockquote>
             "I have a great idea, but I'm not a coder... I wouldn't even
@@ -51,7 +51,7 @@ title: Software Project Story Workshop
 <section class="dark">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">We Have The Experience Necessary To Help You Define Your Software</h3>
         <p>
           The team at Velocity Labs has been creating software since 2001.
@@ -83,7 +83,7 @@ title: Software Project Story Workshop
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">Our Approach: The Story Workshop</h3>
 
         <p>
@@ -145,13 +145,13 @@ title: Software Project Story Workshop
 <section class="dark testimonial">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
+      <div class="col-lg-10 offset-lg-1">
         {% assign testimonials = site.data.testimonials | where:"name","Andrew Hyde" %}
         {% for testimonial in testimonials limit: 1 %}
           <blockquote>
             <div class="row">
               <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+                <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
               </div>
               <div class="col-sm-9">
                 <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
@@ -168,7 +168,7 @@ title: Software Project Story Workshop
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">How Much Does It Cost?</h3>
 
         <p>
@@ -193,13 +193,13 @@ title: Software Project Story Workshop
 <section class="dark testimonial">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
+      <div class="col-lg-10 offset-lg-1">
         {% assign testimonials = site.data.testimonials | where:"name","Josephine Morris" %}
         {% for testimonial in testimonials limit: 1 %}
           <blockquote>
             <div class="row">
               <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+                <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
               </div>
               <div class="col-sm-9">
                 <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
@@ -216,7 +216,7 @@ title: Software Project Story Workshop
 <section id="contact">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">Are You Ready To Get Started?</h3>
 
         <p>
@@ -229,11 +229,11 @@ title: Software Project Story Workshop
 
         <div class='contact-form'>
           <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Story Workshop Form">
-            <div class='form-group col-lg-8 col-lg-offset-2'>
+            <div class='form-group col-lg-8 offset-lg-2'>
               <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
             </div>
 
-            <div class="form-group col-lg-8 col-lg-offset-2">
+            <div class="form-group col-lg-8 offset-lg-2">
               <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
             </div>
 

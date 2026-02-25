@@ -12,7 +12,7 @@ sitemap: false
 <section>
   <div class="container">
     <div id="next-steps" class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h2 class="text-center"><blockquote>The journey of a thousand miles begins with one step.</blockquote></h2>
 
         <h2 class="text-center">Let's get started!</h2>

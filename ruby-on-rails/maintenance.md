@@ -15,7 +15,7 @@ title: Ruby on Rails Application Maintenance
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h2 class="text-center">
           <blockquote>
             "We launched months ago, but afterward, our developer moved on and we failed
@@ -52,7 +52,7 @@ title: Ruby on Rails Application Maintenance
 <section class="dark">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">You Have Options</h3>
 
         <p>
@@ -83,7 +83,7 @@ title: Ruby on Rails Application Maintenance
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">Let The Experts Maintain Your Application</h3>
 
         <p>
@@ -178,13 +178,13 @@ title: Ruby on Rails Application Maintenance
 <section class="dark testimonial">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
+      <div class="col-lg-10 offset-lg-1">
         {% assign testimonials = site.data.testimonials | where:"name","Andrew Hyde" %}
         {% for testimonial in testimonials limit: 1 %}
           <blockquote>
             <div class="row">
               <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+                <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
               </div>
               <div class="col-sm-9">
                 <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
@@ -201,7 +201,7 @@ title: Ruby on Rails Application Maintenance
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">How Much Does It Cost?</h3>
 
         <p>
@@ -219,13 +219,13 @@ title: Ruby on Rails Application Maintenance
 <section class="dark testimonial">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
+      <div class="col-lg-10 offset-lg-1">
         {% assign testimonials = site.data.testimonials | where:"name","Linda Ruehlman" %}
         {% for testimonial in testimonials limit: 1 %}
           <blockquote>
             <div class="row">
               <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="img-rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+                <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
               </div>
               <div class="col-sm-9">
                 <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
@@ -239,10 +239,10 @@ title: Ruby on Rails Application Maintenance
   </div>
 </section>
 
-<section id="contact">
+<section>
   <div class="container">
     <!-- <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">Are You Ready To Get Started?</h3>
 
         <div class="row">
@@ -251,7 +251,7 @@ title: Ruby on Rails Application Maintenance
           </p>
 
           <p class='col-lg-2 text-center'>
-            <img src="/images/guarantee.png" class="img-responsive" alt="{{ site.company.name }} Guarantee">
+            <img src="/images/guarantee.png" class="img-fluid" alt="{{ site.company.name }} Guarantee">
           </p>
         </div>
 
@@ -262,7 +262,7 @@ title: Ruby on Rails Application Maintenance
             </p>
           </div>
 
-          <div class="col-lg-8 col-lg-offset-2">
+          <div class="col-lg-8 offset-lg-2">
             <form action="/charge" method="post" id="subscription-form" class="payment" novalidate>
               <div class='form-group'>
                 <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
@@ -301,7 +301,7 @@ title: Ruby on Rails Application Maintenance
     </div> -->
 
     <div class="row">
-      <div id="faq" class="col-lg-10 col-lg-offset-1">
+      <div id="faq" class="col-lg-10 offset-lg-1">
         <h3 class=" text-center">Frequently Asked Questions</h3>
 
         <p>
@@ -348,10 +348,10 @@ title: Ruby on Rails Application Maintenance
   </div>
 </section>
 
-<section class="dark">
+<section class="dark" id="contact">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 offset-lg-2">
         <p>
           Still not sure?  Fill out the form below and we'll get back to you quickly to
           discuss your application. We've helped many companies and are
@@ -363,11 +363,11 @@ title: Ruby on Rails Application Maintenance
         <div class='contact-form'>
           <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Maintenance Form">
             <div class="row">
-              <div class='form-group col-lg-8 col-lg-offset-2'>
+              <div class='form-group col-lg-8 offset-lg-2'>
                 <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
               </div>
 
-              <div class="form-group col-lg-8 col-lg-offset-2">
+              <div class="form-group col-lg-8 offset-lg-2">
                 <input class='form-control email' placeholder='E-mail Address' type='email' id="email" name="email">
               </div>
 

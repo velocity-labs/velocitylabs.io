@@ -1,12 +1,12 @@
-$(function() {
-  var height = 300;
-  var items = $('#quote-carousel .item');
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('#quote-carousel .carousel-item');
+  let maxHeight = 300;
 
-  for (var i = 0; i < items.length; i++) {
-    height = Math.max(height, $(items[i]).height() + 50);
-  }
+  items.forEach(item => {
+    maxHeight = Math.max(maxHeight, item.offsetHeight + 50);
+  });
 
-  for (var j = 0; j < items.length; j++) {
-    $(items[j]).height(height);
-  }
+  items.forEach(item => {
+    item.style.height = maxHeight + 'px';
+  });
 });

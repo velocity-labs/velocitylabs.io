@@ -1,12 +1,13 @@
-$(function() {
-  $('.post-body a').each(function() {
-    var a = new RegExp(window.location.host + '|mailto:|tel:');
-    if (!a.test(this.href)) {
-      $(this).attr('rel', $.trim([$(this).attr('rel'), 'external'].join(' ')));
+document.addEventListener('DOMContentLoaded', () => {
+  const hostPattern = new RegExp(window.location.host + '|mailto:|tel:');
 
-      $(this).click(function(event) {
-        window.open(this.href, '_blank');
-        return false;
+  document.querySelectorAll('.post-body a').forEach(el => {
+    if (!hostPattern.test(el.href)) {
+      const rel = [el.getAttribute('rel'), 'external'].filter(Boolean).join(' ').trim();
+      el.setAttribute('rel', rel);
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.open(el.href, '_blank');
       });
     }
   });
