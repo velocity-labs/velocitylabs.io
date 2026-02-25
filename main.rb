@@ -176,21 +176,25 @@ post '/contact-form/?' do
 
   # 1. Honeypot check — bots fill hidden fields
   unless params['hp-input'].to_s.strip.empty?
+    puts "Anti-spam: honeypot field filled"
     return { status: :failure }.to_json
   end
 
   # 2. Email format validation
   unless params[:email].to_s.match?(/\A[^@\s]+@[^@\s]+\.[^@\s]+\z/)
+    puts "Anti-spam: invalid email format: #{params[:email]}"
     return { status: :failure }.to_json
   end
 
   # 3. CSRF token check
   unless params['_csrf_token'].to_s == session[:csrf_token].to_s && !session[:csrf_token].nil?
+    puts "Anti-spam: CSRF mismatch — param=#{params['_csrf_token'].to_s[0..7]}... session=#{session[:csrf_token].to_s[0..7]}... nil?=#{session[:csrf_token].nil?}"
     return { status: :failure }.to_json
   end
 
   # 4. Timing check — reject submissions faster than 3 seconds
   if session[:form_loaded_at].nil? || (Time.now.to_i - session[:form_loaded_at]) < 3
+    puts "Anti-spam: timing check failed — loaded_at=#{session[:form_loaded_at]} now=#{Time.now.to_i}"
     return { status: :failure }.to_json
   end
 
