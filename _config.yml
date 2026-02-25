@@ -76,6 +76,9 @@ company:
   phone:       (602) 633-5049
   subtitle:    Ruby on Rails Developers | Custom Web Applications
 
+## reCAPTCHA ##
+recaptcha_v3_site_key: "6LcU23YsAAAAACwid6UHIKhccHDQBIEjzN2TIbkR"
+
 ## Blog ##
 blog:
   title:    The Lab Notebook

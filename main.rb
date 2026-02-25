@@ -3,32 +3,85 @@ require 'bundler'
 
 Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
 
-require 'debug' if settings.development?
+if settings.development?
+  require 'debug'
+  require 'dotenv'
+  Dotenv.load
+end
 
-# configure :production do
-#   require 'newrelic_rpm'
-# end
-
-# TODO: re-enable Pony email integration
-# require 'pony'
-# configure :production do
-#   Pony.options = {
-#     via: :smtp,
-#     via_options: {
-#       address:              'smtp.sendgrid.net',
-#       port:                 '587',
-#       domain:               'velocitylabs.io',
-#       user_name:            ENV['SENDGRID_USERNAME'],
-#       password:             ENV['SENDGRID_PASSWORD'],
-#       authentication:       :plain,
-#       enable_starttls_auto: true
-#     }
-#   }
-# end
+require 'sendgrid-ruby'
+require 'net/http'
+require 'json'
+require 'securerandom'
+require 'rack/attack'
 
 ## Global Settings ##
 set :public_folder, Proc.new { File.join(root, "_site") }
 set :protection, except: :frame_options
+
+enable :sessions
+set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+
+use Rack::Attack
+
+# In-memory cache store for Rack::Attack (no ActiveSupport needed)
+class MemoryStore
+  def initialize
+    @data = {}
+    @expires = {}
+    @mutex = Mutex.new
+  end
+
+  def read(key)
+    @mutex.synchronize do
+      expire(key)
+      @data[key]
+    end
+  end
+
+  def write(key, value, options = {})
+    @mutex.synchronize do
+      @data[key] = value
+      @expires[key] = Time.now + options[:expires_in] if options[:expires_in]
+    end
+  end
+
+  def increment(key, amount = 1, options = {})
+    @mutex.synchronize do
+      expire(key)
+      if @data.key?(key)
+        @data[key] += amount
+      else
+        @data[key] = amount
+        @expires[key] = Time.now + options[:expires_in] if options[:expires_in]
+      end
+      @data[key]
+    end
+  end
+
+  def delete(key)
+    @mutex.synchronize { @data.delete(key); @expires.delete(key) }
+  end
+
+  private
+
+  def expire(key)
+    if @expires[key] && @expires[key] < Time.now
+      @data.delete(key)
+      @expires.delete(key)
+    end
+  end
+end
+
+Rack::Attack.cache.store = MemoryStore.new
+
+Rack::Attack.throttle('contact-form/ip', limit: 5, period: 3600) do |req|
+  req.ip if req.path.start_with?('/contact-form') && req.post?
+end
+
+Rack::Attack.throttled_responder = lambda do |_env|
+  [429, { 'Content-Type' => 'application/json' }, [{ status: :rate_limited }.to_json]]
+end
 
 # TODO: re-enable Stripe integration
 # require 'stripe'
@@ -43,6 +96,14 @@ not_found do
 end
 
 ## GET requests ##
+get '/form-token' do
+  content_type :json
+  token = SecureRandom.hex(32)
+  session[:csrf_token] = token
+  session[:form_loaded_at] = Time.now.to_i
+  { token: token }.to_json
+end
+
 get '/' do
   if params[:ref]
     match = params[:ref].match(/(.*?)\/(.*)/)
@@ -110,57 +171,108 @@ end
 #   env['sinatra.error'].message
 # end
 
-# TODO: re-enable contact form route
-# post '/contact-form/?' do
-#   recaptcha_raw_response = RestClient.post 'https://www.google.com/recaptcha/api/siteverify', secret: ENV['RECAPTCHA_SECRET_KEY'], response: params['g-recaptcha-response'], remoteip: request.ip
-#   recaptcha = JSON.parse recaptcha_raw_response
-#
-#   if recaptcha["success"] == true
-#     htmlBody = %Q{
-#       <div style="font-family:Helvetica;">
-#         <h2>Contact Information</h2>
-#         <table style="font-size:11pt;">
-#           <tbody>
-#             <tr><td width="25%">Name:</td><td>#{params[:name]}</td></tr>
-#             <tr><td>Email:</td><td>#{params[:email]}</td></tr>
-#             <tr><td>Phone:</td><td>#{params[:phone]}</td></tr>
-#           </tbody>
-#         </table>
-#         <h2>Message</h2>
-#         <p style="font-size:11pt;">#{params[:message]}</p>
-#       </div>
-#     }
-#
-#     textBody = %Q{
-#       Contact Information
-#       ====================
-#       Name:  #{params[:name]}
-#       Email: #{params[:email]}
-#       Phone: #{params[:phone]}
-#
-#       Message
-#       ====================
-#       #{params[:message]}
-#     }
-#
-#     begin
-#       res = Pony.mail(
-#         to:        "Velocity Labs <contact@velocitylabs.io>",
-#         from:      "contact@velocitylabs.io",
-#         reply_to:  "#{params[:name]} <#{params[:email]}>",
-#         subject:   "Project contact form from #{params[:name]}",
-#         body:      textBody,
-#         html_body: htmlBody
-#       )
-#       response = res ? { status: :success } : { status: :failure }
-#     rescue
-#       response = { status: :failure }
-#     end
-#   else
-#     response = { status: :failure }
-#   end
-#
-#   content_type :json
-#   status 200
-#   body response.to_json
-# end
+post '/contact-form/?' do
+  content_type :json
+
+  # 1. Honeypot check — bots fill hidden fields
+  unless params['hp-input'].to_s.strip.empty?
+    return { status: :failure }.to_json
+  end
+
+  # 2. Email format validation
+  unless params[:email].to_s.match?(/\A[^@\s]+@[^@\s]+\.[^@\s]+\z/)
+    return { status: :failure }.to_json
+  end
+
+  # 3. CSRF token check
+  unless params['_csrf_token'].to_s == session[:csrf_token].to_s && !session[:csrf_token].nil?
+    return { status: :failure }.to_json
+  end
+
+  # 4. Timing check — reject submissions faster than 3 seconds
+  if session[:form_loaded_at].nil? || (Time.now.to_i - session[:form_loaded_at]) < 3
+    return { status: :failure }.to_json
+  end
+
+  # Clear one-time-use tokens
+  session.delete(:csrf_token)
+  session.delete(:form_loaded_at)
+
+  # 5. reCAPTCHA verification
+  recaptcha_response = Net::HTTP.post_form(
+    URI('https://www.google.com/recaptcha/api/siteverify'),
+    'secret' => ENV['RECAPTCHA_SECRET_KEY'],
+    'response' => params['g-recaptcha-response'],
+    'remoteip' => request.ip
+  )
+  recaptcha = JSON.parse(recaptcha_response.body)
+
+  # reCAPTCHA v3: check both success and score threshold
+  unless recaptcha['success'] && recaptcha['score'].to_f >= 0.5
+    puts "reCAPTCHA failed: success=#{recaptcha['success']} score=#{recaptcha['score']}"
+    return { status: :failure }.to_json
+  end
+
+  # 6. Build email and send via SendGrid
+  begin
+    name    = Rack::Utils.escape_html(params[:name].to_s)
+    email   = Rack::Utils.escape_html(params[:email].to_s)
+    phone   = Rack::Utils.escape_html(params[:phone].to_s)
+    message = Rack::Utils.escape_html(params[:message].to_s)
+
+    html_body = <<~HTML
+      <div style="font-family:Helvetica;">
+        <h2>Contact Information</h2>
+        <table style="font-size:11pt;">
+          <tbody>
+            <tr><td width="25%">Name:</td><td>#{name}</td></tr>
+            <tr><td>Email:</td><td>#{email}</td></tr>
+            <tr><td>Phone:</td><td>#{phone}</td></tr>
+          </tbody>
+        </table>
+        <h2>Message</h2>
+        <p style="font-size:11pt;">#{message}</p>
+      </div>
+    HTML
+
+    text_body = <<~TEXT
+      Contact Information
+      ====================
+      Name:  #{params[:name]}
+      Email: #{params[:email]}
+      Phone: #{params[:phone]}
+
+      Message
+      ====================
+      #{params[:message]}
+    TEXT
+
+    from = SendGrid::Email.new(email: 'contact@velocitylabs.io', name: 'Velocity Labs')
+    to = SendGrid::Email.new(email: 'contact@velocitylabs.io', name: 'Velocity Labs')
+    subject = "Contact form from #{params[:name]}"
+
+    mail = SendGrid::Mail.new
+    mail.from = from
+    mail.subject = subject
+    mail.reply_to = SendGrid::Email.new(email: params[:email], name: params[:name])
+
+    personalization = SendGrid::Personalization.new
+    personalization.add_to(to)
+    mail.add_personalization(personalization)
+    mail.add_content(SendGrid::Content.new(type: 'text/plain', value: text_body))
+    mail.add_content(SendGrid::Content.new(type: 'text/html', value: html_body))
+
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    sg_response = sg.client.mail._('send').post(request_body: mail.to_json)
+
+    if sg_response.status_code.to_i.between?(200, 299)
+      { status: :success }.to_json
+    else
+      puts "SendGrid error: #{sg_response.status_code} #{sg_response.body}"
+      { status: :failure }.to_json
+    end
+  rescue => e
+    puts "Contact form error: #{e.message}"
+    { status: :failure }.to_json
+  end
+end

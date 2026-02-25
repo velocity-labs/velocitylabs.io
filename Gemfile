@@ -14,8 +14,11 @@ gem 'puma',               '~> 6.4'
 gem 'rack',               '~> 3.0'
 gem 'rake',               '~> 13.0'
 gem 'sinatra',            '~> 4.0'
+gem 'sendgrid-ruby',      '~> 6.7'
+gem 'rack-attack',        '~> 6.7'
 
 group :development do
   gem 'debug'
+  gem 'dotenv'
   gem 'foreman'
 end

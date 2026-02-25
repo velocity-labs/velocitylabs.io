@@ -25,6 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   if (!contactForm) return;
 
+  // Fetch CSRF token + start server-side timing
+  let csrfToken = null;
+  fetch('/form-token')
+    .then(res => res.json())
+    .then(data => { csrfToken = data.token; })
+    .catch(() => {});
+
   // Set validation constraints
   const nameInput = contactForm.querySelector('[name="name"]');
   const emailInput = contactForm.querySelector('[name="email"]');
@@ -61,11 +68,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (errorEl) errorEl.textContent = '';
 
     const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
+    const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
     const formData = new FormData(contactForm);
+    if (csrfToken) {
+      formData.append('_csrf_token', csrfToken);
+    }
+    // Get reCAPTCHA v3 token
+    const siteKey = contactForm.dataset.recaptchaKey;
+    if (siteKey) {
+      try {
+        const recaptchaToken = await grecaptcha.execute(siteKey, { action: 'contact_form' });
+        formData.append('g-recaptcha-response', recaptchaToken);
+      } catch {
+        showErrorAlert(errorEl, buildTextBody(formData),
+          'reCAPTCHA verification failed. Please refresh the page and try again, or email us at ');
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        return;
+      }
+    }
+
     const textBody = buildTextBody(formData);
     const successEl = document.getElementById('contact-form-success');
 
@@ -74,6 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'POST',
         body: new URLSearchParams(formData)
       });
+
+      if (response.status === 429) {
+        showErrorAlert(errorEl, textBody,
+          'Too many submissions. Please wait a while and try again, or email us directly at ');
+        return;
+      }
+
       const data = await response.json();
 
       if (data.status === 'success') {
@@ -93,6 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (errorEl) errorEl.textContent = '';
         contactForm.reset();
 
+        // Refresh token for potential re-submission
+        fetch('/form-token')
+          .then(res => res.json())
+          .then(data => { csrfToken = data.token; })
+          .catch(() => {});
+
         if (typeof ga === 'function') {
           ga('send', 'event', contactForm.dataset.form, 'Submitted');
         }
@@ -107,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Could you please send an email directly to ');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
+      submitBtn.textContent = originalText;
     }
   });
 });

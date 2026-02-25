@@ -228,7 +228,7 @@ title: Software Project Story Workshop
         <div id="contact-form-success"></div>
 
         <div class='contact-form'>
-          <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Story Workshop Form">
+          <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Story Workshop Form" data-recaptcha-key="{{ site.recaptcha_v3_site_key }}">
             <div class='form-group col-lg-8 offset-lg-2'>
               <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
             </div>
@@ -241,8 +241,6 @@ title: Software Project Story Workshop
             <input name="hp-input" placeholder="Do not fill" type="text">
 
             <div id="contact-form-error"></div>
-
-            <div class="g-recaptcha" data-sitekey="6Le0D1EUAAAAAJlyECAhW72BPGxrg_EkM4oygnsF"></div>
 
             <footer class="submit-button">
               <button type="submit">Request Your Story Workshop</button>

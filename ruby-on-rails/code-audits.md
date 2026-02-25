@@ -162,7 +162,7 @@ title: Ruby on Rails Code Audit
         <div id="contact-form-success"></div> <!-- For success/fail messages -->
 
         <div class='contact-form'>
-          <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Code Audit Form">
+          <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Code Audit Form" data-recaptcha-key="{{ site.recaptcha_v3_site_key }}">
             <div class='form-group col-lg-8 offset-lg-2'>
               <input class='name form-control' placeholder='Name' type="text" id="name" name="name">
             </div>
@@ -175,8 +175,6 @@ title: Ruby on Rails Code Audit
             <input name="hp-input" placeholder="Do not fill" type="text">
 
             <div id="contact-form-error"></div> <!-- For success/fail messages -->
-
-            <div class="g-recaptcha" data-sitekey="6Le0D1EUAAAAAJlyECAhW72BPGxrg_EkM4oygnsF"></div>
 
             <footer class="submit-button">
               <button type="submit">Reserve Your Code Audit</button>

@@ -1,4 +1,4 @@
-<form action="/contact-form" name="sentMessage" id="contactForm" novalidate data-form="Contact Form">
+<form action="/contact-form" name="sentMessage" id="contactForm" novalidate data-form="Contact Form" data-recaptcha-key="{{ site.recaptcha_v3_site_key }}">
   <div class="row">
     <div class="col-lg-6">
       <div class='form-group'>
@@ -24,8 +24,6 @@
   <input name="hp-input" placeholder="Do not fill" type="text">
 
   <div id="contact-form-error"></div> <!-- For success/fail messages -->
-
-  <div class="g-recaptcha" data-sitekey="6Le0D1EUAAAAAJlyECAhW72BPGxrg_EkM4oygnsF"></div>
 
   <footer class="submit-button">
     <button type="submit">Send your message</button>

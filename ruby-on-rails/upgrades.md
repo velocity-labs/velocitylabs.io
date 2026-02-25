@@ -146,7 +146,7 @@ title: Ruby on Rails Application Upgrades
         <div id="contact-form-success"></div> <!-- For success/fail messages -->
 
         <div class='contact-form'>
-          <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Upgrade Form">
+          <form action="/contact-form" name="sentMessage" id="contactForm" role="form" novalidate data-form="Upgrade Form" data-recaptcha-key="{{ site.recaptcha_v3_site_key }}">
             <div class="row">
               <div class='form-group col-lg-8 offset-lg-2'>
                 <input class='form-control name' placeholder='Name' type="text" id="name" name="name">
@@ -162,8 +162,6 @@ title: Ruby on Rails Application Upgrades
 
             <div class="row">
               <div id="contact-form-error"></div> <!-- For success/fail messages -->
-
-              <div class="g-recaptcha" data-sitekey="6Le0D1EUAAAAAJlyECAhW72BPGxrg_EkM4oygnsF"></div>
 
               <footer class="submit-button">
                 <button type="submit">Schedule Your FREE Audit Today</button>
