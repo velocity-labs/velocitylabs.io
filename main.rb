@@ -13,6 +13,7 @@ require 'sendgrid-ruby'
 require 'net/http'
 require 'json'
 require 'securerandom'
+require 'openssl'
 require 'rack/attack'
 
 ## Global Settings ##
@@ -95,13 +96,32 @@ not_found do
   File.read("_site/404/index.html")
 end
 
+FORM_TOKEN_SECRET = ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+
+def generate_form_token
+  timestamp = Time.now.to_i
+  nonce = SecureRandom.hex(16)
+  data = "#{timestamp}:#{nonce}"
+  signature = OpenSSL::HMAC.hexdigest('SHA256', FORM_TOKEN_SECRET, data)
+  "#{data}:#{signature}"
+end
+
+def verify_form_token(token)
+  parts = token.to_s.split(':')
+  return false unless parts.length == 3
+
+  data = "#{parts[0]}:#{parts[1]}"
+  expected = OpenSSL::HMAC.hexdigest('SHA256', FORM_TOKEN_SECRET, data)
+  return false unless Rack::Utils.secure_compare(expected, parts[2])
+
+  elapsed = Time.now.to_i - parts[0].to_i
+  elapsed >= 3 && elapsed <= 3600
+end
+
 ## GET requests ##
 get '/form-token' do
   content_type :json
-  token = SecureRandom.hex(32)
-  session[:csrf_token] = token
-  session[:form_loaded_at] = Time.now.to_i
-  { token: token }.to_json
+  { token: generate_form_token }.to_json
 end
 
 get '/' do
@@ -186,21 +206,11 @@ post '/contact-form/?' do
     return { status: :failure }.to_json
   end
 
-  # 3. CSRF token check
-  unless params['_csrf_token'].to_s == session[:csrf_token].to_s && !session[:csrf_token].nil?
-    puts "Anti-spam: CSRF mismatch — param=#{params['_csrf_token'].to_s[0..7]}... session=#{session[:csrf_token].to_s[0..7]}... nil?=#{session[:csrf_token].nil?}"
+  # 3. CSRF + timing check via signed token
+  unless verify_form_token(params['_csrf_token'])
+    puts "Anti-spam: invalid or expired form token"
     return { status: :failure }.to_json
   end
-
-  # 4. Timing check — reject submissions faster than 3 seconds
-  if session[:form_loaded_at].nil? || (Time.now.to_i - session[:form_loaded_at]) < 3
-    puts "Anti-spam: timing check failed — loaded_at=#{session[:form_loaded_at]} now=#{Time.now.to_i}"
-    return { status: :failure }.to_json
-  end
-
-  # Clear one-time-use tokens
-  session.delete(:csrf_token)
-  session.delete(:form_loaded_at)
 
   # 5. reCAPTCHA verification
   recaptcha_response = Net::HTTP.post_form(
