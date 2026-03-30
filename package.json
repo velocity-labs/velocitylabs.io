@@ -6,8 +6,8 @@
     "build": "vite build"
   },
   "dependencies": {
+    "sass": "^1.83",
     "vite": "^6.0",
-    "vite-plugin-ruby": "^5.1",
-    "sass": "^1.83"
+    "vite-plugin-ruby": "^5.1"
   }
 }
