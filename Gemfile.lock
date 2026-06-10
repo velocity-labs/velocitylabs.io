@@ -35,25 +35,25 @@ GEM
     foreman (0.90.0)
       thor (~> 1.4)
     forwardable-extended (2.6.0)
-    google-protobuf (4.34.1)
+    google-protobuf (4.35.0)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-aarch64-linux-gnu)
+    google-protobuf (4.35.0-aarch64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-aarch64-linux-musl)
+    google-protobuf (4.35.0-aarch64-linux-musl)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-arm64-darwin)
+    google-protobuf (4.35.0-arm64-darwin)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-x86_64-darwin)
+    google-protobuf (4.35.0-x86_64-darwin)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-x86_64-linux-gnu)
+    google-protobuf (4.35.0-x86_64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-x86_64-linux-musl)
+    google-protobuf (4.35.0-x86_64-linux-musl)
       bigdecimal
       rake (~> 13.3)
     html_press (0.8.2)
@@ -103,7 +103,7 @@ GEM
       vite_ruby (~> 3.2)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    json (2.19.5)
+    json (2.19.8)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     kramdown-parser-gfm (1.1.0)
@@ -144,11 +144,11 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.9.0)
-    psych (5.3.1)
+    psych (5.4.0)
       date
       stringio
     public_suffix (7.0.5)
-    puma (6.6.1)
+    puma (7.2.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.6)
@@ -158,7 +158,7 @@ GEM
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
       rack (>= 3.0.0, < 4)
-    rack-proxy (0.7.7)
+    rack-proxy (0.8.2)
       rack
     rack-session (2.1.2)
       base64 (>= 0.1.0)
@@ -180,21 +180,21 @@ GEM
     rouge (4.7.0)
     ruby_http_client (3.6.0)
     safe_yaml (1.0.5)
-    sass-embedded (1.99.0-aarch64-linux-gnu)
+    sass-embedded (1.100.0-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-aarch64-linux-musl)
+    sass-embedded (1.100.0-aarch64-linux-musl)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-arm-linux-gnueabihf)
+    sass-embedded (1.100.0-arm-linux-gnueabihf)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-arm-linux-musleabihf)
+    sass-embedded (1.100.0-arm-linux-musleabihf)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-arm64-darwin)
+    sass-embedded (1.100.0-arm64-darwin)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-x86_64-darwin)
+    sass-embedded (1.100.0-x86_64-darwin)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-x86_64-linux-gnu)
+    sass-embedded (1.100.0-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-x86_64-linux-musl)
+    sass-embedded (1.100.0-x86_64-linux-musl)
       google-protobuf (~> 4.31)
     sendgrid-ruby (6.7.0)
       ruby_http_client (~> 3.4)
@@ -222,7 +222,7 @@ GEM
       rack-proxy (~> 0.6, >= 0.6.1)
       zeitwerk (~> 2.2)
     webrick (1.9.2)
-    zeitwerk (2.7.5)
+    zeitwerk (2.8.2)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -248,7 +248,7 @@ DEPENDENCIES
   kramdown (~> 2.4)
   kramdown-parser-gfm
   nokogiri (~> 1.16)
-  puma (~> 6.4)
+  puma (~> 7.0)
   rack (~> 3.0)
   rack-attack (~> 6.7)
   rake (~> 13.0)
@@ -282,13 +282,13 @@ CHECKSUMS
   ffi (1.17.4-x86_64-linux-musl) sha256=3fdf9888483de005f8ef8d1cf2d3b20d86626af206cbf780f6a6a12439a9c49e
   foreman (0.90.0) sha256=ff675e2d47b607ac58714a6d4ac3e1ee8f06f41d8db084531c31961e2c3f117c
   forwardable-extended (2.6.0) sha256=1bec948c469bbddfadeb3bd90eb8c85f6e627a412a3e852acfd7eaedbac3ec97
-  google-protobuf (4.34.1) sha256=347181542b8d659c60f028fa3791c9cccce651a91ad27782dbc5c5e374796cdc
-  google-protobuf (4.34.1-aarch64-linux-gnu) sha256=f9c07607dc139c895f2792a7740fcd01cd94d4d7b0e0a939045b50d7999f0b1d
-  google-protobuf (4.34.1-aarch64-linux-musl) sha256=db58e5a4a492b43c6614486aea31b7fb86955b175d1d48f28ebf388f058d78a9
-  google-protobuf (4.34.1-arm64-darwin) sha256=2745061f973119e6e7f3c81a0c77025d291a3caa6585a2cd24a25bbc7bedb267
-  google-protobuf (4.34.1-x86_64-darwin) sha256=4dc498376e218871613589c4d872400d42ad9ae0c700bdb2606fe1c77a593075
-  google-protobuf (4.34.1-x86_64-linux-gnu) sha256=87088c9fd8e47b5b40ca498fc1195add6149e941ff7e81c532a5b0b8876d4cc9
-  google-protobuf (4.34.1-x86_64-linux-musl) sha256=8c0e91436fbe504ffc64f0bd621f2e69adbcce8ed2c58439d7a21117069cfdd7
+  google-protobuf (4.35.0) sha256=95346162c792ed78c9a28cbf2d937a53f706de6df36a27471582f63f03c30c0d
+  google-protobuf (4.35.0-aarch64-linux-gnu) sha256=2cabd61b420918aec1564f9f7414e455bf922d20c5f8139d62783df5558a7aea
+  google-protobuf (4.35.0-aarch64-linux-musl) sha256=f6b11f3420a4564f68e8233c95eac6924f6a727dfc2f81a56af2e09add551501
+  google-protobuf (4.35.0-arm64-darwin) sha256=66ab26d3fc82b8950702e53ab16c198e3c0ea3f2a38aaaf1f32152da45593ac5
+  google-protobuf (4.35.0-x86_64-darwin) sha256=05eb5c8bc9899135befff496fc0a3642e7ff3d0943f043841dcc456f5654fea0
+  google-protobuf (4.35.0-x86_64-linux-gnu) sha256=999226f3b00cd9fddb1b26851d16060212fa1d90c406aaad47e574682b716059
+  google-protobuf (4.35.0-x86_64-linux-musl) sha256=be0218520d77b2aee898b363514b03819f6f63f9c041ae0d0d79b4ce5247bffd
   html_press (0.8.2) sha256=c412e19cebce905857bc85bef0f1bf20d3a70e8e3fa4c381012be1f8a9575f52
   htmlentities (4.4.2) sha256=bbafbdf69f2eca9262be4efef7e43e6a1de54c95eb600f26984f71d2fe96c5c3
   http_parser.rb (0.8.1) sha256=9ae8df145b39aa5398b2f90090d651c67bd8e2ebfe4507c966579f641e11097a
@@ -302,7 +302,7 @@ CHECKSUMS
   jekyll-sitemap (1.4.0) sha256=0de08c5debc185ea5a8f980e1025c7cd3f8e0c35c8b6ef592f15c46235cf4218
   jekyll-vite (3.0.4) sha256=bb08c6f95e814afeebd73b9299805b85c5daa1964ce85c9e7a0fa77790018785
   jekyll-watch (2.2.1) sha256=bc44ed43f5e0a552836245a54dbff3ea7421ecc2856707e8a1ee203a8387a7e1
-  json (2.19.5) sha256=218a18553e4801d579ca7e0f5bc72bafd776d7397238a1fb4e74db5b0a812c59
+  json (2.19.8) sha256=6354310fd76ef69b87d5bd1f38b40d730613baf90b6803d2d0a48f618d32dfaa
   kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
   kramdown-parser-gfm (1.1.0) sha256=fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729
   liquid (4.0.4) sha256=4fcfebb1a045e47918388dbb7a0925e7c3893e58d2bd6c3b3c73ec17a2d8fdb3
@@ -326,14 +326,14 @@ CHECKSUMS
   pp (0.6.3) sha256=2951d514450b93ccfeb1df7d021cae0da16e0a7f95ee1e2273719669d0ab9df6
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
   prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
-  psych (5.3.1) sha256=eb7a57cef10c9d70173ff74e739d843ac3b2c019a003de48447b2963d81b1974
+  psych (5.4.0) sha256=14f72d69a611af663d7d70e4a7b67d9eb1f3ae9f8d916b478961d5a0075ba5b7
   public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
-  puma (6.6.1) sha256=b9b56e4a4ea75d1bfa6d9e1972ee2c9f43d0883f011826d914e8e37b3694ea1e
+  puma (7.2.1) sha256=d7bf0e9cabd532e0d401e142cd94e3ac531e993610e2d80e6fbf9c26961414b0
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
   rack (3.2.6) sha256=5ed78e1f73b2e25679bec7d45ee2d4483cc4146eb1be0264fc4d94cb5ef212c2
   rack-attack (6.8.0) sha256=f2499fdebf85bcc05573a22dff57d24305ac14ec2e4156cd3c28d47cafeeecf2
   rack-protection (4.2.1) sha256=cf6e2842df8c55f5e4d1a4be015e603e19e9bc3a7178bae58949ccbb58558bac
-  rack-proxy (0.7.7) sha256=446a4b57001022145d5c3ba73b775f66a2260eaf7420c6907483141900395c8a
+  rack-proxy (0.8.2) sha256=d3086e865cbe74e627d41d2c6cd24521206c68d9e0308576760ea06d68e11ab0
   rack-session (2.1.2) sha256=595434f8c0c3473ae7d7ac56ecda6cc6dfd9d37c0b2b5255330aa1576967ffe8
   rackup (0.2.3) sha256=284044c0300697cee56e98d8a6e2a83ff6db8aabf1ba62a9cd37ea3fb51872f8
   rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
@@ -345,14 +345,14 @@ CHECKSUMS
   rouge (4.7.0) sha256=dba5896715c0325c362e895460a6d350803dbf6427454f49a47500f3193ea739
   ruby_http_client (3.6.0) sha256=9308505d3a0421810d2dc012d79d986f7d360d5b02178641190849a22fd279f2
   safe_yaml (1.0.5) sha256=a6ac2d64b7eb027bdeeca1851fe7e7af0d668e133e8a88066a0c6f7087d9f848
-  sass-embedded (1.99.0-aarch64-linux-gnu) sha256=a46615b0295ca7bd979b9ce79f6b9f1d26881736400188bd6fd5c4b7c9b46473
-  sass-embedded (1.99.0-aarch64-linux-musl) sha256=eaa6d56968909d1d54073c46e21c13fd5bbcb5af609d7e4fbe6b196426ca8e49
-  sass-embedded (1.99.0-arm-linux-gnueabihf) sha256=f5f0748934660cda6948917af6dc974caf4d36ea6121e450982153b7d9c49b55
-  sass-embedded (1.99.0-arm-linux-musleabihf) sha256=29a4056e76bc136025ba5d03e82d86ecdabfb6c07a473a4fdedcd72fb28dbbc4
-  sass-embedded (1.99.0-arm64-darwin) sha256=20773f2fb0e8f4d0194eb1874dab4c0ef60262ff6dafe29361e217beb2208629
-  sass-embedded (1.99.0-x86_64-darwin) sha256=371774c83b6dce8a2cb7b5ce5a0f918ff2735bf200b00e3bc7067366654fff13
-  sass-embedded (1.99.0-x86_64-linux-gnu) sha256=a4e2ae5e9951815cb8b3ab408cee8b800852491988a57de735f18d259c70d7c4
-  sass-embedded (1.99.0-x86_64-linux-musl) sha256=94be72a6f856c610e67b12303dc76a58412e64b24ce97bdf4912199b8145c8dd
+  sass-embedded (1.100.0-aarch64-linux-gnu) sha256=c13187f8eaae7e7e64246b18eb896534a84465a17198829ef65730db4662860e
+  sass-embedded (1.100.0-aarch64-linux-musl) sha256=1b0945a66cd4e40f505db73b1e790e2561e07e6d9fd04ef6ebbf279835666b3f
+  sass-embedded (1.100.0-arm-linux-gnueabihf) sha256=a2de272bb02977ea91acaf3fecb6d8e09e4989501efbfc5375da4b5e7bff001d
+  sass-embedded (1.100.0-arm-linux-musleabihf) sha256=ce19837c10bab5ae6785f10b435a57a64ca027a99875cd701dc6fd3af317cbe5
+  sass-embedded (1.100.0-arm64-darwin) sha256=d294b32c3b7bed293ad39bd392713c07f1df5454e65fa0f8d80dadbdba8a0cf4
+  sass-embedded (1.100.0-x86_64-darwin) sha256=3db80c837a60712de3461d5aa1be43c7056a0584d7182a8ae7a8996d64ab46d3
+  sass-embedded (1.100.0-x86_64-linux-gnu) sha256=58dd0a8a4f0dd78881b90d8b0e4d0eed042d54865b19b71384d91091ade93e18
+  sass-embedded (1.100.0-x86_64-linux-musl) sha256=03dbee81bf93e770c725caf0c895e04c7b049ebef56b8a7002fcf21e6bedf7c5
   sendgrid-ruby (6.7.0) sha256=c9ff96bd37c9d6d3ce39c3c1017ee3cd9d09c155ec6af1b5078d05b5d832d111
   sinatra (4.2.1) sha256=b7aeb9b11d046b552972ade834f1f9be98b185fa8444480688e3627625377080
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
@@ -364,7 +364,7 @@ CHECKSUMS
   unicode-display_width (2.6.0) sha256=12279874bba6d5e4d2728cef814b19197dbb10d7a7837a869bab65da943b7f5a
   vite_ruby (3.10.2) sha256=db465451eb180abbdc81f596ba63671d2b2552e2bb7bf3c1f7b79f9d58ca9a86
   webrick (1.9.2) sha256=beb4a15fc474defed24a3bda4ffd88a490d517c9e4e6118c3edce59e45864131
-  zeitwerk (2.7.5) sha256=d8da92128c09ea6ec62c949011b00ed4a20242b255293dd66bf41545398f73dd
+  zeitwerk (2.8.2) sha256=7212a61311083c604184b1ea2574b9aa05cd14f855a0841c06985cabe9181d12
 
 RUBY VERSION
   ruby 3.3.10
