@@ -40,7 +40,44 @@ class ForceHttps
   end
 end
 
+# Security and caching headers for every response, including static files
+class SecurityHeaders
+  HEADERS = {
+    'x-content-type-options' => 'nosniff',
+    'referrer-policy'        => 'strict-origin-when-cross-origin',
+    'permissions-policy'     => 'camera=(), microphone=(), geolocation=(), payment=(), usb=()'
+  }.freeze
+  # Short while https settles in; raise to 31536000 (one year) once stable
+  HSTS = 'max-age=86400'.freeze
+
+  def initialize(app, hsts: false)
+    @app = app
+    @hsts = hsts
+  end
+
+  def call(env)
+    status, headers, body = @app.call(env)
+    HEADERS.each { |name, value| headers[name] ||= value }
+    headers['strict-transport-security'] = HSTS if @hsts
+    if (cache = cache_control(env['PATH_INFO'])) && status == 200
+      headers['cache-control'] = cache
+    end
+    [status, headers, body]
+  end
+
+  private
+
+  def cache_control(path)
+    if path.start_with?('/vite/assets/')
+      'public, max-age=31536000, immutable' # content-hashed filenames
+    elsif path.start_with?('/images/') || %w[/favicon.ico /apple-touch-icon.png].include?(path)
+      'public, max-age=604800'
+    end
+  end
+end
+
 use ForceHttps if settings.production?
+use SecurityHeaders, hsts: settings.production?
 use Rack::Attack
 
 # In-memory cache store for Rack::Attack (no ActiveSupport needed)
