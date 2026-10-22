@@ -1,0 +1,77 @@
+# Checks the live site every 15 minutes. While it's down, an "uptime" issue
+# stays open (GitHub emails watchers); it closes once the site recovers.
+#
+# Note: GitHub can delay scheduled runs by a few minutes, and disables
+# schedules in public repos after 60 days without repository activity (it
+# emails before doing so). Run it by hand from the Actions tab anytime.
+name: Uptime
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+concurrency:
+  group: uptime
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - id: check
+        run: |
+          check() {
+            failures=""
+            home=$(curl -s -o home.html -w '%{http_code}' --max-time 20 https://velocitylabs.io/ || true)
+            [ "$home" = 200 ] && grep -q 'Velocity Labs' home.html || failures+="- Home page: $([ "${home:-000}" = 000 ] && echo 'unreachable' || echo "HTTP $home")\n"
+            token=$(curl -s --max-time 20 https://velocitylabs.io/form-token || true)
+            echo "$token" | grep -q '"token"' || failures+="- App server (/form-token) did not return a token\n"
+            redirect=$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' --max-time 20 http://velocitylabs.io/ || true)
+            [ "$redirect" = "301 https://velocitylabs.io/" ] || failures+="- http -> https redirect: got '${redirect:-no response}'\n"
+            expiry=$(echo | openssl s_client -connect velocitylabs.io:443 -servername velocitylabs.io 2>/dev/null | openssl x509 -noout -enddate | cut -d= -f2)
+            if [ -z "$expiry" ]; then
+              failures+="- SSL certificate could not be read\n"
+            else
+              days=$(( ($(date -d "$expiry" +%s) - $(date +%s)) / 86400 ))
+              [ "$days" -gt 14 ] || failures+="- SSL certificate expires in $days days ($expiry)\n"
+            fi
+            printf "%b" "$failures"
+          }
+          failures=$(check)
+          if [ -n "$failures" ]; then
+            echo "First check failed; retrying in 60 seconds"
+            sleep 60
+            failures=$(check)
+          fi
+          {
+            echo "Checked at $(date -u '+%Y-%m-%d %H:%M UTC')"
+            echo
+            printf "%s\n" "${failures:-All checks passed.}"
+          } > report.md
+          cat report.md
+          echo "down=$([ -n "$failures" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: Open, update or close the uptime issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DOWN: ${{ steps.check.outputs.down }}
+        run: |
+          issue=$(gh issue list --label uptime --state open --json number --jq '.[0].number // empty')
+          if [ "$DOWN" = "true" ]; then
+            if [ -n "$issue" ]; then
+              gh issue comment "$issue" --body-file report.md
+            else
+              gh label create uptime --color b60205 --description "The site is down (uptime workflow)" 2>/dev/null || true
+              gh issue create --title "velocitylabs.io is down" --label uptime --body-file report.md
+            fi
+            exit 1
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "Recovered: all checks passed at $(date -u '+%Y-%m-%d %H:%M UTC')."
+          fi

@@ -75,6 +75,7 @@ Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter (title, author, dat
 Heroku (app `velocitylabs`) auto-deploys `master` from GitHub, but only after CI passes ("Wait for CI to pass"). A commit with no checks stays pending and never deploys, so `.github/workflows/ci.yml` runs on every push: the dependency cooldown check and a full site build. `heroku rollback` restores the previous release if a deploy misbehaves.
 
 - `.github/workflows/link-check.yml` runs `bin/check-links` monthly and keeps a `link-check` issue open while dead links exist
+- `.github/workflows/uptime.yml` checks the live site every 15 minutes (home page, app server, http redirect, certificate expiry) and keeps an `uptime` issue open while it's down
 - `.github/dependabot.yml` opens weekly update PRs with a 14-day cooldown; `package.json` "resolutions" pins need manual review
 - `SecurityHeaders` in main.rb sets security headers and caching (hashed `/vite/assets/*` cached a year). HSTS starts at one day (added 2026-10-22); raise `HSTS` to `max-age=31536000` once https has been stable for a couple of weeks
 - Always compare against `origin/master` (`git fetch` first) before branching or merging; local `master` can be stale
