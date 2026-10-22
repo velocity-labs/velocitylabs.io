@@ -39,15 +39,15 @@
     <div class="row">
       <div class="col-sm-12 text-center">
         <a class="icon" href="https://twitter.com/{{ site.company.social.twitter }}" title="Follow on Twitter" target="_blank">
-          <i class="fa-brands fa-twitter"></i>
+          {% include icon.html name="twitter" %}
         </a>
 
         <a class="icon" href="https://github.com/{{ site.company.social.github }}" title="Follow on GitHub" target="_blank">
-          <i class="fa-brands fa-github"></i>
+          {% include icon.html name="github" %}
         </a>
 
         <a class="icon" href="/feed.xml" title="RSS Feed">
-          <i class="fa fa-rss"></i>
+          {% include icon.html name="rss" %}
         </a>
       </div>
     </div>

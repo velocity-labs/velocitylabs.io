@@ -72,17 +72,17 @@ title: Ruby on Rails Application Upgrades
           <div class="col-lg-6">
             <ul class="checklist" >
               <li>
-                <i class="fa fa-check"></i>
+                {% include icon.html name="check" %}
                 Your Ruby version
               </li>
 
               <li>
-                <i class="fa fa-check"></i>
+                {% include icon.html name="check" %}
                 Your Rails version
               </li>
 
               <li>
-                <i class="fa fa-check"></i>
+                {% include icon.html name="check" %}
                 Your 3rd party libraries
               </li>
             </ul>
@@ -91,12 +91,12 @@ title: Ruby on Rails Application Upgrades
           <div class="col-lg-6">
             <ul class="checklist" >
               <li>
-                <i class="fa fa-check"></i>
+                {% include icon.html name="check" %}
                 Your application's server environment
               </li>
 
               <li>
-                <i class="fa fa-check"></i>
+                {% include icon.html name="check" %}
                 Your JavaScript libraries
               </li>
             </ul>

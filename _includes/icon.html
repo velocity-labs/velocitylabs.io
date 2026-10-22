@@ -1,0 +1,10 @@
+{%- comment -%}
+  Inline Font Awesome Free 7.3.1 icon (CC BY 4.0; license kept in each SVG).
+  Usage: {% include icon.html name="check" %}, optional style="regular" and
+  class="extra classes". github/twitter are brand icons automatically.
+  Keeps Font Awesome's class names so existing CSS (.fa, .fa-check) applies.
+{%- endcomment -%}
+{%- assign icon_style = include.style | default: "solid" -%}
+{%- if include.name == "github" or include.name == "twitter" -%}{%- assign icon_style = "brands" -%}{%- endif -%}
+{%- case icon_style -%}{%- when "brands" -%}{%- assign icon_class = "fa-brands" -%}{%- when "regular" -%}{%- assign icon_class = "fa-regular" -%}{%- else -%}{%- assign icon_class = "fa" -%}{%- endcase -%}
+<span class="{{ icon_class }} fa-{{ include.name }}{% if include.class %} {{ include.class }}{% endif %}" aria-hidden="true">{% include icons/{{ icon_style }}/{{ include.name }}.svg %}</span>

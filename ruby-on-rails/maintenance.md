@@ -96,7 +96,7 @@ title: Ruby on Rails Application Maintenance
       <div id="benefits" class="row">
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-list-check"></i>
+            {% include icon.html name="list-check" %}
             Unlimited Small Tasks
           </h4>
 
@@ -109,7 +109,7 @@ title: Ruby on Rails Application Maintenance
 
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-lock"></i>
+            {% include icon.html name="lock" %}
             Security Patches
           </h4>
 
@@ -122,7 +122,7 @@ title: Ruby on Rails Application Maintenance
 
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-heart-pulse"></i>
+            {% include icon.html name="heart-pulse" %}
             24/7 Application Monitoring
           </h4>
 
@@ -134,7 +134,7 @@ title: Ruby on Rails Application Maintenance
 
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-database"></i>
+            {% include icon.html name="database" %}
             Automated Backups
           </h4>
 
@@ -146,7 +146,7 @@ title: Ruby on Rails Application Maintenance
 
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-bug"></i>
+            {% include icon.html name="bug" %}
             Error Detection &amp; Mitigation
           </h4>
 
@@ -159,7 +159,7 @@ title: Ruby on Rails Application Maintenance
 
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-chart-area"></i>
+            {% include icon.html name="chart-area" %}
             Load Monitoring
           </h4>
 
@@ -284,7 +284,7 @@ title: Ruby on Rails Application Maintenance
 
               <div class='form-group'>
                 <button type="submit" id="purchase" class="btn btn-lg btn-success">
-                  <i class="fa fa-lock"></i>&nbsp;&nbsp;Start Now
+                  {% include icon.html name="lock" %}&nbsp;&nbsp;Start Now
                 </button>
 
                 <div class="text-center">

@@ -62,32 +62,32 @@ title: Ruby on Rails Code Audit
 
         <ul class="checklist" >
           <li>
-            <i class="fa fa-check"></i>
+            {% include icon.html name="check" %}
             Software Versions Are Up-To-Date For Ruby, Rails, Ruby Gems, and JavaScript Libraries
           </li>
 
           <li>
-            <i class="fa fa-check"></i>
+            {% include icon.html name="check" %}
             Ensure The Application Can Be Installed And Run Locally
           </li>
 
           <li>
-            <i class="fa fa-check"></i>
+            {% include icon.html name="check" %}
             Application Follows Rails Best Practices
           </li>
 
           <li>
-            <i class="fa fa-check"></i>
+            {% include icon.html name="check" %}
             Test Framework Is Used And Tests Provide Ample Coverage; All Tests Pass
           </li>
 
           <li>
-            <i class="fa fa-check"></i>
+            {% include icon.html name="check" %}
             Application Security Audit
           </li>
 
           <li>
-            <i class="fa fa-check"></i>
+            {% include icon.html name="check" %}
             Database Concerns Such As Missing Indices, Slow Queries, And Poor Data Modeling
           </li>
         </ul>

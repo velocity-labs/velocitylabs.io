@@ -102,7 +102,7 @@ title: Software Project Story Workshop
 
       <div class="col-lg-4">
         <h4>
-          <i class="fa fa-users"></i>
+          {% include icon.html name="users" %}
           The Who
         </h4>
 
@@ -115,7 +115,7 @@ title: Software Project Story Workshop
 
       <div class="col-lg-4">
         <h4>
-          <i class="fa fa-trophy"></i>
+          {% include icon.html name="trophy" %}
           The What
         </h4>
 
@@ -128,7 +128,7 @@ title: Software Project Story Workshop
 
       <div class="col-lg-4">
         <h4>
-          <i class="fa fa-question"></i>
+          {% include icon.html name="question" %}
           The Why
         </h4>
 
