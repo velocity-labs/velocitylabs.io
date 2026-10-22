@@ -13,9 +13,7 @@ title: "Rapid Pitch Event at LaunchSpot"
 
 LaunchSpot is a tech incubator in Tempe, AZ. Although they got rolling about a year ago, they've spent a lot of time and money developing their space, located at Broadway and 52nd Street in Tempe, Arizona. In fact, here's a video tour of the coworking space before it was built out:
 
-<div class="text-center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/FjUTyUsubk4" frameborder="0" allowfullscreen></iframe>
-</div>
+*Update: this video has since been removed from YouTube, so it can no longer be played here.*
 
 ### What is the LaunchSpot Rapid Pitch Event?
 
