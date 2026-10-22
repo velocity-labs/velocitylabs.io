@@ -42,7 +42,7 @@ Browser → config.ru → Rack::Deflater
                          → GET /           → _site/index.html
                          → GET /*          → _site/<path>/index.html (catch-all)
                          → GET /form-token → HMAC-signed CSRF token (JSON)
-                         → POST /contact-form → 6-layer anti-spam + SendGrid email
+                         → POST /contact-form → 6-layer anti-spam + Resend email
 ```
 
 ### Key directories
@@ -121,7 +121,7 @@ The contact form (`POST /contact-form`) has 6 layers of anti-spam protection:
 3. **HMAC-signed CSRF token** — stateless token with 3s min / 1hr max timing window (prevents instant bot submission)
 4. **Rack::Attack rate limiting** — 5 requests per IP per hour
 5. **reCAPTCHA v3** — score threshold of 0.5
-6. **SendGrid v3 API** — sends email to contact@velocitylabs.io
+6. **Resend API** — sends email to contact@velocitylabs.io (via Net::HTTP, no gem)
 
 CSRF tokens are **not** session-based. They use HMAC-SHA256 signatures so they work across concurrent browser tabs without race conditions.
 
@@ -152,7 +152,8 @@ Required for the contact form and monitoring to work. In development, add them t
 | Variable | Purpose |
 |----------|---------|
 | `SESSION_SECRET` | HMAC form token signing key (Sinatra sessions are disabled) |
-| `SENDGRID_API_KEY` | SendGrid v3 API key for sending contact form emails |
+| `RESEND_API_KEY` | Resend API key (sending access, velocitylabs.io domain) for contact form emails |
+| `CONTACT_FORM_FROM` | Optional sender override (default `Velocity Labs <contact@velocitylabs.io>`) |
 | `RECAPTCHA_SECRET_KEY` | reCAPTCHA v3 secret key (site key is in `_config.yml`) |
 | `NEW_RELIC_LICENSE_KEY` | New Relic APM monitoring |
 
@@ -181,5 +182,4 @@ Deployed to **Heroku** via git push. The Heroku build process:
 | Bootstrap | 5.3.3 | CDN (no jQuery dependency) |
 | Node | 26.11.1 | `package.json` "engines" (Heroku) and `.nvmrc` |
 | Kramdown | ~> 2.4 | Markdown parser |
-| SendGrid | ~> 6.7 | Email delivery (v3 API) |
 | Rack::Attack | ~> 6.7 | Rate limiting |

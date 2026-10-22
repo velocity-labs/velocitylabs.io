@@ -9,7 +9,6 @@ if settings.development?
   Dotenv.load
 end
 
-require 'sendgrid-ruby'
 require 'net/http'
 require 'json'
 require 'securerandom'
@@ -246,7 +245,7 @@ post '/contact-form/?' do
     return { status: :failure }.to_json
   end
 
-  # 6. Build email and send via SendGrid
+  # 6. Build email and send via Resend
   begin
     name    = Rack::Utils.escape_html(params[:name].to_s)
     email   = Rack::Utils.escape_html(params[:email].to_s)
@@ -280,28 +279,28 @@ post '/contact-form/?' do
       #{params[:message]}
     TEXT
 
-    from = SendGrid::Email.new(email: 'contact@velocitylabs.io', name: 'Velocity Labs')
-    to = SendGrid::Email.new(email: 'contact@velocitylabs.io', name: 'Velocity Labs')
-    subject = "Contact form from #{params[:name]}"
+    email_request = Net::HTTP::Post.new(
+      URI('https://api.resend.com/emails'),
+      'Authorization' => "Bearer #{ENV['RESEND_API_KEY']}",
+      'Content-Type'  => 'application/json'
+    )
+    email_request.body = {
+      from:     ENV.fetch('CONTACT_FORM_FROM', 'Velocity Labs <contact@velocitylabs.io>'),
+      to:       ['contact@velocitylabs.io'],
+      reply_to: params[:email].to_s, # validated above
+      subject:  "Contact form from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}",
+      text:     text_body,
+      html:     html_body
+    }.to_json
 
-    mail = SendGrid::Mail.new
-    mail.from = from
-    mail.subject = subject
-    mail.reply_to = SendGrid::Email.new(email: params[:email], name: params[:name])
+    email_response = Net::HTTP.start('api.resend.com', 443, use_ssl: true, open_timeout: 10, read_timeout: 15) do |http|
+      http.request(email_request)
+    end
 
-    personalization = SendGrid::Personalization.new
-    personalization.add_to(to)
-    mail.add_personalization(personalization)
-    mail.add_content(SendGrid::Content.new(type: 'text/plain', value: text_body))
-    mail.add_content(SendGrid::Content.new(type: 'text/html', value: html_body))
-
-    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-    sg_response = sg.client.mail._('send').post(request_body: mail.to_json)
-
-    if sg_response.status_code.to_i.between?(200, 299)
+    if email_response.is_a?(Net::HTTPSuccess)
       { status: :success }.to_json
     else
-      puts "SendGrid error: #{sg_response.status_code} #{sg_response.body}"
+      puts "Resend error: #{email_response.code} #{email_response.body}"
       { status: :failure }.to_json
     end
   rescue => e

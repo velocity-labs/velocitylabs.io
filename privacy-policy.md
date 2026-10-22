@@ -22,7 +22,7 @@ title: Velocity Labs Privacy Policy
         <h3>INFORMATION YOU GIVE US</h3>
 
         <p>
-          When you use a contact form on the Site, we collect the name, email address, phone number and message you enter. The form is delivered to our team by email through our email delivery provider, Twilio SendGrid. We use this information only to respond to you and, if we work together, to manage that relationship.
+          When you use a contact form on the Site, we collect the name, email address, phone number and message you enter. The form is delivered to our team by email through our email delivery provider, Resend. We use this information only to respond to you and, if we work together, to manage that relationship.
         </p>
 
         <p>
@@ -89,7 +89,7 @@ title: Velocity Labs Privacy Policy
         <h3>SHARING</h3>
 
         <p>
-          We do not sell your personal information. We share it only with the service providers named above (Heroku, Twilio SendGrid, Google and jsDelivr) to the extent needed for them to provide their services to us, and when required by law, such as in response to a subpoena or other lawful request, or to protect our rights.
+          We do not sell your personal information. We share it only with the service providers named above (Heroku, Resend, Google and jsDelivr) to the extent needed for them to provide their services to us, and when required by law, such as in response to a subpoena or other lawful request, or to protect our rights.
         </p>
 
         <p>

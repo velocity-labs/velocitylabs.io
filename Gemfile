@@ -7,7 +7,6 @@ gem 'puma',               '~> 8.0'
 gem 'rack',               '~> 3.0'
 gem 'rake',               '~> 13.0'
 gem 'sinatra',            '~> 4.0'
-gem 'sendgrid-ruby',      '~> 6.7'
 gem 'rack-attack',        '~> 6.7'
 
 # Site build only (loaded by Jekyll, not the web server)
