@@ -9,11 +9,11 @@
         <div class="carousel slide" data-bs-ride="carousel" id="quote-carousel">
 
           <!-- Bottom Carousel Indicators -->
-          <ol class="carousel-indicators">
+          <div class="carousel-indicators">
             {% for testimonial in site.data.testimonials limit: 5 %}
-              <button type="button" data-bs-target="#quote-carousel" data-bs-slide-to="{{ forloop.index0 }}" {% if forloop.index0 == 0 %}class="active" aria-current="true"{% endif %}></button>
+              <button type="button" data-bs-target="#quote-carousel" data-bs-slide-to="{{ forloop.index0 }}" aria-label="Show testimonial {{ forloop.index }}" {% if forloop.index0 == 0 %}class="active" aria-current="true"{% endif %}></button>
             {% endfor %}
-          </ol>
+          </div>
 
           <!-- Carousel Slides / Quotes -->
           <div class="carousel-inner">
@@ -22,7 +22,7 @@
                 <blockquote>
                   <div class="row">
                     <div class="col-sm-3 text-center">
-                      <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100" alt="{{ testimonial.name }}">
+                      <img width="100" height="100" class="rounded" alt="" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100" alt="{{ testimonial.name }}">
                     </div>
                     <div class="col-sm-9">
                       <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>

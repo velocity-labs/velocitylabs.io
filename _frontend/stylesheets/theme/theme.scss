@@ -2,7 +2,7 @@
 
 body {
   background: #f6f6f6;
-  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'Open Sans Fallback', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .no-padding {
   padding: 0 !important;
@@ -98,7 +98,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", 'Open Sans Fallback', sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -423,7 +423,7 @@ blockquote {
 }
 .cbp-af-header .nav a {
   color: white;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", 'Open Sans Fallback', sans-serif;
   font-weight: 300;
   margin: 0 0 0 20px;
   font-size: 1em;
@@ -1091,12 +1091,16 @@ section .overlay-text {
   margin-bottom: 0;
 }
 #testimonials .carousel .carousel-indicators button {
-  width: 12px;
-  height: 12px;
-  margin: 1px 3px;
+  // 24px tap target; the padding keeps the visible dot at 12px
+  width: 24px;
+  height: 24px;
+  padding: 6px;
+  margin: 0;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.5);
+  background-clip: content-box;
   border: none;
+  opacity: 1;
 }
 #testimonials .carousel .carousel-indicators .active {
   background-color: #fff;
@@ -1142,7 +1146,7 @@ section .overlay-text {
   border-radius: 4px;
   padding: 0.5em 1.3em;
   border: none;
-  color: #9c9c9c;
+  color: #6b6b6b;
   text-transform: uppercase;
   font-weight: 400;
   margin: 0 1px 6px 1px;

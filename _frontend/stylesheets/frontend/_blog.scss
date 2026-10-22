@@ -47,6 +47,10 @@
     background: #2b2d35;
     padding: 100px 25%;
 
+    .meta.text-muted {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
     h1 {
       font-size: 48px;
       line-height: 1.4;

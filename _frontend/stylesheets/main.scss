@@ -2,6 +2,7 @@
 @use "theme/theme";
 
 // Frontend partials
+@use "frontend/font_fallback";
 @use "frontend/lightbox";
 @use "frontend/blog";
 @use "frontend/clutch";

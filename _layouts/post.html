@@ -50,7 +50,7 @@ layout: base
 
                   <div class="col-sm-4 links">
                     {% for link in author.links %}
-                      <a class="icon" href="{{ link[1] }}" target="_blank"><i class="{% if link[0] == 'rss' %}fa{% else %}fa-brands{% endif %} fa-{{ link[0] }}"></i></a>
+                      <a class="icon" href="{{ link[1] }}" target="_blank" aria-label="{{ author.name }} on {% case link[0] %}{% when 'github' %}GitHub{% when 'twitter' %}Twitter{% else %}website{% endcase %}"><i class="{% if link[0] == 'rss' %}fa{% else %}fa-brands{% endif %} fa-{{ link[0] }}"></i></a>
                     {% endfor %}
                   </div>
                 </div>

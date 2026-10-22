@@ -60,6 +60,7 @@ title: Velocity Labs Privacy Policy
             <tbody>
               <tr><td><code>_ga</code>, <code>_ga_*</code></td><td>Google Analytics: distinguishes visitors and sessions for usage statistics</td><td>Up to 2 years</td></tr>
               <tr><td><code>_gcl_au</code></td><td>Google Ads: measures whether ad clicks lead to inquiries</td><td>90 days</td></tr>
+              <tr><td><code>IDE</code>, <code>test_cookie</code></td><td>Google Ads, set on Google's doubleclick.net domain: measures ad conversions</td><td>Up to 13 months (<code>test_cookie</code>: 15 minutes)</td></tr>
               <tr><td><code>_GRECAPTCHA</code></td><td>Google reCAPTCHA: spam and abuse protection on pages with a contact form (necessary for the form to work)</td><td>6 months</td></tr>
             </tbody>
           </table>

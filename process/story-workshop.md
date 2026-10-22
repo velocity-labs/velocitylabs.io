@@ -151,7 +151,7 @@ title: Software Project Story Workshop
           <blockquote>
             <div class="row">
               <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+                <img width="100" height="100" class="rounded" alt="" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
               </div>
               <div class="col-sm-9">
                 <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
@@ -199,7 +199,7 @@ title: Software Project Story Workshop
           <blockquote>
             <div class="row">
               <div class="col-sm-3 text-center">
-                <img width="100" height="100" class="rounded" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
+                <img width="100" height="100" class="rounded" alt="" src="https://secure.gravatar.com/avatar/{{ testimonial.avatar }}?r=g&s=100">
               </div>
               <div class="col-sm-9">
                 <p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
