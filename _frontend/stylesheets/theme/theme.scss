@@ -872,6 +872,8 @@ section.light {
 }
 section.light.with-bg {
   background: url('../../images/theme/bg-content1.jpg') center center no-repeat;
+  // WebP where supported (~78% smaller); browsers without image-set() keep the JPG above
+  background-image: image-set(url('../../images/theme/bg-content1.webp') type('image/webp'), url('../../images/theme/bg-content1.jpg') type('image/jpeg'));
   background-size: cover;
 }
 section.dark {
@@ -879,6 +881,8 @@ section.dark {
 }
 section.dark.with-bg {
   background: url('../../images/theme/bg-content1.jpg') center center no-repeat;
+  // WebP where supported (~78% smaller); browsers without image-set() keep the JPG above
+  background-image: image-set(url('../../images/theme/bg-content1.webp') type('image/webp'), url('../../images/theme/bg-content1.jpg') type('image/jpeg'));
   background-size: cover;
 }
 section.dark h1,

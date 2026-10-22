@@ -51,4 +51,7 @@ Our first reviews have been outstanding, and we’ve already jumped to the top o
 
 Before we get back to working for our clients, we encourage businesses that are thinking about working with us to view our Clutch profile and [read what clients say about Velocity Labs](https://clutch.co/profile/velocity-labs). We also encourage our current and past clients to leave a review for us. Now, back to developing!
 
-<img src="/images/velocity-railsconf-2017.png" class="img-fluid" alt="Velocity Labs at RailsConf 2017">
+<picture>
+  <source srcset="/images/velocity-railsconf-2017.webp" type="image/webp">
+  <img src="/images/velocity-railsconf-2017.jpg" class="img-fluid" alt="Velocity Labs at RailsConf 2017" width="1600" height="680" loading="lazy" decoding="async">
+</picture>

@@ -26,7 +26,10 @@ title: Projects
           {% assign thumb_path=project.title | thumb_image_path %}
 
           <a href="/images/{{ full_path }}" rel="nofollow" class="popup-gallery popovers" title="{{ project.title }}" data-bs-html="true" data-bs-content="{{ project.description | xml_escape }}<br /&gt;<b&gt;Type: {{ project.categories | array_to_sentence_string }}</b&gt;">
-            <img src="/images/{{ thumb_path }}" alt="{{ project.title }}" class="img-fluid d-block mx-auto">
+            <picture>
+              <source srcset="/images/{{ project.title | thumb_webp_path }}" type="image/webp">
+              <img src="/images/{{ thumb_path }}" alt="{{ project.title }}" class="img-fluid d-block mx-auto" {% if forloop.index > 4 %}loading="lazy" {% endif %}decoding="async">
+            </picture>
           </a>
           <div class="d-block d-sm-none">
             <h3>{{ project.title }}</h3>

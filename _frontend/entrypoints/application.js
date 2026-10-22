@@ -4,7 +4,6 @@ import '../javascripts/frontend/carousels.js';
 import '../javascripts/frontend/consent.js';
 import '../javascripts/frontend/contact.js';
 import '../javascripts/frontend/conversions.js';
-import '../javascripts/frontend/devicons.js';
 import '../javascripts/frontend/homepage.js';
 import '../javascripts/frontend/links.js';
 import '../javascripts/frontend/nav_fix.js';

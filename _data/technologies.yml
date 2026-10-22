@@ -1,27 +1,36 @@
 # Shown in the Technologies section on the home page
 # (_includes/sections/_technologies.html), in this order.
-# icon: a Devicon 2.17 class without the "devicon-" prefix (see https://devicon.dev)
+# icon: an SVG in _includes/devicons/ (from Devicon 2.17, https://devicon.dev)
+# color: brand color shown on hover
 
 - name: Ruby
   icon: ruby-plain
+  color: "#d91404"
 
 - name: Ruby on Rails
   icon: rails-plain
+  color: "#cc0000"
 
 - name: JavaScript
   icon: javascript-plain
+  color: "#f0db4f"
 
 - name: PostgreSQL
   icon: postgresql-plain
+  color: "#336791"
 
 - name: Heroku
   icon: heroku-plain
+  color: "#6762a6"
 
 - name: AWS
   icon: amazonwebservices-plain
+  color: "#ff9900"
 
 - name: Linux
   icon: linux-plain
+  color: "#000000"
 
 - name: Git
   icon: git-plain
+  color: "#f34f29"

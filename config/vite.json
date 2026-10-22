@@ -1,7 +1,12 @@
 {
   "all": {
     "sourceCodeDir": "_frontend",
-    "watchAdditionalPaths": ["_includes/**/*", "_layouts/**/*", "_posts/**/*"]
+    "watchAdditionalPaths": [
+      "_includes/**/*",
+      "_layouts/**/*",
+      "_posts/**/*"
+    ],
+    "additionalEntrypoints": []
   },
   "development": {
     "autoBuild": true,

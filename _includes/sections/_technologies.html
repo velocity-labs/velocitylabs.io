@@ -7,8 +7,8 @@
   <div class="container">
     <ul class="technologies">
       {% for technology in site.data.technologies %}
-        <li>
-          <i class="devicon-{{ technology.icon }}" aria-hidden="true"></i>
+        <li style="--brand-color: {{ technology.color }}">
+          {% include devicons/{{ technology.icon }}.svg %}
           <span>{{ technology.name }}</span>
         </li>
       {% endfor %}

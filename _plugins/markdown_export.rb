@@ -87,7 +87,7 @@ module VelocityLabs
     def remove_decorative_images(root)
       root.css('img[src*="gravatar.com"]').remove
       root.css('a').each do |link|
-        link.remove if link.text.strip.empty? && link.at_css('img') && link['href'].to_s.match?(/\.(png|jpe?g|gif)\z/i)
+        link.remove if link.text.strip.empty? && link.at_css('img') && link['href'].to_s.match?(/\.(png|jpe?g|gif|webp)\z/i)
       end
     end
 

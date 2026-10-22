@@ -19,14 +19,17 @@
     width: 6.5em;
   }
 
-  // Gray until hovered; frontend/devicons.js adds Devicon's .colored class
-  [class^="devicon-"] {
-    font-size: 4em;
+  // Inline Devicon SVGs drawn in currentColor: gray until hovered, then the
+  // brand color set per item (--brand-color in _technologies.html)
+  svg {
+    width: 4em;
+    height: 4em;
+    color: #8a8a8a;
     transition: color 0.2s;
+  }
 
-    &:not(.colored) {
-      color: #8a8a8a;
-    }
+  li:hover svg {
+    color: var(--brand-color);
   }
 
   span {
@@ -50,8 +53,9 @@
       width: 4.5rem;
     }
 
-    [class^="devicon-"] {
-      font-size: 2.5rem;
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
     }
 
     span {

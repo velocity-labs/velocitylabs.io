@@ -64,7 +64,7 @@ Request → config.ru → main.rb (Sinatra) → serves _site/ static files
 - `_data/projects.yml` — Portfolio projects (auto-generates pages via portfolio plugin)
 - `_data/people.yml` — Team members
 - `_data/testimonials.yml` — Client testimonials
-- `_data/technologies.yml` — Technologies section on the home page (Devicon class per entry)
+- `_data/technologies.yml` — Technologies section on the home page (icon = SVG in `_includes/devicons/`, from Devicon; color = hover brand color)
 
 ## Blog Posts
 
