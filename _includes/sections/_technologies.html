@@ -1,0 +1,17 @@
+<section id="technologies">
+  <div class="page-header text-center">
+    <h3>Technologies</h3>
+    <h2>The tools we build with.</h2>
+  </div>
+
+  <div class="container">
+    <ul class="technologies">
+      {% for technology in site.data.technologies %}
+        <li>
+          <i class="devicon-{{ technology.icon }}" aria-hidden="true"></i>
+          <span>{{ technology.name }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

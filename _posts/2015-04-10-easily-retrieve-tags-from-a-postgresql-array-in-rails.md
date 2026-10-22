@@ -32,7 +32,7 @@ Post.select('tags').collect(&:tags).flatten.uniq
 
 You have an array of the tags, but that's kinda ugly. There's
 a lot of Ruby manipulation going on after the tags are retrieved.
-The [`pluck` method](http://apidock.com/rails/ActiveRecord/Calculations/pluck)
+The [`pluck` method](https://apidock.com/rails/ActiveRecord/Calculations/pluck)
 can help with this, by giving us just the attributes we're looking for.
 
 {% highlight ruby %}

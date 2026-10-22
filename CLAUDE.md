@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Velocity Labs company website and blog. Hybrid architecture: Jekyll 4.3 generates static HTML into `_site/`, and Sinatra 4.0 (main.rb) serves those files while handling dynamic routes (contact form). Runs on Ruby 3.3.10, deployed to Heroku via Puma 6. Assets compiled by Vite (via `jekyll-vite` gem).
+Velocity Labs company website and blog. Hybrid architecture: Jekyll 4.3 generates static HTML into `_site/`, and Sinatra 4.0 (main.rb) serves those files while handling dynamic routes (contact form). Runs on Ruby 4.0.7, deployed to Heroku via Puma 8. Assets compiled by Vite (via `jekyll-vite` gem).
 
 ## Development Commands
 
@@ -17,6 +17,12 @@ yarn install  # Use yarn, not npm
 yarn add <package>           # add a dependency
 yarn add -D <package>        # add a dev dependency
 yarn remove <package>        # remove a dependency
+
+# Dependency cooldown: only adopt versions published at least 14 days ago
+# (gems, npm packages, Ruby, Bundler, GitHub Actions). Pin anything newer,
+# including transitive deps (Gemfile constraints / package.json "resolutions").
+bin/check-cooldown           # verify Gemfile.lock + yarn.lock (also runs in CI)
+yarn install --ignore-scripts  # install scripts are a supply-chain vector
 
 # Local development — use two terminals
 # Terminal 1: watchexec rebuilds _site/ on changes (brew install watchexec)
@@ -48,8 +54,8 @@ Request → config.ru → main.rb (Sinatra) → serves _site/ static files
 
 - **_config.yml** — Jekyll config: permalink structure (`/blog/:year/:month/:day/:title/`), pagination (10/page), Vite settings, company metadata available as Liquid variables (`site.company.*`)
 - **main.rb** — Sinatra app: catch-all route serves from `_site/`, contact form with HMAC-signed CSRF tokens (stateless, not session-based — see `thoughts/shared/learnings/2026-02-25-csrf-session-race-condition.md`), Rack::Attack rate limiting
-- **vite.config.js** / **config/vite.json** — Vite asset pipeline config; source in `_frontend/`, output to `public/vite/`
-- **_plugins/** — Custom Jekyll plugins: `portfolio.rb` auto-generates portfolio pages from `_data/projects.yml`, `filters.rb` adds Liquid filters (`full_image_path`, `thumb_image_path`, `get_categories`, etc.)
+- **vite.config.mjs** / **config/vite.json** — Vite asset pipeline config; source in `_frontend/`, output to `public/vite/`
+- **_plugins/** — Custom Jekyll plugins: `portfolio.rb` auto-generates portfolio pages from `_data/projects.yml`, `filters.rb` adds Liquid filters (`full_image_path`, `thumb_image_path`, `get_categories`, etc.), `seo.rb` maps `author_id` and default images for jekyll-seo-tag and jekyll-feed, `markdown_export.rb` writes a Markdown copy of each indexable page (`/path.md`) plus `/llms-full.txt` for AI tools
 - **_layouts/base.html** — Uses Vite Liquid tags: `{% vite_client_tag %}`, `{% vite_stylesheet_tag application %}` in head; `{% vite_javascript_tag application %}` in `_includes/_scripts.html`
 
 ## Key Data-Driven Content
@@ -57,6 +63,7 @@ Request → config.ru → main.rb (Sinatra) → serves _site/ static files
 - `_data/projects.yml` — Portfolio projects (auto-generates pages via portfolio plugin)
 - `_data/people.yml` — Team members
 - `_data/testimonials.yml` — Client testimonials
+- `_data/technologies.yml` — Technologies section on the home page (Devicon class per entry)
 
 ## Blog Posts
 
@@ -64,4 +71,4 @@ Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter (title, author, dat
 
 ## Environment Variables (production)
 
-`SESSION_SECRET` (Sinatra sessions + HMAC form token signing), `SENDGRID_API_KEY`, `RECAPTCHA_SECRET_KEY`, `NEW_RELIC_LICENSE_KEY`
+`SESSION_SECRET` (HMAC form token signing; sessions are disabled so the site sets no cookies of its own), `SENDGRID_API_KEY`, `RECAPTCHA_SECRET_KEY`, `NEW_RELIC_LICENSE_KEY`

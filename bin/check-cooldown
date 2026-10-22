@@ -1,0 +1,75 @@
+#!/usr/bin/env ruby
+# Fails if any locked dependency was published less than COOLDOWN_DAYS ago
+# (default 14). A waiting period lets malicious releases get caught and
+# yanked before we pick them up.
+#
+#   bin/check-cooldown                      # checks Gemfile.lock and yarn.lock
+#   COOLDOWN_DAYS=7 bin/check-cooldown Gemfile.lock
+#
+# Checks the exact locked version (and platform, for native gems) against its
+# publish date. Uses only the Ruby standard library so it runs without Bundler.
+
+require 'date'
+require 'json'
+require 'net/http'
+require 'uri'
+
+DAYS = Integer(ENV.fetch('COOLDOWN_DAYS', 14))
+CUTOFF = Date.today - DAYS
+
+def fetch_json(url)
+  response = Net::HTTP.get_response(URI(url))
+  raise "#{url} returned #{response.code}" unless response.is_a?(Net::HTTPSuccess)
+
+  JSON.parse(response.body)
+end
+
+# => [[name, version, platform], ...]
+def gemfile_lock_specs(path)
+  lock = File.read(path)
+  specs = lock.scan(/^    ([A-Za-z0-9_.-]+) \(([^)]+)\)$/).map do |name, version|
+    number, platform = version.match(/\A([0-9][0-9A-Za-z.]*?)(?:-([a-z].*))?\z/).captures
+    [name, number, platform || 'ruby']
+  end
+  bundler = lock[/BUNDLED WITH\n\s+(\S+)/, 1]
+  specs << ['bundler', bundler, 'ruby'] if bundler
+  specs.uniq
+end
+
+def gem_publish_dates(specs)
+  specs.group_by(&:first).flat_map do |name, entries|
+    versions = fetch_json("https://rubygems.org/api/v1/versions/#{name}.json")
+    entries.map do |_, number, platform|
+      match = versions.find { |v| v['number'] == number && v['platform'] == platform }
+      ["#{name} #{number}#{"-#{platform}" unless platform == 'ruby'}", match && Date.parse(match['created_at'])]
+    end
+  end
+end
+
+# => [[name, version], ...]
+def yarn_lock_specs(path)
+  File.read(path).scan(/^"?((?:@[^@\/\s]+\/)?[^@\s"]+)@[^\n]*:\n  version "([^"]+)"/).uniq
+end
+
+def npm_publish_dates(specs)
+  specs.group_by(&:first).flat_map do |name, entries|
+    times = fetch_json("https://registry.npmjs.org/#{name.sub('/', '%2F')}")['time']
+    entries.map { |_, version| ["#{name} #{version}", times[version] && Date.parse(times[version])] }
+  end
+end
+
+files = ARGV.empty? ? %w[Gemfile.lock yarn.lock].select { |f| File.exist?(f) } : ARGV
+violations = []
+
+files.each do |file|
+  dates = File.basename(file) == 'yarn.lock' ? npm_publish_dates(yarn_lock_specs(file)) : gem_publish_dates(gemfile_lock_specs(file))
+  bad = dates.select { |_, date| date.nil? || date > CUTOFF }
+  puts "#{file}: #{dates.size} checked, #{bad.size} too new"
+  bad.each { |spec, date| violations << "  #{spec} (#{date || 'publish date not found'})" }
+end
+
+if violations.any?
+  puts "\nPublished within the last #{DAYS} days (after #{CUTOFF}):", violations
+  exit 1
+end
+puts "All dependencies are at least #{DAYS} days old."

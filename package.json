@@ -1,13 +1,24 @@
 {
   "name": "velocitylabs-io",
   "private": true,
+  "engines": {
+    "node": "26.11.1"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build"
   },
   "dependencies": {
-    "sass": "^1.83",
-    "vite": "^6.0",
-    "vite-plugin-ruby": "^5.1"
+    "@fontsource/open-sans": "5.3.0",
+    "sass": "1.105.1",
+    "vite": "8.3.4",
+    "vite-plugin-ruby": "5.2.5"
+  },
+  "resolutions": {
+    "rolldown": "1.2.13",
+    "postcss": "8.5.29",
+    "immutable": "5.1.9",
+    "obug": "2.1.3",
+    "source-map-js": "1.2.2"
   }
 }

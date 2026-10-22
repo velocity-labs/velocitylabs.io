@@ -1,2 +1,9 @@
+---
+layout: null
+sitemap: false
+---
+# All crawlers, including AI crawlers, are welcome.
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: {{ "/sitemap.xml" | absolute_url }}

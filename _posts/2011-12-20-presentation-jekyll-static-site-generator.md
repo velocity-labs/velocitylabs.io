@@ -33,9 +33,9 @@ In the meantime, check out the presentation:
     <a href="http://www.slideshare.net/Flatterline/jekyll-presentation-slides" title="Jekyll Presentation Slides" target="_blank">Jekyll Presentation Slides</a>
   </strong>
 
-  <iframe src="http://www.slideshare.net/slideshow/embed_code/10653919" width="510" height="426" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+  <iframe src="https://www.slideshare.net/slideshow/embed_code/10653919" width="510" height="426" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
 </div>
 
 And the video:
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/7mXeJlFdZ2c" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7mXeJlFdZ2c" frameborder="0" allowfullscreen></iframe>

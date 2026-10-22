@@ -11,8 +11,8 @@ Phoenix, AZ. You can find us on the web at
 
 ## Prerequisites
 
-- **Ruby 3.3.10** (managed via RVM; see `.ruby-version`)
-- **Node 24** (see `.nvmrc`)
+- **Ruby 4.0.7** (managed via RVM; see `.ruby-version`)
+- **Node 26** (Heroku is pinned to 26.11.1 via `package.json` "engines"; any 26.x works locally)
 - **Yarn** (not npm — always use `yarn` for package management)
 - **Bundler** (`gem install bundler`)
 - **watchexec** (`brew install watchexec`) — recommended for file watching (see below)
@@ -33,7 +33,7 @@ This is a hybrid static/dynamic site:
 1. **Jekyll 4.3** generates static HTML into `_site/`
 2. **Vite** (via `jekyll-vite` gem) compiles frontend assets (JS, SCSS) from `_frontend/` into `public/vite/`
 3. **Sinatra 4.0** (`main.rb`) serves everything — static files from `_site/`, plus dynamic routes for the contact form
-4. **Puma 6** runs the Sinatra app (configured in `Procfile`)
+4. **Puma 8** runs the Sinatra app (configured in `Procfile`)
 
 ```
 Browser → config.ru → Rack::Deflater
@@ -151,7 +151,7 @@ Required for the contact form and monitoring to work. In development, add them t
 
 | Variable | Purpose |
 |----------|---------|
-| `SESSION_SECRET` | Sinatra session secret + HMAC form token signing key |
+| `SESSION_SECRET` | HMAC form token signing key (Sinatra sessions are disabled) |
 | `SENDGRID_API_KEY` | SendGrid v3 API key for sending contact form emails |
 | `RECAPTCHA_SECRET_KEY` | reCAPTCHA v3 secret key (site key is in `_config.yml`) |
 | `NEW_RELIC_LICENSE_KEY` | New Relic APM monitoring |
@@ -171,15 +171,15 @@ Deployed to **Heroku** via git push. The Heroku build process:
 
 | Component | Version | Notes |
 |-----------|---------|-------|
-| Ruby | 3.3.10 | `.ruby-version`, managed by RVM |
+| Ruby | 4.0.7 | `.ruby-version`, managed by RVM |
 | Jekyll | ~> 4.3 | Static site generator |
 | Sinatra | ~> 4.0 | Dynamic routes + static file serving |
-| Puma | ~> 6.4 | Web server |
+| Puma | ~> 8.0 | Web server, bound to 0.0.0.0 in `Procfile` |
 | Rack | ~> 3.0 | |
-| Vite | ^6.0 | Asset pipeline (via `jekyll-vite` gem + `vite-plugin-ruby`) |
-| Sass | ^1.83 | SCSS compilation via Vite |
+| Vite | 8.3.4 | Asset pipeline (via `jekyll-vite` gem + `vite-plugin-ruby`) |
+| Sass | 1.105.1 | SCSS compilation via Vite |
 | Bootstrap | 5.3.3 | CDN (no jQuery dependency) |
-| Node | 24 | `.nvmrc` |
+| Node | 26.11.1 | `package.json` "engines" (Heroku) and `.nvmrc` |
 | Kramdown | ~> 2.4 | Markdown parser |
 | SendGrid | ~> 6.7 | Email delivery (v3 API) |
 | Rack::Attack | ~> 6.7 | Rate limiting |

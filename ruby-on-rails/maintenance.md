@@ -96,7 +96,7 @@ title: Ruby on Rails Application Maintenance
       <div id="benefits" class="row">
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-tasks"></i>
+            <i class="fa fa-list-check"></i>
             Unlimited Small Tasks
           </h4>
 
@@ -122,7 +122,7 @@ title: Ruby on Rails Application Maintenance
 
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-heartbeat"></i>
+            <i class="fa fa-heart-pulse"></i>
             24/7 Application Monitoring
           </h4>
 
@@ -159,7 +159,7 @@ title: Ruby on Rails Application Maintenance
 
         <div class="col-lg-4">
           <h4>
-            <i class="fa fa-area-chart"></i>
+            <i class="fa fa-chart-area"></i>
             Load Monitoring
           </h4>
 
@@ -241,7 +241,9 @@ title: Ruby on Rails Application Maintenance
 
 <section>
   <div class="container">
-    <!-- <div class="row">
+    {% comment %} Stripe subscription signup. Re-enable together with the /charge route in main.rb. {% endcomment %}
+    {% comment %}
+    <div class="row">
       <div class="col-lg-8 offset-lg-2">
         <h3 class="text-center">Are You Ready To Get Started?</h3>
 
@@ -298,7 +300,8 @@ title: Ruby on Rails Application Maintenance
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
+    {% endcomment %}
 
     <div class="row">
       <div id="faq" class="col-lg-10 offset-lg-1">

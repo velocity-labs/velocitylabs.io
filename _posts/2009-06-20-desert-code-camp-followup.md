@@ -9,7 +9,7 @@ tags:
 - conferences
 ---
 
-Thanks to everyone who attended the two sessions taught by us at [Desert Code Camp](http://desertcodecamp.com)! We hope that you had a great time and learned a lot. I know we did!
+Thanks to everyone who attended the two sessions taught by us at [Desert Code Camp](https://web.archive.org/web/20090618070115/http://www.desertcodecamp.com:80/)! We hope that you had a great time and learned a lot. I know we did!
 
 As promised, here are the slides from the Understanding Functional Programming session:
 

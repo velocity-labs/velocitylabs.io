@@ -1,4 +1,4 @@
-@import "theme/variables";
+@use "theme/variables" as *;
 
 body {
   background: #f6f6f6;
@@ -1450,6 +1450,7 @@ footer.footer .icon {
   color: white;
   font-size: 4em;
   display: block;
+  margin: 0 auto;
 }
 .icons .icon-wrapper span {
   text-transform: uppercase;

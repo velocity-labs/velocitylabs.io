@@ -15,7 +15,7 @@
   id: 2
   links:
     github: "https://github.com/curtis"
-    rss: "http://millarian.com"
+    rss: "https://millarian.com"
     twitter: "https://www.twitter.com/curtism"
   name: "Curtis Miller"
   title: "Managing Partner"
@@ -25,7 +25,6 @@
   id: 3
   links:
     github: "https://github.com/dukedave"
-    rss: "http://dukedave.com/"
     twitter: "https://www.twitter.com/davetapley"
   name: "Dave Tapley"
   title: "Programmer"

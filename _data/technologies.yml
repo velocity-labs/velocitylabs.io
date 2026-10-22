@@ -1,0 +1,27 @@
+# Shown in the Technologies section on the home page
+# (_includes/sections/_technologies.html), in this order.
+# icon: a Devicon 2.17 class without the "devicon-" prefix (see https://devicon.dev)
+
+- name: Ruby
+  icon: ruby-plain
+
+- name: Ruby on Rails
+  icon: rails-plain
+
+- name: JavaScript
+  icon: javascript-plain
+
+- name: PostgreSQL
+  icon: postgresql-plain
+
+- name: Heroku
+  icon: heroku-plain
+
+- name: AWS
+  icon: amazonwebservices-plain
+
+- name: Linux
+  icon: linux-plain
+
+- name: Git
+  icon: git-plain

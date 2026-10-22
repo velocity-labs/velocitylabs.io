@@ -15,15 +15,15 @@ tags:
 - technology
 ---
 
-Velocity Labs believes heavily in the power of [cloud computing](http://en.wikipedia.org/wiki/Cloud_computing). Dynamically allocated hardware on a pay-for-what-you-need basis has tremendous advantages when it comes to helping clients manage and provision their clusters. The main advantage of cloud computing is dynamically growing, or shrinking, hardware as the needs of the application change.
+Velocity Labs believes heavily in the power of [cloud computing](https://en.wikipedia.org/wiki/Cloud_computing). Dynamically allocated hardware on a pay-for-what-you-need basis has tremendous advantages when it comes to helping clients manage and provision their clusters. The main advantage of cloud computing is dynamically growing, or shrinking, hardware as the needs of the application change.
 
 Because of the dynamic nature of cloud computing, we don't need a guaranteed answer on hardware requirements up front. However, a client may want a ballpark figure in order to set aside the right amount of budget or let investors know the estimated operational cost. You could crunch the numbers yourself, but why would you do that when we've already automated the process for you?
 
 ### Determining optimal cost
 
-We've constructed a very basic model for minimizing the cost of [Amazon EC2](http://aws.amazon.com/ec2/) hardware resources which satisfies a minimum number of [EC2 Compute Units](http://aws.amazon.com/ec2/instance-types/) and a given amount of RAM per process.
+We've constructed a very basic model for minimizing the cost of [Amazon EC2](https://aws.amazon.com/ec2/) hardware resources which satisfies a minimum number of [EC2 Compute Units](https://aws.amazon.com/ec2/instance-types/) and a given amount of RAM per process.
 
-The technique uses [linear programming](http://en.wikipedia.org/wiki/Linear_programming) and the [GNU linear programming kit (GLPK)](http://en.wikipedia.org/wiki/GNU_Linear_Programming_Kit). **Note**: I'm a math geek that likes linear modeling, so if you're unfamiliar with either, I'd be happy to chat with you about them over lunch.
+The technique uses [linear programming](https://en.wikipedia.org/wiki/Linear_programming) and the [GNU linear programming kit (GLPK)](https://en.wikipedia.org/wiki/GNU_Linear_Programming_Kit). **Note**: I'm a math geek that likes linear modeling, so if you're unfamiliar with either, I'd be happy to chat with you about them over lunch.
 
 ### Installation
 

@@ -18,11 +18,11 @@ Brian Webster's a one-man-show, who's done everything right without maybe even i
 
 **Tell us about your company. How did you get started?**
 
-I'm currently a one-man software company, [Fat Cat Software](http://fatcatsoftware.com"). I do programming for Mac OS X. I have three applications that I sell:
+I'm currently a one-man software company, [Fat Cat Software](https://web.archive.org/web/20120114024943/http://www.fatcatsoftware.com/). I do programming for Mac OS X. I have three applications that I sell:
 
-*   [iPhoto Library Manager](http://www.fatcatsoftware.com/iplm/)
-*   [PowerTunes](http://www.fatcatsoftware.com/powertunes/)
-*   [PlistEdit Pro](http://www.fatcatsoftware.com/plisteditpro/)
+*   [iPhoto Library Manager](https://www.fatcatsoftware.com/iplm/)
+*   [PowerTunes](https://www.fatcatsoftware.com/powertunes/)
+*   [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/)
 
 I wish I could say I had some grand plan like I'm going to start my own business, but it really just kinda happened...
 
@@ -50,7 +50,7 @@ Yes, both in terms of programming the app and marketing it. I was able to reuse 
 {" I haven't done a whole lot of marketing in the traditional sense. "} For people with corrupted iPhoto libraries, I get a fair portion of my traffic that comes directly from Apple's own discussion forums, where there are users helping each other. There are 2-3 regular users who will help a lot of people with iPhoto stuff, and for a lot of common iPhoto problems, they say, *"Go try iPhoto Library Manager."*
 {% endpullquote %}
 
-I also have quite a few reviews, including a [review for iPhoto Library Manager on MacWorld](http://www.macworld.com/article/53474/2006/10/iphotolibrarymanager.html). Of course, it always helps when those reviews are positive, 4.5 mice or whatever rating scale they use.
+I also have quite a few reviews, including a [review for iPhoto Library Manager on MacWorld](https://web.archive.org/web/20120117021445/http://www.macworld.com:80/article/53474/2006/10/iphotolibrarymanager.html). Of course, it always helps when those reviews are positive, 4.5 mice or whatever rating scale they use.
 
 Now, there's enough juice behind my product name that if you start to type iPhoto, Google will give you a suggestion for iPhoto Library Manager. It's a keyword that gets over 20,000 searches each month.
 
@@ -62,7 +62,7 @@ I go back and forth on the best way to do trial limitations for software, becaus
 
 **How do you sell your app?**
 
-I started by selling everything through my own online store. For that I use Potion Store, an [open source Ruby on Rails web store](http://www.potionfactory.com/potionstore). It's on GitHub, and I'm not Rails expert, but I was able to learn enough to make the change and updates I need.
+I started by selling everything through my own online store. For that I use Potion Store, an [open source Ruby on Rails web store](https://www.potionfactory.com/potionstore). It's on GitHub, and I'm not Rails expert, but I was able to learn enough to make the change and updates I need.
 
 **Why not sell through the Mac App Store?**
 

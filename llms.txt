@@ -1,0 +1,37 @@
+---
+layout: null
+sitemap: false
+---
+{%- assign service_urls = "/ruby-on-rails/code-audits/,/ruby-on-rails/maintenance/,/ruby-on-rails/upgrades/,/process/story-workshop/" | split: "," -%}
+# {{ site.company.name }}
+
+> {{ site.company.description }}
+
+{{ site.company.name }} is a Ruby on Rails and JavaScript consultancy based in {{ site.company.address.city }}, {{ site.company.address.state }}. We build custom web applications and maintain, upgrade and audit existing Rails applications.
+
+- Phone: {{ site.company.phone }}
+- Email: contact@velocitylabs.io
+- Address: {{ site.company.address.street }}, {{ site.company.address.city }}, {{ site.company.address.state }} {{ site.company.address.zip }}
+
+## Services
+
+{% for url in service_urls -%}
+{%- assign service = site.pages | where: "url", url | first -%}
+- [{{ service.title }}]({{ service.markdown_url | default: service.url | absolute_url }}): {{ service.lead | strip_newlines | normalize_whitespace }}
+{% endfor %}
+## Company
+
+- [Home]({{ "/index.md" | absolute_url }}): Who we are, how we work, our team and client testimonials
+- [Projects]({{ "/portfolio.md" | absolute_url }}): Web applications we have built for clients
+- [Contact]({{ "/#contact" | absolute_url }}): Start a project with us
+
+## Blog
+
+{% for post in site.posts -%}
+- [{{ post.title | strip_html }}]({{ post.markdown_url | default: post.url | absolute_url }}): {{ post.excerpt | strip_html | strip_newlines | normalize_whitespace }}
+{% endfor %}
+## Optional
+
+- [Full site content]({{ "/llms-full.txt" | absolute_url }}): Every page above in a single Markdown file
+- [Privacy Policy]({{ "/privacy-policy.md" | absolute_url }})
+- [Terms of Service]({{ "/terms-of-service.md" | absolute_url }})

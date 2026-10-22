@@ -35,7 +35,7 @@ So I stopped that and got an internship to do design work. {"I don't recommend p
 
 I worked for quite a few different magazines. It was great seeing how businesses work. But I got to the point where I was happy with my design work, but I hated the companies I was working for. Day after day, my anger grew. I would make suggestions, and it wasn't anything they were excited about. So I left.
 
-I went to the Arizona Republic. I was art director of their local magazine, [AZ Magazine](http://www.azcentral.com/style/azmag/azmagdex.html). It was great because I got to meet entrepreneurs and small business people while learning about Phoenix, which really got me excited.
+I went to the Arizona Republic. I was art director of their local magazine, [AZ Magazine](https://web.archive.org/web/20120105033147/http://www.azcentral.com:80/style/azmag/azmagdex.html). It was great because I got to meet entrepreneurs and small business people while learning about Phoenix, which really got me excited.
 
 **Did that make you want to start your own business?**
 
@@ -100,7 +100,7 @@ I always ask myself, "How can I get really excited about this project that I'm w
 **What's been the most important thing you've learned?**
 
 {% pullquote %}
-Knowing my worth and knowing when to say no. I read this book called [Hell Yes](http://www.amazon.com/Hell-Yes-Little-Simpler-Happier/dp/0740779192)! If you're going to do something, it shouldn't just be a 'yes,' it should be a'hell yes.' {"If there's any red flag that goes up at any point, then don't just say no, say hell no."} There are plenty of people who will take up the project, and if you take it on, then you know you'll be kicking yourself later. So its okay if we starve for a day or two until we get a good project. But that hasn't happened yet&hellip; **_knocks on wood_**
+Knowing my worth and knowing when to say no. I read this book called [Hell Yes](https://www.amazon.com/Hell-Yes-Little-Simpler-Happier/dp/0740779192)! If you're going to do something, it shouldn't just be a 'yes,' it should be a'hell yes.' {"If there's any red flag that goes up at any point, then don't just say no, say hell no."} There are plenty of people who will take up the project, and if you take it on, then you know you'll be kicking yourself later. So its okay if we starve for a day or two until we get a good project. But that hasn't happened yet&hellip; **_knocks on wood_**
 {% endpullquote %}
 
 **What's the best marketing you've done?**

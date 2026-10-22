@@ -22,7 +22,7 @@ If you have a product, prototype, or idea for licensed software, a web-based app
 
 ### The Details
 
-In addition to funding Blogic, and [Member Desk](http://www.memberdesk.com/) last year, AZ Disruptors is looking to fund up to 5 more startups this year.
+In addition to funding Blogic, and [Member Desk](https://www.memberdesk.com/) last year, AZ Disruptors is looking to fund up to 5 more startups this year.
 
 If you apply, be prepared to move to Phoenix (if you're not already here) to complete the program.
 
@@ -51,10 +51,10 @@ If you apply, be prepared to move to Phoenix (if you're not already here) to com
 
 ### Are You Ready to Get Disruptive?
 
-We think Phoenix is fortunate to have a group like the AZ Disruptors working to fund startup ideas. If you're ready, apply for their January 13, 2012 deadline by filling out the [AZ Disruptor incubator application](http://www.azdisruptors.com/disruptive-company/)!
+We think Phoenix is fortunate to have a group like the AZ Disruptors working to fund startup ideas. If you're ready, apply for their January 13, 2012 deadline by filling out the [AZ Disruptor incubator application](https://web.archive.org/web/20120102120458/http://www.azdisruptors.com:80/disruptive-company)!
 
 If you want more information, here's a video presentation by AZ Disruptors, outlining their incubator program. It runs about 6½ minutes and covers all the main points.
 
 <div class="text-center">
-  <iframe width="560" height="315" src="http://www.youtube.com/embed/zlJ8FtsYAtM" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/zlJ8FtsYAtM" frameborder="0" allowfullscreen></iframe>
 </div>

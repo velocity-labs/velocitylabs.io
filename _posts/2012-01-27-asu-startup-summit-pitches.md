@@ -49,7 +49,7 @@ We realize you may not want to watch all 15 funding pitch videos, so just click 
 
 [reNature](https://www.crunchbase.com/organization/renature) is a Phoenix startup that industrializes the natural processes of decomposition to provide sustainable alternatives to land filling food waste while simultaneously creating alternatives to petrochemical based agricultural products.
 
-<iframe title="reNature startup funding pitch" width="560" height="315" src="http://www.youtube.com/embed/WALk7EUiWlI" frameborder="0" allowfullscreen></iframe>
+<iframe title="reNature startup funding pitch" width="560" height="315" src="https://www.youtube.com/embed/WALk7EUiWlI" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -57,7 +57,7 @@ We realize you may not want to watch all 15 funding pitch videos, so just click 
 
 [AZ Pro DJs](http://www.azprodjs.com/) offers entertainment services including lights, sound and DJ services.
 
-<iframe title="AZ Pro DJs pitches for funing" width="560" height="315" src="http://www.youtube.com/embed/WZjgX4CQxBU" frameborder="0" allowfullscreen></iframe>
+<iframe title="AZ Pro DJs pitches for funing" width="560" height="315" src="https://www.youtube.com/embed/WZjgX4CQxBU" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -65,7 +65,7 @@ We realize you may not want to watch all 15 funding pitch videos, so just click 
 
 Bright Evolutions pitches their healthy, flying food app.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/y71xbmgRv1E" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/y71xbmgRv1E" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -73,15 +73,15 @@ Bright Evolutions pitches their healthy, flying food app.
 
 Baby Cate, also known as Simple Swaddle, pitches their custom baby swaddling blankets.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/NvmK9MUlLzY" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NvmK9MUlLzY" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
 <h3 id="mercury-innovative">Mercury Innovative</h3>
 
-[Mercury Innovative](http://www.mercuryinnovative.com/) creates, tests, and offers unique language analysis and language arts software.
+[Mercury Innovative](https://web.archive.org/web/20120123155138/http://www.mercuryinnovative.com:80/) creates, tests, and offers unique language analysis and language arts software.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/_rTW-zzzIb4" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_rTW-zzzIb4" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -89,15 +89,15 @@ Baby Cate, also known as Simple Swaddle, pitches their custom baby swaddling bla
 
 Bridge Communities pitches for their online community for baby boomers.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/C9ONbNCLzAo" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/C9ONbNCLzAo" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
 <h3 id="arbsource">Arbsource</h3>
 
-[Arbsource](http://www.arbsource.us/) pitches for funding for their ARBCell biological reactor system, which can cut the cost of wastewater treatment for many food and beverage manufacturing companies by 50% or more through reduced energy consumption and maintenance.
+[Arbsource](https://web.archive.org/web/20120109035232/http://www.arbsource.us:80/) pitches for funding for their ARBCell biological reactor system, which can cut the cost of wastewater treatment for many food and beverage manufacturing companies by 50% or more through reduced energy consumption and maintenance.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/cA6Ly0HCzAM" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cA6Ly0HCzAM" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -105,7 +105,7 @@ Bridge Communities pitches for their online community for baby boomers.
 
 Ellens Technologies pitches their veterinarian app.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/7d-CzdvX8PA" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7d-CzdvX8PA" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -113,15 +113,15 @@ Ellens Technologies pitches their veterinarian app.
 
 [Bebe EcoPosh](https://www.linkedin.com/company/bebe-ecoposh/) pitches for funding for their green luxury e-boutique for baby.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/b4bvmr5TB9Y" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b4bvmr5TB9Y" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
 <h3 id="seymour-enterprises">Seymour Enterprises</h3>
 
-[Seymour Enterprises](http://seymourenterprises.us/) pitches for funding for their biomedical firm which is designing a low cost respiratory monitor designed for infants at elevated risk of Sudden Infant Death Syndrome.
+[Seymour Enterprises](https://web.archive.org/web/20120213002111/http://seymourenterprises.us:80/) pitches for funding for their biomedical firm which is designing a low cost respiratory monitor designed for infants at elevated risk of Sudden Infant Death Syndrome.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/D8FH4xnXXUI" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D8FH4xnXXUI" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -129,15 +129,15 @@ Ellens Technologies pitches their veterinarian app.
 
 [BlueDream](http://bluedream.tv/) pitches for funding for their one-stop production facility which provides branding, production and marketing.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/O6sVGENz5oE" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/O6sVGENz5oE" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
 <h3 id="kvz-sports">KVZ Sports</h3>
 
-[KVZ Sports](http://kvzsports.com/) pitches for funding:
+[KVZ Sports](https://web.archive.org/web/20120122043931/http://kvzsports.com:80/) pitches for funding:
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/_-I5QMtgz48" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_-I5QMtgz48" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -145,7 +145,7 @@ Ellens Technologies pitches their veterinarian app.
 
 [G3Box](http://g3box.org/) provides engineering design and manufacturing towards the conversion of steel shipping containers into low-cost, modular, and mobile medical clinics.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/8vA1FxiXlMg" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8vA1FxiXlMg" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -153,7 +153,7 @@ Ellens Technologies pitches their veterinarian app.
 
 eEcosphere pitches their social came for sustainability.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/dS_EtnmlxAc" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dS_EtnmlxAc" frameborder="0" allowfullscreen></iframe>
 
 <hr />
 
@@ -161,6 +161,6 @@ eEcosphere pitches their social came for sustainability.
 
 [Vantage Realized](http://www.vantagerealized.com/) provides products for people with disabilities.
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/yxj2hffcClY" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yxj2hffcClY" frameborder="0" allowfullscreen></iframe>
 
-Read more about [ASU Student Ventures](http://studentventures.asu.edu/ventures).
+Read more about [ASU Student Ventures](https://web.archive.org/web/20120124234450/http://www.studentventures.asu.edu:80/ventures).

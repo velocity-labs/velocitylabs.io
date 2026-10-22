@@ -131,11 +131,11 @@ but if you're already using [cancancan]'s `load_and_authorize_resource` method t
     {% endhighlight %}
 
 
-[multitenant]: http://en.wikipedia.org/wiki/Multitenancy
+[multitenant]: https://en.wikipedia.org/wiki/Multitenancy
 [CanCanCan]: https://github.com/cancancommunity/cancancan
 [nested resources]: https://github.com/ryanb/cancan/wiki/Nested-Resources
 [surrogate keys]: https://en.wikipedia.org/wiki/Surrogate_key
 [counter cache]: http://guides.rubyonrails.org/association_basics.html#counter-cache
-[composite index]: https://en.wikipedia.org/wiki/Composite_index_database
+[composite index]: https://en.wikipedia.org/wiki/Database_index
 [cancancan]: https://github.com/cancancommunity/cancancan
-[param]: http://apidock.com/rails/ActiveRecord/Base/to_param.
+[param]: https://web.archive.org/web/20221024034849/https://apidock.com/rails/ActiveRecord/Base/to_param.

@@ -22,7 +22,7 @@ Check out [Stealthmode's Mesa New Venture Accelerator](http://blog.stealthmode.c
 
 Roadmap to Launch starts February 3rd with a weekend kickstart product development. Then, you'll meet every Tuesday from 5:30-8:30pm. In addition, you'll have weekly meetings with a team counselor to track your progress, three opportunities to practice your pitch, and a full day of PR training.
 
-Check out [Roadmap to Launch](http://gangplankhq.com/2012/01/roadmap-to-launch-2012/) for more information.
+Check out Roadmap to Launch for more information.
 
 ### ASU Maker Week
 
@@ -32,10 +32,10 @@ Maker Week begins February 16th and is put on through the ASU College of Technol
 
 Events will include Maker Pitch, Maker Faire and the Making Your Future conference.
 
-The Maker Pitch is and idea pitch event where entrepreneurs can get experience and practice pitching their innovations and startup ideas. If you wish to pitch, [apply here](https://technology.asu.edu/makerweek/makerpitch/form).
+The Maker Pitch is and idea pitch event where entrepreneurs can get experience and practice pitching their innovations and startup ideas. If you wish to pitch, apply here.
 
 The Faire will consist of demonstrations, workshops and other hands-on challenges. If have a project you'd like to be included, here's the [Maker Faire Call for Entries](https://docs.google.com/spreadsheet/viewform?formkey=dHMzR0lZUHZxeFY1NzFmWjRoV2FVVWc6MQ).
 
 In conjunction with Maker Week, there will also be a Making Your Future conference for high school students and their teachers, with speakers including entrepreneurs from across the country speaking on tech, science and business. Don't miss it, February 23, [RSVP now](https://docs.google.com/spreadsheet/viewform?hl=en_US&formkey=dENDMlFrZlRyQUhTOTlQeXlMSnVabXc6MQ#gid=0)
 
-For more information, check out [ASU's Maker Week](https://technology.asu.edu/makerweek).
+For more information, check out [ASU's Maker Week](https://web.archive.org/web/20130606021310/https://technology.asu.edu/makerweek).

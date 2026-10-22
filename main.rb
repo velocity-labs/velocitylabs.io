@@ -19,10 +19,29 @@ require 'rack/attack'
 ## Global Settings ##
 set :public_folder, Proc.new { File.join(root, "_site") }
 set :protection, except: :frame_options
+mime_type :md, 'text/markdown' # Markdown copies of pages (_plugins/markdown_export.rb)
 
-enable :sessions
-set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+# Redirect http -> https and www -> bare domain in one hop, behind the Heroku
+# router. Middleware (not a before filter) because Sinatra serves static
+# files before filters run.
+class ForceHttps
+  def initialize(app)
+    @app = app
+  end
 
+  def call(env)
+    req = Rack::Request.new(env)
+    insecure = env['HTTP_X_FORWARDED_PROTO'] == 'http'
+    www = req.host.start_with?('www.')
+    return @app.call(env) unless insecure || www
+
+    status = req.get? || req.head? ? 301 : 308
+    location = "https://#{req.host.delete_prefix('www.')}#{req.fullpath}"
+    [status, { 'location' => location, 'content-type' => 'text/html' }, []]
+  end
+end
+
+use ForceHttps if settings.production?
 use Rack::Attack
 
 # In-memory cache store for Rack::Attack (no ActiveSupport needed)

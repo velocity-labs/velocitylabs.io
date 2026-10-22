@@ -1,0 +1,22 @@
+# Fails when a lockfile contains a dependency published less than 14 days
+# ago. See bin/check-cooldown.
+name: Dependency cooldown
+
+on:
+  pull_request:
+    paths: [Gemfile.lock, yarn.lock, bin/check-cooldown]
+  push:
+    branches: [master]
+    paths: [Gemfile.lock, yarn.lock, bin/check-cooldown]
+
+permissions:
+  contents: read
+
+jobs:
+  cooldown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: ruby bin/check-cooldown

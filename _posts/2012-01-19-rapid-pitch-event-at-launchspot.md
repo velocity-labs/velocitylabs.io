@@ -14,7 +14,7 @@ title: "Rapid Pitch Event at LaunchSpot"
 LaunchSpot is a tech incubator in Tempe, AZ. Although they got rolling about a year ago, they've spent a lot of time and money developing their space, located at Broadway and 52nd Street in Tempe, Arizona. In fact, here's a video tour of the coworking space before it was built out:
 
 <div class="text-center">
-  <iframe width="560" height="315" src="http://www.youtube.com/embed/FjUTyUsubk4" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/FjUTyUsubk4" frameborder="0" allowfullscreen></iframe>
 </div>
 
 ### What is the LaunchSpot Rapid Pitch Event?
@@ -34,11 +34,11 @@ You need to do the video first, because once you've made your video, you must up
 
 LaunchSpot will feature video submissions on their site and allow users to vote on the ones they like most. The video with the most likes will be offered an automatic place in the Rapid Pitch event.
 
-When you're ready, [apply for the LaunchSpot Rapid Pitch Event](http://rapidpitch.launchspot.com/entry-form/).
+When you're ready, [apply for the LaunchSpot Rapid Pitch Event](https://web.archive.org/web/20120126020440/http://rapidpitch.launchspot.com:80/entry-form/).
 
 ### Wait, who are the judges?
 
-And the [judges](http://rapidpitch.launchspot.com/judges/) are...
+And the [judges](https://web.archive.org/web/20120126020514/http://rapidpitch.launchspot.com:80/judges/) are...
 
 *   Dr, Matt Kim, Founder and President QuanTera
 *   Steven G Mihaylo, CEO Crexendo

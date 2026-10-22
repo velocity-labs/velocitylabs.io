@@ -11,7 +11,7 @@ tags:
 - technology
 ---
 
-If you are a highly mobile laptop user, chances are you work out of a lot of varying public locations such as coffee shops, libraries, and just about anywhere that has public wifi. Are you concerned about the privacy of your data?If you're like me, and our clients, you're very concerned. Applications like [tcpflow](http://www.circlemud.org/~jelson/software/tcpflow/) and [Wireshark](http://www.wireshark.org/) are not only particularly effective at grabbing content from the network, they also happen to be readily available.
+If you are a highly mobile laptop user, chances are you work out of a lot of varying public locations such as coffee shops, libraries, and just about anywhere that has public wifi. Are you concerned about the privacy of your data?If you're like me, and our clients, you're very concerned. Applications like [tcpflow](http://www.circlemud.org/~jelson/software/tcpflow/) and [Wireshark](https://www.wireshark.org/) are not only particularly effective at grabbing content from the network, they also happen to be readily available.
 
 **Here's a very simple scheme to leverage the inexpensive power of Amazon's EC2 to create a disposable, secure proxy.**
 

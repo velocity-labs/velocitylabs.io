@@ -35,5 +35,5 @@ know on twitter [@velocitylabs][].
 
 [Chris Irish]: https://twitter.com/supairish
 [Level Up]: http://leveluppodcast.com/
-[give it a listen]: https://itunes.apple.com/us/podcast/level-up-podcast/id971527978
+[give it a listen]: https://web.archive.org/web/20151105133044/https://itunes.apple.com/us/podcast/level-up-podcast/id971527978
 [@velocitylabs]: https://twitter.com/velocitylabs

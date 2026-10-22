@@ -6,6 +6,7 @@ layout: landing
 lead:
   Thank you for choosing Velocity Labs for your application needs.  Expect a follow up phone call from us shortly.
 title: Ruby on Rails Application Maintenance
+noindex: true
 sitemap: false
 ---
 

@@ -1,6 +1,7 @@
 // App JS (vendor scripts loaded via <script> tags in _scripts.html)
 import '../javascripts/custom.js';
 import '../javascripts/frontend/carousels.js';
+import '../javascripts/frontend/consent.js';
 import '../javascripts/frontend/contact.js';
 import '../javascripts/frontend/conversions.js';
 import '../javascripts/frontend/devicons.js';

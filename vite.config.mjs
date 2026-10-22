@@ -6,14 +6,14 @@ export default defineConfig({
   plugins: [ViteRuby()],
   resolve: {
     alias: {
-      '@images': path.resolve(__dirname, '_frontend/images')
+      '@images': path.resolve(import.meta.dirname, '_frontend/images')
     }
   },
   css: {
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
-        loadPaths: [path.resolve(__dirname, '_frontend/stylesheets')]
+        loadPaths: [path.resolve(import.meta.dirname, '_frontend/stylesheets')]
       }
     }
   }

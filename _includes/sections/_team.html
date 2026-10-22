@@ -15,7 +15,7 @@
               <h4>{{ person.title }}</h4>
               <p>{{ person.bio }}</p>
               {% for link in person.links %}
-                <a class="icon" href="{{ link[1] }}" target="_blank"><i class="fa fa-{{ link[0] }}"></i></a>
+                <a class="icon" href="{{ link[1] }}" target="_blank"><i class="{% if link[0] == 'rss' %}fa{% else %}fa-brands{% endif %} fa-{{ link[0] }}"></i></a>
               {% endfor %}
             </div>
           {% endfor %}

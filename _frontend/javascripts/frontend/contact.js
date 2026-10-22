@@ -32,6 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => { csrfToken = data.token; })
     .catch(() => {});
 
+  // Load reCAPTCHA v3 only on pages that have a contact form
+  const siteKey = contactForm.dataset.recaptchaKey;
+  const recaptchaReady = siteKey && new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(siteKey)}`;
+    script.async = true;
+    script.onload = () => grecaptcha.ready(resolve);
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+  // Load failures surface on submit; avoid an unhandled rejection before then
+  if (recaptchaReady) recaptchaReady.catch(() => {});
+
   // Set validation constraints
   const nameInput = contactForm.querySelector('[name="name"]');
   const emailInput = contactForm.querySelector('[name="email"]');
@@ -77,9 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
       formData.append('_csrf_token', csrfToken);
     }
     // Get reCAPTCHA v3 token
-    const siteKey = contactForm.dataset.recaptchaKey;
     if (siteKey) {
       try {
+        await recaptchaReady;
         const recaptchaToken = await grecaptcha.execute(siteKey, { action: 'contact_form' });
         formData.append('g-recaptcha-response', recaptchaToken);
       } catch {

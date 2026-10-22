@@ -18,7 +18,7 @@ With so many approaches to goal setting, it's important to consider the best app
 
 ### Zig Ziglar Goal Setting Formula
 
-[Zig Ziglar](http://www.ziglar.com/) is a known authority on personal motivation, management and sales training, and of course, goal setting. Here's his formula for goal setting:
+[Zig Ziglar](https://www.ziglar.com/) is a known authority on personal motivation, management and sales training, and of course, goal setting. Here's his formula for goal setting:
 
 1. State your goal and the benefits for achieving it
 1. Set a deadline for achieving it
