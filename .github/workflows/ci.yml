@@ -24,7 +24,7 @@ jobs:
           persist-credentials: false
       - run: ruby bin/check-cooldown
 
-  # Builds the site the same way Heroku does
+  # Builds the site the same way Heroku does, then tests the app against it
   build:
     runs-on: ubuntu-latest
     env:
@@ -42,3 +42,4 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile --ignore-scripts
       - run: bundle exec jekyll build
+      - run: bundle exec rake test

@@ -1,4 +1,11 @@
 require 'fileutils'
+require 'rake/testtask'
+
+# bundle exec rake test (needs a built site: bundle exec jekyll build)
+Rake::TestTask.new(:test) do |t|
+  t.pattern = 'test/**/*_test.rb'
+  t.warning = false
+end
 
 # Heroku's Ruby buildpack runs this during deploys
 task "assets:precompile" do

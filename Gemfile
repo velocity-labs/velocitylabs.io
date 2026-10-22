@@ -23,6 +23,11 @@ group :jekyll_plugins do
   gem 'reverse_markdown',   '~> 3.0', require: false # used by _plugins/markdown_export.rb
 end
 
+group :test do
+  gem 'minitest',  '~> 6.0'
+  gem 'rack-test', '~> 2.2.0'
+end
+
 group :development do
   gem 'debug'
   gem 'dotenv'
