@@ -23,6 +23,7 @@ yarn remove <package>        # remove a dependency
 # including transitive deps (Gemfile constraints / package.json "resolutions").
 bin/check-cooldown           # verify Gemfile.lock + yarn.lock (also runs in CI)
 yarn install --ignore-scripts  # install scripts are a supply-chain vector
+bin/check-links              # check every link on the live site (also runs monthly)
 
 # Local development — use two terminals
 # Terminal 1: watchexec rebuilds _site/ on changes (brew install watchexec)
@@ -68,6 +69,14 @@ Request → config.ru → main.rb (Sinatra) → serves _site/ static files
 ## Blog Posts
 
 Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter (title, author, date, excerpt, draft).
+
+## Deployment and CI
+
+Heroku (app `velocitylabs`) auto-deploys `master` from GitHub, but only after CI passes ("Wait for CI to pass"). A commit with no checks stays pending and never deploys, so `.github/workflows/ci.yml` runs on every push: the dependency cooldown check and a full site build. `heroku rollback` restores the previous release if a deploy misbehaves.
+
+- `.github/workflows/link-check.yml` runs `bin/check-links` monthly and keeps a `link-check` issue open while dead links exist
+- `.github/dependabot.yml` opens weekly update PRs with a 14-day cooldown; `package.json` "resolutions" pins need manual review
+- Always compare against `origin/master` (`git fetch` first) before branching or merging; local `master` can be stale
 
 ## Environment Variables (production)
 

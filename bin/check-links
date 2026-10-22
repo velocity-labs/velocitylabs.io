@@ -1,0 +1,113 @@
+#!/usr/bin/env ruby
+# Checks every link and embedded resource on the live site and reports the
+# ones that are gone. Pages come from the sitemap, so it checks what is
+# actually deployed.
+#
+#   bin/check-links                          # checks https://velocitylabs.io
+#   bin/check-links https://example.test --report report.md
+#
+# Exits 1 when a link is dead (404/410, or its domain no longer resolves).
+# Sites that block bots and temporary failures are reported but don't fail.
+# Uses only the Ruby standard library so it runs without Bundler.
+
+require 'net/http'
+require 'openssl'
+require 'socket'
+require 'uri'
+
+BASE = URI(ARGV.find { |arg| arg.start_with?('http') } || 'https://velocitylabs.io')
+REPORT = ARGV.include?('--report') ? ARGV[ARGV.index('--report') + 1] : nil
+USER_AGENT = 'Mozilla/5.0 (compatible; velocitylabs-link-check; +https://velocitylabs.io)'.freeze
+BOT_BLOCKING_HOSTS = /(^|\.)(facebook|twitter|x|linkedin|instagram|crunchbase)\.com\z/
+SKIP = /\A(mailto:|tel:|javascript:|data:|#)/
+
+def fetch(url, method: :get, limit: 5)
+  uri = URI(url)
+  Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https', open_timeout: 15, read_timeout: 20) do |http|
+    request = (method == :head ? Net::HTTP::Head : Net::HTTP::Get).new(uri, 'User-Agent' => USER_AGENT, 'Accept' => '*/*')
+    response = http.request(request)
+    if response.is_a?(Net::HTTPRedirection) && limit.positive? && response['location']
+      return fetch(URI.join(url, response['location']).to_s, method: method, limit: limit - 1)
+    end
+
+    response
+  end
+end
+
+# => :ok, :dead, :unverified or :unreachable, plus a short detail
+def check(url)
+  response = begin
+    fetch(url, method: :head)
+  rescue StandardError
+    nil
+  end
+  response = fetch(url) if response.nil? || response.code.to_i >= 400 # some servers reject HEAD
+  code = response.code.to_i
+  return [:ok, code] if code < 400
+  # Social sites answer logged-out bots with errors (even 404), so their
+  # status proves nothing either way
+  return [:unverified, code] if [401, 403, 429, 999].include?(code) || URI(url).host.to_s.match?(BOT_BLOCKING_HOSTS)
+  return [:dead, code] if [404, 410].include?(code)
+
+  [:unreachable, code]
+rescue SocketError => e
+  e.message.match?(/getaddrinfo|not known|nodename/) ? [:dead, 'domain does not resolve'] : [:unreachable, e.class.name]
+rescue StandardError => e
+  [:unreachable, e.class.name]
+end
+
+def links_on(page_url, html)
+  html.scan(/\b(?:href|src)\s*=\s*["']([^"']+)["']/i).flatten.filter_map do |raw|
+    next if raw.match?(SKIP)
+
+    url = URI.join(page_url, raw.strip.gsub('&amp;', '&'))
+    url.fragment = nil
+    url.to_s if %w[http https].include?(url.scheme)
+  rescue URI::Error
+    nil
+  end
+end
+
+sitemap = fetch(URI.join(BASE, '/sitemap.xml').to_s).body
+pages = sitemap.scan(%r{<loc>([^<]+)</loc>}).flatten.reject { |url| url.end_with?('.pdf') }
+found = Hash.new { |hash, url| hash[url] = [] } # url => pages it appears on
+
+pages.each do |page|
+  links_on(page, fetch(page).body).uniq.each { |url| found[url] << URI(page).path }
+end
+
+queue = Queue.new
+found.each_key { |url| queue << url }
+results = {}
+lock = Mutex.new
+Array.new(8) do
+  Thread.new do
+    while (url = (queue.pop(true) rescue nil))
+      result = check(url)
+      lock.synchronize { results[url] = result }
+    end
+  end
+end.each(&:join)
+
+grouped = results.group_by { |_, (status, _)| status }
+summary = "Checked #{results.size} links on #{pages.size} pages: " +
+          %i[ok dead unverified unreachable].map { |s| "#{(grouped[s] || []).size} #{s}" }.join(', ')
+puts summary
+
+section = lambda do |status, heading|
+  entries = grouped[status] || []
+  next '' if entries.empty?
+
+  lines = entries.sort.map do |url, (_, detail)|
+    "- #{url} (#{detail})\n  - found on: #{found[url].uniq.sort.first(5).join(', ')}"
+  end
+  "### #{heading}\n\n#{lines.join("\n")}\n\n"
+end
+
+report = "#{summary}\n\n" +
+         section.call(:dead, 'Dead links (fix or replace these)') +
+         section.call(:unreachable, 'Unreachable (timeouts or server errors; may be temporary)') +
+         section.call(:unverified, 'Unverified (the site blocks automated checks)')
+REPORT ? File.write(REPORT, report) : puts(report)
+
+exit(grouped[:dead] ? 1 : 0)

@@ -1,0 +1,35 @@
+# Weekly dependency update PRs. The cooldown matches our 14-day policy:
+# Dependabot won't propose a release until it is 14 days old, and CI
+# (bin/check-cooldown) still verifies every lockfile it touches.
+#
+# Transitive npm pins in package.json "resolutions" are not updated by
+# Dependabot; review them when Vite or Sass are bumped.
+version: 2
+
+updates:
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14
+    groups:
+      gems:
+        update-types: [minor, patch]
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14
+    groups:
+      npm:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14

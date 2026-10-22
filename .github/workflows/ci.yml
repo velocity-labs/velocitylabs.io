@@ -1,0 +1,44 @@
+# Runs on every push and pull request. Heroku's auto-deploy waits for CI to
+# pass, so a commit with no checks never deploys, and a failing check blocks
+# the deploy.
+#
+# Actions are pinned to commit SHAs of releases at least 14 days old, like
+# every other dependency (see bin/check-cooldown).
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  # Fails when a lockfile contains a dependency published less than 14 days ago
+  cooldown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: ruby bin/check-cooldown
+
+  # Builds the site the same way Heroku does
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_WITHOUT: development
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          bundler-cache: true # Ruby version from .ruby-version
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+      - run: yarn install --frozen-lockfile --ignore-scripts
+      - run: bundle exec jekyll build

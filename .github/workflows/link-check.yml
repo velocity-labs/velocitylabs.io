@@ -1,0 +1,48 @@
+# Monthly check of every link on the live site (bin/check-links). Keeps one
+# open "link-check" issue up to date while there are dead links, and closes
+# it once they're fixed. Run it by hand from the Actions tab anytime.
+name: Link check
+
+on:
+  schedule:
+    - cron: "0 15 1 * *" # 15:00 UTC on the 1st of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - id: check
+        run: |
+          if ruby bin/check-links --report report.md; then
+            echo "dead=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "dead=true" >> "$GITHUB_OUTPUT"
+          fi
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open, update or close the link-check issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DEAD: ${{ steps.check.outputs.dead }}
+        run: |
+          issue=$(gh issue list --label link-check --state open --json number --jq '.[0].number // empty')
+          if [ "$DEAD" = "true" ]; then
+            if [ -n "$issue" ]; then
+              gh issue edit "$issue" --body-file report.md
+            else
+              gh label create link-check --color d73a4a --description "Dead links found by the monthly link check" 2>/dev/null || true
+              gh issue create --title "Dead links on velocitylabs.io" --label link-check --body-file report.md
+            fi
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "All links are working again as of $(date -u +%Y-%m-%d)."
+          fi
