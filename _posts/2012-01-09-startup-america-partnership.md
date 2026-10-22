@@ -9,6 +9,7 @@ image:
   title: Startup America Partnership
   alt: Startup America Partnership
 layout: post
+noindex: true
 tags:
 - entrepreneurship
 - startups

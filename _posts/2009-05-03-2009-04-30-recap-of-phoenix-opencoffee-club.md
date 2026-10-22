@@ -10,6 +10,7 @@ image:
   alt: Latte Art
   attribution: Photo by tonx.
 layout: post
+noindex: true
 title: "2009-04-30: Recap of Phoenix OpenCoffee Club"
 tags:
 - community

@@ -6,6 +6,7 @@ excerpt:
   Chandler at the first Developer Ignite in Phoenix. You might be surprised
   at what you learn.
 layout: post
+noindex: true
 title: "Developer Ignite Phoenix: Real World Cryptography"
 tags:
 - community

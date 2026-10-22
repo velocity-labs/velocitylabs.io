@@ -9,6 +9,8 @@ require 'jekyll-seo-tag'
 #   would otherwise treat as "no image".
 # - Paginated blog pages (/blog/2/ and up) stay out of the sitemap; they
 #   only list posts that are already in it.
+# - Pages marked noindex stay out of the sitemap too, so Google never sees
+#   a submitted URL that asks not to be indexed.
 #
 # Runs as a pre_render hook (after all generators) so pages added by
 # generators like jekyll-paginate are covered too.
@@ -32,6 +34,7 @@ module VelocityLabs
         end
 
         page.data['sitemap'] = false if page.respond_to?(:pager) && page.pager && page.pager.page > 1
+        page.data['sitemap'] = false if page.data['noindex']
       end
     end
   end

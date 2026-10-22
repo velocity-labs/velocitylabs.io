@@ -5,6 +5,7 @@ excerpt:
   idea to app in 24 hours. It's been organized in Phoenix a few
   times and we're really excited to see it back again. Check it out!
 layout: post
+noindex: true
 published: true
 tags:
 - events

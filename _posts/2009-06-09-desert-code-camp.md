@@ -4,6 +4,7 @@ excerpt:
   Desert Code Camp is a locally organized event for developers to present on
   topics they're interested in. This year, we gave two presentations.
 layout: post
+noindex: true
 title: Desert Code Camp
 tags:
 - community

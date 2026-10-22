@@ -9,6 +9,7 @@ image:
   alt: Startup Book Club
   attribution:
 layout: post
+noindex: true
 published: true
 tags:
 - coworking

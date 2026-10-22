@@ -28,7 +28,9 @@ sitemap: false
 ## Blog
 
 {% for post in site.posts -%}
+{%- unless post.noindex -%}
 - [{{ post.title | strip_html }}]({{ post.markdown_url | default: post.url | absolute_url }}): {{ post.excerpt | strip_html | strip_newlines | normalize_whitespace }}
+{% endunless -%}
 {% endfor %}
 ## Optional
 

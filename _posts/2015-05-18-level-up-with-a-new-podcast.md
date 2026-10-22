@@ -7,6 +7,7 @@ excerpt:
   recently that kept my attention, was interesting and fit perfectly
   into my commute.
 layout: post
+noindex: true
 published: true
 tags:
 - podcasts

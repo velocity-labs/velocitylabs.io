@@ -4,6 +4,7 @@ excerpt:
     Fifteen startup companies pitch for funding to a panel of three judges
     at the 2012 ASU Startup Summit at SkySong.
 layout: post
+noindex: true
 tags:
 - entrepreneurship
 - startups

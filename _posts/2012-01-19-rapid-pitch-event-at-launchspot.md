@@ -4,6 +4,7 @@ excerpt:
   Launchspot is an incubator in Tempe offering coworking space and funding
   to startups. Read more about how the program works and how to apply.
 layout: post
+noindex: true
 tags:
 - incubator
 - startups
