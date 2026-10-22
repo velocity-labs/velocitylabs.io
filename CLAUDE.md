@@ -80,4 +80,4 @@ Heroku (app `velocitylabs`) auto-deploys `master` from GitHub, but only after CI
 
 ## Environment Variables (production)
 
-`SESSION_SECRET` (HMAC form token signing; sessions are disabled so the site sets no cookies of its own), `RESEND_API_KEY` (contact form email; optional `CONTACT_FORM_FROM` overrides the sender), `RECAPTCHA_SECRET_KEY`, `NEW_RELIC_LICENSE_KEY`
+`SESSION_SECRET` (HMAC form token signing; sessions are disabled so the site sets no cookies of its own), `RESEND_API_KEY` (contact form email; optional `CONTACT_FORM_FROM` overrides the sender), `RECAPTCHA_SECRET_KEY`

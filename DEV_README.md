@@ -155,7 +155,6 @@ Required for the contact form and monitoring to work. In development, add them t
 | `RESEND_API_KEY` | Resend API key (sending access, velocitylabs.io domain) for contact form emails |
 | `CONTACT_FORM_FROM` | Optional sender override (default `Velocity Labs <contact@velocitylabs.io>`) |
 | `RECAPTCHA_SECRET_KEY` | reCAPTCHA v3 secret key (site key is in `_config.yml`) |
-| `NEW_RELIC_LICENSE_KEY` | New Relic APM monitoring |
 
 ## Deployment
 
