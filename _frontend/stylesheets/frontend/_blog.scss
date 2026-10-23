@@ -71,6 +71,33 @@
     & > p {
       margin-bottom: 1.5em;
     }
+
+    .callout {
+      background: rgba(255, 186, 67, 0.1);
+      border-left: 4px solid $primary-color;
+      border-radius: 4px;
+      margin: 1.5em 0;
+      padding: 1em 1.25em 0.25em;
+
+      & > h2:first-child,
+      & > h3:first-child {
+        margin-top: 0;
+        margin-bottom: 0.5em;
+      }
+
+      p,
+      ul {
+        font-size: 0.85em;
+        margin-bottom: 0.75em;
+      }
+
+      // The theme sizes every li at 1.1em, which would undo the ul's 0.85em
+      li {
+        font-size: 1em;
+        line-height: 1.6;
+        margin-bottom: 0.25em;
+      }
+    }
   }
 }
 
