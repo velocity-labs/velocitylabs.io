@@ -41,9 +41,6 @@ title: Velocity Labs Privacy Policy
           <li>
             <strong>Analytics and advertising measurement.</strong> With your consent where required (see <a href="#cookies">Cookies and Your Choices</a>), we use Google Analytics to understand how visitors use the Site, and Google Ads conversion tracking to measure whether our advertising leads to inquiries. These services collect information such as pages viewed, how you arrived at the Site, approximate location, and device and browser details.
           </li>
-          <li>
-            <strong>Content delivery.</strong> Some of the Site's styles and scripts are loaded from the jsDelivr content delivery network, which receives your IP address and browser information in order to deliver those files. Our fonts are hosted on our own servers.
-          </li>
         </ul>
 
         <h3 id="cookies">COOKIES AND YOUR CHOICES</h3>
@@ -90,7 +87,7 @@ title: Velocity Labs Privacy Policy
         <h3>SHARING</h3>
 
         <p>
-          We do not sell your personal information. We share it only with the service providers named above (Heroku, Resend, Google and jsDelivr) to the extent needed for them to provide their services to us, and when required by law, such as in response to a subpoena or other lawful request, or to protect our rights.
+          We do not sell your personal information. We share it only with the service providers named above (Heroku, Resend and Google) to the extent needed for them to provide their services to us, and when required by law, such as in response to a subpoena or other lawful request, or to protect our rights.
         </p>
 
         <p>

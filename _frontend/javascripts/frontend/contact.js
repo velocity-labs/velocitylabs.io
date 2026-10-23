@@ -32,18 +32,34 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => { csrfToken = data.token; })
     .catch(() => {});
 
-  // Load reCAPTCHA v3 only on pages that have a contact form
+  // Load reCAPTCHA v3 (~350KB) only once the contact form is near the
+  // viewport, or on first interaction, instead of on every page load
   const siteKey = contactForm.dataset.recaptchaKey;
-  const recaptchaReady = siteKey && new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(siteKey)}`;
-    script.async = true;
-    script.onload = () => grecaptcha.ready(resolve);
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
-  // Load failures surface on submit; avoid an unhandled rejection before then
-  if (recaptchaReady) recaptchaReady.catch(() => {});
+  let recaptchaReady = null;
+  const loadRecaptcha = () => {
+    if (!siteKey) return null;
+    recaptchaReady ||= new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(siteKey)}`;
+      script.async = true;
+      script.onload = () => grecaptcha.ready(resolve);
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    // Load failures surface on submit; avoid an unhandled rejection before then
+    recaptchaReady.catch(() => {});
+    return recaptchaReady;
+  };
+  if (siteKey) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        observer.disconnect();
+        loadRecaptcha();
+      }
+    }, { rootMargin: '600px 0px' });
+    observer.observe(contactForm);
+    contactForm.addEventListener('focusin', loadRecaptcha, { once: true });
+  }
 
   // Set validation constraints
   const nameInput = contactForm.querySelector('[name="name"]');
@@ -92,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get reCAPTCHA v3 token
     if (siteKey) {
       try {
-        await recaptchaReady;
+        await loadRecaptcha();
         const recaptchaToken = await grecaptcha.execute(siteKey, { action: 'contact_form' });
         formData.append('g-recaptcha-response', recaptchaToken);
       } catch {

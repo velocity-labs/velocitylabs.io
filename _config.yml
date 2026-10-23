@@ -9,7 +9,7 @@ collections: null
 # Handling Reading
 safe:         false
 include:      [".htaccess", ".well-known"]
-exclude:      ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor', 'README.md', 'Rakefile', 'Procfile.dev', 'unicorn-dev.rb', 'LICENSE', 'CNAME', 'node_modules', 'package.json', 'package-lock.json', 'vite.config.mjs', 'docs', 'public', '.jekyll-cache', 'thoughts', 'prototype.html', 'main.rb', 'CLAUDE.md', 'DEV_README.md', 'Procfile', 'yarn.lock', 'static.json', 'config', 'bin', 'test']
+exclude:      ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor', 'README.md', 'Rakefile', 'Procfile.dev', 'unicorn-dev.rb', 'LICENSE', 'CNAME', 'node_modules', 'package.json', 'package-lock.json', 'vite.config.mjs', 'docs', 'public', '.jekyll-cache', 'thoughts', 'prototype.html', 'main.rb', 'CLAUDE.md', 'DEV_README.md', 'Procfile', 'yarn.lock', 'static.json', 'config', 'bin', 'test', 'tmp']
 keep_files:   [".git", ".svn"]
 encoding:     "utf-8"
 

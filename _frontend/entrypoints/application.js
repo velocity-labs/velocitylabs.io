@@ -1,4 +1,5 @@
-// App JS (vendor scripts loaded via <script> tags in _scripts.html)
+// Bootstrap's data API (collapse, carousel) registers on import
+import 'bootstrap';
 import '../javascripts/custom.js';
 import '../javascripts/frontend/carousels.js';
 import '../javascripts/frontend/consent.js';
