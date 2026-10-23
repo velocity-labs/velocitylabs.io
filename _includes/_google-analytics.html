@@ -44,4 +44,14 @@
   gtag('config', 'G-0JDTLFF9Z4');
   gtag('config', 'AW-960263497');
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0JDTLFF9Z4"></script>
+<script>
+  // gtag.js is ~320KB, so load it after the page has loaded instead of letting
+  // it compete with the page itself. The commands queued in dataLayer above run
+  // when it arrives.
+  window.addEventListener('load', function () {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0JDTLFF9Z4';
+    document.head.appendChild(script);
+  });
+</script>
