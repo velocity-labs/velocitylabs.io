@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const wrapper = document.querySelector('.navbar-wrapper');
-  if (wrapper) wrapper.classList.add('cbp-af-header');
-
   const deviceXs = document.querySelector('.device-xs');
   const navSmall = document.querySelector('.navbar-small');
 

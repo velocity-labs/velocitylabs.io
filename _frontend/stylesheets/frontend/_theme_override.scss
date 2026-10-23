@@ -20,6 +20,20 @@ a {
   background-attachment: fixed!important;
 }
 
+// Full-screen hero, sized in CSS so it has its final height at first paint
+// (svh = the viewport with mobile browser bars showing, like innerHeight)
+#intro,
+#intro .item {
+  height: 100vh;
+  height: 100svh;
+}
+
+// Logos carry width/height attributes for their aspect ratio; CSS sets the width
+.navbar-brand img,
+.footer-logo img {
+  height: auto;
+}
+
 .btn {
   white-space: normal;
   &:hover {
