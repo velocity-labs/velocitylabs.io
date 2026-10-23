@@ -1,12 +1,16 @@
 {%- comment -%}
   Hero background for layouts with `hero: true`. Below 1023px the background
-  renders at natural size from the top-left, so narrower screens get a
-  lossless top-left crop (hero-small.jpg) that looks identical. Preloading
-  matters because a CSS background isn't discovered until the styles apply.
+  renders at natural size from the top-left, so narrower screens get lossless
+  top-left crops (hero-xs.jpg up to 480px, hero-small.jpg up to 1022px) that
+  look identical. Preloading matters because a CSS background isn't
+  discovered until the styles apply. The background color is the image's
+  average, so the white hero text is readable before the image arrives.
 {%- endcomment -%}
-<link rel="preload" as="image" href="/images/hero-small.jpg" media="(max-width: 1022.98px)" fetchpriority="high">
+<link rel="preload" as="image" href="/images/hero-xs.jpg" media="(max-width: 480px)" fetchpriority="high">
+<link rel="preload" as="image" href="/images/hero-small.jpg" media="(min-width: 480.02px) and (max-width: 1022.98px)" fetchpriority="high">
 <link rel="preload" as="image" href="/images/hero.jpg" media="(min-width: 1023px)" fetchpriority="high">
 <style>
-  #intro .hero { background: url('/images/hero-small.jpg') no-repeat; }
+  #intro .hero { background: #18142e url('/images/hero-xs.jpg') no-repeat; }
+  @media (min-width: 480.02px) { #intro .hero { background-image: url('/images/hero-small.jpg'); } }
   @media (min-width: 1023px) { #intro .hero { background-image: url('/images/hero.jpg'); } }
 </style>
