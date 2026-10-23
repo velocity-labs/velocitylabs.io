@@ -56,6 +56,7 @@ Request → config.ru → main.rb (Sinatra) → serves _site/ static files
 - **_config.yml** — Jekyll config: permalink structure (`/blog/:year/:month/:day/:title/`), pagination (10/page), Vite settings, company metadata available as Liquid variables (`site.company.*`)
 - **main.rb** — Sinatra app: catch-all route serves from `_site/`, contact form with HMAC-signed CSRF tokens (stateless, not session-based — see `thoughts/shared/learnings/2026-02-25-csrf-session-race-condition.md`), Rack::Attack rate limiting
 - **vite.config.mjs** / **config/vite.json** — Vite asset pipeline config; source in `_frontend/`, output to `public/vite/`
+- **_frontend/stylesheets/bootstrap.scss** — Bootstrap 5 built from Sass with only the components and utilities the site uses (it's render-blocking). New Bootstrap markup (a dropdown, modal, `mb-3` utility, etc.) needs its component or utility added there, or it renders unstyled
 - **_plugins/** — Custom Jekyll plugins: `portfolio.rb` auto-generates portfolio pages from `_data/projects.yml`, `filters.rb` adds Liquid filters (`full_image_path`, `thumb_image_path`, `get_categories`, etc.), `seo.rb` maps `author_id` and default images for jekyll-seo-tag and jekyll-feed, `markdown_export.rb` writes a Markdown copy of each indexable page (`/path.md`) plus `/llms-full.txt` for AI tools
 - **_layouts/base.html** — Uses Vite Liquid tags: `{% vite_client_tag %}`, `{% vite_stylesheet_tag application %}` in head; `{% vite_javascript_tag application %}` in `_includes/_scripts.html`
 
