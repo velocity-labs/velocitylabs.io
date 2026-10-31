@@ -90,3 +90,10 @@
   url: /partners/
   name: White label development for agencies
   need: Agency partnership
+  own_page: true
+
+- id: story-workshop
+  url: /process/story-workshop/
+  name: Story workshop
+  need: Story workshop
+  own_page: true # the other forms cover it with New product

@@ -2,8 +2,8 @@
 layout: null
 sitemap: false
 ---
-{%- comment %} the services in _data/services.yml order, then the story workshop; services whose page isn't built yet are skipped {% endcomment -%}
-{%- assign service_urls = site.data.services | map: "url" | push: "/process/story-workshop/" -%}
+{%- comment %} the services in _data/services.yml order; services whose page isn't built yet are skipped {% endcomment -%}
+{%- assign service_urls = site.data.services | map: "url" -%}
 # {{ site.company.name }}
 
 > {{ site.company.description }}
