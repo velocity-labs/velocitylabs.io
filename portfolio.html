@@ -9,7 +9,7 @@ heading: Web apps we've built, rescued and kept running
 lead: Some we built from scratch, some we took over from other developers, and several we still look after years later.
 ---
 {%- assign featured = site.data.projects | where_exp: "project", "project.slug" -%}
-{%- assign earlier = site.data.projects | where_exp: "project", "project.slug == nil" -%}
+{%- assign earlier = site.data.projects | where_exp: "project", "project.slug == nil" | sort_natural: "title" -%}
 {%- assign techs = featured | map: "technologies" | join: "|" | split: "|" | uniq -%}
 <section id="projects" aria-labelledby="projects-title">
   <div class="wrap">

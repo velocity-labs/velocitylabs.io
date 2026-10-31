@@ -64,7 +64,7 @@ Request → config.ru → main.rb (Sinatra) → serves _site/ static files
 ## Key Data-Driven Content
 
 - `_data/services.yml` — The services, in order. One list drives the home services section, the hero planets, the footer, the contact form's options and the "Need" line `main.rb` adds to contact emails
-- `_data/projects.yml` — Portfolio projects, in `/portfolio/` order. Those with a `slug` get a card (the home page picks its featured project and cases by slug in `index.html` front matter, service pages in their work bands); the rest are listed as earlier work. Technology pills link to `/portfolio/?tech=<slug>`, which `javascripts/site/tech-filter.js` filters
+- `_data/projects.yml` — Portfolio projects. Those with a `slug` get a card, in file order (the home page picks its featured project and cases by slug in `index.html` front matter, service pages in their work bands); the rest are listed alphabetically as earlier work. Technology pills link to `/portfolio/?tech=<slug>`, which `javascripts/site/tech-filter.js` filters
 - `_data/people.yml` — Team members (partners on the home page, author cards on posts)
 - `_data/testimonials.yml` — Client quotes; quote bands look one up by `id`
 - `_data/technologies.yml` — "The tools we build with" row on the home page (icon = SVG in `_includes/devicons/`, sources in `SOURCES.txt` there; color = hover brand color)

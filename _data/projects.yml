@@ -1,9 +1,9 @@
-# Portfolio projects, in the order /portfolio/ shows them. A project with a
-# slug gets a card there: its image (or a typeset cover for work with no screen
-# to show), summary and technologies. The home page (index.html) and service
-# pages (blocks/work-band.html) pick cards by slug. Projects without a slug are
-# listed under "Earlier work". Technology pills link to /portfolio/?tech=<slug>,
-# which shows the cards that use it.
+# Portfolio projects. A project with a slug gets a card on /portfolio/, in the
+# order listed here: its image (or a typeset cover for work with no screen to
+# show), summary and technologies. The home page (index.html) and service pages
+# (blocks/work-band.html) pick cards by slug. Projects without a slug are listed
+# alphabetically under "Earlier work". Technology pills link to
+# /portfolio/?tech=<slug>, which shows the cards that use it.
 
 - slug: princess-dental-staffing
   title: Princess Dental Staffing
