@@ -172,7 +172,7 @@ class MiddlewareTest < AppTest
     assert_equal SecurityHeaders::HSTS, h['strict-transport-security']
     assert_equal 'public, max-age=31536000, immutable', h['cache-control']
 
-    _, h, = call(headers, 'https://velocitylabs.io/images/projects/x/thumb.webp')
+    _, h, = call(headers, 'https://velocitylabs.io/images/work/x.webp')
     assert_equal 'public, max-age=604800', h['cache-control']
 
     _, h, = call(headers, 'https://velocitylabs.io/blog/')
