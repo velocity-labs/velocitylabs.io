@@ -50,7 +50,7 @@
 .posts { list-style: none; margin: 0; padding: 0; max-width: 46rem; }
 .posts li { padding: 2rem 0; border-top: 1px solid var(--orbit); }
 .posts li:first-child { padding-top: 0; border-top: 0; }
-.posts h2 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); margin-top: .4rem; }
+.posts h2 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); }
 .posts h2 a { text-decoration: none; }
 .posts h2 a:hover { color: var(--sun); }
 .posts p:last-child { color: var(--dust); margin-top: .6rem; }

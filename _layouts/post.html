@@ -6,9 +6,10 @@ layout: base
   <header class="post-head">
     <div class="wrap">
       <p class="post-meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {%- comment %} the date isn't shown, but screen readers and search engines still get it {% endcomment %}
+        <time class="sr" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
         {%- if author %}
-        by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="{{ author.links.rss | default: author.links.github }}" rel="author"><span itemprop="name">{{ author.name }}</span></a></span>
+        By <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="{{ author.links.rss | default: author.links.github }}" rel="author"><span itemprop="name">{{ author.name }}</span></a></span>
         {%- endif %}
       </p>
       <h1 itemprop="headline">{{ page.title }}</h1>

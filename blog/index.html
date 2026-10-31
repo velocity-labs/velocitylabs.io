@@ -8,7 +8,7 @@ title: The Lab Notebook Blog
     <ol class="posts">
       {%- for post in paginator.posts %}{% unless post.draft %}
       <li>
-        <p class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
+        <p class="post-meta sr"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
         <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
         <p>{{ post.excerpt | strip_html | strip_newlines }}</p>
       </li>
