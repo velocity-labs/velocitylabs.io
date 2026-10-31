@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@fontsource-variable/montserrat@5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/montserrat/-/montserrat-5.3.0.tgz#4e01a00a990f8d63c1903269117f3c31d8fed10b"
+  integrity sha512-7PaZoxaxrWLAyrhO46v65An9LhUhfkTExWLhfbywYZCnZEgg/W1rEHnlNmZKjNZ3nJTVYyicqxlJt10z/26yTA==
+
+"@fontsource/atkinson-hyperlegible@5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/atkinson-hyperlegible/-/atkinson-hyperlegible-5.3.0.tgz#a40a38bb7f43ff19a4d2e495acef039b02faf66c"
+  integrity sha512-Sp8Ve8+rQmENY2Lv02VH7sLpntzTTvnncnJMTbRE7DX6TLxGraN4ykZfzaUWIoCFmaomwkvNiqmlPkrKBuDoSA==
+
 "@fontsource/open-sans@5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-5.3.0.tgz#74ff12d254f338071df633639b9ccc50b2ea8dbc"

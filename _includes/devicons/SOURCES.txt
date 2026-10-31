@@ -1,0 +1,8 @@
+Technology logos for the "tools we build with" row (listed in _data/technologies.yml).
+Each is a single-color SVG drawn in currentColor, so CSS sets its color.
+
+Devicon 2.17.0 (https://devicon.dev, MIT, see LICENSE): every file except the two below.
+Simple Icons 15.0.0 (https://simpleicons.org, CC0 1.0): stripe.svg and claude.svg,
+which Devicon doesn't have.
+
+The logos are trademarks of their owners, shown to name the tools we work with.
