@@ -32,6 +32,15 @@ layout: base
         {%- if author.bio %}
         <p>{{ author.bio }}</p>
         {%- endif %}
+        {%- if author.links %}
+        <p class="author-links">
+          {%- for link in author.links %}
+          {%- assign icon = link[0] %}
+          {%- case icon %}{% when "github" %}{% assign where = " on GitHub" %}{% when "twitter" %}{% assign where = " on Twitter" %}{% else %}{% assign where = "'s website" %}{% endcase %}
+          <a href="{{ link[1] }}" aria-label="{{ author.name }}{{ where }}">{% include icon.html name=icon %}</a>
+          {%- endfor %}
+        </p>
+        {%- endif %}
       </div>
     </aside>
     {%- endif %}

@@ -14,7 +14,17 @@ title: "Easily generate test files of any size"
 
 Say you have a file upload validation in one of your Rails models. This validation limits the size of an uploaded file to 10 Mb.
 
-<script src="https://gist.github.com/velocitylabs-admin/f21951d7d08d01d32bb3e8916b191ba3.js"></script>
+{% highlight ruby linenos %}
+class User < ApplicationRecord
+  # stuff
+
+  validates :resume, attachment_presence: true
+  validates_with AttachmentPresenceValidator, attributes: :resume
+  validates_with AttachmentSizeValidator, attributes: :resume, less_than: 10.megabytes
+
+  # more stuff
+end
+{% endhighlight %}
 
 You now want to test the upload validation size limit works correctly (manually or automated).
 

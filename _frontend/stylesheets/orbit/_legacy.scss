@@ -1,0 +1,47 @@
+@use 'breakpoints' as *;
+
+// Markup in older posts, from the Bootstrap theme and the WordPress blog
+// before it, styled here rather than edited out of the posts. .lead, .table
+// and .img-fluid need nothing more than the prose styles in _page.
+
+.prose .text-center { text-align: center; }
+
+// pictures and quotes set beside the text
+.prose .float-end { float: right; max-width: 40%; margin: .35em 0 1rem 1.75rem; }
+.prose .float-start { float: left; max-width: 40%; margin: .35em 1.75rem 1rem 0; }
+.prose :is(h2, h3, h4) { clear: both; }
+
+// a terminal session, one <br> per line
+.prose .wp-terminal {
+  padding: 1rem 1.2rem; overflow-x: auto; white-space: nowrap;
+  border: 1px solid var(--orbit); border-radius: 10px; background: #0B1024;
+  color: #D5DAEC; font: .92rem/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+// a boxed aside
+.prose .callout { padding: 1.25rem 1.5rem; border-left: 3px solid var(--sun); border-radius: 0 10px 10px 0; background: rgba(255, 186, 66, .08); }
+.prose .callout > :first-child { margin-top: 0; }
+.prose .callout > * + * { margin-top: .75em; }
+
+// {% pullquote %}: the marked words, repeated large beside their paragraph
+// (the second content line keeps screen readers from reading them twice)
+.prose [data-pullquote]::before {
+  content: "\201C" attr(data-pullquote) "\201D";
+  content: "\201C" attr(data-pullquote) "\201D" / "";
+  float: right; width: 38%; margin: .3em 0 .75em 1.75rem; padding-left: 1rem;
+  border-left: 3px solid var(--sun);
+  color: var(--star); font: 600 1.2rem/1.45 var(--display);
+}
+.prose .pullquote-left::before { float: left; margin: .3em 1.75rem .75em 0; }
+
+// embedded video and slides fit the column
+.prose iframe { max-width: 100%; border: 0; }
+.prose iframe[src*="youtube.com"] { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.prose iframe[src*="slideshare.net"] { width: 100%; height: auto; aspect-ratio: 510 / 426; }
+// SlideShare's old embed code sets its wrapper to a fixed width
+.prose [id^="__ss_"] { max-width: 100%; }
+
+@media (max-width: $phone) {
+  .prose :is(.float-end, .float-start) { float: none; max-width: none; margin: 1.25em 0 0; }
+  .prose [data-pullquote]::before { float: none; display: block; width: auto; margin: 0 0 .75em; }
+}

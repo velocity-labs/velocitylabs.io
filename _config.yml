@@ -105,4 +105,4 @@ recaptcha_v3_site_key: "6LcU23YsAAAAACwid6UHIKhccHDQBIEjzN2TIbkR"
 ## Blog ##
 blog:
   title:    The Lab Notebook
-  subtitle: "brought to you by <a href=\"https://velocitylabs.io/\">Velocity Labs</a>"
+  subtitle: Notes from our team on building software and running projects.
