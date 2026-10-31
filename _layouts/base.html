@@ -23,8 +23,10 @@
     {% vite_client_tag %}
     {% vite_stylesheet_tag application %}
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#10162E" />
 
     {% feed_meta %}
     {% if page.markdown_url %}<link rel="alternate" type="text/markdown" href="{{ page.markdown_url | absolute_url }}" />{% endif %}

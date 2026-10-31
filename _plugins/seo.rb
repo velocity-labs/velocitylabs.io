@@ -4,9 +4,9 @@ require 'jekyll-seo-tag'
 #
 # - Posts reference authors by author_id (see _data/people.yml), but both
 #   plugins expect an `author`, so resolve it here.
-# - Every page shares the logo as its social image unless it sets its own
-#   image path. Older posts have image hashes without a path, which seo-tag
-#   would otherwise treat as "no image".
+# - Every page shares the share card (company.share_image) as its social
+#   image unless it sets its own image path. Older posts have image hashes
+#   without a path, which seo-tag would otherwise treat as "no image".
 # - Paginated blog pages (/blog/2/ and up) stay out of the sitemap; they
 #   only list posts that are already in it.
 # - Pages marked noindex stay out of the sitemap too, so Google never sees
@@ -18,7 +18,7 @@ module VelocityLabs
   module SeoData
     def self.apply(site)
       people = site.data['people'].to_h { |person| [person['id'], person] }
-      logo = "/images/#{site.config['company']['logo']}"
+      share_image = site.config['company']['share_image']
 
       (site.pages + site.posts.docs).each do |page|
         if (person = people[page.data['author_id']])
@@ -30,7 +30,7 @@ module VelocityLabs
 
         image = page.data['image']
         unless image.is_a?(String) || (image.is_a?(Hash) && image['path'])
-          page.data['image'] = logo
+          page.data['image'] = share_image.dup
         end
 
         page.data['sitemap'] = false if page.respond_to?(:pager) && page.pager && page.pager.page > 1

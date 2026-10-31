@@ -76,6 +76,12 @@ company:
     github:    velocity-labs
     twitter:   velocitylabs
   logo:        logo-text.png
+  # the social share image of every page that doesn't set its own (_plugins/seo.rb)
+  share_image:
+    path:      /images/share.png
+    width:     1200
+    height:    630
+    alt:       "Velocity Labs: Anyone can build an app with AI now. The hard part is everything after."
   name:        &company_name Velocity Labs
   phone:       (602) 633-5049
   subtitle:    Custom software development in Phoenix, AZ
@@ -90,7 +96,7 @@ description: *company_description
 logo:        /images/logo-text.png
 twitter:
   username:  velocitylabs
-  card:      summary
+  card:      summary_large_image # company.share_image is made for it
 social:
   name:      *company_name
   links:

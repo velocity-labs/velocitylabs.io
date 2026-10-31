@@ -18,7 +18,7 @@ class SiteTest < AppTest
         .map { |url| url.sub(LIVE, '') }.reject { |path| path.end_with?('.pdf') }
   end
 
-  def test_every_listed_page_has_one_h1_a_title_and_a_description
+  def test_every_listed_page_has_one_h1_a_title_a_description_and_a_share_image
     titles = {}
     problems = listed_paths.filter_map do |path|
       doc = built(path)
@@ -28,6 +28,8 @@ class SiteTest < AppTest
       issues << 'no title' if titles[path].empty?
       issues << 'no description' if doc.at_css('meta[name="description"]')&.[]('content').to_s.strip.empty?
       issues << 'noindex' if doc.at_css('meta[name="robots"][content*="noindex"]')
+      image = doc.at_css('meta[property="og:image"]')&.[]('content').to_s.sub(LIVE, '')
+      issues << "share image #{image.inspect} not found" unless image.start_with?('/') && File.file?(File.join(SITE, image))
       "#{path}: #{issues.join(', ')}" if issues.any?
     end
 

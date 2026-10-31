@@ -169,6 +169,9 @@ class MiddlewareTest < AppTest
     _, h, = call(headers, 'https://velocitylabs.io/images/work/x.webp')
     assert_equal 'public, max-age=604800', h['cache-control']
 
+    _, h, = call(headers, 'https://velocitylabs.io/favicon.svg')
+    assert_equal 'public, max-age=604800', h['cache-control']
+
     _, h, = call(headers, 'https://velocitylabs.io/blog/')
     assert_nil h['cache-control']
   end

@@ -99,7 +99,7 @@ class SecurityHeaders
   def cache_control(path)
     if path.start_with?('/vite/assets/')
       'public, max-age=31536000, immutable' # content-hashed filenames
-    elsif path.start_with?('/images/') || %w[/favicon.ico /apple-touch-icon.png].include?(path)
+    elsif path.start_with?('/images/') || %w[/favicon.ico /favicon.svg /apple-touch-icon.png].include?(path)
       'public, max-age=604800'
     end
   end
