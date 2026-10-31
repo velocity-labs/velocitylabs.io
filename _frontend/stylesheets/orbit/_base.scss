@@ -1,0 +1,41 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--star);
+  font: 1.0625rem/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--star); text-underline-offset: 0.2em; text-decoration-color: var(--orbit); }
+a:hover { text-decoration-color: var(--sun); }
+:focus-visible { outline: 2px solid var(--sun); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 76rem; margin: 0 auto; padding: 0 var(--gutter); }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--sun); color: var(--sun-ink); padding: .5rem 1rem; z-index: 10; }
+// visually hidden, still read aloud
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+// the hidden attribute beats any display a rule sets
+[hidden] { display: none !important; }
+
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; margin: 0; }
+h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
+p { margin: 0; }
+.lede { color: var(--dust); }
+
+.btn {
+  display: inline-block; font: 700 1rem/1 var(--body); text-decoration: none;
+  padding: .95rem 1.35rem; border-radius: 999px; border: 2px solid transparent;
+}
+.btn-sun { background: var(--sun); color: var(--sun-ink); }
+.btn-sun:hover { background: #ffc964; }
+.btn-line { border-color: var(--orbit); color: var(--star); }
+.btn-line:hover { border-color: var(--sun); }
+.ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }

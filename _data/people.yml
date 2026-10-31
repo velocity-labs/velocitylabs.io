@@ -1,3 +1,6 @@
+# The team. Partners appear on the home page (photo, title, summary); posts
+# show an author card from author_id (photo or Gravatar avatar, bio, links).
+
 - avatar: "107f91f789d36a51608ed51473c8958d"
   bio:
     DnB connoisseur, gamer/collector, high fiver. Loves making awesome things with Ruby, Rails, and JavaScript.
@@ -7,6 +10,9 @@
     rss: "http://www.christopherirish.com"
     twitter: "https://www.twitter.com/supairish"
   name: "Chris Irish"
+  partner: true
+  photo: /images/team/chris.webp
+  summary: Builds MVPs and SaaS apps, takes over codebases other teams left behind, including ones started with AI tools, and insists on automated tests and code review.
   title: "Managing Partner"
 
 - avatar: "decc1ca728cd9423beb412010defafe6"
@@ -18,6 +24,9 @@
     rss: "https://millarian.com"
     twitter: "https://www.twitter.com/curtism"
   name: "Curtis Miller"
+  partner: true
+  photo: /images/team/curtis.webp
+  summary: Steps in as a fractional CTO, audits codebases, and leads development from architecture to production while still writing code every day.
   title: "Managing Partner"
 
 - avatar: "d5e190845525aa75c8da275c072c23be"

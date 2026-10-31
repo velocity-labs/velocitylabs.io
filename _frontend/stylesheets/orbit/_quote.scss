@@ -1,0 +1,9 @@
+// Client quote bands (blocks/quote.html); site/quotes.js lights the words up
+// as the reader scrolls past
+.quote { padding: 7rem 0; }
+.quote blockquote { margin: 0; max-width: 54rem; }
+.quote blockquote p {
+  font: 600 clamp(1.7rem, 3.4vw, 2.6rem)/1.2 var(--display); letter-spacing: -0.01em;
+}
+.quote footer { margin-top: 1.5rem; color: var(--dust); }
+.quote .w { will-change: opacity; }

@@ -8,16 +8,18 @@ require 'reverse_markdown'
 # syntax highlighting are already resolved. Only the main content is kept.
 module VelocityLabs
   module MarkdownExport
-    # Main content element for each exported layout
+    # Main content element for each exported layout, in llms-full.txt order
     CONTENT_SELECTORS = {
-      'home'    => '#home',
-      'landing' => '#landing',
-      'inner'   => '.inner',
-      'post'    => 'section.post-body'
+      'home'    => '#main',
+      'service' => '#main',
+      'page'    => '#main',
+      'post'    => '.post-body'
     }.freeze
 
-    NOISE = 'nav, .navbar, .next-section, #contact, form, script, style, noscript, ' \
-            'button, .btn, .author-box'.freeze
+    # Navigation, the contact form, buttons, the portfolio's filter and
+    # decoration (star fields, orbits, the honeypot) add nothing as text
+    NOISE = 'nav, #contact, form, script, style, noscript, button, .btn, .cta-band, ' \
+            'svg, [aria-hidden="true"], .hp, .form-status, .tech-filter'.freeze
 
     module_function
 
@@ -66,10 +68,13 @@ module VelocityLabs
 
     def body(page, site)
       doc = Nokogiri::HTML(page.output)
-      root = doc.at_css(CONTENT_SELECTORS[page.data['layout']]) or return ''
+      selector = CONTENT_SELECTORS[page.data['layout']]
+      # a layout that loses its content element would silently export empty copies
+      root = doc.at_css(selector) or raise "markdown_export: #{page.url} has no #{selector} element"
       root.css(NOISE).remove
       root.xpath('.//comment()').remove
       remove_decorative_images(root)
+      keep_caption_structure(root)
       absolutize(root, "#{site.config['url']}#{page.url}", site.config['url'])
       move_link_whitespace_outside(root)
       root.css('iframe').each { |frame| frame.replace(iframe_link(doc, frame)) }
@@ -88,6 +93,15 @@ module VelocityLabs
       root.css('img[src*="gravatar.com"]').remove
       root.css('a').each do |link|
         link.remove if link.text.strip.empty? && link.at_css('img') && link['href'].to_s.match?(/\.(png|jpe?g|gif|webp)\z/i)
+      end
+    end
+
+    # The converter flattens a caption into one line of italics, which would
+    # lose the project cards' headings and technology links. Plain captions
+    # under post images stay italic.
+    def keep_caption_structure(root)
+      root.css('figcaption').each do |caption|
+        caption.name = 'div' if caption.at_css('h1, h2, h3, h4, p, ul, ol')
       end
     end
 

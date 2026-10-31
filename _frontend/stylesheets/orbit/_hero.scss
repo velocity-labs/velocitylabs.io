@@ -1,0 +1,58 @@
+@use 'breakpoints' as *;
+
+// Home hero: the headline beside "your app" with the services in orbit
+.hero { position: relative; overflow: hidden; padding: 2rem 0 5rem; }
+.stars { position: absolute; inset: 0; pointer-events: none; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 2rem; align-items: center; }
+.hero h1 {
+  // sized so each sentence sets in two lines, from small phones to wide screens
+  font-size: clamp(min(2.1rem, 9.6vw - 3px), 4vw, 3.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  max-width: 18ch; text-wrap: balance;
+}
+.hero h1 span { display: block; }
+.hero .lede { font-size: 1.2rem; margin-top: 1.5rem; max-width: 30rem; }
+.orbit-figure { margin: 0; }
+.orbit-figure svg { width: 100%; height: auto; overflow: visible; }
+.orbit-figure figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+// The orbit (home/orbit.js draws the planets, their orbits and labels)
+.ring { fill: none; stroke: var(--orbit); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 9; transition: stroke .25s, opacity .25s; }
+.ring.far { opacity: .5; }
+.ring.hot { stroke: rgba(255, 186, 66, .55); }
+.body-dot { fill: var(--star); transform-box: fill-box; transform-origin: center; transition: fill .2s, transform .25s, opacity .25s; }
+.halo { fill: var(--sun); opacity: 0; pointer-events: none; transform-box: fill-box; transform-origin: center; transform: scale(.4); transition: opacity .25s, transform .25s; }
+.hit { fill: transparent; pointer-events: all; }
+.label { fill: var(--star); font: 600 15px var(--body); transition: fill .2s, opacity .25s; }
+.label-sub { fill: var(--dust); font: 13px var(--body); transition: fill .2s, opacity .25s; }
+// each planet links to its service; the script marks the hovered or keyboard-focused one .hot
+.orbit-link { cursor: pointer; }
+.orbit-link:focus-visible { outline: none; }
+.orbit-link.hot .body-dot { fill: var(--sun); transform: scale(1.3); }
+.orbit-link.hot .halo { opacity: .25; transform: none; }
+.orbit-link.hot .label { fill: var(--sun); }
+.orbit-link.hot .label-sub { fill: var(--star); }
+// meanwhile the other planets and their orbits step back (the script marks the orbit .focus)
+#orbit.focus .orbit-link:not(.hot) .body-dot, #orbit.focus .orbit-link:not(.hot) text { opacity: .35; }
+#orbit.focus .ring:not(.hot) { opacity: .35; }
+#orbit.focus .ring.far:not(.hot) { opacity: .18; }
+.core-label { fill: var(--sun-ink); font: 800 13px var(--display); }
+#core { transform-origin: 308px 300px; } // the sun's center, so phones can scale it in place
+
+@media (max-width: $stack) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  // stacked, the orbit comes first, above the headline
+  .orbit-figure { order: -1; max-width: 560px; margin: 0 auto; }
+}
+@media (max-width: $phone) {
+  // the orbit runs into the side margins (up to its stacked size), and its
+  // labels keep about a margin's width from the screen's edges (in the
+  // orbit's own units; home/orbit.js reads it)
+  .orbit-figure { max-width: none; margin-inline: max(-1 * var(--gutter), (100% - 560px) / 2); }
+  #orbit { --label-inset: 24; }
+  .label-sub { display: none; }
+  .label { font-size: 24px; }
+  #core { transform: scale(1.6); } // "Your app" grows with the planet labels
+}

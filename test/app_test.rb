@@ -61,6 +61,43 @@ class ContactFormTest < AppTest
     assert_equal 'Contact form from Jane Bcc: evil@example.com', JSON.parse(@resend_requests.fetch(0).body)['subject']
   end
 
+  def test_chosen_service_is_in_the_subject_and_body
+    with_fake_network { post '/contact-form', contact_params('need' => 'code-audit') }
+
+    email = JSON.parse(@resend_requests.fetch(0).body)
+    assert_equal 'Contact form from Jane Doe (Code audit)', email['subject']
+    assert_includes email['html'], '<td>Need:</td><td>Code audit</td>'
+    assert_includes email['text'], 'Need:  Code audit'
+  end
+
+  def test_message_keeps_its_line_breaks
+    with_fake_network { post '/contact-form', contact_params('message' => "We need an audit.\r\n\r\nIt is <urgent>\nThanks") }
+    assert_includes JSON.parse(@resend_requests.fetch(0).body)['html'], "We need an audit.<br>\n<br>\nIt is &lt;urgent&gt;<br>\nThanks"
+  end
+
+  # Cached pages may still send old values, and a blank choice is allowed
+  def test_unknown_or_missing_need_still_sends
+    ['', 'not-a-service', '<script>'].each do |need|
+      with_fake_network { post '/contact-form', contact_params('need' => need) }
+      assert_equal 'success', json['status']
+    end
+
+    @resend_requests.each do |request|
+      email = JSON.parse(request.body)
+      assert_equal 'Contact form from Jane Doe', email['subject']
+      refute_includes email['text'], 'Need:'
+    end
+  end
+
+  # The form no longer asks for a phone number; older forms still send one
+  def test_phone_appears_only_when_sent
+    with_fake_network { post '/contact-form', contact_params('phone' => '') }
+    refute_includes JSON.parse(@resend_requests.fetch(0).body)['text'], 'Phone:'
+
+    with_fake_network { post '/contact-form', contact_params }
+    assert_includes JSON.parse(@resend_requests.fetch(1).body)['text'], 'Phone: 555-0100'
+  end
+
   def test_resend_failure_reports_failure
     with_fake_network(resend_status: 422) { post '/contact-form', contact_params }
     assert_equal 'failure', json['status']
@@ -129,7 +166,10 @@ class MiddlewareTest < AppTest
     assert_equal SecurityHeaders::HSTS, h['strict-transport-security']
     assert_equal 'public, max-age=31536000, immutable', h['cache-control']
 
-    _, h, = call(headers, 'https://velocitylabs.io/images/projects/x/thumb.webp')
+    _, h, = call(headers, 'https://velocitylabs.io/images/work/x.webp')
+    assert_equal 'public, max-age=604800', h['cache-control']
+
+    _, h, = call(headers, 'https://velocitylabs.io/favicon.svg')
     assert_equal 'public, max-age=604800', h['cache-control']
 
     _, h, = call(headers, 'https://velocitylabs.io/blog/')

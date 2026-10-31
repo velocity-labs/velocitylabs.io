@@ -1,0 +1,59 @@
+---
+layout: page
+bands: true
+deco: true
+title: "Our work: custom software development portfolio"
+description: "Web apps we've built, rescued and maintained since 2009: a dental staffing platform, transit rider tools, health programs, Stripe billing and more."
+eyebrow: Our work
+heading: Web apps we've built, rescued and kept running
+lead: Some we built from scratch, some we took over from other developers, and several we still look after years later.
+---
+{%- assign featured = site.data.projects | where_exp: "project", "project.slug" -%}
+{%- assign earlier = site.data.projects | where_exp: "project", "project.slug == nil" | sort_natural: "title" -%}
+{%- assign techs = featured | map: "technologies" | join: "|" | split: "|" | uniq -%}
+<section id="projects" aria-labelledby="projects-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="projects-title" data-reveal="rise">Featured projects</h2>
+    </div>
+    {%- comment %} site/tech-filter.js shows it, and applies ?tech= from the pills that link here {% endcomment %}
+    <div class="tech-filter" data-tech-filter hidden>
+      <p id="tech-filter-label" class="tech-filter-label">Filter by technology</p>
+      <div class="pills" role="group" aria-labelledby="tech-filter-label">
+        <button type="button" data-tech="" aria-pressed="true">All</button>
+        {%- comment %} the most used first {% endcomment %}
+        {%- for uses in (1..featured.size) reversed %}{% for tech in techs %}
+        {%- assign count = featured | where_exp: "project", "project.technologies contains tech" | size %}
+        {%- if count == uses %}
+        <button type="button" data-tech="{{ tech | slugify }}" aria-pressed="false">{{ tech }}</button>
+        {%- endif %}
+        {%- endfor %}{% endfor %}
+      </div>
+      <p class="filter-status" role="status"></p>
+    </div>
+    <div class="cases cases-row" data-arc-group>
+      {%- for project in featured %}
+      {%- assign delay = forloop.index0 | modulo: 3 | times: 0.14 | round: 2 %}
+      {% include blocks/project-card.html project=project delay=delay %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- comment %} hidden while a technology is chosen, since these projects aren't tagged {% endcomment %}
+<section id="earlier" aria-labelledby="earlier-title" data-unfiltered>
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="earlier-title" data-reveal="rise">Earlier work</h2>
+      <p class="lede" data-reveal="rise" style="--d:.12s">More of what we've built and looked after since {{ site.company.founded }}.</p>
+    </div>
+    <ul class="features earlier">
+      {%- for project in earlier %}
+      <li data-reveal="rise" style="--d:{{ forloop.index0 | modulo: 3 | times: 0.1 | round: 2 }}s">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.summary }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% include blocks/contact.html heading="Have a project like these?" %}

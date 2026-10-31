@@ -1,0 +1,73 @@
+---
+layout: page
+bands: true
+deco: true
+title: Open source projects
+description: "Open source from Velocity Labs: DocPDF, credential_parity, RAtis and a LibreOffice buildpack for Heroku, free for anyone to use."
+eyebrow: Open source
+heading: Open source tools from our team
+lead: Ruby gems and Heroku tooling we've built and published, free for anyone to use.
+
+# repo: the name under github.com/velocity-labs; gem: its name on RubyGems
+# (a project may have either or both)
+repos:
+  - name: DocPDF
+    kind: Ruby gem
+    repo: docpdf
+    gem: docpdf
+    text: >-
+      Converts Word, Excel, PowerPoint, OpenDocument, HTML, images and plain text to PDF, with
+      optional watermarking. Swappable adapters let you bring the PDF and image libraries you
+      already use.
+  - name: credential_parity
+    kind: Ruby gem
+    repo: credential_parity
+    gem: credential_parity
+    text: >-
+      Catches Rails credential drift between environments before it reaches production. When
+      staging is missing a key that production has, or spells it differently, your tests fail
+      instead of your next deploy.
+  - name: RAtis
+    kind: Ruby gem
+    gem: ratis
+    text: >-
+      A Ruby wrapper for ATIS, the SOAP service Valley Metro used for its transit data. We were
+      its main contributors while we built [Valley Metro's rider tools](/portfolio/).
+  - name: heroku-buildpack-libreoffice
+    kind: Heroku buildpack
+    repo: heroku-buildpack-libreoffice
+    text: >-
+      Installs a pinned version of LibreOffice on Heroku, verified with SHA-256, for converting
+      documents to PDF. One buildpack replaces the apt buildpack plus a separate LibreOffice one.
+  - name: velocitylabs.io
+    kind: Website
+    repo: velocitylabs.io
+    text: >-
+      The code behind this website: a Jekyll site served by a small Sinatra app, with a
+      spam-resistant contact form that needs no sessions.
+---
+<section id="repos" aria-labelledby="repos-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="repos-title" data-reveal="rise">What we've built</h2>
+    </div>
+    <div class="repos">
+      {%- for repo in page.repos %}
+      <article class="repo" data-reveal="rise" style="--d:{{ forloop.index0 | modulo: 2 | times: 0.1 | round: 2 }}s">
+        <h3>{{ repo.name }}</h3>
+        <p class="repo-kind">{{ repo.kind }}</p>
+        <div class="repo-text">{{ repo.text | markdownify }}</div>
+        <ul class="repo-links">
+          {%- if repo.repo %}
+          <li><a href="https://github.com/velocity-labs/{{ repo.repo }}">Source on GitHub</a></li>
+          {%- endif %}
+          {%- if repo.gem %}
+          <li><a href="https://rubygems.org/gems/{{ repo.gem }}">On RubyGems</a></li>
+          {%- endif %}
+        </ul>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{% include blocks/cta-band.html %}

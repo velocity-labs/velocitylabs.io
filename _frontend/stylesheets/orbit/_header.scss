@@ -1,0 +1,46 @@
+@use 'breakpoints' as *;
+
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.4rem; padding-bottom: 1.4rem; }
+.brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
+.brand svg { width: 34px; height: 34px; }
+
+nav.primary { display: flex; align-items: center; gap: 1.75rem; }
+.nav-links { list-style: none; display: flex; gap: 1.75rem; margin: 0; padding: 0; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--dust); }
+.nav-links a:hover { color: var(--star); }
+nav.primary .btn { padding: .65rem 1.05rem; color: var(--sun-ink); }
+.menu-toggle { display: none; }
+
+// Phones: the links fold behind a menu button (three lines, or an X when open)
+// and drop down below the header
+@media (max-width: $phone) {
+  .top .wrap { position: relative; }
+  .brand { font-size: 1rem; gap: .5rem; white-space: nowrap; }
+  .brand svg { width: 30px; height: 30px; }
+  nav.primary { gap: .5rem; }
+  nav.primary .btn { padding: .6rem .85rem; font-size: .95rem; white-space: nowrap; }
+  .menu-toggle {
+    display: grid; place-items: center; width: 2.6rem; height: 2.6rem; padding: 0; cursor: pointer;
+    background: none; border: 2px solid var(--orbit); border-radius: 50%; color: var(--star);
+  }
+  .menu-toggle[aria-expanded="true"] { border-color: var(--sun); }
+  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after {
+    display: block; width: 16px; height: 2px; border-radius: 1px; background: currentColor; transition: transform .2s, background .2s;
+  }
+  .menu-toggle span { position: relative; }
+  .menu-toggle span::before, .menu-toggle span::after { content: ""; position: absolute; left: 0; }
+  .menu-toggle span::before { top: -5px; }
+  .menu-toggle span::after { top: 5px; }
+  .menu-toggle[aria-expanded="true"] span { background: transparent; }
+  .menu-toggle[aria-expanded="true"] span::before { transform: translateY(5px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span::after { transform: translateY(-5px) rotate(-45deg); }
+  .nav-links {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: .25rem var(--gutter) 1rem; background: var(--panel);
+    border-top: 1px solid var(--orbit); border-bottom: 1px solid var(--orbit);
+  }
+  nav.primary.open .nav-links { display: flex; }
+  .nav-links a { display: block; padding: .85rem 0; color: var(--star); font-size: 1.1rem; }
+  .nav-links li + li { border-top: 1px solid var(--orbit); }
+}

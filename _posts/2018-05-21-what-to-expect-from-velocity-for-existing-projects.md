@@ -41,7 +41,7 @@ We often encounter clients who have already begun, or finished, developing their
 
   <li>
     As the project begins to wind down, you may want to enter a maintenance phase. We also offer continued monitoring and small changes through our
-    <a href="/ruby-on-rails/maintenance">maintenance package</a>.
+    <a href="/maintenance/">maintenance package</a>.
   </li>
 </ol>
 

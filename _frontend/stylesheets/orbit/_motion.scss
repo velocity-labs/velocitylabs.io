@@ -1,0 +1,59 @@
+// Motion. The inline script in base.html sets .motion before first paint
+// (unless the reader prefers reduced motion), so everything below starts hidden
+// without a flash. site/reveals.js adds .in to [data-reveal] elements as they
+// scroll into view; application.js adds .go to the root when the tab is first
+// seen, which starts the hero.
+
+// The starfield fades in once
+.motion .sky, .motion .hero .stars { opacity: 0; }
+.motion.go .sky, .motion.go .hero .stars { opacity: 1; transition: opacity 1.8s ease; }
+.hero .stars { will-change: transform; }
+
+// Hero copy (and inner page titles) rise in, staggered by --d
+.motion .hl { opacity: 0; transform: translateY(22px); }
+.motion.go .hl {
+  opacity: 1; transform: none;
+  transition: opacity .9s ease var(--d, 0s), transform 1.1s cubic-bezier(.16, .84, .3, 1) var(--d, 0s);
+}
+.hero-copy, .orbit-figure { will-change: transform; }
+
+// Reveal vocabulary
+.motion [data-reveal="rise"] { opacity: 0; transform: translateY(28px); }
+// arc: items spin into place around their group's center, like bodies settling
+// into orbit (reveals.js sets --rot and the transform origin)
+.motion [data-reveal="arc"] { opacity: 0; transform: rotate(var(--rot, -18deg)); }
+.motion [data-reveal="swing"] { opacity: 0; transform: rotate(-7deg); transform-origin: 120% 320%; }
+.motion [data-reveal="lift"] { opacity: 0; transform: translateY(48px) scale(.97); }
+.motion :is([data-reveal="rise"], [data-reveal="arc"], [data-reveal="swing"], [data-reveal="lift"]) {
+  transition: opacity .8s ease var(--d, 0s), transform 1.25s cubic-bezier(.16, .84, .3, 1) var(--d, 0s);
+}
+// (the specific hidden states below need their own .in rules to outrank)
+.motion [data-reveal].in { opacity: 1; transform: none; }
+
+// Fit list: rows slide in, then each sun dot ignites
+.motion .fit li[data-reveal="dot"] { opacity: 0; transform: translateX(-18px); transition: opacity .6s ease var(--d, 0s), transform .8s cubic-bezier(.16, .84, .3, 1) var(--d, 0s); }
+.motion .fit li[data-reveal="dot"]::before { transform: scale(0); transition: transform .55s cubic-bezier(.3, 1.6, .5, 1) calc(var(--d, 0s) + .3s); }
+.motion .fit li[data-reveal="dot"].in { opacity: 1; transform: none; }
+.motion .fit li[data-reveal="dot"].in::before { transform: none; }
+
+// Decorative rings grow in
+.motion .deco { opacity: 0; transform: scale(.82); transition: opacity 1.4s ease, transform 1.8s cubic-bezier(.16, .84, .3, 1); }
+
+// Step numbers spin into place
+.motion .steps li[data-reveal="rise"]::before { transform: scale(.4) rotate(-120deg); transition: transform .9s cubic-bezier(.2, 1.3, .4, 1) calc(var(--d, 0s) + .2s); }
+.motion .steps li[data-reveal="rise"].in::before { transform: none; }
+
+// Team photos swing in on an orbit
+.motion .sat[data-reveal="swing-sat"] { opacity: 0; transform: rotate(55deg); transform-origin: -150% 50%; }
+.motion .sat[data-reveal="swing-sat"] img { transform: rotate(-55deg); }
+.motion .sat[data-reveal="swing-sat"], .motion .sat[data-reveal="swing-sat"] img { transition: opacity .7s ease var(--d, 0s), transform 1.4s cubic-bezier(.16, .84, .3, 1) var(--d, 0s); }
+.motion .sat[data-reveal="swing-sat"].in { opacity: 1; transform: none; }
+.motion .sat[data-reveal="swing-sat"].in img { transform: none; }
+
+// The contact sun waits until its panel has risen into place
+.motion .dawn { opacity: 1; transition: opacity .8s ease .4s; }
+.motion #contact .wrap:has(.contact-panel:not(.in)) .dawn { opacity: 0; transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

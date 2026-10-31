@@ -1,0 +1,19 @@
+{%- comment -%}
+  FAQ section. items: a list of { q, a } with the answer in Markdown.
+  Optional: title (default "Questions owners ask us").
+{%- endcomment -%}
+<section id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="faq-title" data-reveal="rise">{{ include.title | default: "Questions owners ask us" }}</h2>
+    </div>
+    <div class="faq">
+      {%- for item in include.items %}
+      <details data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.08 }}s">
+        <summary>{{ item.q }}</summary>
+        {{ item.a | markdownify }}
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

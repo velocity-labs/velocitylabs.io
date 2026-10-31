@@ -1,0 +1,16 @@
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="{{ site.company.name }} home">{% include site/logo.svg %}{{ site.company.name }}</a>
+    <nav class="primary" aria-label="Primary">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#projects">Work</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+      <a class="btn btn-sun" href="{{ site.booking_url }}" target="_blank" rel="noopener">Book a call</a>
+      {%- comment %} phones hide the links behind this button (site/menu.js) {% endcomment %}
+      <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+    </nav>
+  </div>
+</header>

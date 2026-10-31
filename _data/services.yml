@@ -1,0 +1,99 @@
+# The services, in the order the home page lists them. One list drives the
+# home services section, the hero planets, the footer, the contact form's
+# "What do you need?" options, llms.txt and the "Need" line main.rb adds to
+# contact emails, so a change here shows up everywhere.
+#
+# id:         home page anchor (#code-audit) and the form's `need` value
+# home:       listed in the home services section (with summary and cta)
+# planet:     hero planet; orbit 1 is innermost (the shortest engagement) and
+#             orbit 6 outermost (ongoing work). Sizes and start angles are in
+#             _frontend/javascripts/home/orbit.js, keyed by orbit.
+# footer:     label in the footer's Services column (omit to leave it out)
+# need:       label of the contact form option (omit for no option). The form
+#             on the service's own page sends it without asking
+# own_page:   leave the option off the forms that ask (its own page still
+#             sends it)
+# conversion: Google Ads conversion sent when a form on this service's page
+#             is sent
+
+- id: ai-integration
+  url: /ai-integration/
+  name: AI integration
+  home: true
+  summary: Add AI to your existing app without rebuilding it, like chat over your app's own data using the Claude API with tool calling.
+  cta: Add AI to your app
+  planet: { label: Add AI, sub: AI integration, orbit: 3 }
+  footer: AI integration
+  need: AI integration
+
+- id: project-rescue
+  url: /app-rescue/
+  name: Software project rescue
+  home: true
+  summary: Your app is outdated or fragile, or your last developer disappeared. We take it over, stabilize it, and modernize the legacy code that is holding your business back.
+  cta: How a rescue works
+  planet: { label: Rescue it, sub: Project rescue, orbit: 5 }
+  footer: Software project rescue
+  need: Project rescue
+
+- id: vibe-coding-cleanup
+  url: /vibe-coding-cleanup/
+  name: Vibe coding cleanup
+  home: true
+  summary: You built it with Lovable, Replit, Base44, Cursor, or Claude Code, and it has outgrown them. We fix what's holding it back, close the security gaps, and make it production ready for real customers.
+  cta: Fix a vibe coded app
+  planet: { label: Finish it, sub: Vibe coding cleanup, orbit: 2 }
+  footer: Vibe coding cleanup
+  need: Vibe coding cleanup
+
+- id: mvp-development
+  url: /mvp-development/
+  name: MVP and SaaS development
+  home: true
+  summary: "From idea to launch: MVPs, SaaS products, and Stripe billing, built to be maintained after the launch party. Not sure what to build first? Start with a one-day [story workshop](/process/story-workshop/)."
+  cta: MVP development
+  planet: { label: Launch it, sub: MVP development, orbit: 4 }
+  footer: MVP development
+  need: New product
+
+- id: code-audit
+  url: /code-audit/
+  name: Code audit
+  home: true
+  summary: An independent code review of your whole app, graded on eight areas, with a plain-English report and a fix plan, most urgent first.
+  cta: Compare audit levels
+  planet: { label: Check it, sub: Code audit, orbit: 1 }
+  footer: Code audits
+  need: Code audit
+  conversion: AW-960263497/evf8CKS8ioUBEMnq8ckD
+
+- id: maintenance
+  url: /maintenance/
+  name: Maintenance and support
+  home: true
+  summary: "Your business runs on the app and you need a dependable team to look after it: monitoring, security updates, backups, fixes, and improvements, month after month."
+  cta: Maintenance plans
+  planet: { label: Keep it running, sub: Maintenance and support, orbit: 6 }
+  footer: Maintenance and support
+  need: Maintenance
+  conversion: AW-960263497/EFULCKirioUBEMnq8ckD
+
+- id: ruby-on-rails-upgrades
+  url: /ruby-on-rails/upgrades/
+  name: Ruby on Rails upgrades
+  footer: Ruby on Rails upgrades
+  need: Rails upgrade
+  own_page: true # the site isn't Rails-specific, so other forms don't offer it
+  conversion: AW-960263497/8nV2CPTngoUBEMnq8ckD
+
+- id: partners
+  url: /partners/
+  name: White label development for agencies
+  need: Agency partnership
+  own_page: true
+
+- id: story-workshop
+  url: /process/story-workshop/
+  name: Story workshop
+  need: Story workshop
+  own_page: true # the other forms cover it with New product

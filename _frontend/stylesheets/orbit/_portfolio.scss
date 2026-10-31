@@ -1,0 +1,35 @@
+@use 'breakpoints' as *;
+
+// The portfolio (portfolio.html) and open source page (open-source.html)
+
+// The technology filter (site/tech-filter.js): pills like the cards' own, with
+// the chosen one lit
+.tech-filter { display: grid; gap: .9rem; margin-bottom: 2.75rem; }
+.tech-filter-label { color: var(--dust); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.tech-filter .pills { display: flex; flex-wrap: wrap; gap: .5rem; }
+.tech-filter button {
+  padding: .4rem .95rem; border: 1px solid var(--orbit); border-radius: 999px; background: var(--panel);
+  color: var(--star); font: inherit; font-size: .9rem; line-height: 1.4; cursor: pointer;
+  transition: border-color .2s, color .2s, background-color .2s;
+}
+.tech-filter button:hover { border-color: var(--sun); color: var(--sun); }
+.tech-filter button[aria-pressed="true"] { background: var(--sun); border-color: var(--sun); color: var(--sun-ink); font-weight: 700; }
+.filter-status { color: var(--dust); font-size: .95rem; }
+
+// Earlier work: the features grid, tighter, since it's a long list
+.features.earlier { row-gap: 1.75rem; }
+.earlier h3 { font-size: 1.05rem; }
+.earlier p { font-size: .95rem; }
+
+// Open source projects, two to a row
+.repos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.repo { display: flex; flex-direction: column; gap: .75rem; padding: 1.75rem; border-radius: 14px; background: var(--panel); border: 1px solid var(--orbit); }
+// shown above the name, though it follows the heading when read
+.repo-kind { order: -1; color: var(--sun); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.repo h3 { font-size: 1.45rem; overflow-wrap: anywhere; }
+.repo-text { color: #D5DAEC; }
+.repo-links { list-style: none; margin: auto 0 0; padding: .5rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-weight: 700; }
+
+@media (max-width: $phone) {
+  .repos { grid-template-columns: minmax(0, 1fr); }
+}

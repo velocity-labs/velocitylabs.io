@@ -1,0 +1,65 @@
+---
+layout: service
+service: mvp-development
+title: MVP and SaaS development for startups
+description: From idea to launch, MVPs and SaaS products with Stripe billing, built by senior developers to keep running after launch. Start with a one-day story workshop.
+heading: MVP and SaaS development, built to last past launch day.
+lede: "From idea to launch: MVPs, SaaS products, and Stripe billing, built to be maintained after the launch party. Not sure what to build first? Start with a one-day story workshop."
+cta: Tell us your idea
+
+steps:
+  - title: Start with a story workshop
+    text: >-
+      In [one day](/process/story-workshop/), we map out who will use your product, what they need to
+      do, and why it matters. You leave with a scoped plan and an honest estimate.
+  - title: Build the first version
+    text: >-
+      A senior developer leads the work and ships in small steps, so you see working software early
+      and can change course as you learn.
+  - title: Launch, then keep going
+    text: >-
+      We deploy it, watch it, and [stay on afterward](/maintenance/) to fix, improve, and grow it for
+      as long as you want us.
+
+builds:
+  - title: Web apps and SaaS products
+    text: Built in Ruby on Rails, React, Next.js, or Node.js, on PostgreSQL or Supabase.
+  - title: Subscriptions and billing
+    text: "Stripe billing done properly: subscriptions, free trials, per-seat pricing, sales tax, and promo codes."
+  - title: Mobile apps and APIs
+    text: The API behind your iOS and Android apps, or the apps themselves in React Native.
+  - title: Admin and internal tools
+    text: The dashboards your team uses to run the business behind the product.
+  - title: AI features
+    text: "[AI integration](/ai-integration/) where it saves your users real time."
+  - title: Prototypes, finished properly
+    text: "Started it with an AI tool? We'll [make it production ready](/vibe-coding-cleanup/)."
+
+faq_title: Questions about building an MVP
+faq:
+  - q: How much does MVP development cost?
+    a: >-
+      It depends on what the first version needs to do, which is what the story workshop is for. In one
+      day we map out your product, then give you a scoped plan and an honest estimate. The workshop is
+      $1,500.
+  - q: Can I build my MVP with AI tools first?
+    a: >-
+      Yes, and it's a good way to test an idea. When it starts getting real customers, bring it to us:
+      we'll audit it and [get it production ready](/vibe-coding-cleanup/).
+  - q: How do I hire a developer for my startup idea?
+    a: >-
+      Look for someone who asks about your users and your business before talking about code, who
+      shows you working software early, and who will still be around after launch.
+  - q: Can you set up subscriptions and payments?
+    a: >-
+      Yes: Stripe subscriptions, free trials, per-seat pricing, sales tax, and promo codes. For one
+      client we added the paywall and all of its Stripe billing in about three weeks.
+
+contact_heading: Tell us your idea
+contact_lede: We'll help you work out what to build first.
+contact_question: What do you want to build?
+---
+{% include blocks/steps-section.html id="process" title="From idea to launch" items=page.steps %}
+{% include blocks/features.html id="builds" title="What we build for startups" items=page.builds %}
+{% include blocks/quote.html id="josephine-morris" %}
+{% include blocks/work-band.html id="work" title="Products we've built and grown" slugs="flashdrafts,goalistics,go-swim" %}

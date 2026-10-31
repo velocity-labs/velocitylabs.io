@@ -1,0 +1,30 @@
+{%- comment -%}
+  The top of an inner page: its one h1 and optional lede. Optional:
+  eyebrow (a small label above the h1), cta (the page's main action, a link
+  to #contact), booking: true (adds "Book a 30-minute call"), deco: true
+  (decorative rings in the corner).
+{%- endcomment -%}
+<section class="page-hero{% if include.deco %} has-deco{% endif %}" aria-labelledby="page-title">
+  {%- if include.deco %}
+  {% include blocks/deco.html %}
+  {%- endif %}
+  <div class="wrap">
+    {%- if include.eyebrow %}
+    <p class="eyebrow hl">{{ include.eyebrow }}</p>
+    {%- endif %}
+    <h1 id="page-title" class="hl" style="--d:.05s">{{ include.heading }}</h1>
+    {%- if include.lede %}
+    <p class="lede hl" style="--d:.2s">{{ include.lede }}</p>
+    {%- endif %}
+    {%- if include.cta or include.booking %}
+    <div class="ctas hl" style="--d:.35s">
+      {%- if include.cta %}
+      <a class="btn btn-sun" href="#contact">{{ include.cta }}</a>
+      {%- endif %}
+      {%- if include.booking %}
+      <a class="btn {% if include.cta %}btn-line{% else %}btn-sun{% endif %}" href="{{ site.booking_url }}" target="_blank" rel="noopener">Book a 30-minute call</a>
+      {%- endif %}
+    </div>
+    {%- endif %}
+  </div>
+</section>

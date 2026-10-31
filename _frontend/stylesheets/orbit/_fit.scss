@@ -1,0 +1,12 @@
+@use 'breakpoints' as *;
+
+// Fit: the question on the left, who we suit on the right
+.fit-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 4rem; align-items: start; }
+.fit-wrap .section-head { margin-bottom: 0; }
+.fit ul { list-style: none; margin: 1.25rem 0 0; padding: 0; }
+.fit li { padding: .8rem 0 .8rem 2rem; border-top: 1px solid var(--orbit); position: relative; }
+.fit li::before { content: ""; position: absolute; left: 0; top: 1.3rem; width: 10px; height: 10px; border-radius: 50%; background: var(--sun); }
+
+@media (max-width: $stack) {
+  .fit-wrap { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+}

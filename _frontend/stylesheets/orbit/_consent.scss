@@ -1,0 +1,25 @@
+@use 'breakpoints' as *;
+
+// The cookie banner (_includes/_cookie_consent.html, site/consent.js): a panel
+// pinned to the bottom of the window, above the scroll rail
+.cookie-consent {
+  position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 10;
+  max-width: 46rem; margin: 0 auto; padding: 1.1rem 1.25rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem;
+  background: var(--panel); border: 1px solid var(--orbit); border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .45); font-size: .95rem; color: var(--star);
+}
+.cookie-consent[hidden] { display: none; }
+.cookie-consent p { flex: 1 1 22rem; margin: 0; }
+.cookie-consent p a { color: var(--star); margin-left: .25rem; }
+.cookie-consent-actions { display: flex; gap: .6rem; }
+.cookie-consent-actions button {
+  font: 700 .95rem/1 var(--body); padding: .7rem 1.1rem; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--orbit); background: none; color: var(--star);
+}
+.cookie-consent-actions .cookie-consent-accept { background: var(--sun); border-color: var(--sun); color: var(--sun-ink); }
+.cookie-consent-actions button:hover { border-color: var(--sun); }
+
+@media (max-width: $phone) {
+  .cookie-consent { left: .5rem; right: .5rem; bottom: .5rem; }
+}

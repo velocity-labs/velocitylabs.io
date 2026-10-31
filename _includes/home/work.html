@@ -1,0 +1,34 @@
+{%- comment -%}
+  Home work section: the featured project (page.featured) and the case cards
+  (page.cases), both by slug from _data/projects.yml.
+{%- endcomment -%}
+{%- assign featured = site.data.projects | where: "slug", page.featured | first -%}
+<section id="projects" aria-labelledby="work-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="work-title" data-reveal="rise">Custom software we've built, rescued and kept running</h2>
+    </div>
+    <article class="feature">
+      <div class="shot" data-reveal="swing"><img src="{{ featured.image.src }}" alt="{{ featured.image.alt }}" width="{{ featured.image.width }}" height="{{ featured.image.height }}" loading="lazy"></div>
+      <div>
+        <p class="client" data-reveal="rise" style="--d:.1s">{{ featured.title }}</p>
+        <h3 data-reveal="rise" style="--d:.2s">{{ featured.feature.heading }}</h3>
+        <div class="numbers">
+          {%- for number in featured.feature.numbers %}
+          <div data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.12 | plus: 0.32 | round: 2 }}s"><b>{{ number.value }}</b><span>{{ number.label }}</span></div>
+          {%- endfor %}
+        </div>
+        <p data-reveal="rise" style="--d:.56s">{{ featured.summary }}</p>
+        {% include blocks/stack.html techs=featured.technologies reveal=0.68 %}
+      </div>
+    </article>
+    <div class="cases" data-arc-group>
+      {%- for slug in page.cases %}
+      {%- assign project = site.data.projects | where: "slug", slug | first %}
+      {%- assign delay = forloop.index0 | times: 0.14 | round: 2 %}
+      {% include blocks/project-card.html project=project delay=delay %}
+      {%- endfor %}
+    </div>
+    <p class="more-link"><a href="/portfolio/">See more of our work</a></p>
+  </div>
+</section>

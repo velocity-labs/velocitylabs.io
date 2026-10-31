@@ -24,6 +24,7 @@ yarn remove <package>        # remove a dependency
 bin/check-cooldown           # verify Gemfile.lock + yarn.lock (also runs in CI)
 yarn install --ignore-scripts  # install scripts are a supply-chain vector
 bin/check-links              # check every link on the live site (also runs monthly)
+bin/check-links http://localhost:3000  # or on a local build, before it ships
 
 # Local development — use two terminals
 # Terminal 1: watchexec rebuilds _site/ on changes (brew install watchexec)
@@ -38,11 +39,12 @@ bundle exec puma -t 5:5 -p 3000
 # One-off build
 jekyll build --trace
 
-# Claude Code jekyll build (RVM doesn't auto-switch in subshells)
-env -i HOME="$HOME" PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bash -l -c 'jekyll build --trace'
+# Claude Code jekyll build (RVM doesn't auto-switch in subshells, and it
+# doesn't recognize a bare "4.0.7" in .ruby-version, so pick the Ruby explicitly)
+env -i HOME="$HOME" PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bash -l -c 'rvm use "ruby-$(cat .ruby-version)" >/dev/null && bundle exec jekyll build --trace'
 ```
 
-Tests: `bundle exec rake test` (Minitest + Rack::Test in `test/`, after a `jekyll build`). They cover the contact form (anti-spam, reCAPTCHA, the Resend request), redirects and headers, with network calls faked. CI runs them on every push. No linter is configured.
+Tests: `bundle exec rake test` (Minitest + Rack::Test in `test/`, after a `jekyll build`). They cover the contact form (anti-spam, reCAPTCHA, the Resend request), redirects and headers, with network calls faked; every URL in the old site's sitemap (`test/fixtures/sitemaps/`); and the built pages in `test/site_test.rb` (one h1, a title and a description per page, internal links and anchors that resolve, lists that match `_data/services.yml`, the Markdown copies and `llms.txt`). CI runs them on every push. No linter is configured.
 
 ## Architecture
 
@@ -53,23 +55,26 @@ Request → config.ru → main.rb (Sinatra) → serves _site/ static files
                                          → legacy URL redirects
 ```
 
+Moved pages get one 301 each from the `MovedPages` middleware in main.rb, driven by `config/redirects.yml` (both slash forms, query string kept, and `.md` copies where the new page has one).
+
 - **_config.yml** — Jekyll config: permalink structure (`/blog/:year/:month/:day/:title/`), pagination (10/page), Vite settings, company metadata available as Liquid variables (`site.company.*`)
 - **main.rb** — Sinatra app: catch-all route serves from `_site/`, contact form with HMAC-signed CSRF tokens (stateless, not session-based — see `thoughts/shared/learnings/2026-02-25-csrf-session-race-condition.md`), Rack::Attack rate limiting
-- **vite.config.mjs** / **config/vite.json** — Vite asset pipeline config; source in `_frontend/`, output to `public/vite/`
-- **_frontend/stylesheets/bootstrap.scss** — Bootstrap 5 built from Sass with only the components and utilities the site uses (it's render-blocking). New Bootstrap markup (a dropdown, modal, `mb-3` utility, etc.) needs its component or utility added there, or it renders unstyled
-- **_plugins/** — Custom Jekyll plugins: `portfolio.rb` auto-generates portfolio pages from `_data/projects.yml`, `filters.rb` adds Liquid filters (`full_image_path`, `thumb_image_path`, `get_categories`, etc.), `seo.rb` maps `author_id` and default images for jekyll-seo-tag and jekyll-feed, `markdown_export.rb` writes a Markdown copy of each indexable page (`/path.md`) plus `/llms-full.txt` for AI tools
-- **_layouts/base.html** — Uses Vite Liquid tags: `{% vite_client_tag %}`, `{% vite_stylesheet_tag application %}` in head; `{% vite_javascript_tag application %}` in `_includes/_scripts.html`
+- **vite.config.mjs** / **config/vite.json** — Vite asset pipeline config; source in `_frontend/`, built during `jekyll build` into `_site/vite/`
+- **_frontend/** — The Orbit design (no Bootstrap). `stylesheets/orbit.scss` pulls in the partials in `stylesheets/orbit/` (tokens, shell, one per block, prose, motion). `entrypoints/application.js` runs on every page (`javascripts/site/`: cookie consent, menu, reveals, starfield, scroll effects, the portfolio's technology filter; the contact form loads on demand); `entrypoints/home.js` adds the hero orbit (`javascripts/home/orbit.js`) on the home layout only. Scroll effects share one loop (`javascripts/lib/frame.js`). Elements animate in via `data-reveal` attributes, hidden under the `.motion` class that `_layouts/base.html` sets before first paint
+- **_plugins/** — Custom Jekyll plugins: `seo.rb` maps `author_id` and default images for jekyll-seo-tag and jekyll-feed, `markdown_export.rb` writes a Markdown copy of each indexable page (`/path.md`) plus `/llms-full.txt` for AI tools, `pullquote.rb` is the `{% pullquote %}` tag in old posts
+- **_layouts/base.html** — The shell (starfield, header, footer, cookie banner) around every page. Uses Vite Liquid tags: `{% vite_client_tag %}`, `{% vite_stylesheet_tag application %}` in head; `{% vite_javascript_tag application %}` (and `home` on the home layout) in `_includes/_scripts.html`. Other layouts: `home`, `service` (service pages, whose contact form sends the page's service instead of asking), `page` (inner pages; `bands: true` when the content brings its own sections, like the portfolio), `blog`, `post`. The 404 uses `base` directly. Shared blocks are in `_includes/blocks/`, home sections in `_includes/home/`, the shell in `_includes/site/`
 
 ## Key Data-Driven Content
 
-- `_data/projects.yml` — Portfolio projects (auto-generates pages via portfolio plugin)
-- `_data/people.yml` — Team members
-- `_data/testimonials.yml` — Client testimonials
-- `_data/technologies.yml` — Technologies section on the home page (icon = SVG in `_includes/devicons/`, from Devicon; color = hover brand color)
+- `_data/services.yml` — The services, in order. One list drives the home services section, the hero planets, the footer, the contact form's options and the "Need" line `main.rb` adds to contact emails
+- `_data/projects.yml` — Portfolio projects. Those with a `slug` get a card, in file order (the home page picks its featured project and cases by slug in `index.html` front matter, service pages in their work bands); the rest are listed alphabetically as earlier work. Technology pills link to `/portfolio/?tech=<slug>`, which `javascripts/site/tech-filter.js` filters
+- `_data/people.yml` — Team members (partners on the home page, author cards on posts)
+- `_data/testimonials.yml` — Client quotes; quote bands look one up by `id`
+- `_data/technologies.yml` — "The tools we build with" row on the home page (icon = SVG in `_includes/devicons/`, sources in `SOURCES.txt` there; color = hover brand color)
 
 ## Blog Posts
 
-Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter (title, author, date, excerpt, draft).
+Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter: `layout: post`, `title`, `author_id` (an id in `_data/people.yml`), `excerpt`, `tags`; optional `noindex: true`. Older posts' Bootstrap and WordPress markup is styled in `_frontend/stylesheets/orbit/_legacy.scss`, and highlighted code in `_code.scss`.
 
 ## Deployment and CI
 

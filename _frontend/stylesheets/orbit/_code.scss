@@ -1,0 +1,31 @@
+// Highlighted code (Rouge) in a dark theme drawn from the Orbit palette. The
+// block itself is .prose pre in _page.
+
+// {% highlight %} wraps its block in a figure
+.prose figure.highlight { margin-left: 0; margin-right: 0; }
+
+// linenos puts a table of numbers and code inside the block, each in a pre of
+// its own: undo the prose table and pre styles there
+.prose .rouge-table { width: auto; margin: 0; border-collapse: collapse; font-size: inherit; }
+.prose .rouge-table td { padding: 0; border: 0; }
+.prose .rouge-table .gutter { padding-right: 1rem; border-right: 1px solid var(--orbit); color: var(--dust); text-align: right; user-select: none; }
+.prose .rouge-table .code { padding-left: 1rem; }
+.prose pre pre { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; overflow: visible; font-size: inherit; }
+
+.highlight { color: #D5DAEC; }
+.highlight :is(.c, .ch, .cd, .cm, .cpf, .c1, .cs) { color: var(--dust); font-style: italic; }
+.highlight :is(.k, .kc, .kd, .kn, .kp, .kr, .kv, .ow, .cp, .nt) { color: var(--sun); }
+.highlight :is(.s, .sa, .sb, .sc, .dl, .sd, .s2, .sh, .sx, .s1) { color: #A8E6B8; }
+.highlight :is(.se, .si) { color: #FFD88A; }
+.highlight .sr { color: #F5A3C7; }
+.highlight :is(.ss, .nv, .vc, .vg, .vi, .vm, .nd) { color: #C7B3FF; }
+.highlight :is(.m, .mb, .mf, .mh, .mi, .il, .mo, .mx) { color: #FFA38A; }
+.highlight :is(.kt, .nb, .bp, .nc, .no, .nn, .na) { color: #8FC8FF; }
+.highlight :is(.nf, .fm) { color: #A5B4FF; }
+.highlight :is(.gp, .go) { color: var(--dust); }
+.highlight .gd { color: #FF8F8F; }
+.highlight .gi { color: #A8E6B8; }
+.highlight :is(.gh, .gu) { color: var(--sun); font-weight: 700; }
+.highlight .ge { font-style: italic; }
+.highlight .gs { font-weight: 700; }
+.highlight .err { color: #FF8F8F; background: none; }

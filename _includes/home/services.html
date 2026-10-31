@@ -1,0 +1,31 @@
+{%- comment -%}
+  Home services, from _data/services.yml (home: true), then the tools row
+  from _data/technologies.yml. Each service item also carries its hero
+  planet (data-orbit, data-planet), which home/orbit.js reads.
+{%- endcomment -%}
+<section id="services" class="has-deco" aria-labelledby="services-title">
+  {% include blocks/deco.html %}
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="services-title" data-reveal="rise">Web app development, rescue, and support</h2>
+      <p class="lede" data-reveal="rise" style="--d:.12s">Most of our work starts with an app that already exists and matters to a business. Some of it starts with an idea.</p>
+    </div>
+    <ul class="svc-list" data-arc-group>
+      {%- for service in site.data.services %}{% if service.home %}
+      <li id="{{ service.id }}" data-reveal="arc" style="--d:{{ forloop.index0 | modulo: 2 | times: 0.14 }}s" data-orbit="{{ service.planet.orbit }}" data-planet="{{ service.planet.label }}" data-planet-sub="{{ service.planet.sub }}">
+        <h3>{{ service.name }}</h3>
+        {{ service.summary | markdownify }}
+        <a href="{{ service.url }}">{{ service.cta }}</a>
+      </li>
+      {%- endif %}{% endfor %}
+    </ul>
+    <div class="tools">
+      <h3 data-reveal="rise">The tools we build with</h3>
+      <ul class="tool-list">
+        {%- for tech in site.data.technologies %}
+        <li style="--brand: {{ tech.color }}; --d: {{ forloop.index0 | modulo: 8 | times: 0.06 | plus: 0.1 | round: 2 }}s" data-reveal="rise">{% include devicons/{{ tech.icon }}.svg %}<span>{{ tech.name }}</span></li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

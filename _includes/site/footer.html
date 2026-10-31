@@ -1,0 +1,47 @@
+{%- assign company = site.company -%}
+{%- assign phone_digits = company.phone | remove: "(" | remove: ")" | remove: " " | remove: "-" -%}
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/">{{ company.name }}</a>
+      <p class="tagline">Custom software development in {{ company.address.city }}, Arizona, since {{ company.founded }}.</p>
+      {%- comment %} matches the LocalBusiness data in site/jsonld.html: keep one name, address and phone everywhere {% endcomment %}
+      <address>
+        <p>{{ company.address.street }}<br>{{ company.address.city }}, {{ company.address.state }} {{ company.address.zip }}</p>
+        <p><a href="tel:+1{{ phone_digits }}">{{ company.phone }}</a><br><a href="mailto:{{ company.email }}">{{ company.email }}</a></p>
+      </address>
+      <p class="social-links"><a class="social" href="https://github.com/{{ company.social.github }}" aria-label="{{ company.name }} on GitHub">{% include icon.html name="github" %}</a></p>
+    </div>
+    <div>
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="https://grantlookout.app">Grant Lookout</a></li>
+        <li><a href="/open-source/">Open source</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Services</h2>
+      <ul>
+        {%- for service in site.data.services %}{% if service.footer %}
+        <li><a href="{{ service.url }}">{{ service.footer }}</a></li>
+        {%- endif %}{% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <ul>
+        <li><a href="/portfolio/">Our work</a></li>
+        <li><a href="/partners/">For agencies</a></li>
+        <li><a href="/blog/">The Lab Notebook</a></li>
+      </ul>
+    </div>
+    <div class="legal">
+      <p>&copy; 2014 - {{ site.time | date: "%Y" }} {{ company.name }}</p>
+      <ul>
+        <li><a href="/privacy-policy/">Privacy policy</a></li>
+        <li><a href="/terms-of-service/">Terms of service</a></li>
+        <li><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

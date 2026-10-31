@@ -1,0 +1,21 @@
+@use 'breakpoints' as *;
+
+footer.site { padding: 4rem 0 5rem; color: var(--dust); font-size: .95rem; }
+// the brand column takes the spare room; each link column is as wide as its longest link
+footer.site .wrap { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, auto); gap: 2rem 4rem; }
+footer.site .tagline { margin-top: .8rem; }
+footer.site address { font-style: normal; display: grid; gap: .8rem; margin-top: .8rem; }
+footer.site ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+footer.site h2 { font-size: 1rem; color: var(--star); margin-bottom: .8rem; }
+footer.site a { color: var(--dust); text-decoration: none; }
+footer.site a:hover { color: var(--star); }
+footer.site .social-links { margin-top: 1rem; }
+footer.site .social { display: inline-flex; }
+footer.site .social svg { width: 1.5rem; height: 1.5rem; fill: currentColor; }
+// one line under the columns: the copyright, then the legal links
+footer.site .legal { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--orbit); font-size: .85rem; }
+footer.site .legal ul { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+
+@media (max-width: $stack) {
+  footer.site .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+}

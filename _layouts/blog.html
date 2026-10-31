@@ -1,22 +1,5 @@
 ---
 layout: base
-hero: true
 ---
-<div id="blog">
-  {% include _nav.html %}
-
-  <div id="intro">
-    <div class="item hero">
-      <div class="container">
-        <div class="row">
-          <div class="carousel-caption-center colour-white">
-            <h1>{{ site.blog.title }}</h1>
-            <h4>{{ site.blog.subtitle }}</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {{ content }}
-</div>
+{% include blocks/page-hero.html heading=site.blog.title lede=site.blog.subtitle %}
+{{ content }}

@@ -1,0 +1,13 @@
+{%- comment -%}
+  A client quote band, by testimonial id (_data/testimonials.yml). The words
+  light up as the reader scrolls past (site/quotes.js).
+{%- endcomment -%}
+{%- assign quote = site.data.testimonials | where: "id", include.id | first -%}
+<section class="quote" aria-label="Client quote from {{ quote.name }}">
+  <div class="wrap">
+    <blockquote>
+      <p data-sweep>“{{ quote.excerpt | default: quote.quote }}”</p>
+      <footer data-reveal="rise" style="--d:.2s">{{ quote.name }}{% if quote.company %}, {{ quote.company }}{% endif %}</footer>
+    </blockquote>
+  </div>
+</section>

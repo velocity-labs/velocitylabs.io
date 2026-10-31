@@ -1,0 +1,35 @@
+@use 'breakpoints' as *;
+
+// Layering: the fixed starfield sits behind everything, the page above it,
+// and the header above the page so the phone menu can drop over it
+header.top { position: relative; z-index: 3; }
+main, footer.site { position: relative; z-index: 1; }
+main { overflow-x: hidden; overflow-x: clip; }
+
+section { padding: 6rem 0; }
+// bands: sections alternate night and deep in whatever order they sit (a deep
+// band lets the stars show through faintly)
+main > section:nth-of-type(even) { background: rgba(27, 36, 72, .9); }
+.section-head { display: grid; gap: 1rem; margin-bottom: 3rem; }
+
+// Starfield: three layers drawn by site/sky.js, each scrolling at its own rate
+.sky { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.sky-layer { position: absolute; left: 0; top: 0; width: 100%; will-change: transform; }
+
+// Scroll progress: a sun traveling a dashed orbit line on the right edge
+.rail { position: fixed; right: 5px; top: 15vh; height: 70vh; width: 8px; z-index: 6; pointer-events: none; }
+.rail::before {
+  content: ""; position: absolute; left: 3px; top: 0; bottom: 0; width: 2px;
+  background: repeating-linear-gradient(to bottom, var(--orbit) 0 3px, transparent 3px 9px);
+}
+.rail-fill { position: absolute; left: 3px; top: 0; width: 2px; height: 100%; background: var(--sun); opacity: .7; transform-origin: top; transform: scaleY(0); }
+.rail-tick { position: absolute; left: 1px; top: 0; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--night); box-shadow: inset 0 0 0 1.5px var(--dust); }
+.rail-tick.lit { box-shadow: inset 0 0 0 1.5px var(--sun); }
+.rail-sun {
+  position: absolute; left: 0; top: -4px; width: 8px; height: 8px; border-radius: 50%; background: var(--sun);
+  box-shadow: 0 0 0 2px rgba(255, 186, 66, .2), 0 0 10px rgba(255, 186, 66, .6); will-change: transform;
+}
+
+@media (max-width: $phone) {
+  section { padding: 4.5rem 0; }
+}

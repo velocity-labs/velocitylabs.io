@@ -13,6 +13,7 @@ require 'net/http'
 require 'json'
 require 'securerandom'
 require 'openssl'
+require 'yaml'
 require 'rack/attack'
 
 ## Global Settings ##
@@ -37,6 +38,34 @@ class ForceHttps
     status = req.get? || req.head? ? 301 : 308
     location = "https://#{req.host.delete_prefix('www.')}#{req.fullpath}"
     [status, { 'location' => location, 'content-type' => 'text/html' }, []]
+  end
+end
+
+# Pages that moved (config/redirects.yml) get one 301 straight to their new
+# path: with or without the trailing slash, keeping the query string, and for
+# the page's Markdown copy too when the built site (site_dir) has one. It runs
+# ahead of ForceHttps, so in production (canonical: true) an old http or www
+# link also lands on https and the bare domain in that single hop.
+class MovedPages
+  def initialize(app, moves, canonical: false, site_dir: nil)
+    @app = app
+    @canonical = canonical
+    @moves = moves.each_with_object({}) do |(from, to), map|
+      from = from.chomp('/')
+      map[from] = to
+      markdown = "#{to.chomp('/')}.md"
+      map["#{from}.md"] = markdown if site_dir && File.exist?(File.join(site_dir, markdown))
+    end
+  end
+
+  def call(env)
+    req = Rack::Request.new(env)
+    target = @moves[req.path_info.chomp('/')] if req.get? || req.head?
+    return @app.call(env) unless target
+
+    target += "?#{req.query_string}" unless req.query_string.empty?
+    target = "https://#{req.host.delete_prefix('www.')}#{target}" if @canonical
+    [301, { 'location' => target, 'content-type' => 'text/html' }, []]
   end
 end
 
@@ -70,12 +99,14 @@ class SecurityHeaders
   def cache_control(path)
     if path.start_with?('/vite/assets/')
       'public, max-age=31536000, immutable' # content-hashed filenames
-    elsif path.start_with?('/images/') || %w[/favicon.ico /apple-touch-icon.png].include?(path)
+    elsif path.start_with?('/images/') || %w[/favicon.ico /favicon.svg /apple-touch-icon.png].include?(path)
       'public, max-age=604800'
     end
   end
 end
 
+use MovedPages, YAML.load_file(File.expand_path('config/redirects.yml', __dir__)),
+    canonical: settings.production?, site_dir: settings.public_folder
 use ForceHttps if settings.production?
 use SecurityHeaders, hsts: settings.production?
 use Rack::Attack
@@ -152,6 +183,12 @@ not_found do
 end
 
 FORM_TOKEN_SECRET = ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
+
+# The contact form's "What do you need?" options, by service id (the form's
+# `need` value) => label, from the same list the site builds the form from
+SERVICE_NEEDS = YAML.load_file(File.expand_path('_data/services.yml', __dir__))
+                    .each_with_object({}) { |service, needs| needs[service['id']] = service['need'] if service['need'] }
+                    .freeze
 
 def generate_form_token
   timestamp = Time.now.to_i
@@ -284,19 +321,26 @@ post '/contact-form/?' do
 
   # 6. Build email and send via Resend
   begin
-    name    = Rack::Utils.escape_html(params[:name].to_s)
-    email   = Rack::Utils.escape_html(params[:email].to_s)
-    phone   = Rack::Utils.escape_html(params[:phone].to_s)
-    message = Rack::Utils.escape_html(params[:message].to_s)
+    # Optional fields: the form has no phone field (older forms did), and an
+    # unknown or missing need (say, from a cached page) is simply left out
+    need  = SERVICE_NEEDS[params[:need].to_s]
+    phone = params[:phone].to_s.strip
+    details = [['Name', params[:name].to_s], ['Email', params[:email].to_s]]
+    details << ['Phone', phone] unless phone.empty?
+    details << ['Need', need] if need
+
+    rows = details.map.with_index do |(label, value), i|
+      width = i.zero? ? ' width="25%"' : ''
+      "<tr><td#{width}>#{label}:</td><td>#{Rack::Utils.escape_html(value)}</td></tr>"
+    end
+    message = Rack::Utils.escape_html(params[:message].to_s).gsub(/\r\n?|\n/, "<br>\n") # keep its line breaks
 
     html_body = <<~HTML
       <div style="font-family:Helvetica;">
         <h2>Contact Information</h2>
         <table style="font-size:11pt;">
           <tbody>
-            <tr><td width="25%">Name:</td><td>#{name}</td></tr>
-            <tr><td>Email:</td><td>#{email}</td></tr>
-            <tr><td>Phone:</td><td>#{phone}</td></tr>
+            #{rows.join("\n            ")}
           </tbody>
         </table>
         <h2>Message</h2>
@@ -307,9 +351,7 @@ post '/contact-form/?' do
     text_body = <<~TEXT
       Contact Information
       ====================
-      Name:  #{params[:name]}
-      Email: #{params[:email]}
-      Phone: #{params[:phone]}
+      #{details.map { |label, value| "#{"#{label}:".ljust(6)} #{value}" }.join("\n")}
 
       Message
       ====================
@@ -325,7 +367,7 @@ post '/contact-form/?' do
       from:     ENV.fetch('CONTACT_FORM_FROM', 'Velocity Labs <contact@velocitylabs.io>'),
       to:       ['contact@velocitylabs.io'],
       reply_to: params[:email].to_s, # validated above
-      subject:  "Contact form from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}",
+      subject:  "Contact form from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}#{" (#{need})" if need}",
       text:     text_body,
       html:     html_body
     }.to_json

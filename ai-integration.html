@@ -1,0 +1,73 @@
+---
+layout: service
+service: ai-integration
+title: "AI integration: add AI to your existing app"
+description: Add AI to the app you already have, without rebuilding it. Chat over your own data, first drafts of routine writing, document reading. Senior US team in Phoenix.
+heading: Add AI to your existing app, without rebuilding it.
+lede: We build AI features on top of the app and data you already have, like a chat that answers questions from your own records, first drafts of routine emails and reports, or a tool that reads incoming invoices and forms so nobody has to retype them.
+cta: Talk about your idea
+
+uses:
+  - title: Answer questions from your data
+    text: A chat for customers or staff that looks things up in your app, with the permissions they already have.
+  - title: Draft the routine writing
+    text: First drafts of emails, reports, and descriptions, for a person to check and send.
+  - title: Read documents for you
+    text: The details pulled out of invoices, forms, and PDFs, so nobody retypes them.
+  - title: Sort what comes in
+    text: Support requests, leads, and messages tagged, summarized, and sent to the right person.
+  - title: Match and recommend
+    text: The best fit suggested from your own records, like candidates for an opening.
+  - title: Search by meaning
+    text: Results that match what someone means, not just the words they typed.
+
+data: >-
+  We connect your app to AI models through their business APIs, and send each feature only the data it
+  needs. OpenAI's and Anthropic's APIs don't train their models on what you send by default. Claude,
+  ChatGPT's models, and Mistral are all options, and we pick what fits the job and your budget.
+
+steps:
+  - title: Pick one feature that pays off
+    text: >-
+      On a [30-minute call](BOOKING_URL){:target="_blank" rel="noopener"}, we find the task your team
+      repeats most, where AI would save the most time.
+  - title: Try it with your real data
+    text: >-
+      A small, working version first, so you can see how well it does before you commit to more.
+  - title: Build it into your app
+    text: >-
+      With a person in the loop where it matters, and the running costs tracked, so it keeps paying off.
+
+faq_title: Questions about adding AI
+faq:
+  - q: Can we add AI to our app without rebuilding it?
+    a: >-
+      Usually, yes. AI features sit on top of the app and data you already have. If the app needs work
+      first, a [code audit](/code-audit/) will tell you.
+  - q: How much does it cost to add AI to an app?
+    a: >-
+      It depends on the feature and on your app. We scope one feature at a time and give you a price
+      before we start, including what the AI model will cost to run.
+  - q: Can we integrate ChatGPT into our app?
+    a: >-
+      Yes. ChatGPT's models are available to apps through OpenAI's API, and Claude's through
+      Anthropic's. We connect your app to whichever fits the feature.
+  - q: Can an AI chatbot use our company data? Will it train on it?
+    a: >-
+      It can answer from your own records once we connect it to them, with the same permissions your
+      users already have. And no: the business APIs from OpenAI and Anthropic don't train on your data
+      by default.
+  - q: How do we integrate AI into existing software?
+    a: >-
+      Start with one task people repeat every day, connect a model to the data that task needs, and
+      keep a person in the loop until it has proven itself. We build it into your app rather than
+      bolting on a separate tool.
+
+contact_heading: What would you add AI to?
+contact_lede: Tell us about your app and the work you'd like it to take on.
+contact_question: What should AI do in your app?
+---
+{% include blocks/features.html id="uses" title="What AI integration can do for your app" items=page.uses %}
+{% include blocks/text-band.html id="your-data" title="Your data stays yours" text=page.data %}
+{% include blocks/quote.html id="robert-wallace" %}
+{% include blocks/steps-section.html id="process" title="How we add AI to an app" items=page.steps %}

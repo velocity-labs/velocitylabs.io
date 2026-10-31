@@ -1,34 +1,27 @@
 ---
 layout: blog
-excerpt: Articles on Ruby on Rails, JavaScript, software development process and our software consulting business. Brought to you by the team at Velocity Labs.
+excerpt: Notes from the Velocity Labs team on building software and running projects, from Ruby on Rails tips to estimating with story points.
 title: The Lab Notebook Blog
 ---
+<section class="post-list" aria-label="Posts">
+  <div class="wrap">
+    <ol class="posts">
+      {%- for post in paginator.posts %}{% unless post.draft %}
+      <li>
+        <p class="post-meta sr"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <p>{{ post.excerpt | strip_html | strip_newlines }}</p>
+      </li>
+      {%- endunless %}{% endfor %}
+    </ol>
 
-<div id="posts" class="scroll">
-  <article class="container">
-    {% for post in paginator.posts %}
-      {% unless post.draft %}
-        {% assign authors = site.data.people | where:"id",post.author_id %}
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <h2 class="title"><a href="{{ post.url }}" rel="prefetch">{{ post.title }}</a></h2>
-            <p>{{ post.excerpt }}</p>
-            <a href="{{ post.url }}" rel="prefetch" class="btn btn-outline-primary">Read The Article &raquo;</a>
-            <hr />
-          </div>
-        </div>
-      {% endunless %}
-    {% endfor %}
-
-    <!-- Pagination links -->
-    <div class="pagination">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path }}" class="previous btn btn-outline">‹ Newer</a>
-      {% endif %}
-
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path }}" class="next btn btn-outline">Older ›</a>
-      {% endif %}
-    </div>
-  </article>
-</div>
+    <nav class="pager" aria-label="More posts">
+      {%- if paginator.previous_page %}
+      <a class="btn btn-line" href="{{ paginator.previous_page_path }}">‹ Newer</a>
+      {%- endif %}
+      {%- if paginator.next_page %}
+      <a class="btn btn-line" href="{{ paginator.next_page_path }}">Older ›</a>
+      {%- endif %}
+    </nav>
+  </div>
+</section>

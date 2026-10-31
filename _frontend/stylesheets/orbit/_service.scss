@@ -1,0 +1,53 @@
+@use 'breakpoints' as *;
+
+// Service pages (_layouts/service.html) and the blocks they're built from
+
+// A small label above an inner page's h1 (the service's name)
+.eyebrow { color: var(--sun); font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1rem; }
+
+// Short points in a grid (blocks/features.html)
+.features { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem 3rem; }
+.features li { display: grid; align-content: start; gap: .45rem; padding-top: 1.25rem; border-top: 1px solid var(--orbit); }
+.features h3 { font-size: 1.15rem; }
+.features p { color: var(--dust); }
+
+// Priced levels side by side (blocks/tiers.html)
+.tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; align-items: stretch; }
+.tier { display: flex; flex-direction: column; gap: 1.1rem; padding: 1.75rem; border-radius: 14px; background: var(--panel); border: 1px solid var(--orbit); }
+.tier.featured { border-color: var(--sun); box-shadow: 0 0 0 1px var(--sun); }
+.tier header { display: grid; gap: .35rem; }
+.tier h3 { font-size: 1.5rem; }
+.tier-tagline { color: var(--sun); font-weight: 700; }
+.tier-price { margin-top: .6rem; display: flex; align-items: baseline; gap: .5rem; }
+.tier-price b { font: 800 2.6rem/1 var(--display); letter-spacing: -0.02em; }
+.tier-price span { color: var(--dust); }
+.tier-detail { color: var(--star); font-weight: 700; }
+.tier-best { background: var(--night); border-radius: 10px; padding: .85rem 1rem; color: #D5DAEC; font-size: .98rem; }
+.tier-best strong { color: var(--star); }
+.tier-plus { font-weight: 700; }
+.tier ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+.tier li { position: relative; padding-left: 1.35rem; color: #D5DAEC; font-size: .98rem; }
+.tier li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--sun); }
+.tier .btn { margin-top: auto; align-self: flex-start; }
+// depth: one, two or three lit bars
+.bars { display: inline-flex; gap: 3px; align-items: flex-end; height: 16px; }
+.bars i { width: 6px; border-radius: 2px; background: var(--orbit); }
+.bars i:nth-child(1) { height: 8px; }
+.bars i:nth-child(2) { height: 12px; }
+.bars i:nth-child(3) { height: 16px; }
+.bars[data-level="1"] i:nth-child(-n+1),
+.bars[data-level="2"] i:nth-child(-n+2),
+.bars[data-level="3"] i { background: var(--sun); }
+
+// A short band of prose under a heading (blocks/text-band.html)
+.text-band h2 { max-width: 30ch; }
+.text-band-body { margin-top: 1.25rem; max-width: 44rem; color: #D5DAEC; font-size: 1.125rem; }
+.text-band-body > * + * { margin-top: 1em; }
+
+@media (max-width: $stack) {
+  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiers { grid-template-columns: minmax(0, 1fr); max-width: 34rem; }
+}
+@media (max-width: $phone) {
+  .features { grid-template-columns: minmax(0, 1fr); }
+}

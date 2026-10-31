@@ -1,0 +1,11 @@
+{%- comment -%}
+  Three depths of stars behind every page (filled by site/sky.js), and the
+  scroll progress rail: a sun traveling the right edge, with a tick for each
+  main > section[id] (site/rail.js).
+{%- endcomment -%}
+<div class="sky" aria-hidden="true">
+  <svg class="sky-layer" data-rate="0.04" data-kind="far" preserveAspectRatio="none"></svg>
+  <svg class="sky-layer" data-rate="0.12" data-kind="mid" preserveAspectRatio="none"></svg>
+  <svg class="sky-layer" data-rate="0.26" data-kind="near" preserveAspectRatio="none"></svg>
+</div>
+<div class="rail" aria-hidden="true"><span class="rail-fill"></span><span class="rail-sun"></span></div>

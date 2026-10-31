@@ -18,10 +18,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
-        loadPaths: [path.resolve(import.meta.dirname, '_frontend/stylesheets')],
-        // Bootstrap 5's Sass still uses @import and older functions
-        quietDeps: true,
-        silenceDeprecations: ['import']
+        loadPaths: [path.resolve(import.meta.dirname, '_frontend/stylesheets')]
       }
     }
   }

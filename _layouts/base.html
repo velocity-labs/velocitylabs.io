@@ -2,38 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% seo title=false %}
     {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.company.subtitle }}{% endif %} | {{ site.company.name }}</title>
+    <title>{% if page.title_tag %}{{ page.title_tag }}{% elsif page.title %}{{ page.title }} | {{ site.company.name }}{% else %}{{ site.company.subtitle }} | {{ site.company.name }}{% endif %}</title>
+
+    <script>
+      // Decide before first paint whether things animate in, so they never
+      // flash. If the site script hasn't started within 4 seconds (blocked or
+      // failed to load), show everything instead.
+      (function (root) {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        root.classList.add("motion");
+        setTimeout(function () { if (!window.orbitStarted) root.classList.remove("motion"); }, 4000);
+      })(document.documentElement);
+    </script>
 
     {% vite_client_tag %}
     {% vite_stylesheet_tag application %}
-    {% if layout.hero %}{% include _hero_image.html %}{% endif %}
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#10162E" />
 
     {% feed_meta %}
     {% if page.markdown_url %}<link rel="alternate" type="text/markdown" href="{{ page.markdown_url | absolute_url }}" />{% endif %}
+    {% if page.url == "/" %}{% include site/jsonld.html %}{% endif %}
 
     {% include _google-analytics.html %}
   </head>
 
   <body>
-    <main>
-    {{ content }}
+    <a class="skip" href="#main">Skip to content</a>
+    {% include site/sky.html %}
+    {% include site/header.html %}
+    <main id="main">
+      {{ content }}
     </main>
-    {% include _footer.html %}
+    {% include site/footer.html %}
     {% include _cookie_consent.html %}
     {% include _scripts.html %}
-
-    <div class="device-xs d-block d-sm-none"></div>
-    <div class="device-sm d-none d-sm-block d-md-none"></div>
-    <div class="device-md d-none d-md-block d-lg-none"></div>
-    <div class="device-lg d-none d-lg-block"></div>
   </body>
 </html>

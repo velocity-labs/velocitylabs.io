@@ -1,0 +1,79 @@
+---
+layout: service
+service: project-rescue
+title: Software project rescue & legacy upgrades
+description: Your developer left, or the app is outdated and fragile? We take over software projects, stabilize them, and modernize legacy code. Senior US team in Phoenix.
+heading: "Software project rescue: you probably don't need to start over."
+lede: Your app is outdated or fragile, or your last developer disappeared. We take it over, stabilize it, and modernize the legacy code that's holding your business back.
+cta: Tell us what happened
+
+signs:
+  - title: Your developer disappeared
+    text: They stopped answering or moved on, and nobody else knows how the app works.
+  - title: Every change breaks something
+    text: Fixes take longer each time, and nobody wants to touch the code.
+  - title: It's years out of date
+    text: Old versions of the language, the framework, and the libraries, missing security fixes.
+  - title: It was built in a hurry
+    text: An offshore team, a rushed MVP, or an AI tool got it launched, and now it has real customers.
+  - title: Nobody can deploy it
+    text: Releases depend on one person's laptop, or on steps nobody wrote down.
+  - title: It's slow, or it falls over
+    text: Pages time out and errors pile up, and the app struggles every time more people use it.
+
+steps:
+  - title: Secure your code and accounts
+    text: >-
+      First we make sure you control your code, hosting, domain, and the accounts the app depends on,
+      so nothing is stuck with someone who left.
+  - title: Find out what you have
+    text: >-
+      A [code audit](/code-audit/) shows what's there, what's risky, and what to fix first, in plain
+      English.
+  - title: Fix the most urgent problems first
+    text: >-
+      Then we stabilize it: security fixes, the bugs that hurt most, and upgrades, in small steps your
+      business can keep running through.
+
+modernize: >-
+  Most apps don't need a rewrite. A rewrite throws away years of fixes and starts over with new bugs,
+  while your business waits. We modernize legacy software in steps instead: get it running and tested,
+  upgrade the language and framework a version at a time, and replace the riskiest parts, shipping
+  improvements your customers can see along the way. When a rewrite really is the better choice,
+  we'll tell you.
+
+faq_title: Questions about rescuing a project
+faq:
+  - q: My developer abandoned the project. What do I do?
+    a: >-
+      First, secure what's yours: the code repository, hosting, domain, and the accounts for any
+      services the app uses. Then get an outside look at what you have before anyone changes it. We
+      can do both, and take over from there.
+  - q: Should we rewrite the app or refactor it?
+    a: >-
+      Usually refactor. Modernizing in steps keeps what already works and keeps the business running,
+      while a rewrite starts over. A [code audit](/code-audit/) tells you which fits your app, and if a
+      rewrite is the better choice, we'll say so.
+  - q: How do you modernize a legacy application?
+    a: >-
+      In small steps: get it running with tests around what matters, upgrade the language and framework
+      a version at a time, and replace the riskiest parts, while shipping fixes along the way.
+  - q: How do we get our code from the old developer?
+    a: >-
+      Your contract decides who owns it, so start there. Either way, ask for the code repository, the
+      hosting and domain logins, and the accounts for any services the app uses. If some of it can't
+      be recovered, we'll help you work out what to rebuild.
+  - q: How does a takeover start?
+    a: >-
+      With access and an audit. Once you control the code and accounts, we review the app, then fix the
+      most urgent problems first.
+
+contact_heading: Tell us what happened
+contact_lede: We'll tell you honestly whether it needs a rescue, an upgrade, or just a few fixes.
+contact_question: What's going on with your app?
+---
+{% include blocks/features.html id="signs" title="When a software project needs rescuing" items=page.signs %}
+{% include blocks/steps-section.html id="process" title="How a takeover starts" items=page.steps %}
+{% include blocks/quote.html id="aaron-post" %}
+{% include blocks/text-band.html id="modernization" title="Legacy software modernization, without starting over" text=page.modernize %}
+{% include blocks/work-band.html id="work" title="Apps we've taken over" slugs="land-surveying-firm,go-swim,princess-dental-staffing" %}

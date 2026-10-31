@@ -1,0 +1,15 @@
+{%- comment -%}
+  A band of numbered steps (blocks/steps.html) under a heading. id, title,
+  items (a list of { title, text }); optional lede.
+{%- endcomment -%}
+<section id="{{ include.id }}" aria-labelledby="{{ include.id }}-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="{{ include.id }}-title" data-reveal="rise">{{ include.title }}</h2>
+      {%- if include.lede %}
+      <p class="lede" data-reveal="rise" style="--d:.12s">{{ include.lede }}</p>
+      {%- endif %}
+    </div>
+    {% include blocks/steps.html items=include.items %}
+  </div>
+</section>

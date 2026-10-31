@@ -1,29 +1,63 @@
 ---
 layout: base
+title: Page not found
 sitemap: false
 ---
-
-<div class="inner">
-  {% include _small_nav.html %}
-
-  <section class="text-center">
-    <div class="page-header">
-      <h2>
-        {% include icon.html name="circle-exclamation" %}
-        Sorry, we couldn't find that content!
-      </h2>
+{%- comment -%}
+  The page main.rb serves for any path it can't find: a planet that has
+  drifted out of its orbit, and a band of places to go instead.
+{%- endcomment -%}
+<section class="page-hero lost" aria-labelledby="page-title">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow hl">Error 404</p>
+      <h1 id="page-title" class="hl" style="--d:.05s">Lost in space</h1>
+      <p class="lede hl" style="--d:.2s">We searched the whole galaxy and couldn't find that content. It may have moved, or it never existed.</p>
+      <div class="ctas hl" style="--d:.35s">
+        <a class="btn btn-sun" href="/">Back to home base</a>
+        <a class="btn btn-line" href="{{ site.booking_url }}" target="_blank" rel="noopener">Book a 30-minute call</a>
+      </div>
     </div>
-
-    <p class="lead">
-      Oh no! You've encountered a 404, page not found.
-      Not to worry though, just head back to the homepage
-      and try again.
-    </p>
-    <p>
-      <a href="/" class="btn btn-primary">
-        {% include icon.html name="arrow-left" %}
-        Go to the homepage
-      </a>
-    </p>
-  </section>
-</div>
+    <div class="lost-art hl" style="--d:.25s" aria-hidden="true">
+      <svg viewBox="0 0 420 400">
+        <defs>
+          <radialGradient id="lost-glow">
+            <stop offset="0" stop-color="#FFBA42" stop-opacity=".32"/>
+            <stop offset="1" stop-color="#FFBA42" stop-opacity="0"/>
+          </radialGradient>
+          <marker id="lost-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" orient="auto">
+            <path class="arrowhead" d="M1 1 L8 5 L1 9"/>
+          </marker>
+        </defs>
+        <circle cx="190" cy="215" r="62" fill="url(#lost-glow)"/>
+        <circle class="sun" cx="190" cy="215" r="22"/>
+        <circle class="ring" cx="190" cy="215" r="88"/>
+        <circle class="ring" cx="190" cy="215" r="150"/>
+        <circle class="moon" cx="278" cy="215" r="6"/>
+        <circle class="gap" cx="301" cy="115" r="12"/>
+        <path class="trail" d="M311 106 Q 334 94 350 79"/>
+        <text class="here" x="322" y="31" text-anchor="end" transform="rotate(-6 322 31)">You are here</text>
+        <path class="pointer" d="M328 23 C 344 16, 358 28, 359 49" marker-end="url(#lost-arrow)"/>
+        <g class="drifter">
+          <!-- the ring's far half passes behind the planet, its near half in front -->
+          <path d="M344 66 A24 7 0 0 1 392 66" transform="rotate(-25 368 66)"/>
+          <circle cx="368" cy="66" r="13"/>
+          <path d="M392 66 A24 7 0 0 1 344 66" transform="rotate(-25 368 66)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+<section class="course" aria-labelledby="course-title">
+  <div class="wrap">
+    <h2 id="course-title">Plot a new course</h2>
+    <ul class="course-links">
+      {%- for service in site.data.services %}
+      <li><a href="{{ service.url }}">{{ service.name }}</a></li>
+      {%- endfor %}
+      <li><a href="/portfolio/">Our work</a></li>
+      <li><a href="/open-source/">Open source</a></li>
+      <li><a href="/blog/">{{ site.blog.title }}, our blog</a></li>
+    </ul>
+  </div>
+</section>

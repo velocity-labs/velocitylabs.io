@@ -1,0 +1,39 @@
+@use 'breakpoints' as *;
+
+// The 404 (404.html): a planet that has drifted out of its orbit, leaving a
+// gap on the ring where it belongs
+.lost .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 3rem; align-items: center; }
+.lost h1 { font-size: clamp(2.8rem, 6.5vw, 4.6rem); }
+.lost-art svg { display: block; width: 100%; max-width: 27rem; margin-left: auto; overflow: visible; }
+.lost-art .sun { fill: var(--sun); }
+.lost-art .moon { fill: var(--star); opacity: .85; }
+.lost-art .gap { fill: none; stroke: var(--dust); stroke-width: 1.5; stroke-dasharray: 3 4; opacity: .7; }
+.lost-art .trail { fill: none; stroke: var(--dust); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0 7; opacity: .6; }
+.lost-art .drifter circle { fill: var(--dust); }
+.lost-art .drifter path { fill: none; stroke: var(--star); stroke-width: 2; opacity: .8; }
+// "You are here", hand lettered, pointing at the lost planet
+.lost-art .here { fill: var(--sun); font: 700 26px "Caveat", cursive; }
+.lost-art :is(.pointer, .arrowhead) { fill: none; stroke: var(--sun); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lost-art .moon { transform-origin: 190px 215px; animation: lost-orbit 26s linear infinite; }
+  .lost-art .drifter { transform-box: fill-box; transform-origin: center; animation: lost-drift 7s ease-in-out infinite; }
+}
+@keyframes lost-orbit { to { transform: rotate(-360deg); } }
+@keyframes lost-drift { 50% { transform: translate(7px, -9px) rotate(14deg); } }
+
+// Places to go instead, each with a planet for a bullet
+.course-links { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2.5rem; }
+.course-links li { position: relative; padding-left: 1.4rem; }
+.course-links li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--sun); }
+.course-links a { text-decoration-color: var(--orbit); }
+.course-links a:hover { text-decoration-color: var(--sun); }
+
+@media (max-width: $stack) {
+  .lost .wrap { grid-template-columns: minmax(0, 1fr); }
+  .lost-art svg { max-width: 21rem; margin: 0; }
+  .course-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: $phone) {
+  .course-links { grid-template-columns: minmax(0, 1fr); }
+}

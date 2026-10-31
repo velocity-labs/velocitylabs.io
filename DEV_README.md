@@ -1,8 +1,8 @@
 # Hi, we're Velocity Labs!
 
-We're a Ruby on Rails and JavaScript web development company based in
-Phoenix, AZ. You can find us on the web at
-[velocitylabs.io](http://velocitylabs.io) or on twitter
+We're a senior software team based in Phoenix, AZ, building custom software
+and web apps since 2009. You can find us on the web at
+[velocitylabs.io](https://velocitylabs.io) or on twitter
 [@velocitylabs](https://twitter.com/velocitylabs).
 
 ---
@@ -21,8 +21,10 @@ Phoenix, AZ. You can find us on the web at
 
 ```bash
 bundle install
-yarn install
+yarn install --ignore-scripts
 ```
+
+Dependencies follow a 14-day cooldown: only adopt versions published at least 14 days ago, and pin anything newer. `bin/check-cooldown` checks `Gemfile.lock` and `yarn.lock` (CI runs it too).
 
 Create a `.env` file in the project root with the required environment variables (see [Environment Variables](#environment-variables) below). The app loads `.env` automatically in development via the `dotenv` gem.
 
@@ -31,7 +33,7 @@ Create a `.env` file in the project root with the required environment variables
 This is a hybrid static/dynamic site:
 
 1. **Jekyll 4.3** generates static HTML into `_site/`
-2. **Vite** (via `jekyll-vite` gem) compiles frontend assets (JS, SCSS) from `_frontend/` into `public/vite/`
+2. **Vite** (via the `jekyll-vite` gem) compiles the frontend (JS, SCSS, fonts) from `_frontend/` as part of the Jekyll build
 3. **Sinatra 4.0** (`main.rb`) serves everything — static files from `_site/`, plus dynamic routes for the contact form
 4. **Puma 8** runs the Sinatra app (configured in `Procfile`)
 
@@ -39,26 +41,29 @@ This is a hybrid static/dynamic site:
 Browser → config.ru → Rack::Deflater
                      → Rack::Attack (rate limiting)
                      → main.rb (Sinatra)
+                         → MovedPages      → 301s for moved pages (config/redirects.yml)
                          → GET /           → _site/index.html
                          → GET /*          → _site/<path>/index.html (catch-all)
                          → GET /form-token → HMAC-signed CSRF token (JSON)
                          → POST /contact-form → 6-layer anti-spam + Resend email
 ```
 
+The design ("Orbit") is dark bands over a starfield, with the services in orbit around "your app" on the home page. There's no CSS framework: `_frontend/stylesheets/orbit.scss` pulls in one partial per part of the page, and `_frontend/entrypoints/application.js` runs small modules that each do nothing on pages without their element.
+
 ### Key directories
 
 ```
-_frontend/          → Vite source (JS, SCSS, images, entrypoints)
+_frontend/          → Vite source: stylesheets/orbit/, javascripts/{lib,site,home}/, entrypoints/
 _site/              → Jekyll build output (served by Sinatra, git-ignored)
-_layouts/           → Jekyll layout templates
-_includes/          → Jekyll partials
+_layouts/           → base (the shell), home, service, page, blog, post
+_includes/          → site/ (header, footer, starfield), home/ (home sections), blocks/ (shared bands)
 _posts/             → Blog posts (YYYY-MM-DD-slug.md)
-_plugins/           → Custom Jekyll plugins (portfolio generator, Liquid filters)
-_data/              → Data files (projects.yml, people.yml, testimonials.yml)
+_plugins/           → seo.rb, markdown_export.rb (Markdown copies and llms-full.txt), pullquote.rb
+_data/              → services, projects, people, testimonials, technologies
+config/redirects.yml → Old URL → new URL, one hop each
 config/vite.json    → Vite-Ruby configuration
 images/             → Static images (copied directly to _site/)
-js/                 → Static vendor JS (not processed by Vite)
-public/vite/        → Vite build output (copied into _site/ by Jekyll)
+test/               → Minitest + Rack::Test (needs a built site)
 ```
 
 ## Running Locally
@@ -75,7 +80,7 @@ watchexec -e md,html,yml,yaml,scss,css,js,rb,json \
 bundle exec puma -t 5:5 -p 3000
 ```
 
-Visit `http://localhost:3000`.
+Visit `http://localhost:3000`. Restart Puma after changing `main.rb` or `_data/services.yml` (it reads the contact form's service labels at boot).
 
 ### Why watchexec instead of `jekyll build --watch`?
 
@@ -90,27 +95,23 @@ Additionally, `jekyll build --watch` (as opposed to `jekyll serve`) doesn't trig
 
 If you don't have watchexec, `jekyll build --watch --force_polling` is more reliable than the default FSEvents watcher (at the cost of higher CPU usage).
 
-### Build order matters
-
-When changing frontend code (JS/SCSS in `_frontend/`):
-
-1. `yarn build` — compiles Vite assets to `public/vite/`
-2. `jekyll build` — copies everything (including Vite output) into `_site/`
-3. Hard-refresh the browser
-
-For content/template changes only, the watchexec loop handles it automatically.
-
 ### One-off build
 
 ```bash
 jekyll build --trace
 ```
 
-Or to build everything from scratch:
+The Jekyll build runs Vite too, so frontend changes need no separate step. Hard-refresh the browser afterward.
+
+## Tests and link checks
 
 ```bash
-yarn build && jekyll build --trace
+bundle exec jekyll build && bundle exec rake test
 ```
+
+The tests cover the contact form (anti-spam, reCAPTCHA, the Resend request, with network calls faked), redirects and headers, every URL in the old site's sitemap, and the built pages: one `<h1>` and a title and description on each, internal links and anchors that resolve, and lists that should match `_data/services.yml`. CI runs them on every push.
+
+`bin/check-links` checks every link on the live site, external ones included, and runs monthly in GitHub Actions. Point it at a local server to check a build before it ships: `bin/check-links http://localhost:3000`.
 
 ## Contact Form
 
@@ -125,25 +126,32 @@ The contact form (`POST /contact-form`) has 6 layers of anti-spam protection:
 
 CSRF tokens are **not** session-based. They use HMAC-SHA256 signatures so they work across concurrent browser tabs without race conditions.
 
+"What do you need?" options come from `_data/services.yml`, and `main.rb` adds the chosen service to the email's subject and body. A service page's form sends its own service instead of asking, and sending it records that page's Google Ads conversion.
+
 ## Blog Posts
 
 Create new posts as `_posts/YYYY-MM-DD-slug.md` with front matter:
 
 ```yaml
 ---
+layout: post
 title: "Post Title"
-author: "Author Name"
-date: YYYY-MM-DD
-excerpt: "Short description for listings."
-draft: false
+author_id: 1        # the author's id in _data/people.yml
+excerpt: "Short description for listings and search results."
+tags:
+- ruby
 ---
 ```
 
+Optional: `noindex: true` keeps a post out of search engines and the sitemap.
+
 ## Data-Driven Content
 
-- `_data/projects.yml` — Portfolio projects (auto-generates pages via `_plugins/portfolio.rb`)
-- `_data/people.yml` — Team members
-- `_data/testimonials.yml` — Client testimonials
+- `_data/services.yml` — The services, in order. Drives the home page's services and hero planets, the footer, the contact form options, `llms.txt`, and the "Need" line in contact emails
+- `_data/projects.yml` — Portfolio projects. Those with a `slug` get a card (with technologies for the `/portfolio/?tech=` filter); the rest are listed as earlier work
+- `_data/people.yml` — Team members (partners on the home page, author cards on posts)
+- `_data/testimonials.yml` — Client quotes, looked up by `id`
+- `_data/technologies.yml` — "The tools we build with" on the home page
 
 ## Environment Variables
 
@@ -158,12 +166,13 @@ Required for the contact form and monitoring to work. In development, add them t
 
 ## Deployment
 
-Deployed to **Heroku** via git push. The Heroku build process:
+Heroku deploys `main` automatically, once CI passes. The build:
 
-1. Ruby buildpack installs gems (`bundle install`)
-2. Node.js buildpack installs packages (`yarn install`) and runs `yarn build` (Vite)
-3. Jekyll builds `_site/`
-4. Puma starts via `Procfile`
+1. Node.js buildpack installs packages (`yarn install`) and runs the `build` script (`vite build`)
+2. Ruby buildpack installs gems (`bundle install`) and runs `rake assets:precompile`, which runs `jekyll build` (Vite included) and drops build-only files from the slug
+3. Puma starts via `Procfile`
+
+`heroku rollback` restores the previous release if a deploy misbehaves.
 
 **Note:** Vite, vite-plugin-ruby, and sass are in `dependencies` (not `devDependencies`) because Heroku prunes dev dependencies before the build step runs.
 
@@ -178,7 +187,7 @@ Deployed to **Heroku** via git push. The Heroku build process:
 | Rack | ~> 3.0 | |
 | Vite | 8.3.4 | Asset pipeline (via `jekyll-vite` gem + `vite-plugin-ruby`) |
 | Sass | 1.105.1 | SCSS compilation via Vite |
-| Bootstrap | 5.3.3 | CDN (no jQuery dependency) |
+| Fonts | Fontsource 5.3.0 | Montserrat (headings), Atkinson Hyperlegible (text), Caveat (the 404's hand lettering) |
 | Node | 26.11.1 | `package.json` "engines" (Heroku) and `.nvmrc` |
 | Kramdown | ~> 2.4 | Markdown parser |
 | Rack::Attack | ~> 6.7 | Rate limiting |

@@ -1,0 +1,115 @@
+---
+layout: service
+service: maintenance
+title: Web app maintenance and support services
+description: Monthly web app maintenance plans from $750, by a senior US team. Monitoring, security updates, backups, fixes and upgrades, starting with a code audit.
+heading: Web app maintenance and support that keeps your app running.
+lede: "Your business runs on the app and you need a dependable team to look after it: monitoring, security updates, backups, fixes, and improvements, month after month."
+cta: Start a maintenance plan
+
+# From the old maintenance page and the plan draft of 2026-10-29
+includes:
+  - title: Monitoring
+    text: We watch your app's uptime, errors, and load around the clock, so we hear about problems before your customers do.
+  - title: Security updates
+    text: Monthly security patches and dependency updates for your app and the servers it runs on.
+  - title: Backups you can restore
+    text: Offsite backups that run on schedule, checked so they can actually be restored.
+  - title: Fixes and small tasks
+    text: Bugs fixed, errors tracked down so they don't come back, and small changes made from your plan's hours.
+  - title: A code audit to start
+    text: Every plan starts with an Essentials [code audit](/code-audit/) in the first month, so we both know what we're looking after.
+  - title: Your accounts stay yours
+    text: If you ever move on, we transfer every account and all of your data to you.
+
+tiers:
+  - name: Essentials
+    tagline: Keep it running
+    price: "$750"
+    unit: a month
+    detail: Up to 5 hours of developer time a month
+    best_for: A stable app that needs a dependable team looking after it.
+    items:
+      - Monitoring, monthly security patches, and dependency updates
+      - Backup checks and small fixes
+      - Response by the next business day
+  - name: Standard
+    tagline: Keep it current
+    price: "$1,500"
+    unit: a month
+    detail: Up to 12 hours of developer time a month
+    featured: true
+    best_for: An app your business depends on every day.
+    plus: Everything in Essentials, plus
+    items:
+      - Framework and language upgrades, kept current
+      - A quarterly health check using the code audit's scans
+      - Same-day response for urgent issues
+  - name: Priority
+    tagline: Keep it moving
+    price: "$3,000"
+    unit: a month
+    detail: Up to 26 hours of developer time a month
+    best_for: An app that's still growing, with new features on the way.
+    plus: Everything in Standard, plus
+    items:
+      - New features and improvements
+      - A monthly planning call
+      - A Standard code audit every year
+      - Response within 2 hours for urgent issues
+
+steps:
+  - title: Tell us about your app
+    text: >-
+      [Book a 30-minute call](BOOKING_URL){:target="_blank" rel="noopener"} or send us a message, and
+      we'll recommend the plan that fits.
+  - title: We audit it first
+    text: >-
+      An Essentials code audit in the first month shows what we're taking on, what's urgent, and what
+      can wait.
+  - title: We look after it every month
+    text: >-
+      Monitoring, updates, and fixes as they're needed, and the work you ask for, within your plan's
+      hours.
+
+faq_title: Questions about maintenance
+faq:
+  - q: How much does it cost to maintain a web app?
+    a: >-
+      Our plans are $750, $1,500, or $3,000 a month, depending on how much developer time you need and
+      how quickly you need us to respond. [Compare the plans](#plans).
+  - q: What's included in web app maintenance?
+    a: >-
+      Monitoring, security patches and dependency updates, backups, bug fixes, and small improvements on
+      every plan. Standard adds framework upgrades and a quarterly health check, and Priority adds new
+      features and a monthly planning call.
+  - q: Do you work on a retainer?
+    a: >-
+      Yes. Each plan is a monthly retainer for a set number of hours, billed monthly in advance, and you
+      can cancel with 14 days' notice. The [maintenance terms](/maintenance/terms/) have the details.
+  - q: What if we need more than our plan's hours?
+    a: >-
+      We quote larger work before it starts, so you approve the cost first. If you often need more time
+      than your plan includes, moving up a plan costs less per hour.
+  - q: Why pay for a US-based team?
+    a: >-
+      You work directly with senior developers in US time zones, who know your app and tell you plainly
+      what's going on with it.
+  - q: What happens to our accounts if we cancel?
+    a: They're yours. We transfer every account and all of your data to you.
+  - q: Can you invoice us instead of charging a card?
+    a: Yes, if you prepay for a year.
+  - q: Do you offer a nonprofit discount?
+    a: Yes. Get in touch for details.
+  - q: Will you sign our NDA?
+    a: We have a [mutual NDA](/downloads/VelocityLabsNDATemplate.pdf) that we're happy to sign.
+
+contact_heading: Start a maintenance plan
+contact_lede: Tell us about your app and we'll recommend the plan that fits.
+contact_question: What's going on with your app?
+---
+{% include blocks/features.html id="includes" title="What every maintenance plan includes" items=page.includes %}
+{% include blocks/tiers.html id="plans" title="Maintenance plans" lede="Three monthly plans. Response times are during business hours, unused hours don't roll over, and larger work is quoted before it starts. Not sure which fits? [Tell us about your app](#contact) and we'll recommend one." tiers=page.tiers cta="Choose" item="maintenance plan" %}
+{% include blocks/quote.html id="linda-ruehlman" %}
+{% include blocks/steps-section.html id="process" title="How a maintenance plan starts" items=page.steps %}
+{% include blocks/work-band.html id="work" title="Apps we've looked after for years" slugs="princess-dental-staffing,goalistics,go-swim" %}

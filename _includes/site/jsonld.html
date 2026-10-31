@@ -1,0 +1,30 @@
+{%- comment -%}
+  The business for search engines, rendered on the home page from
+  site.company so it always matches the footer's name, address and phone.
+{%- endcomment -%}
+{%- assign company = site.company -%}
+{%- assign phone_digits = company.phone | remove: "(" | remove: ")" | remove: " " | remove: "-" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": {{ "/#business" | absolute_url | jsonify }},
+  "name": {{ company.name | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "url": {{ "/" | absolute_url | jsonify }},
+  "logo": {{ company.logo | prepend: "/images/" | absolute_url | jsonify }},
+  "telephone": "+1-{{ phone_digits | slice: 0, 3 }}-{{ phone_digits | slice: 3, 3 }}-{{ phone_digits | slice: 6, 4 }}",
+  "email": {{ company.email | jsonify }},
+  "foundingDate": "{{ company.founded }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ company.address.street | jsonify }},
+    "addressLocality": {{ company.address.city | jsonify }},
+    "addressRegion": {{ company.address.state | jsonify }},
+    "postalCode": "{{ company.address.zip }}",
+    "addressCountry": "US"
+  },
+  "areaServed": { "@type": "Country", "name": "United States" },
+  "sameAs": [{{ company.social.github | prepend: "https://github.com/" | jsonify }}]
+}
+</script>
