@@ -1,0 +1,13 @@
+:root {
+  --night: #10162E;   // page background (odd bands)
+  --deep: #1B2448;    // even bands
+  --panel: #222C55;   // raised surfaces: cards, pills, the contact panel
+  --orbit: #3A4677;   // rules, borders, dashed orbits
+  --dust: #9AA3C4;    // secondary text
+  --star: #E8ECF8;    // text
+  --sun: #FFBA42;     // the accent
+  --sun-ink: #2A1B00; // text on the accent
+  --display: "Montserrat Variable", "Montserrat Fallback", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Atkinson Fallback", system-ui, sans-serif;
+  --gutter: clamp(1rem, 4vw, 3rem);
+}

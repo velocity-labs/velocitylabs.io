@@ -1,7 +1,7 @@
 ---
 contact: true
 excerpt: Check out the web applications the Velocity Labs team has developed for our clients. We use a variety of languages and frameworks to create great experiences.
-layout: inner
+layout: page
 title: Projects
 ---
 
@@ -12,7 +12,8 @@ title: Projects
 
   <div id="filters" class="button-group text-center">
     <button data-filter-value="*" class="active">show all</button>
-    {% assign categories = site.data.projects | get_categories %}
+    {% assign listed = site.data.projects | where_exp: "project", "project.portfolio != false" %}
+    {% assign categories = listed | get_categories %}
     {% for category in categories %}
       <button data-filter-value=".{{ category }}">{{ category }}</button>
     {% endfor %}
@@ -20,7 +21,7 @@ title: Projects
 
   <div class="demo-3">
     <div id="portfolio" class="grid">
-      {% for project in site.data.projects %}
+      {% for project in listed %}
         <div class="col-12 col-sm-6 col-md-3 portfolio-item {{ project.categories | join: ' ' | downcase }}">
           {% assign full_path=project.title | full_image_path %}
           {% assign thumb_path=project.title | thumb_image_path %}

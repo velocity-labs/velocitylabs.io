@@ -1,0 +1,21 @@
+{%- comment -%}
+  The contact section: a panel with the form, and a sun that rises over it as
+  the reader arrives (site/dawn.js). Optional: heading, lede, service (passed
+  to the form to preselect the page's service).
+{%- endcomment -%}
+<section id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <span class="dawn" aria-hidden="true"><i></i></span>
+    <div class="contact-panel" data-reveal="lift">
+      <div>
+        <h2 id="contact-title">{{ include.heading | default: "Tell us what you're dealing with" }}</h2>
+        <p class="lede">{{ include.lede | default: "We'll tell you honestly whether we're the right fit." }}</p>
+        <div class="direct">
+          <span>Prefer to talk first?</span>
+          <a href="{{ site.booking_url }}" target="_blank" rel="noopener">Book a 30-minute call</a>
+        </div>
+      </div>
+      {% include blocks/contact-form.html service=include.service %}
+    </div>
+  </div>
+</section>

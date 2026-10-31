@@ -1,0 +1,23 @@
+{%- comment -%}
+  A project from _data/projects.yml: its screenshot, or a typeset cover for
+  work with no screen to show, then title, summary and technologies.
+  delay: reveal stagger in seconds.
+{%- endcomment -%}
+{%- assign project = include.project -%}
+<figure data-reveal="arc" style="--d:{{ include.delay | default: 0 }}s">
+  {%- if project.image %}
+  <img src="{{ project.image.src }}" alt="{{ project.image.alt }}" width="{{ project.image.width }}" height="{{ project.image.height }}" loading="lazy">
+  {%- elsif project.cover %}
+  <div class="cover">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="62"/><circle cx="100" cy="100" r="96"/><circle class="moon" cx="38" cy="100" r="5"/><circle class="moon" cx="45" cy="21" r="4"/><circle class="moon" cx="148" cy="17" r="4"/></svg>
+    <p class="kicker">{{ project.cover.kicker }}</p>
+    <p class="line">{{ project.cover.line }}</p>
+    <p class="sub">{{ project.cover.sub }}</p>
+  </div>
+  {%- endif %}
+  <figcaption>
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.summary }}</p>
+    {% include blocks/stack.html techs=project.technologies %}
+  </figcaption>
+</figure>

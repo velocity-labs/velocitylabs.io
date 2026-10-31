@@ -1,0 +1,29 @@
+{%- comment -%}
+  Home hero. home/orbit.js draws the planets around "Your app" from the
+  services list's data-orbit items, and the hero's own stars into #stars.
+{%- endcomment -%}
+<section class="hero" aria-labelledby="hero-title">
+  <svg class="stars" id="stars" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 1000 600"></svg>
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1 class="hl" style="--d:.05s" id="hero-title">Anyone can build an app with AI now. <span>The hard part is everything after.</span></h1>
+      <p class="lede hl" style="--d:.25s">Velocity Labs is a custom software development company in Phoenix, Arizona. We help you finish the web app you started, get it deployed, and keep it running, with a senior developer leading every project.</p>
+      <div class="ctas hl" style="--d:.42s">
+        <a class="btn btn-sun" href="{{ site.booking_url }}" target="_blank" rel="noopener">Book a 30-minute call</a>
+        <a class="btn btn-line" href="/code-audit/">Order a code audit</a>
+      </div>
+    </div>
+    <figure class="orbit-figure">
+      <svg id="orbit" viewBox="0 123 640 440" role="group" aria-label="Your app at the center, surrounded by what comes after building it. Each planet links to its service below.">
+        <g id="back"></g>
+        <g id="core">
+          <circle cx="308" cy="300" r="35" fill="#FFBA42" opacity=".18"/>
+          <circle cx="308" cy="300" r="26" fill="#FFBA42"/>
+          <text class="core-label" text-anchor="middle"><tspan x="308" y="297">Your</tspan><tspan x="308" y="311">app</tspan></text>
+        </g>
+        <g id="front"></g>
+      </svg>
+      <figcaption>Services in orbit around your application.</figcaption>
+    </figure>
+  </div>
+</section>

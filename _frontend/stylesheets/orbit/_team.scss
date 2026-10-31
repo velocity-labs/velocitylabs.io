@@ -1,0 +1,20 @@
+@use 'breakpoints' as *;
+
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4rem; }
+.person { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.person img { border-radius: 50%; width: 7.5rem; height: 7.5rem; object-fit: cover; outline: 2px dashed var(--orbit); outline-offset: 6px; }
+.person .role { color: var(--dust); margin-top: .25rem; }
+.person p.bio { margin-top: .9rem; color: var(--dust); }
+
+// a moon circles each photo as the reader scrolls (site/moons.js)
+.sat { position: relative; display: block; width: max-content; }
+.moon { position: absolute; inset: -7px; border-radius: 50%; pointer-events: none; will-change: transform; }
+.moon::after { content: ""; position: absolute; left: 50%; top: -4px; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 8px rgba(255, 186, 66, .6); }
+
+@media (max-width: $stack) {
+  .team { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+}
+@media (max-width: $phone) {
+  .person { grid-template-columns: 5rem minmax(0, 1fr); }
+  .person img { width: 5rem; height: 5rem; }
+}

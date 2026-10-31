@@ -8,16 +8,18 @@ require 'reverse_markdown'
 # syntax highlighting are already resolved. Only the main content is kept.
 module VelocityLabs
   module MarkdownExport
-    # Main content element for each exported layout
+    # Main content element for each exported layout, in llms-full.txt order
     CONTENT_SELECTORS = {
-      'home'    => '#home',
-      'landing' => '#landing',
-      'inner'   => '.inner',
-      'post'    => 'section.post-body'
+      'home'    => '#main',
+      'landing' => '#main',
+      'page'    => '#main',
+      'post'    => '.post-body'
     }.freeze
 
-    NOISE = 'nav, .navbar, .next-section, #contact, form, script, style, noscript, ' \
-            'button, .btn, .author-box'.freeze
+    # Navigation, the contact form, buttons and decoration (star fields,
+    # orbits, the honeypot) add nothing as text
+    NOISE = 'nav, #contact, form, script, style, noscript, button, .btn, .cta-band, ' \
+            'svg, [aria-hidden="true"], .hp, .form-status'.freeze
 
     module_function
 
@@ -66,7 +68,9 @@ module VelocityLabs
 
     def body(page, site)
       doc = Nokogiri::HTML(page.output)
-      root = doc.at_css(CONTENT_SELECTORS[page.data['layout']]) or return ''
+      selector = CONTENT_SELECTORS[page.data['layout']]
+      # a layout that loses its content element would silently export empty copies
+      root = doc.at_css(selector) or raise "markdown_export: #{page.url} has no #{selector} element"
       root.css(NOISE).remove
       root.xpath('.//comment()').remove
       remove_decorative_images(root)

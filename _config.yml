@@ -70,6 +70,8 @@ company:
     state:     AZ
     zip:       85012
   description: &company_description Velocity Labs is a Ruby on Rails and JavaScript development company. We specialize in custom web application development projects.
+  email:       contact@velocitylabs.io
+  founded:     2009
   social:
     github:    velocity-labs
     twitter:   velocitylabs
@@ -77,6 +79,10 @@ company:
   name:        &company_name Velocity Labs
   phone:       (602) 633-5049
   subtitle:    Ruby on Rails Developers | Custom Web Applications
+
+# Curtis's Google Calendar booking page (30-minute Google Meet calls), the
+# target of every "Book a call" link
+booking_url: https://calendar.app.google/o6hWQt45536m5hUR7
 
 ## SEO + Feed (jekyll-seo-tag, jekyll-feed) ##
 title:       *company_name

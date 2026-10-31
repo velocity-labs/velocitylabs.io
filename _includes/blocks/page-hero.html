@@ -1,0 +1,23 @@
+{%- comment -%}
+  The top of an inner page: its one h1, an optional lede, and optional
+  calls to action (cta: label for a link to #contact; booking: true adds
+  "Book a 30-minute call").
+{%- endcomment -%}
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="wrap">
+    <h1 id="page-title" class="hl" style="--d:.05s">{{ include.heading }}</h1>
+    {%- if include.lede %}
+    <p class="lede hl" style="--d:.2s">{{ include.lede }}</p>
+    {%- endif %}
+    {%- if include.cta or include.booking %}
+    <div class="ctas hl" style="--d:.35s">
+      {%- if include.booking %}
+      <a class="btn btn-sun" href="{{ site.booking_url }}" target="_blank" rel="noopener">Book a 30-minute call</a>
+      {%- endif %}
+      {%- if include.cta %}
+      <a class="btn {% if include.booking %}btn-line{% else %}btn-sun{% endif %}" href="#contact">{{ include.cta }}</a>
+      {%- endif %}
+    </div>
+    {%- endif %}
+  </div>
+</section>

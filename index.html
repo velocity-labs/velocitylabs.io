@@ -1,20 +1,59 @@
 ---
-contact: true
 layout: home
+title: Custom software development in Phoenix, AZ
+description: Senior US software team in Phoenix, AZ, since 2009. We build custom software and web apps, rescue old or vibe coded ones, and keep them running.
+
+# _data/projects.yml slugs
+featured: princess-dental-staffing
+cases: [land-surveying-firm, registria, flashdrafts, goalistics, go-swim]
+
+steps:
+  - title: We talk
+    text: >-
+      A [30-minute call](BOOKING_URL){:target="_blank" rel="noopener"} about your app, your business,
+      and what's going wrong or what you want next. No pitch deck.
+  - title: We audit or plan
+    text: >-
+      For an existing app, a [code audit](/code-audit/) with the most urgent fixes first. For a new
+      one, a [story workshop](/process/story-workshop/), a scoped plan, and an honest estimate.
+  - title: We build and look after it
+    text: >-
+      A senior developer leads the work, ships in small steps, and
+      [stays on afterward](/maintenance/) for as long as you want us.
+
+faq:
+  - q: My developer disappeared. Can you take over our app?
+    a: >-
+      Yes, and it's a big part of what we do. We start by making sure you control your code,
+      hosting, and accounts, then audit the app so you know what you have, and fix the most urgent
+      problems first.
+  - q: Can you fix an app built with Lovable, Replit, or Base44?
+    a: >-
+      Yes. We review what the tool generated, fix what's holding it back, close the security gaps,
+      and make it production ready for real customers. A code audit is a good first step.
+  - q: Can you add AI to our app without rebuilding it?
+    a: >-
+      Usually, yes. We build [AI features](/ai-integration/) on top of the app and data you already
+      have, like a chat that answers questions from your own records, first drafts of routine emails
+      and reports, or a tool that reads incoming invoices and forms so nobody has to retype them.
+  - q: What technologies do you work with?
+    a: >-
+      Ruby on Rails, React, Next.js, TypeScript, Node.js, Python, React Native, PostgreSQL,
+      Supabase, and more. We also integrate services like Stripe, Twilio, SendGrid, Amazon S3,
+      Vimeo, and AI models such as Claude and Mistral. Our team has worked with Rails since 2007 and
+      still does [Rails upgrades](/ruby-on-rails/upgrades/).
+  - q: Where are you located?
+    a: Phoenix, Arizona. We're a US-based team working in US time zones.
 ---
-
-<!-- Technologies
-================================================== -->
-{% include sections/_technologies.html %}
-
-<!-- Portfolio
-================================================== -->
-{% include sections/_portfolio.html %}
-
-<!-- Testimonials
-================================================== -->
-{% include sections/_testimonials.html %}
-
-<!-- Call to Action
-================================================== -->
-{% include sections/_contact.html %}
+{% include home/hero.html %}
+{% include home/services.html %}
+{% include blocks/quote.html id="andrew-hyde" %}
+{% include home/work.html %}
+{% include home/fit.html %}
+{% include blocks/quote.html id="josephine-morris" %}
+{% include home/process.html %}
+{% include home/team.html %}
+{% include blocks/quote.html id="linda-ruehlman" %}
+{% include blocks/faq.html items=page.faq %}
+{% include blocks/quote.html id="aaron-post" %}
+{% include blocks/contact.html %}

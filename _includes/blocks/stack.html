@@ -1,0 +1,9 @@
+{%- comment -%}
+  Technology pills. Each opens the portfolio filtered to that technology,
+  even when only one project uses it. techs: a list of names.
+{%- endcomment -%}
+<ul class="stack" aria-label="Technologies"{% if include.reveal %} data-reveal="rise" style="--d:{{ include.reveal }}s"{% endif %}>
+  {%- for tech in include.techs %}
+  <li><a href="/portfolio/?tech={{ tech | slugify }}">{{ tech }}</a></li>
+  {%- endfor %}
+</ul>

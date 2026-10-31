@@ -1,3 +1,29 @@
+# Portfolio projects. Newer projects carry a slug, summary, technologies and an
+# image (or a typeset cover); the home page picks its featured project and
+# cases by slug in index.html. Technology pills link to /portfolio/?tech=<slug>.
+# portfolio: false keeps a project off /portfolio/ (until it is rebuilt).
+
+- slug: land-surveying-firm
+  title: Land surveying firm
+  summary: We audited this firm's job and invoicing app, fixed the three urgent issues we found, rebuilt its invoice engine, upgraded Rails, and still look after it.
+  technologies: [Ruby on Rails, PostgreSQL, RSpec]
+  image: { src: /images/work/land-surveying-firm.webp, width: 1000, height: 625, alt: "The surveying firm's daily workflow screen, listing the day's work orders" }
+  portfolio: false
+
+- slug: registria
+  title: Registria
+  summary: Product registration data for consumer brands. We're the largest contributor to the job platform behind their clients' scheduled reports and data deliveries.
+  technologies: [Ruby on Rails, PostgreSQL, Alteryx, Claude Code]
+  cover: { kicker: Since April 2026, line: "Alteryx workflows, rebuilt in Rails.", sub: "Reports and data deliveries across US, EU and Australian regions" }
+  portfolio: false
+
+- slug: flashdrafts
+  title: Recall software for auto shops
+  summary: "We added the paywall and all of its Stripe billing in about three weeks: per-seat monthly and annual plans, sales tax, and promo codes."
+  technologies: [Ruby on Rails, Stripe]
+  image: { src: /images/work/flashdrafts.webp, width: 1000, height: 625, alt: "FlashDrafts home page: every open recall, every remedy, in one place" }
+  portfolio: false
+
 - categories: [web, api, ops]
   description:
     We augmented an internal team to accelerate the development of their large legacy Rails app.
@@ -9,6 +35,15 @@
     Created a web application for short-notice, on-demand, dental temping.
   title: Princess Dental Staffing
   website: https://www.princessdentalstaffing.com/
+  slug: princess-dental-staffing
+  summary: Dental practices use it to hire staff and book temps online. Along the way we built its Stripe subscriptions, the API behind its mobile app, and AI-based matching, as it grew from one local market to nationwide.
+  technologies: [Ruby on Rails, PostgreSQL, Stripe, Mistral, Twilio, SendGrid, Solr, Amazon S3, Amazon CloudFront, Heroku]
+  image: { src: /images/work/princess-dental-staffing.webp, width: 1240, height: 2000, alt: "Princess Dental Staffing home page: Make your next hire with Princess" }
+  feature:
+    heading: The dental staffing app we rebuilt in 2015 has placed 200,000 temps. We still work on it.
+    numbers:
+      - { value: "~$90M", label: earned by candidates }
+      - { value: "10+", label: years as their development team }
 
 - categories: [web, api, ops]
   description:
@@ -33,6 +68,10 @@
     We took over application maintenance and new feature development after Go Swim launched.
   title: Go Swim
   website: http://goswim.tv/
+  slug: go-swim
+  summary: "A swim instruction video site we took over after launch and developed for six years: subscriptions, payments, and video delivery."
+  technologies: [Ruby on Rails, Stripe, Vimeo, Amazon CloudFront]
+  image: { src: /images/work/go-swim.webp, width: 1000, height: 625, alt: "Go Swim home page: videos to inspire, educate and make you a better swimmer" }
 
 - categories: [web, ops]
   description:
@@ -59,6 +98,10 @@
     communicate and engage with their members.
   title:   Goalistics
   website: http://goalistics.com/
+  slug: goalistics
+  summary: Online programs for chronic pain and depression, built for a team of psychologists. We've been their development team since 2014.
+  technologies: [Ruby on Rails, PostgreSQL, Heroku]
+  image: { src: /images/work/goalistics.webp, width: 1000, height: 625, alt: "Goalistics home page: goal-based behavior change for depression and chronic pain" }
 
 - categories: [web, ops, api]
   description:

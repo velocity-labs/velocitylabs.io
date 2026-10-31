@@ -1,74 +1,40 @@
 ---
 layout: base
 ---
-{% assign authors = site.data.people | where:"id",page.author_id %}
-
-{% include _small_nav.html %}
-
-<article itemscope itemtype="http://schema.org/Article" class="post">
-  <header class="text-center">
-    <h1 itemprop="name">
-      <a itemprop="url" href="{{ page.url }}">{{ page.title }}</a>
-    </h1>
-
-    <div class="meta text-muted">
-      by
-      {% for author in authors limit: 1 %}
-        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <a itemprop="url" href="{{ author.links.rss | default: author.links.github }}" rel="author" title="{{ author.name }}">
-            <span itemprop="name">{{ author.name }}</span>
-          </a>
-        </span>
-      {% endfor %}
-      &mdash;
-      <meta itemprop="datePublished" content="{{ page.date | date: "%Y-%d-%B" }}"> {{ page.date | date: "%B %d, %Y" }}
+{%- assign author = site.data.people | where: "id", page.author_id | first -%}
+<article class="post" itemscope itemtype="http://schema.org/Article">
+  <header class="post-head">
+    <div class="wrap">
+      <p class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {%- if author %}
+        by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="{{ author.links.rss | default: author.links.github }}" rel="author"><span itemprop="name">{{ author.name }}</span></a></span>
+        {%- endif %}
+      </p>
+      <h1 itemprop="headline">{{ page.title }}</h1>
+      {%- if page.subtitle %}
+      <p class="lede">{{ page.subtitle }}</p>
+      {%- endif %}
     </div>
-
-    {% if page.subtitle %}
-      <h3 itemprop="headline">{{ page.subtitle }}</h3>
-    {% endif %}
   </header>
 
-  <div class="container">
-    <div class="col-lg-8 offset-lg-2">
-      <section class="post-body" itemprop="articleBody">
-        {{ content }}
-
-        {% for author in authors limit: 1 %}
-          <div class="card card-body author-box">
-            <div class="row">
-              <div class="col-sm-2">
-                <img width="100" height="100" loading="lazy" class="img-fluid rounded-circle d-block mx-auto" src="https://secure.gravatar.com/avatar/{{ author.avatar }}?r=g&s=120" alt="{{ author.name }}" />
-              </div>
-
-              <div class="col-sm-10">
-                <div class="row">
-                  <div class="col-sm-8 name">
-                    <h3>{{ author.name }}</h3>
-                    <h4>{{ author.title }}</h4>
-                  </div>
-
-                  <div class="col-sm-4 links">
-                    {% for link in author.links %}
-                      <a class="icon" href="{{ link[1] }}" target="_blank" aria-label="{{ author.name }} on {% case link[0] %}{% when 'github' %}GitHub{% when 'twitter' %}Twitter{% else %}website{% endcase %}">{% assign link_icon = link[0] %}{% include icon.html name=link_icon %}</a>
-                    {% endfor %}
-                  </div>
-                </div>
-
-                <p>{{ author.bio }}</p>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </section>
-
-      <section class="hire-us text-center">
-        <h3 class="lead">Need help with your project?</h3>
-        <p>
-          We specialize in Ruby on Rails and JavaScript projects. Code audits, maintenance and feature development on existing apps, or new application development. We've got you covered.
-        </p>
-        <p><a class="btn btn-lg btn-primary" href="/#contact" role="button">Get in touch!</a></p>
-      </section>
+  <div class="wrap">
+    <div class="prose post-body" itemprop="articleBody">
+      {{ content }}
     </div>
+
+    {%- if author %}
+    <aside class="author-card" aria-label="About the author">
+      <img src="{% if author.photo %}{{ author.photo }}{% else %}https://secure.gravatar.com/avatar/{{ author.avatar }}?r=g&amp;s=160{% endif %}" alt="" width="80" height="80" loading="lazy">
+      <div>
+        <p class="author-name">{{ author.name }}</p>
+        <p class="role">{{ author.title }}</p>
+        {%- if author.bio %}
+        <p>{{ author.bio }}</p>
+        {%- endif %}
+      </div>
+    </aside>
+    {%- endif %}
   </div>
 </article>
+{% include blocks/cta-band.html %}

@@ -1,0 +1,35 @@
+@use 'breakpoints' as *;
+
+// Numbered steps (blocks/steps.html). A satellite carries the sun from step to
+// step, passing behind each number, and the line it has covered lights up.
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; counter-reset: step; }
+.steps li { counter-increment: step; display: grid; gap: .6rem; }
+.steps li::before {
+  content: counter(step); font: 800 1rem/1 var(--display);
+  width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 2px dashed var(--orbit);
+  display: grid; place-items: center; color: var(--sun);
+  position: relative; z-index: 1; background: var(--night);
+}
+.steps li.lit::before { border-color: var(--sun); border-style: solid; }
+.steps p { color: var(--dust); }
+.steps-wrap { position: relative; }
+.steps-line, .steps-fill {
+  position: absolute; left: 1.2rem; top: calc(1.2rem - 1px); height: 2px; z-index: 0;
+  width: calc((100% - 6rem) * 2 / 3 + 6rem);
+  background: repeating-linear-gradient(to right, var(--orbit) 0 2px, transparent 2px 9px);
+}
+// site/steps.js clips the lit line to the satellite
+.steps-fill { display: none; background-image: repeating-linear-gradient(to right, var(--sun) 0 2px, transparent 2px 9px); clip-path: inset(0 100% 0 0); }
+.steps-sat {
+  display: none; position: absolute; left: calc(1.2rem - 6px); top: calc(1.2rem - 6px); width: 12px; height: 12px; z-index: 0;
+  border-radius: 50%; background: var(--sun); box-shadow: 0 0 14px rgba(255, 186, 66, .7); will-change: transform;
+}
+.motion .steps-fill, .motion .steps-sat { display: block; }
+
+.ai-note { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--orbit); color: var(--dust); font-size: 1.1rem; }
+.ai-note strong { color: var(--star); }
+
+@media (max-width: $stack) {
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .steps-line, .motion .steps-fill, .motion .steps-sat { display: none; }
+}

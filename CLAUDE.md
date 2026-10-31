@@ -57,16 +57,17 @@ Request → config.ru → main.rb (Sinatra) → serves _site/ static files
 - **_config.yml** — Jekyll config: permalink structure (`/blog/:year/:month/:day/:title/`), pagination (10/page), Vite settings, company metadata available as Liquid variables (`site.company.*`)
 - **main.rb** — Sinatra app: catch-all route serves from `_site/`, contact form with HMAC-signed CSRF tokens (stateless, not session-based — see `thoughts/shared/learnings/2026-02-25-csrf-session-race-condition.md`), Rack::Attack rate limiting
 - **vite.config.mjs** / **config/vite.json** — Vite asset pipeline config; source in `_frontend/`, output to `public/vite/`
-- **_frontend/stylesheets/bootstrap.scss** — Bootstrap 5 built from Sass with only the components and utilities the site uses (it's render-blocking). New Bootstrap markup (a dropdown, modal, `mb-3` utility, etc.) needs its component or utility added there, or it renders unstyled
+- **_frontend/** — The Orbit design (no Bootstrap). `stylesheets/orbit.scss` pulls in the partials in `stylesheets/orbit/` (tokens, shell, one per block, prose, motion). `entrypoints/application.js` runs on every page (`javascripts/site/`: cookie consent, menu, reveals, starfield, scroll effects; the contact form loads on demand); `entrypoints/home.js` adds the hero orbit (`javascripts/home/orbit.js`) on the home layout only. Scroll effects share one loop (`javascripts/lib/frame.js`). Elements animate in via `data-reveal` attributes, hidden under the `.motion` class that `_layouts/base.html` sets before first paint
 - **_plugins/** — Custom Jekyll plugins: `portfolio.rb` auto-generates portfolio pages from `_data/projects.yml`, `filters.rb` adds Liquid filters (`full_image_path`, `thumb_image_path`, `get_categories`, etc.), `seo.rb` maps `author_id` and default images for jekyll-seo-tag and jekyll-feed, `markdown_export.rb` writes a Markdown copy of each indexable page (`/path.md`) plus `/llms-full.txt` for AI tools
-- **_layouts/base.html** — Uses Vite Liquid tags: `{% vite_client_tag %}`, `{% vite_stylesheet_tag application %}` in head; `{% vite_javascript_tag application %}` in `_includes/_scripts.html`
+- **_layouts/base.html** — The shell (starfield, header, footer, cookie banner) around every page. Uses Vite Liquid tags: `{% vite_client_tag %}`, `{% vite_stylesheet_tag application %}` in head; `{% vite_javascript_tag application %}` (and `home` on the home layout) in `_includes/_scripts.html`. Other layouts: `home`, `page` (inner pages), `landing` (old service pages until rebuilt), `blog`, `post`. Shared blocks are in `_includes/blocks/`, home sections in `_includes/home/`, the shell in `_includes/site/`
 
 ## Key Data-Driven Content
 
-- `_data/projects.yml` — Portfolio projects (auto-generates pages via portfolio plugin)
-- `_data/people.yml` — Team members
-- `_data/testimonials.yml` — Client testimonials
-- `_data/technologies.yml` — Technologies section on the home page (icon = SVG in `_includes/devicons/`, from Devicon; color = hover brand color)
+- `_data/services.yml` — The services, in order. One list drives the home services section, the hero planets, the footer, the contact form's options and the "Need" line `main.rb` adds to contact emails
+- `_data/projects.yml` — Portfolio projects; the home page picks its featured project and cases by `slug` (in `index.html` front matter)
+- `_data/people.yml` — Team members (partners on the home page, author cards on posts)
+- `_data/testimonials.yml` — Client quotes; quote bands look one up by `id`
+- `_data/technologies.yml` — "The tools we build with" row on the home page (icon = SVG in `_includes/devicons/`, sources in `SOURCES.txt` there; color = hover brand color)
 
 ## Blog Posts
 

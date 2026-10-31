@@ -1,0 +1,23 @@
+// Local fonts resized to Montserrat's and Atkinson Hyperlegible's proportions,
+// used while the web fonts load, so the swap doesn't shift the layout
+// (Lighthouse CLS). Montserrat's values are its published metrics against
+// Arial (ascender 968, descender 251, 1000 units/em, ~112.8% wider). Atkinson's
+// were measured from its font file against Arial on a sample sentence
+// (ascender 950, descender 290, 1000 units/em, ~98.9% as wide).
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 112.83%;
+  ascent-override: 85.79%;
+  descent-override: 22.25%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Atkinson Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 98.89%;
+  ascent-override: 96.07%;
+  descent-override: 29.33%;
+  line-gap-override: 0%;
+}

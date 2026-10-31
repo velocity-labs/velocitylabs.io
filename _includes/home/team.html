@@ -1,0 +1,26 @@
+{%- comment -%}
+  The partners from _data/people.yml. A moon circles each photo as the
+  reader scrolls (site/moons.js).
+{%- endcomment -%}
+{%- assign partners = site.data.people | where: "partner", true -%}
+<section id="team" class="has-deco" aria-labelledby="team-title">
+  {% include blocks/deco.html %}
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="team-title" data-reveal="rise">Meet the people you'll work with</h2>
+      <p class="lede" data-reveal="rise" style="--d:.12s">Both partners are senior developers in Phoenix, Arizona, with more than 20 years of experience each.</p>
+    </div>
+    <div class="team">
+      {%- for person in partners %}
+      <div class="person">
+        <span class="sat" data-reveal="swing-sat" style="--d:{{ forloop.index0 | times: 0.18 | round: 2 }}s"><img src="{{ person.photo }}" alt="{{ person.name }}" width="120" height="120" loading="lazy"><span class="moon" aria-hidden="true"></span></span>
+        <div data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.18 | plus: 0.45 | round: 2 }}s">
+          <h3>{{ person.name }}</h3>
+          <p class="role">{{ person.title }}</p>
+          <p class="bio">{{ person.summary }}</p>
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

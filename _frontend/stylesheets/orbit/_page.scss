@@ -1,0 +1,60 @@
+@use 'breakpoints' as *;
+
+// The top of an inner page (blocks/page-hero.html)
+.page-hero { padding: 3rem 0 3.5rem; }
+.page-hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); letter-spacing: -0.02em; line-height: 1.1; max-width: 22ch; text-wrap: balance; }
+.page-hero .lede { margin-top: 1.25rem; font-size: 1.2rem; max-width: 40rem; }
+.page-body { padding-top: 3.5rem; }
+
+// Long-form text: posts, legal pages. A narrow column, larger type, and
+// spacing between blocks (the base resets paragraph margins).
+.prose { max-width: 44rem; font-size: 1.125rem; line-height: 1.75; color: #D5DAEC; }
+.prose > * + * { margin-top: 1.25em; }
+.prose h2 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); margin-top: 2.2em; color: var(--star); }
+.prose h3 { font-size: 1.3rem; margin-top: 1.8em; color: var(--star); }
+.prose h4 { font: 700 1.1rem/1.3 var(--display); margin: 1.6em 0 0; color: var(--star); }
+.prose a { text-decoration-color: var(--sun); }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose li + li { margin-top: .4em; }
+.prose li > p + p { margin-top: .6em; }
+.prose blockquote { margin-left: 0; margin-right: 0; padding-left: 1.2em; border-left: 3px solid var(--sun); color: var(--dust); }
+.prose img { height: auto; border-radius: 8px; }
+.prose code { font: .88em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--panel); padding: .1em .35em; border-radius: 4px; }
+.prose pre { background: #0B1024; border: 1px solid var(--orbit); border-radius: 10px; padding: 1rem 1.2rem; overflow-x: auto; font-size: .92rem; line-height: 1.6; }
+.prose pre code { background: none; padding: 0; font-size: inherit; }
+.prose table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+.prose th, .prose td { border-bottom: 1px solid var(--orbit); padding: .5rem .6rem; text-align: left; vertical-align: top; }
+.prose hr { border: 0; border-top: 1px solid var(--orbit); margin: 2.5em 0; }
+.prose .lead { font-size: 1.25rem; color: var(--star); }
+.prose .updated { color: var(--dust); font-size: .95rem; }
+
+// Posts (_layouts/post.html)
+.post-head { padding: 3rem 0 2.5rem; }
+.post-head h1 { font-size: clamp(2rem, 4.2vw, 3rem); letter-spacing: -0.02em; line-height: 1.12; max-width: 24ch; text-wrap: balance; margin-top: .75rem; }
+.post-head .lede { margin-top: 1rem; font-size: 1.2rem; max-width: 40rem; }
+.post-meta { color: var(--dust); font-size: .95rem; }
+.post-meta a { color: var(--dust); }
+.post .post-body { margin-bottom: 4rem; }
+.author-card { display: flex; gap: 1.25rem; align-items: flex-start; max-width: 44rem; margin-bottom: 5rem; padding: 1.5rem; background: var(--panel); border-radius: 14px; }
+.author-card img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; flex: none; }
+.author-card .author-name { font: 700 1.1rem/1.3 var(--display); }
+.author-card .role { color: var(--dust); font-size: .95rem; }
+.author-card p + p { margin-top: .5rem; }
+
+// The blog index (blog/index.html)
+.post-list { padding-top: 1rem; }
+.posts { list-style: none; margin: 0; padding: 0; max-width: 46rem; }
+.posts li { padding: 2rem 0; border-top: 1px solid var(--orbit); }
+.posts h2 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); margin-top: .4rem; }
+.posts h2 a { text-decoration: none; }
+.posts h2 a:hover { color: var(--sun); }
+.posts p:last-child { color: var(--dust); margin-top: .6rem; }
+.pager { display: flex; gap: .75rem; margin-top: 2.5rem; }
+
+// A closing call to action (blocks/cta-band.html)
+.cta-band { background: var(--deep); }
+.cta-band .lede { margin-top: 1rem; max-width: 36rem; font-size: 1.15rem; }
+
+@media (max-width: $phone) {
+  .author-card { flex-direction: column; }
+}

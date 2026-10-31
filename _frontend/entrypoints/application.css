@@ -1,5 +1,5 @@
-@import '../stylesheets/bootstrap.scss';
-@import '@fontsource/open-sans/300.css';
-@import '@fontsource/open-sans/400.css';
-@import '@fontsource/open-sans/700.css';
-@import '../stylesheets/main.scss';
+@import '@fontsource-variable/montserrat/wght.css';
+@import '@fontsource/atkinson-hyperlegible/400.css';
+@import '@fontsource/atkinson-hyperlegible/400-italic.css';
+@import '@fontsource/atkinson-hyperlegible/700.css';
+@import '../stylesheets/orbit.scss';

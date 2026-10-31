@@ -1,0 +1,53 @@
+@use 'breakpoints' as *;
+
+// The contact section (blocks/contact.html): a panel with the form, and a sun
+// that rises over it as the reader arrives (site/dawn.js)
+#contact .wrap { position: relative; }
+.contact-panel { position: relative; z-index: 1; background: var(--panel); border-radius: 18px; padding: clamp(1.5rem, 5vw, 4rem); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 3.5rem; }
+.contact-panel .lede { color: #B6BED9; margin-top: 1rem; }
+.direct { margin-top: 2rem; display: grid; gap: .4rem; color: #B6BED9; }
+.dawn { position: absolute; right: 14%; top: -64px; width: 150px; height: 150px; z-index: 0; pointer-events: none; will-change: transform; }
+.dawn::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--sun); box-shadow: 0 0 70px rgba(255, 186, 66, .35); }
+.dawn::after { content: ""; position: absolute; inset: -18px; border-radius: 50%; border: 2px dashed var(--orbit); }
+.dawn i { position: absolute; right: -14px; top: -2px; width: 14px; height: 14px; border-radius: 50%; background: var(--sun); opacity: .5; }
+
+// The form (blocks/contact-form.html, site/contact-form.js)
+.contact-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1.25rem; }
+.field { display: grid; gap: .4rem; }
+.field.full, .contact-form .full { grid-column: 1 / -1; }
+label, legend { font-weight: 700; font-size: .95rem; }
+input, select, textarea {
+  font: inherit; color: var(--star); background: var(--night); border: 1px solid var(--orbit);
+  border-radius: 8px; padding: .75rem .85rem; width: 100%;
+}
+textarea { min-height: 7.5rem; resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--sun); outline-offset: 1px; border-color: var(--sun); }
+[aria-invalid="true"] { border-color: #FF8A7A; }
+fieldset { border: 0; margin: 0; padding: 0; grid-column: 1 / -1; }
+.needs { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+.needs label { font-weight: 400; }
+.needs input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.needs span { display: inline-block; padding: .5rem .9rem; border: 1px solid var(--orbit); border-radius: 999px; cursor: pointer; }
+.needs input:checked + span { background: var(--sun); color: var(--sun-ink); border-color: var(--sun); }
+.needs input:focus-visible + span { outline: 2px solid var(--sun); outline-offset: 2px; }
+.contact-form .btn { justify-self: start; cursor: pointer; }
+.contact-form .btn[disabled] { opacity: .7; cursor: progress; }
+// the honeypot: kept out of sight and out of the tab order, bots still fill it in
+.hp { position: absolute; left: -999em; width: 1px; height: 1px; overflow: hidden; }
+
+// Messages after sending, or about fields still to fill in
+.form-status:empty { display: none; }
+.notice { padding: .9rem 1.1rem; border-radius: 10px; border: 1px solid var(--orbit); background: var(--night); }
+.notice-success { border-color: #57C88A; }
+.notice-error { border-color: #FF8A7A; }
+.contact-form.sent > :not(.form-status) { display: none; }
+
+@media (max-width: $stack) {
+  .contact-panel { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: $phone) {
+  .contact-form { grid-template-columns: minmax(0, 1fr); }
+  .dawn { width: 110px; height: 110px; top: -56px; right: 12%; }
+  .dawn::after { inset: -12px; }
+  .dawn i { width: 10px; height: 10px; right: -10px; }
+}

@@ -1,32 +1,17 @@
 ---
 layout: base
-hero: true
 ---
-
-<div id="landing">
-  {% include _nav.html %}
-
-  <!-- Hero Section
-  ================================================== -->
-  <div id="intro">
-    <div class="item hero">
-      <div class="carousel-caption-center colour-white">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-              <h1>{{ page.heading }}</h1>
-              <p class="lead d-none d-sm-block">{{ page.lead }}</p>
-              <p>
-                <a class="btn btn-lg btn-primary scroll" href="#contact" role="button">
-                  {{ page.contact.button }}
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+{%- comment -%}
+  The old service pages (code audits, maintenance, upgrades, story workshop)
+  until each is rebuilt on the service layout. Their content still uses the
+  previous design's markup.
+{%- endcomment -%}
+{%- assign heading = page.heading | default: page.title -%}
+{% include blocks/page-hero.html heading=heading lede=page.lead cta=page.contact.button %}
+<section class="page-body">
+  <div class="wrap">
+    <div class="prose">
+      {{ content }}
     </div>
   </div>
-
-  {{ content }}
-</div>
+</section>

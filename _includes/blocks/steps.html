@@ -1,0 +1,19 @@
+{%- comment -%}
+  Numbered steps. A satellite carries the sun along the line between the
+  numbers as the reader scrolls (site/steps.js). items: a list of
+  { title, text } with the text in Markdown. Front matter can't use Liquid,
+  so BOOKING_URL in a step's text becomes site.booking_url.
+{%- endcomment -%}
+<div class="steps-wrap">
+  <span class="steps-line" aria-hidden="true"></span>
+  <span class="steps-fill" aria-hidden="true"></span>
+  <span class="steps-sat" aria-hidden="true"></span>
+  <ol class="steps">
+    {%- for step in include.items %}
+    <li data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.16 | round: 2 }}s">
+      <h3>{{ step.title }}</h3>
+      {{ step.text | replace: "BOOKING_URL", site.booking_url | markdownify }}
+    </li>
+    {%- endfor %}
+  </ol>
+</div>

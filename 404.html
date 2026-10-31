@@ -1,29 +1,7 @@
 ---
-layout: base
+layout: page
+title: Page not found
+heading: Sorry, we couldn't find that content
 sitemap: false
 ---
-
-<div class="inner">
-  {% include _small_nav.html %}
-
-  <section class="text-center">
-    <div class="page-header">
-      <h2>
-        {% include icon.html name="circle-exclamation" %}
-        Sorry, we couldn't find that content!
-      </h2>
-    </div>
-
-    <p class="lead">
-      Oh no! You've encountered a 404, page not found.
-      Not to worry though, just head back to the homepage
-      and try again.
-    </p>
-    <p>
-      <a href="/" class="btn btn-primary">
-        {% include icon.html name="arrow-left" %}
-        Go to the homepage
-      </a>
-    </p>
-  </section>
-</div>
+<p>You've reached a page that doesn't exist, or one that has moved. Try the <a href="/">home page</a>, or <a href="{{ site.booking_url }}" target="_blank" rel="noopener">book a 30-minute call</a> if you were looking for us.</p>

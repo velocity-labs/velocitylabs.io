@@ -1,7 +1,8 @@
-# Shown in the Technologies section on the home page
-# (_includes/sections/_technologies.html), in this order.
-# icon: an SVG in _includes/devicons/ (from Devicon 2.17, https://devicon.dev)
-# color: brand color shown on hover
+# "The tools we build with" row at the end of the home services section
+# (_includes/home/services.html), in this order. Eight per row on wide screens.
+# icon: an SVG in _includes/devicons/ (sources in SOURCES.txt there)
+# color: shown on hover; brand colors, lightened where they'd vanish on the
+#        dark background (PostgreSQL, Heroku, and Next.js in white)
 
 - name: Ruby
   icon: ruby-plain
@@ -15,21 +16,53 @@
   icon: javascript-plain
   color: "#f0db4f"
 
+- name: TypeScript
+  icon: typescript-plain
+  color: "#3178c6"
+
+- name: React
+  icon: react-original
+  color: "#61dafb"
+
+- name: Next.js
+  icon: nextjs-plain
+  color: "#ffffff"
+
+- name: Node.js
+  icon: nodejs-plain
+  color: "#5fa04e"
+
+- name: Python
+  icon: python-plain
+  color: "#4b8bbe"
+
 - name: PostgreSQL
   icon: postgresql-plain
-  color: "#336791"
+  color: "#4169e1"
 
-- name: Heroku
-  icon: heroku-plain
-  color: "#6762a6"
+- name: Supabase
+  icon: supabase-plain
+  color: "#3ecf8e"
 
 - name: AWS
   icon: amazonwebservices-plain
   color: "#ff9900"
 
-- name: Linux
-  icon: linux-plain
-  color: "#000000"
+- name: Heroku
+  icon: heroku-plain
+  color: "#8f7fd6"
+
+- name: Stripe
+  icon: stripe
+  color: "#635bff"
+
+- name: Twilio
+  icon: twilio-original
+  color: "#f22f46"
+
+- name: Claude
+  icon: claude
+  color: "#d97757"
 
 - name: Git
   icon: git-plain

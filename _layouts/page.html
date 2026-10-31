@@ -1,0 +1,16 @@
+---
+layout: base
+---
+{%- comment -%}
+  A plain inner page: legal pages, the portfolio, open source, the 404.
+  heading (default: title) and lead come from front matter.
+{%- endcomment -%}
+{%- assign heading = page.heading | default: page.title -%}
+{% include blocks/page-hero.html heading=heading lede=page.lead %}
+<section class="page-body">
+  <div class="wrap">
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+</section>
