@@ -5,7 +5,7 @@ layout: page
 title: Velocity Labs Privacy Policy
 ---
 
-<p class="updated">Last updated: October 22, 2026</p>
+<p class="updated">Last updated: October 31, 2026</p>
 
 <p class="lead">
   This Privacy Policy explains what information Velocity Labs (“we”, “us”) collects when you visit velocitylabs.io (the “Site”) or contact us, how we use it, and the choices you have. We collect as little as we need to run the Site and respond to you, and we do not sell your personal information.
@@ -14,7 +14,7 @@ title: Velocity Labs Privacy Policy
 <h3>INFORMATION YOU GIVE US</h3>
 
 <p>
-  When you use a contact form on the Site, we collect the name, email address, phone number and message you enter. The form is delivered to our team by email through our email delivery provider, Resend. We use this information only to respond to you and, if we work together, to manage that relationship.
+  When you use a contact form on the Site, we collect the name, email address and message you enter, and the service you pick, if any. The form is delivered to our team by email through our email delivery provider, Resend. We use this information only to respond to you and, if we work together, to manage that relationship.
 </p>
 
 <p>
