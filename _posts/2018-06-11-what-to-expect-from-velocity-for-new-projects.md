@@ -36,7 +36,7 @@ We are often approached by non-technical founders looking for a development team
 
   <li>
     As the project begins to wind down, you may want to enter a maintenance phase. We also offer continued monitoring and small changes through our
-    <a href="/ruby-on-rails/maintenance">maintenance package</a>.
+    <a href="/maintenance/">maintenance package</a>.
   </li>
 </ol>
 

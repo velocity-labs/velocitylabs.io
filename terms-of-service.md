@@ -14,7 +14,7 @@ title: Velocity Labs Terms of Service
 <h3>OUR SERVICES ARE COVERED SEPARATELY</h3>
 
 <p>
-  These Terms cover the Site only. Any software development, maintenance or consulting work we do for you is governed by a separate written agreement between us, such as a statement of work or our <a href="/ruby-on-rails/maintenance/terms">Application Maintenance Terms &amp; Conditions</a>. If that agreement conflicts with these Terms, that agreement controls.
+  These Terms cover the Site only. Any software development, maintenance or consulting work we do for you is governed by a separate written agreement between us, such as a statement of work or our <a href="/maintenance/terms/">Application Maintenance Terms &amp; Conditions</a>. If that agreement conflicts with these Terms, that agreement controls.
 </p>
 
 <h3>USING THE SITE</h3>

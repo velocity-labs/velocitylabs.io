@@ -8,7 +8,7 @@ sitemap: false
 
 > {{ site.company.description }}
 
-{{ site.company.name }} is a Ruby on Rails and JavaScript consultancy based in {{ site.company.address.city }}, {{ site.company.address.state }}. We build custom web applications and maintain, upgrade and audit existing Rails applications.
+{{ site.company.name }} is a custom software development company based in {{ site.company.address.city }}, {{ site.company.address.state }}. We build web apps and MVPs, take over and modernize existing apps (vibe coded ones included), add AI to them, audit their code, upgrade Ruby on Rails apps, and maintain them.
 
 - Phone: {{ site.company.phone }}
 - Email: contact@velocitylabs.io
