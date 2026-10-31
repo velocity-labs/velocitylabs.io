@@ -4,6 +4,7 @@
 # actually deployed.
 #
 #   bin/check-links                          # checks https://velocitylabs.io
+#   bin/check-links http://localhost:3000    # checks a local build
 #   bin/check-links https://example.test --report report.md
 #
 # Exits 1 when a link is dead (404/410, or its domain no longer resolves).
@@ -15,7 +16,8 @@ require 'openssl'
 require 'socket'
 require 'uri'
 
-BASE = URI(ARGV.find { |arg| arg.start_with?('http') } || 'https://velocitylabs.io')
+LIVE = URI('https://velocitylabs.io')
+BASE = URI(ARGV.find { |arg| arg.start_with?('http') } || LIVE.to_s)
 REPORT = ARGV.include?('--report') ? ARGV[ARGV.index('--report') + 1] : nil
 USER_AGENT = 'Mozilla/5.0 (compatible; velocitylabs-link-check; +https://velocitylabs.io)'.freeze
 BOT_BLOCKING_HOSTS = /(^|\.)(facebook|twitter|x|linkedin|instagram|crunchbase)\.com\z/
@@ -62,14 +64,23 @@ def links_on(page_url, html)
 
     url = URI.join(page_url, raw.strip.gsub('&amp;', '&'))
     url.fragment = nil
-    url.to_s if %w[http https].include?(url.scheme)
+    on_base(url.to_s) if %w[http https].include?(url.scheme)
   rescue URI::Error
     nil
   end
 end
 
+# Another server's sitemap still lists the live site's URLs, and pages link to
+# a few, so read those from BASE: checking a local build checks that build
+def on_base(url)
+  uri = URI(url)
+  return url if BASE.host == LIVE.host || uri.host.to_s.delete_prefix('www.') != LIVE.host
+
+  URI.join(BASE, uri.request_uri).to_s
+end
+
 sitemap = fetch(URI.join(BASE, '/sitemap.xml').to_s).body
-pages = sitemap.scan(%r{<loc>([^<]+)</loc>}).flatten.reject { |url| url.end_with?('.pdf') }
+pages = sitemap.scan(%r{<loc>([^<]+)</loc>}).flatten.reject { |url| url.end_with?('.pdf') }.map { |url| on_base(url) }
 found = Hash.new { |hash, url| hash[url] = [] } # url => pages it appears on
 
 pages.each do |page|
