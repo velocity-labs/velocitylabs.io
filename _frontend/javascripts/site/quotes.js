@@ -41,8 +41,9 @@ export function init() {
       if (lit === quote.lit) return; // nothing to do once a quote is fully dark or fully lit
       quote.lit = lit;
       const span = quote.words.length + 6;
+      // unlit words stay bright enough to pass contrast as large text
       quote.words.forEach((word, i) => {
-        word.style.opacity = (0.2 + 0.8 * clamp01((lit * span - i) / 6)).toFixed(3);
+        word.style.opacity = (0.45 + 0.55 * clamp01((lit * span - i) / 6)).toFixed(3);
       });
     });
   });
