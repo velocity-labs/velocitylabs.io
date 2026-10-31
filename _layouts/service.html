@@ -6,7 +6,7 @@ layout: base
   names the page, is sent with the contact form and records its Ads
   conversion), heading, lede, cta, faq (a list of { q, a }), and optional
   eyebrow (default: the service's name), faq_title, contact_heading,
-  contact_lede. The page's own content supplies the bands between the hero
+  contact_lede, contact_question. The page's own content supplies the bands between the hero
   and the FAQ, usually from blocks.
 {%- endcomment -%}
 {%- assign service = site.data.services | where: "id", page.service | first -%}
@@ -16,4 +16,4 @@ layout: base
 {%- if page.faq %}
 {% include blocks/faq.html items=page.faq title=page.faq_title %}
 {%- endif %}
-{% include blocks/contact.html service=page.service heading=page.contact_heading lede=page.contact_lede %}
+{% include blocks/contact.html service=page.service heading=page.contact_heading lede=page.contact_lede question=page.contact_question %}

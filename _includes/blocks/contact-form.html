@@ -1,7 +1,8 @@
 {%- comment -%}
   The contact form. site/contact-form.js validates it, adds the form token and
   reCAPTCHA token, posts it to /contact-form (main.rb) and reports the result
-  in the status region. service: the page's service id from
+  in the status region. question: what the message box asks (default: "How
+  can we help?"). service: the page's service id from
   _data/services.yml. A service page's form sends it without asking "What do
   you need?", since the page already says; the other forms ask, leaving out
   the own_page options. When the page's service has a Google Ads conversion,
@@ -24,7 +25,7 @@
     </div>
   </fieldset>
   {%- endif %}
-  <div class="field full"><label for="contact-message">What's going on with your app?</label><textarea id="contact-message" name="message" required data-missing="a message"></textarea></div>
+  <div class="field full"><label for="contact-message">{{ include.question | default: "How can we help?" }}</label><textarea id="contact-message" name="message" required data-missing="a message"></textarea></div>
   {%- comment -%} bots fill in every field; people never see this one {%- endcomment %}
   <div class="hp" aria-hidden="true"><label for="contact-hp">Leave this empty</label><input id="contact-hp" name="hp-input" tabindex="-1" autocomplete="off"></div>
   <div class="form-status full" role="status" aria-live="polite"></div>
