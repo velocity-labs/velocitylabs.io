@@ -70,6 +70,11 @@ class ContactFormTest < AppTest
     assert_includes email['text'], 'Need:  Code audit'
   end
 
+  def test_message_keeps_its_line_breaks
+    with_fake_network { post '/contact-form', contact_params('message' => "We need an audit.\r\n\r\nIt is <urgent>\nThanks") }
+    assert_includes JSON.parse(@resend_requests.fetch(0).body)['html'], "We need an audit.<br>\n<br>\nIt is &lt;urgent&gt;<br>\nThanks"
+  end
+
   # Cached pages may still send old values, and a blank choice is allowed
   def test_unknown_or_missing_need_still_sends
     ['', 'not-a-service', '<script>'].each do |need|

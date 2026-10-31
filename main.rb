@@ -333,7 +333,7 @@ post '/contact-form/?' do
       width = i.zero? ? ' width="25%"' : ''
       "<tr><td#{width}>#{label}:</td><td>#{Rack::Utils.escape_html(value)}</td></tr>"
     end
-    message = Rack::Utils.escape_html(params[:message].to_s)
+    message = Rack::Utils.escape_html(params[:message].to_s).gsub(/\r\n?|\n/, "<br>\n") # keep its line breaks
 
     html_body = <<~HTML
       <div style="font-family:Helvetica;">
