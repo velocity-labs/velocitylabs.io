@@ -141,8 +141,11 @@ export function init() {
     return off === null ? 0 : 2 * Math.PI * smooth((node.edge - off) / (2 * node.edge));
   }
 
-  // label sizes, for placing labels and spotting overlaps (they change at the phone breakpoint)
+  // label sizes, for placing labels and spotting overlaps (they change at the phone breakpoint), and
+  // how far labels keep from the frame's sides (phones run the orbit to the screen's edges)
+  let inset = 0;
   function measureLabels() {
+    inset = parseFloat(getComputedStyle(orbit).getPropertyValue('--label-inset')) || 0;
     nodes.forEach((node) => {
       node.fontSize = parseFloat(getComputedStyle(node.label).fontSize) || 15;
       node.subOn = getComputedStyle(node.sub).display !== 'none';
@@ -154,7 +157,7 @@ export function init() {
         [180 + d, 180 - d, d, -d].forEach((degrees) => {
           const q = point(node.body, degrees);
           const c = labelSpot(node, q, q.scale, 0);
-          if (c.x - node.w / 2 < 0 || c.x + node.w / 2 > 640) node.edge = Math.max(node.edge, d + 15);
+          if (c.x - node.w / 2 < inset || c.x + node.w / 2 > 640 - inset) node.edge = Math.max(node.edge, d + 15);
         });
       }
     });
@@ -162,7 +165,7 @@ export function init() {
 
   function placeLabel(node, p, scale, degrees) {
     const c = labelSpot(node, p, scale, swing(node, degrees));
-    c.x = Math.min(Math.max(c.x, node.w / 2), 640 - node.w / 2); // mid-swing, above or below the planet, stay inside the frame
+    c.x = Math.min(Math.max(c.x, inset + node.w / 2), 640 - inset - node.w / 2); // mid-swing, above or below the planet, stay inside the frame
     const base = c.y - node.h / 2 + node.fontSize * 0.8;
     // browsers snap level text to whole pixels vertically, so a slowly moving label steps while its
     // planet glides; a hair of rotation (too small to see) turns that snapping off
