@@ -12,6 +12,9 @@ import { init as initRings } from '../javascripts/site/rings.js';
 import { init as initSteps } from '../javascripts/site/steps.js';
 import { init as initMoons } from '../javascripts/site/moons.js';
 import { init as initDawn } from '../javascripts/site/dawn.js';
+// not loaded on demand like the contact form: it hides the filtered-out
+// projects before their reveals start
+import { init as initTechFilter } from '../javascripts/site/tech-filter.js';
 
 // the failsafe in base.html shows everything if this never runs
 window.orbitStarted = true;
@@ -19,6 +22,7 @@ window.orbitStarted = true;
 initConsent();
 initMenu();
 initExternalLinks();
+initTechFilter();
 initSky();
 initRail();
 initQuotes();

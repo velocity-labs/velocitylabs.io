@@ -16,10 +16,10 @@ module VelocityLabs
       'post'    => '.post-body'
     }.freeze
 
-    # Navigation, the contact form, buttons and decoration (star fields,
-    # orbits, the honeypot) add nothing as text
+    # Navigation, the contact form, buttons, the portfolio's filter and
+    # decoration (star fields, orbits, the honeypot) add nothing as text
     NOISE = 'nav, #contact, form, script, style, noscript, button, .btn, .cta-band, ' \
-            'svg, [aria-hidden="true"], .hp, .form-status'.freeze
+            'svg, [aria-hidden="true"], .hp, .form-status, .tech-filter'.freeze
 
     module_function
 
@@ -74,6 +74,7 @@ module VelocityLabs
       root.css(NOISE).remove
       root.xpath('.//comment()').remove
       remove_decorative_images(root)
+      keep_caption_structure(root)
       absolutize(root, "#{site.config['url']}#{page.url}", site.config['url'])
       move_link_whitespace_outside(root)
       root.css('iframe').each { |frame| frame.replace(iframe_link(doc, frame)) }
@@ -92,6 +93,15 @@ module VelocityLabs
       root.css('img[src*="gravatar.com"]').remove
       root.css('a').each do |link|
         link.remove if link.text.strip.empty? && link.at_css('img') && link['href'].to_s.match?(/\.(png|jpe?g|gif|webp)\z/i)
+      end
+    end
+
+    # The converter flattens a caption into one line of italics, which would
+    # lose the project cards' headings and technology links. Plain captions
+    # under post images stay italic.
+    def keep_caption_structure(root)
+      root.css('figcaption').each do |caption|
+        caption.name = 'div' if caption.at_css('h1, h2, h3, h4, p, ul, ol')
       end
     end
 

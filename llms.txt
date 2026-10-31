@@ -25,7 +25,8 @@ sitemap: false
 ## Company
 
 - [Home]({{ "/index.md" | absolute_url }}): Who we are, how we work, our team and client testimonials
-- [Projects]({{ "/portfolio.md" | absolute_url }}): Web applications we have built for clients
+- [Our work]({{ "/portfolio.md" | absolute_url }}): Web applications we have built, rescued and maintained for clients
+- [Open source]({{ "/open-source.md" | absolute_url }}): Ruby gems and Heroku tooling we maintain
 - [Contact]({{ "/#contact" | absolute_url }}): Start a project with us
 
 ## Blog

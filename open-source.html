@@ -1,0 +1,65 @@
+---
+layout: page
+bands: true
+deco: true
+title: Open source projects
+description: "Open source Ruby gems and Heroku tooling from Velocity Labs, free under the MIT license: DocPDF, credential_parity and a LibreOffice buildpack for Heroku."
+eyebrow: Open source
+heading: Open source tools we build and maintain
+lead: Ruby gems and Heroku tooling from our team, free for anyone to use under the MIT license.
+
+# repo: the name under github.com/velocity-labs; gem: its name on RubyGems
+repos:
+  - name: DocPDF
+    kind: Ruby gem
+    repo: docpdf
+    gem: docpdf
+    text: >-
+      Converts Word, Excel, PowerPoint, OpenDocument, HTML, images and plain text to PDF, with
+      optional watermarking. Swappable adapters let you bring the PDF and image libraries you
+      already use.
+  - name: credential_parity
+    kind: Ruby gem
+    repo: credential_parity
+    gem: credential_parity
+    text: >-
+      Catches Rails credential drift between environments before it reaches production. When
+      staging is missing a key that production has, or spells it differently, your tests fail
+      instead of your next deploy.
+  - name: heroku-buildpack-libreoffice
+    kind: Heroku buildpack
+    repo: heroku-buildpack-libreoffice
+    text: >-
+      Installs a pinned version of LibreOffice on Heroku, verified with SHA-256, for converting
+      documents to PDF. One buildpack replaces the apt buildpack plus a separate LibreOffice one.
+  - name: velocitylabs.io
+    kind: Website
+    repo: velocitylabs.io
+    text: >-
+      The code behind this website: a Jekyll site served by a small Sinatra app, with a
+      spam-resistant contact form that needs no sessions.
+---
+<section id="repos" aria-labelledby="repos-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="repos-title" data-reveal="rise">What we maintain</h2>
+    </div>
+    <div class="repos">
+      {%- for repo in page.repos %}
+      <article class="repo" data-reveal="rise" style="--d:{{ forloop.index0 | modulo: 2 | times: 0.1 | round: 2 }}s">
+        <h3>{{ repo.name }}</h3>
+        <p class="repo-kind">{{ repo.kind }}</p>
+        <div class="repo-text">{{ repo.text | markdownify }}</div>
+        <ul class="repo-links">
+          <li><a href="https://github.com/velocity-labs/{{ repo.repo }}">Source on GitHub</a></li>
+          {%- if repo.gem %}
+          <li><a href="https://rubygems.org/gems/{{ repo.gem }}">On RubyGems</a></li>
+          {%- endif %}
+        </ul>
+      </article>
+      {%- endfor %}
+    </div>
+    <p class="repos-note" data-reveal="rise">Earlier, we were the main contributors to <a href="https://rubygems.org/gems/ratis">RAtis</a>, a Ruby gem for the ATIS transit data service, written for our work with <a href="/portfolio/">Valley Metro</a>.</p>
+  </div>
+</section>
+{% include blocks/cta-band.html %}

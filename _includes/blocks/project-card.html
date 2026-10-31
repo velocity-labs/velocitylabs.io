@@ -1,10 +1,12 @@
 {%- comment -%}
   A project from _data/projects.yml: its screenshot, or a typeset cover for
   work with no screen to show, then title, summary and technologies.
-  delay: reveal stagger in seconds.
+  delay: reveal stagger in seconds. data-techs (the technologies' slugs) is
+  what the portfolio's filter matches.
 {%- endcomment -%}
 {%- assign project = include.project -%}
-<figure data-reveal="arc" style="--d:{{ include.delay | default: 0 }}s">
+{%- capture techs %}{% for tech in project.technologies %}{{ tech | slugify }} {% endfor %}{% endcapture -%}
+<figure data-reveal="arc" style="--d:{{ include.delay | default: 0 }}s" data-techs="{{ techs | strip }}">
   {%- if project.image %}
   <img src="{{ project.image.src }}" alt="{{ project.image.alt }}" width="{{ project.image.width }}" height="{{ project.image.height }}" loading="lazy">
   {%- elsif project.cover %}

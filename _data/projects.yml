@@ -1,41 +1,12 @@
-# Portfolio projects. Newer projects carry a slug, summary, technologies and an
-# image (or a typeset cover); the home page picks its featured project and
-# cases by slug in index.html. Technology pills link to /portfolio/?tech=<slug>.
-# portfolio: false keeps a project off /portfolio/ (until it is rebuilt).
+# Portfolio projects, in the order /portfolio/ shows them. A project with a
+# slug gets a card there: its image (or a typeset cover for work with no screen
+# to show), summary and technologies. The home page (index.html) and service
+# pages (blocks/work-band.html) pick cards by slug. Projects without a slug are
+# listed under "Earlier work". Technology pills link to /portfolio/?tech=<slug>,
+# which shows the cards that use it.
 
-- slug: land-surveying-firm
-  title: Land surveying firm
-  summary: We audited this firm's job and invoicing app, fixed the three urgent issues we found, rebuilt its invoice engine, upgraded Rails, and still look after it.
-  technologies: [Ruby on Rails, PostgreSQL, RSpec]
-  image: { src: /images/work/land-surveying-firm.webp, width: 1000, height: 625, alt: "The surveying firm's daily workflow screen, listing the day's work orders" }
-  portfolio: false
-
-- slug: registria
-  title: Registria
-  summary: Product registration data for consumer brands. We're the largest contributor to the job platform behind their clients' scheduled reports and data deliveries.
-  technologies: [Ruby on Rails, PostgreSQL, Alteryx, Claude Code]
-  cover: { kicker: Since April 2026, line: "Alteryx workflows, rebuilt in Rails.", sub: "Reports and data deliveries across US, EU and Australian regions" }
-  portfolio: false
-
-- slug: flashdrafts
-  title: Recall software for auto shops
-  summary: "We added the paywall and all of its Stripe billing in about three weeks: per-seat monthly and annual plans, sales tax, and promo codes."
-  technologies: [Ruby on Rails, Stripe]
-  image: { src: /images/work/flashdrafts.webp, width: 1000, height: 625, alt: "FlashDrafts home page: every open recall, every remedy, in one place" }
-  portfolio: false
-
-- categories: [web, api, ops]
-  description:
-    We augmented an internal team to accelerate the development of their large legacy Rails app.
-  title: Tap Inspect
-  website: https://www.tapinspect.com/
-
-- categories: [web, ops]
-  description:
-    Created a web application for short-notice, on-demand, dental temping.
+- slug: princess-dental-staffing
   title: Princess Dental Staffing
-  website: https://www.princessdentalstaffing.com/
-  slug: princess-dental-staffing
   summary: Dental practices use it to hire staff and book temps online. Along the way we built its Stripe subscriptions, the API behind its mobile app, and AI-based matching, as it grew from one local market to nationwide.
   technologies: [Ruby on Rails, PostgreSQL, Stripe, Mistral, Twilio, SendGrid, Solr, Amazon S3, Amazon CloudFront, Heroku]
   image: { src: /images/work/princess-dental-staffing.webp, width: 1240, height: 2000, alt: "Princess Dental Staffing home page: Make your next hire with Princess" }
@@ -45,181 +16,112 @@
       - { value: "~$90M", label: earned by candidates }
       - { value: "10+", label: years as their development team }
 
-- categories: [web, api, ops]
-  description:
-    We redeveloped the core news platform for the Philadelphia Church of God.
-  title: The Trumpet
-  website: https://www.thetrumpet.com/
+- slug: land-surveying-firm
+  title: Land surveying firm
+  summary: We audited this firm's job and invoicing app, fixed the three urgent issues we found, rebuilt its invoice engine, upgraded Rails, and still look after it.
+  technologies: [Ruby on Rails, PostgreSQL, RSpec]
+  image: { src: /images/work/land-surveying-firm.webp, width: 1000, height: 625, alt: "The surveying firm's daily workflow screen, listing the day's work orders" }
 
-- categories: [web, api]
-  description:
-    IoT minimum viable product for heat transfer machines, with a Rails backend API.
-  title: "Stahls'"
-  website: https://www.stahls.com/
+- slug: registria
+  title: Registria
+  summary: Product registration data for consumer brands. We're the largest contributor to the job platform behind their clients' scheduled reports and data deliveries.
+  technologies: [Ruby on Rails, PostgreSQL, Alteryx, Claude Code]
+  cover: { kicker: Since April 2026, line: "Alteryx workflows, rebuilt in Rails.", sub: "Reports and data deliveries across US, EU and Australian regions" }
 
-- categories: [web, api, ops]
-  description:
-    We create a brand new Rails application to track activities, with a nice backend dashboard.
-  title: Goalistics BEST
-  website: https://best.goalistics.com/
+- slug: flashdrafts
+  title: Recall software for auto shops
+  summary: "We added the paywall and all of its Stripe billing in about three weeks: per-seat monthly and annual plans, sales tax, and promo codes."
+  technologies: [Ruby on Rails, Stripe]
+  image: { src: /images/work/flashdrafts.webp, width: 1000, height: 625, alt: "FlashDrafts home page: every open recall, every remedy, in one place" }
 
-- categories: [web, ops]
-  description:
-    We took over application maintenance and new feature development after Go Swim launched.
-  title: Go Swim
-  website: http://goswim.tv/
-  slug: go-swim
-  summary: "A swim instruction video site we took over after launch and developed for six years: subscriptions, payments, and video delivery."
-  technologies: [Ruby on Rails, Stripe, Vimeo, Amazon CloudFront]
-  image: { src: /images/work/go-swim.webp, width: 1000, height: 625, alt: "Go Swim home page: videos to inspire, educate and make you a better swimmer" }
-
-- categories: [web, ops]
-  description:
-    We took over application maintenance and new feature development.
-  title: Alice Cooper's Solid Rock
-  website: https://alicecoopersolidrock.com/
-
-- categories: [web, api, ops]
-  description:
-    We develop the core application and API for this free accountability software, designed to help with online integrity.
-  title:   X3 Watch
-  website: https://x3watch.com/
-
-- categories: [web, api, ops]
-  description: |
-    We develop all of Valley Metro's transit applications, including the Valley Metro Trip Planner, Valley Metro Routes, Valley Metro Mobile,
-    and their RAtis SOAP API gem.
-  title:   Valley Metro
-  website: http://valleymetro.org/
-
-- categories: [web]
-  description:
-    Helped create the Facebook of churches, to revolutionize the way churches
-    communicate and engage with their members.
-  title:   Goalistics
-  website: http://goalistics.com/
-  slug: goalistics
+- slug: goalistics
+  title: Goalistics
   summary: Online programs for chronic pain and depression, built for a team of psychologists. We've been their development team since 2014.
   technologies: [Ruby on Rails, PostgreSQL, Heroku]
   image: { src: /images/work/goalistics.webp, width: 1000, height: 625, alt: "Goalistics home page: goal-based behavior change for depression and chronic pain" }
 
-- categories: [web, ops, api]
-  description:
-    Supplemented an existing development team to complete missing functionality and launch in a very short time frame.
-  title: The Doctors
-  website: http://thedoctorstv.com/
+- slug: go-swim
+  title: Go Swim
+  summary: "A swim instruction video site we took over after launch and developed for six years: subscriptions, payments, and video delivery."
+  technologies: [Ruby on Rails, Stripe, Vimeo, Amazon CloudFront]
+  image: { src: /images/work/go-swim.webp, width: 1000, height: 625, alt: "Go Swim home page: videos to inspire, educate and make you a better swimmer" }
 
-- categories: [web, ops]
-  description:
-    Developed game-based, marketing site to enable renewal opportunities.
-  title: Verizon
-  website: http://countdowntorenew.verizon.com/
+- slug: valley-metro
+  title: Valley Metro
+  summary: "Rider tools for the Phoenix area's transit agency, which we built and ran: an online trip planner, timetables, service alerts, a mobile site, and a real-time light rail feed."
+  technologies: [Ruby on Rails, SOAP]
+  image: { src: /images/work/valley-metro.webp, width: 1000, height: 625, alt: "Valley Metro's home page, with its transit trip planner" }
 
-- categories: [ios]
-  description:
-    Developed the game of Go Fish for iOS.
-  title: Go Fish
-  website: http://www.sniggle.co/gofish
+- slug: tap-inspect
+  title: Tap Inspect
+  summary: Home inspection software. We joined their engineering team to move a large legacy app to a new architecture, adding team accounts and an API for their mobile app.
+  technologies: [Ruby on Rails, PostgreSQL]
+  image: { src: /images/work/tap-inspect.webp, width: 1000, height: 625, alt: "Tap Inspect's home page: We help home inspectors save 1-2 hours per inspection" }
 
-- categories: [web, ops]
-  description:
-    Implemented a customized content management system (CMS) to manage all aspects of the site.
-  title: WTCA
-  website: https://www.wtca.org/
+# Earlier work
 
-- categories: [web]
-  description:
-    An Amazon Marketplace style, multi-vendor, one-stop shopping experience
-    for the dental community.
-  title:   SourceOne Dental
-  website: http://www.sourceonedental.com/
+- title: The Trumpet
+  summary: We redeveloped the core news platform for the Philadelphia Church of God.
 
-- categories: [web]
-  description:
-    Created an online Holiday Order Reservation system to compliment Sprouts in-store holiday ordering.
-  title:   Sprouts Holiday Ordering
-  website: https://www.sprouts.com/
+- title: "Stahls'"
+  summary: An Internet of Things MVP for heat transfer machines, with a Rails API behind it.
 
-- categories: [web]
-  description:
-    Implemented a customized content management system (CMS) to manage all aspects of the site.
-  title:   Sprouts
-  website: https://www.sprouts.com/
+- title: Goalistics BEST
+  summary: A new Rails app for tracking activities, with an admin dashboard.
 
-- categories: [web]
-  description:
-    Implemented a site for selling photos of people, pets and fundraisers
-    at a set price or let photographers choose both the subject and price
-    of their photos.
-  title:   Snapped4U
-  website: http://snapped4u.com/
+- title: "Alice Cooper's Solid Rock"
+  summary: We took over maintenance and new feature development.
 
-- categories: [web]
-  description:
-    Helped this startup build a solution to allow users to track weight, set goals,
-    count calories, watch health-related videos and join a weight loss community.
-  title:   My Weight World
-  website: http://www.myweightworld.com/
+- title: X3 Watch
+  summary: We developed the core app and API for this free accountability software, designed to help with online integrity.
 
-- categories: [web]
-  description:
-    Developed an online marketplace to help people sell, buy, trade, or
-    donate items to those in need.
-  title:   Yoogot
-  website: http://yoogot.com/
+- title: The Doctors
+  summary: We joined an existing team to finish missing features and launch on a very short timeline.
 
-- categories: [web]
-  description:
-    Implemented a custom CMS and searchable map that aids parents in screening
-    local schools.
-  title:   Arizona Charter Schools Association
-  website: https://azcharters.org/
+- title: Verizon
+  summary: A game-based marketing site built to drive renewals.
 
-- categories: [web]
-  description:
-    Helped create the Facebook of churches, to revolutionize the way churches
-    communicate and engage with their members.
-  title:   SoChurch
-  website: http://sochurch.com/
+- title: Go Fish
+  summary: The card game Go Fish, for iOS.
 
-- categories: [web]
-  description:
-    We implemented the core features, a robust geo-located search and
-    enhanced administration features and launched the site in a short
-    timeframe.
-  title:   Pick.im
-  website: http://pick.im/
+- title: WTCA
+  summary: A custom content management system for the whole site.
 
-- categories: [web, api]
-  description:
-    Developed the core web application and API to allow people, or
-    organizations, to track their time.
-  title:   Minuteglass
-  website: http://minuteglass.com/
+- title: SourceOne Dental
+  summary: A multi-vendor, one-stop marketplace for the dental community, in the style of Amazon Marketplace.
 
-- categories: [web]
-  description:
-    Implemented a custom CMS to manage the United Way content.
-  title:   United Way
-  website: http://www.unitedway.org/
+- title: Sprouts
+  summary: Online holiday order reservations to complement in-store ordering, and a custom content management system for the site.
 
-- categories: [web]
-  description:
-    Developed the core web application to assist designers in interacting
-    with their clients.
-  title:   Give The OK
-  website: http://givetheok.com/
+- title: Snapped4U
+  summary: A marketplace for photos of people, pets and fundraisers, sold at a set price or priced by the photographer.
 
-- categories: [web]
-  description:
-    Implemented a new company website that focused on their philosophy of
-    design and showcased their portfolio.
-  title:   B12
-  website: http://btwelve.com/
+- title: My Weight World
+  summary: A startup's weight loss community, with weight tracking, goals, calorie counting and health videos.
 
-- categories: [ops]
-  description:
-    Helped re-architect the backend infrastructure, creating a flexible
-    and scalable solution that fit their needs.
-  title:   Auctions a la Carte
-  website: http://auctionsalacarte.com/
+- title: Yoogot
+  summary: An online marketplace for selling, buying, trading, or donating items to people in need.
+
+- title: Arizona Charter Schools Association
+  summary: A custom content management system, and a searchable map that helps parents screen local schools.
+
+- title: SoChurch
+  summary: A social network for churches to communicate with and engage their members.
+
+- title: Pick.im
+  summary: We built the core features, including location-based search and admin tools, and launched on a short timeline.
+
+- title: Minuteglass
+  summary: The core web app and API for a time tracking service for people and organizations.
+
+- title: United Way
+  summary: A custom content management system for United Way's site.
+
+- title: Give The OK
+  summary: The core web app for helping designers work with their clients.
+
+- title: B12
+  summary: A new company website centered on their design philosophy and portfolio.
+
+- title: Auctions a la Carte
+  summary: We re-architected their backend infrastructure to be flexible and scalable.

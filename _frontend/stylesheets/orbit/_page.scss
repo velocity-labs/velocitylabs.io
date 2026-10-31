@@ -51,8 +51,10 @@
 .posts p:last-child { color: var(--dust); margin-top: .6rem; }
 .pager { display: flex; gap: .75rem; margin-top: 2.5rem; }
 
-// A closing call to action (blocks/cta-band.html)
+// A closing call to action (blocks/cta-band.html), in the band color the one
+// before it doesn't have
 .cta-band { background: var(--deep); }
+main > section:nth-of-type(even) + .cta-band { background: none; }
 .cta-band .lede { margin-top: 1rem; max-width: 36rem; font-size: 1.15rem; }
 
 @media (max-width: $phone) {

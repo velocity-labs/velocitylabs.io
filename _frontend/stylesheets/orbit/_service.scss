@@ -39,11 +39,6 @@
 .bars[data-level="2"] i:nth-child(-n+2),
 .bars[data-level="3"] i { background: var(--sun); }
 
-// Related projects (blocks/work-band.html): one even row of cards, unlike the
-// home page's two-then-three
-.cases.cases-row { margin-top: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.cases.cases-row figure:nth-child(n) { grid-column: auto; }
-
 // A short band of prose under a heading (blocks/text-band.html)
 .text-band h2 { max-width: 30ch; }
 .text-band-body { margin-top: 1.25rem; max-width: 44rem; color: #D5DAEC; font-size: 1.125rem; }
@@ -52,9 +47,7 @@
 @media (max-width: $stack) {
   .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tiers { grid-template-columns: minmax(0, 1fr); max-width: 34rem; }
-  .cases.cases-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: $phone) {
   .features { grid-template-columns: minmax(0, 1fr); }
-  .cases.cases-row { grid-template-columns: minmax(0, 1fr); }
 }

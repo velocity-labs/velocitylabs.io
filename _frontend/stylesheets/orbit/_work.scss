@@ -36,6 +36,10 @@
 .cover svg .moon { fill: var(--dust); stroke: none; }
 .cases h3 { margin-top: 1.1rem; font-size: 1.15rem; }
 .cases p { color: var(--dust); margin-top: .35rem; font-size: 1rem; }
+// even rows of cards (a service page's work band, the portfolio), unlike the
+// home page's two-then-three
+.cases.cases-row { margin-top: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cases.cases-row figure:nth-child(n) { grid-column: auto; }
 
 // Technology pills; each opens the portfolio filtered to that technology
 .stack { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; max-width: 30rem; }
@@ -54,7 +58,8 @@
   .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cases figure:nth-child(n) { grid-column: auto; }
   .cases figure:first-child { grid-column: 1 / -1; }
+  .cases.cases-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: $phone) {
-  .cases { grid-template-columns: minmax(0, 1fr); }
+  .cases, .cases.cases-row { grid-template-columns: minmax(0, 1fr); }
 }
