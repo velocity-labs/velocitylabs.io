@@ -59,6 +59,28 @@ export function init(form) {
     if (e.target.hasAttribute('aria-invalid')) validate(e.target);
   });
 
+  // Buttons like "Order Standard" (blocks/tiers.html) lead here and start the
+  // message for the reader, unless they've already written their own
+  const message = form.querySelector('[name="message"]');
+  document.querySelectorAll('a[href="#contact"][data-prefill]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const ownService = form.querySelector('input[name="need"][checked]'); // the page's service
+      if (ownService) ownService.checked = true;
+      if (!message.value.trim() || message.value === message.dataset.prefilled) {
+        message.value = `${link.dataset.prefill}\n\n`;
+        message.dataset.prefilled = message.value;
+        if (message.hasAttribute('aria-invalid')) validate(message);
+      }
+      // once the link has scrolled to the form, the cursor waits in the first
+      // empty field, or after the message's opening line
+      setTimeout(() => {
+        const next = required.find((field) => !field.value.trim()) || message;
+        next.focus({ preventScroll: true });
+        if (next === message) message.setSelectionRange(message.value.length, message.value.length);
+      });
+    });
+  });
+
   // what they wrote, as an email body, for when sending fails
   const emailBody = (data) => {
     const need = form.querySelector('input[name="need"]:checked')?.nextElementSibling?.textContent;
