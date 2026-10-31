@@ -38,8 +38,9 @@ bundle exec puma -t 5:5 -p 3000
 # One-off build
 jekyll build --trace
 
-# Claude Code jekyll build (RVM doesn't auto-switch in subshells)
-env -i HOME="$HOME" PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bash -l -c 'jekyll build --trace'
+# Claude Code jekyll build (RVM doesn't auto-switch in subshells, and it
+# doesn't recognize a bare "4.0.7" in .ruby-version, so pick the Ruby explicitly)
+env -i HOME="$HOME" PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bash -l -c 'rvm use "ruby-$(cat .ruby-version)" >/dev/null && bundle exec jekyll build --trace'
 ```
 
 Tests: `bundle exec rake test` (Minitest + Rack::Test in `test/`, after a `jekyll build`). They cover the contact form (anti-spam, reCAPTCHA, the Resend request), redirects and headers, with network calls faked. CI runs them on every push. No linter is configured.
