@@ -43,7 +43,8 @@
 
 @media (max-width: $stack) {
   .hero .wrap { grid-template-columns: minmax(0, 1fr); }
-  .orbit-figure { max-width: 560px; margin: 0 auto; }
+  // stacked, the orbit comes first, above the headline
+  .orbit-figure { order: -1; max-width: 560px; margin: 0 auto; }
 }
 @media (max-width: $phone) {
   .label-sub { display: none; }

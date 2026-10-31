@@ -291,7 +291,7 @@ export function init() {
     const progress = clamp01(y / heroHeight);
     stars.style.transform = `translate3d(0,${(y * 0.5).toFixed(1)}px,0)`;
     if (stacked.matches) {
-      // narrow screens stack the orbit under the copy, so it stays put instead of sliding out of the hero
+      // narrow screens stack the orbit above the copy, so both stay put instead of sliding into each other
       figure.style.transform = copy.style.transform = figure.style.opacity = copy.style.opacity = '';
     } else {
       figure.style.transform = `translate3d(0,${(progress * heroHeight * 0.3).toFixed(1)}px,0) scale(${(1 - 0.12 * progress).toFixed(4)})`;
