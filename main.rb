@@ -13,6 +13,7 @@ require 'net/http'
 require 'json'
 require 'securerandom'
 require 'openssl'
+require 'yaml'
 require 'rack/attack'
 
 ## Global Settings ##
@@ -153,6 +154,12 @@ end
 
 FORM_TOKEN_SECRET = ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 
+# The contact form's "What do you need?" options, by service id (the form's
+# `need` value) => label, from the same list the site builds the form from
+SERVICE_NEEDS = YAML.load_file(File.expand_path('_data/services.yml', __dir__))
+                    .each_with_object({}) { |service, needs| needs[service['id']] = service['need'] if service['need'] }
+                    .freeze
+
 def generate_form_token
   timestamp = Time.now.to_i
   nonce = SecureRandom.hex(16)
@@ -284,9 +291,18 @@ post '/contact-form/?' do
 
   # 6. Build email and send via Resend
   begin
-    name    = Rack::Utils.escape_html(params[:name].to_s)
-    email   = Rack::Utils.escape_html(params[:email].to_s)
-    phone   = Rack::Utils.escape_html(params[:phone].to_s)
+    # Optional fields: the form has no phone field (older forms did), and an
+    # unknown or missing need (say, from a cached page) is simply left out
+    need  = SERVICE_NEEDS[params[:need].to_s]
+    phone = params[:phone].to_s.strip
+    details = [['Name', params[:name].to_s], ['Email', params[:email].to_s]]
+    details << ['Phone', phone] unless phone.empty?
+    details << ['Need', need] if need
+
+    rows = details.map.with_index do |(label, value), i|
+      width = i.zero? ? ' width="25%"' : ''
+      "<tr><td#{width}>#{label}:</td><td>#{Rack::Utils.escape_html(value)}</td></tr>"
+    end
     message = Rack::Utils.escape_html(params[:message].to_s)
 
     html_body = <<~HTML
@@ -294,9 +310,7 @@ post '/contact-form/?' do
         <h2>Contact Information</h2>
         <table style="font-size:11pt;">
           <tbody>
-            <tr><td width="25%">Name:</td><td>#{name}</td></tr>
-            <tr><td>Email:</td><td>#{email}</td></tr>
-            <tr><td>Phone:</td><td>#{phone}</td></tr>
+            #{rows.join("\n            ")}
           </tbody>
         </table>
         <h2>Message</h2>
@@ -307,9 +321,7 @@ post '/contact-form/?' do
     text_body = <<~TEXT
       Contact Information
       ====================
-      Name:  #{params[:name]}
-      Email: #{params[:email]}
-      Phone: #{params[:phone]}
+      #{details.map { |label, value| "#{"#{label}:".ljust(6)} #{value}" }.join("\n")}
 
       Message
       ====================
@@ -325,7 +337,7 @@ post '/contact-form/?' do
       from:     ENV.fetch('CONTACT_FORM_FROM', 'Velocity Labs <contact@velocitylabs.io>'),
       to:       ['contact@velocitylabs.io'],
       reply_to: params[:email].to_s, # validated above
-      subject:  "Contact form from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}",
+      subject:  "Contact form from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}#{" (#{need})" if need}",
       text:     text_body,
       html:     html_body
     }.to_json
