@@ -29,7 +29,6 @@
 .repo h3 { font-size: 1.45rem; overflow-wrap: anywhere; }
 .repo-text { color: #D5DAEC; }
 .repo-links { list-style: none; margin: auto 0 0; padding: .5rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-weight: 700; }
-.repos-note { margin-top: 2.5rem; max-width: 44rem; color: var(--dust); }
 
 @media (max-width: $phone) {
   .repos { grid-template-columns: minmax(0, 1fr); }

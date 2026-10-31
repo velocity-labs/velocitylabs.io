@@ -3,12 +3,13 @@ layout: page
 bands: true
 deco: true
 title: Open source projects
-description: "Open source Ruby gems and Heroku tooling from Velocity Labs, free under the MIT license: DocPDF, credential_parity and a LibreOffice buildpack for Heroku."
+description: "Open source from Velocity Labs: DocPDF, credential_parity, RAtis and a LibreOffice buildpack for Heroku, free for anyone to use."
 eyebrow: Open source
-heading: Open source tools we build and maintain
-lead: Ruby gems and Heroku tooling from our team, free for anyone to use under the MIT license.
+heading: Open source tools from our team
+lead: Ruby gems and Heroku tooling we've built and published, free for anyone to use.
 
 # repo: the name under github.com/velocity-labs; gem: its name on RubyGems
+# (a project may have either or both)
 repos:
   - name: DocPDF
     kind: Ruby gem
@@ -26,6 +27,12 @@ repos:
       Catches Rails credential drift between environments before it reaches production. When
       staging is missing a key that production has, or spells it differently, your tests fail
       instead of your next deploy.
+  - name: RAtis
+    kind: Ruby gem
+    gem: ratis
+    text: >-
+      A Ruby wrapper for ATIS, the SOAP service Valley Metro used for its transit data. We were
+      its main contributors while we built [Valley Metro's rider tools](/portfolio/).
   - name: heroku-buildpack-libreoffice
     kind: Heroku buildpack
     repo: heroku-buildpack-libreoffice
@@ -42,7 +49,7 @@ repos:
 <section id="repos" aria-labelledby="repos-title">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="repos-title" data-reveal="rise">What we maintain</h2>
+      <h2 id="repos-title" data-reveal="rise">What we've built</h2>
     </div>
     <div class="repos">
       {%- for repo in page.repos %}
@@ -51,7 +58,9 @@ repos:
         <p class="repo-kind">{{ repo.kind }}</p>
         <div class="repo-text">{{ repo.text | markdownify }}</div>
         <ul class="repo-links">
+          {%- if repo.repo %}
           <li><a href="https://github.com/velocity-labs/{{ repo.repo }}">Source on GitHub</a></li>
+          {%- endif %}
           {%- if repo.gem %}
           <li><a href="https://rubygems.org/gems/{{ repo.gem }}">On RubyGems</a></li>
           {%- endif %}
@@ -59,7 +68,6 @@ repos:
       </article>
       {%- endfor %}
     </div>
-    <p class="repos-note" data-reveal="rise">Earlier, we were the main contributors to <a href="https://rubygems.org/gems/ratis">RAtis</a>, a Ruby gem for the ATIS transit data service, written for our work with <a href="/portfolio/">Valley Metro</a>.</p>
   </div>
 </section>
 {% include blocks/cta-band.html %}

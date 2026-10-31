@@ -3,7 +3,7 @@
 // The top of an inner page (blocks/page-hero.html)
 .page-hero { padding: 3rem 0 3.5rem; }
 .page-hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); letter-spacing: -0.02em; line-height: 1.1; max-width: 22ch; text-wrap: balance; }
-.page-hero .lede { margin-top: 1.25rem; font-size: 1.2rem; max-width: 40rem; }
+.page-hero .lede { margin-top: 1.25rem; font-size: 1.2rem; max-width: 40rem; text-wrap: pretty; }
 .page-body { padding-top: 3.5rem; }
 
 // Long-form text: posts, legal pages. A narrow column, larger type, and
