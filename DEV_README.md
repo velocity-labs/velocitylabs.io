@@ -126,7 +126,7 @@ The contact form (`POST /contact-form`) has 6 layers of anti-spam protection:
 
 CSRF tokens are **not** session-based. They use HMAC-SHA256 signatures so they work across concurrent browser tabs without race conditions.
 
-"What do you need?" options come from `_data/services.yml`, and `main.rb` adds the chosen service to the email's subject and body. A service page preselects its own service, and sending the form records that page's Google Ads conversion.
+"What do you need?" options come from `_data/services.yml`, and `main.rb` adds the chosen service to the email's subject and body. A service page's form sends its own service instead of asking, and sending it records that page's Google Ads conversion.
 
 ## Blog Posts
 

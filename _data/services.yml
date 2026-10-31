@@ -9,8 +9,10 @@
 #             orbit 6 outermost (ongoing work). Sizes and start angles are in
 #             _frontend/javascripts/home/orbit.js, keyed by orbit.
 # footer:     label in the footer's Services column (omit to leave it out)
-# need:       label of the contact form option (omit for no option)
-# own_page:   offer the form option only on the service's own page
+# need:       label of the contact form option (omit for no option). The form
+#             on the service's own page sends it without asking
+# own_page:   leave the option off the forms that ask (its own page still
+#             sends it)
 # conversion: Google Ads conversion sent when a form on this service's page
 #             is sent
 

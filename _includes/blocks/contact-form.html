@@ -2,23 +2,28 @@
   The contact form. site/contact-form.js validates it, adds the form token and
   reCAPTCHA token, posts it to /contact-form (main.rb) and reports the result
   in the status region. service: the page's service id from
-  _data/services.yml, preselected in "What do you need?" (an own_page option
-  appears only on its own page); when that service has a Google Ads
-  conversion, sending the form records it.
+  _data/services.yml. A service page's form sends it without asking "What do
+  you need?", since the page already says; the other forms ask, leaving out
+  the own_page options. When the page's service has a Google Ads conversion,
+  sending the form records it.
 {%- endcomment -%}
 {%- assign page_service = site.data.services | where: "id", include.service | first -%}
 <form class="contact-form" action="/contact-form" method="post" novalidate data-contact-form data-recaptcha-key="{{ site.recaptcha_v3_site_key }}"{% if page_service.conversion %} data-conversion="{{ page_service.conversion }}"{% endif %}>
   {%- comment %} data-missing names each required field in "Please add ..." {% endcomment %}
   <div class="field"><label for="contact-name">Name</label><input id="contact-name" name="name" autocomplete="name" required data-missing="your name"></div>
   <div class="field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" required data-missing="your email address"></div>
+  {%- if page_service.need %}
+  <input type="hidden" name="need" value="{{ page_service.id }}" data-label="{{ page_service.need }}">
+  {%- else %}
   <fieldset>
     <legend>What do you need?</legend>
     <div class="needs">
-      {%- for service in site.data.services %}{% if service.need %}{% unless service.own_page and service.id != include.service %}
-      <label><input type="radio" name="need" value="{{ service.id }}"{% if service.id == include.service %} checked{% endif %}><span>{{ service.need }}</span></label>
+      {%- for service in site.data.services %}{% if service.need %}{% unless service.own_page %}
+      <label><input type="radio" name="need" value="{{ service.id }}"><span>{{ service.need }}</span></label>
       {%- endunless %}{% endif %}{% endfor %}
     </div>
   </fieldset>
+  {%- endif %}
   <div class="field full"><label for="contact-message">What's going on with your app?</label><textarea id="contact-message" name="message" required data-missing="a message"></textarea></div>
   {%- comment -%} bots fill in every field; people never see this one {%- endcomment %}
   <div class="hp" aria-hidden="true"><label for="contact-hp">Leave this empty</label><input id="contact-hp" name="hp-input" tabindex="-1" autocomplete="off"></div>

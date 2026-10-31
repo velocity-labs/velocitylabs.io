@@ -27,17 +27,6 @@ class PagesTest < AppTest
     get '/contact', ref: 'burstdev'
     assert_match %r{/#contact\z}, last_response.location
   end
-
-  # A service page's form starts with that service chosen, and the Rails
-  # upgrade option appears only on its own page
-  def test_contact_form_preselects_the_pages_service
-    get '/ruby-on-rails/upgrades/'
-    assert_includes last_response.body, 'value="ruby-on-rails-upgrades" checked'
-    refute_includes last_response.body, 'value="project-rescue" checked'
-
-    get '/'
-    refute_includes last_response.body, 'value="ruby-on-rails-upgrades"'
-  end
 end
 
 class ContactFormTest < AppTest

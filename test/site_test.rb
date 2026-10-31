@@ -51,7 +51,13 @@ class SiteTest < AppTest
     assert_equal services.select { |s| s['footer'] }.map { |s| [s['footer'], s['url']] },
                  home.xpath('//footer//h2[.="Services"]/following-sibling::ul[1]//a').map { |a| [a.text, a['href']] }
     assert_equal services.select { |s| s['need'] && !s['own_page'] }.map { |s| s['id'] },
-                 home.css('input[name="need"]').map { |input| input['value'] }
+                 home.css('input[name="need"][type="radio"]').map { |input| input['value'] }
+
+    # a service page's form sends its service instead of asking
+    services.select { |s| s['need'] }.each do |service|
+      sent = built(service['url']).css('input[name="need"]').map { |input| [input['type'], input['value']] }
+      assert_equal [['hidden', service['id']]], sent, "#{service['url']} should send #{service['id']} without asking"
+    end
   end
 
   # The home page's structured data comes from the same settings as the footer

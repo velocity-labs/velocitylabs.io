@@ -64,8 +64,6 @@ export function init(form) {
   const message = form.querySelector('[name="message"]');
   document.querySelectorAll('a[href="#contact"][data-prefill]').forEach((link) => {
     link.addEventListener('click', () => {
-      const ownService = form.querySelector('input[name="need"][checked]'); // the page's service
-      if (ownService) ownService.checked = true;
       if (!message.value.trim() || message.value === message.dataset.prefilled) {
         message.value = `${link.dataset.prefill}\n\n`;
         message.dataset.prefilled = message.value;
@@ -81,9 +79,11 @@ export function init(form) {
     });
   });
 
-  // what they wrote, as an email body, for when sending fails
+  // what they wrote, as an email body, for when sending fails. The need is the
+  // option they picked, or on a service page, the page's own service
   const emailBody = (data) => {
-    const need = form.querySelector('input[name="need"]:checked')?.nextElementSibling?.textContent;
+    const need = form.querySelector('input[name="need"]:checked')?.nextElementSibling?.textContent
+      || form.querySelector('input[name="need"][type="hidden"]')?.dataset.label;
     const lines = [`Name: ${data.get('name') || ''}`, `Email: ${data.get('email') || ''}`];
     if (need) lines.push(`Need: ${need}`);
     lines.push('', data.get('message') || '');
