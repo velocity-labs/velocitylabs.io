@@ -2,6 +2,7 @@
 contact: false
 excerpt: How Velocity Labs collects, uses and protects information when you visit our site or contact us, including the cookies we use and the choices you have.
 layout: page
+legal: true
 title: Velocity Labs Privacy Policy
 ---
 
@@ -11,7 +12,7 @@ title: Velocity Labs Privacy Policy
   This Privacy Policy explains what information Velocity Labs (“we”, “us”) collects when you visit velocitylabs.io (the “Site”) or contact us, how we use it, and the choices you have. We collect as little as we need to run the Site and respond to you, and we do not sell your personal information.
 </p>
 
-<h3>INFORMATION YOU GIVE US</h3>
+<h2>INFORMATION YOU GIVE US</h2>
 
 <p>
   When you use a contact form on the Site, we collect the name, email address and message you enter, and the service you pick, if any. The form is delivered to our team by email through our email delivery provider, Resend. We use this information only to respond to you and, if we work together, to manage that relationship.
@@ -21,7 +22,7 @@ title: Velocity Labs Privacy Policy
   Please don't send confidential or sensitive information through the contact form. If we start working together, confidentiality is covered by a separate written agreement.
 </p>
 
-<h3>INFORMATION COLLECTED AUTOMATICALLY</h3>
+<h2>INFORMATION COLLECTED AUTOMATICALLY</h2>
 
 <ul>
   <li>
@@ -35,7 +36,7 @@ title: Velocity Labs Privacy Policy
   </li>
 </ul>
 
-<h3 id="cookies">COOKIES AND YOUR CHOICES</h3>
+<h2 id="cookies">COOKIES AND YOUR CHOICES</h2>
 
 <p>
   The Site itself does not set any cookies. The cookies below are set by Google, only for the purposes described:
@@ -63,7 +64,7 @@ title: Velocity Labs Privacy Policy
   If your browser sends a <a href="https://globalprivacycontrol.org/">Global Privacy Control</a> signal, we treat it as declining analytics and advertising cookies. We do not respond to “Do Not Track” signals, which have no agreed standard. You can also block or delete cookies in your browser settings, or install the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt-out browser add-on</a>.
 </p>
 
-<h3>HOW WE USE INFORMATION</h3>
+<h2>HOW WE USE INFORMATION</h2>
 
 <ul>
   <li>To respond to your inquiries and provide our services</li>
@@ -76,7 +77,7 @@ title: Velocity Labs Privacy Policy
   If you are in the European Economic Area or the United Kingdom, our legal bases are: your consent (analytics and advertising cookies), our legitimate interests in operating and securing the Site and responding to inquiries, and taking steps at your request before entering into a contract.
 </p>
 
-<h3>SHARING</h3>
+<h2>SHARING</h2>
 
 <p>
   We do not sell your personal information. We share it only with the service providers named above (Heroku, Resend and Google) to the extent needed for them to provide their services to us, and when required by law, such as in response to a subpoena or other lawful request, or to protect our rights.
@@ -86,19 +87,19 @@ title: Velocity Labs Privacy Policy
   Some US state laws treat using advertising cookies to measure or target ads as “sharing” personal information. You can opt out by declining cookies on the Site or by using Global Privacy Control.
 </p>
 
-<h3>INTERNATIONAL TRANSFERS</h3>
+<h2>INTERNATIONAL TRANSFERS</h2>
 
 <p>
   We are based in the United States, and our service providers process information in the United States and other countries. If you contact us from outside the United States, your information will be transferred to and processed in the United States.
 </p>
 
-<h3>DATA RETENTION</h3>
+<h2>DATA RETENTION</h2>
 
 <p>
   We keep contact form messages and related correspondence for as long as needed to respond to you and manage any business relationship, and then as required for our legitimate business and legal purposes. Google Analytics data is kept according to the retention period set in our Google Analytics account. Server logs are kept only briefly.
 </p>
 
-<h3>YOUR RIGHTS</h3>
+<h2>YOUR RIGHTS</h2>
 
 <p>
   Depending on where you live, including the European Economic Area, the United Kingdom and several US states, you may have the right to access, correct or delete the personal information we hold about you, to object to or restrict certain processing, to receive a copy of your information, to withdraw consent, and to opt out of the use of your information for targeted advertising. We will not discriminate against you for exercising these rights.
@@ -108,25 +109,25 @@ title: Velocity Labs Privacy Policy
   To make a request, email us at <a href="mailto:contact@velocitylabs.io">contact@velocitylabs.io</a>. We may need to verify your identity before responding. If you are in the European Economic Area or the United Kingdom, you can also lodge a complaint with your local data protection authority.
 </p>
 
-<h3>SECURITY</h3>
+<h2>SECURITY</h2>
 
 <p>
   The Site is served only over encrypted HTTPS connections. No method of transmission or storage is completely secure, but we take reasonable measures to protect the information we hold. To report a security issue, see our <a href="/.well-known/security.txt">security.txt</a>.
 </p>
 
-<h3>CHILDREN</h3>
+<h2>CHILDREN</h2>
 
 <p>
   The Site is intended for businesses and is not directed to children. We do not knowingly collect personal information from anyone under 16.
 </p>
 
-<h3>CHANGES</h3>
+<h2>CHANGES</h2>
 
 <p>
   We may update this Privacy Policy from time to time. When we do, we will change the “Last updated” date above.
 </p>
 
-<h3>CONTACT US</h3>
+<h2>CONTACT US</h2>
 
 <p>
   For questions about this Privacy Policy or our privacy practices, email us at <a href="mailto:contact@velocitylabs.io">contact@velocitylabs.io</a> or write to us at:

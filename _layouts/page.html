@@ -5,7 +5,8 @@ layout: base
   A plain inner page: legal pages, the portfolio, open source, the 404.
   heading (default: title), and optional eyebrow, lead and deco: true
   (decorative rings), come from front matter. The content is one prose
-  column, unless bands: true, when it brings its own sections.
+  column, unless bands: true, when it brings its own sections. legal: true
+  sets the prose's all-caps section headings smaller.
 {%- endcomment -%}
 {%- assign heading = page.heading | default: page.title -%}
 {% include blocks/page-hero.html eyebrow=page.eyebrow heading=heading lede=page.lead deco=page.deco %}
@@ -14,7 +15,7 @@ layout: base
 {%- else %}
 <section class="page-body">
   <div class="wrap">
-    <div class="prose">
+    <div class="prose{% if page.legal %} legal{% endif %}">
       {{ content }}
     </div>
   </div>
