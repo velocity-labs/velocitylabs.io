@@ -12,7 +12,6 @@ module VelocityLabs
     CONTENT_SELECTORS = {
       'home'    => '#main',
       'service' => '#main',
-      'landing' => '#main',
       'page'    => '#main',
       'post'    => '.post-body'
     }.freeze

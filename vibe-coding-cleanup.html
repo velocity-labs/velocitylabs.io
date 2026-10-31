@@ -1,0 +1,82 @@
+---
+layout: service
+service: vibe-coding-cleanup
+title: Vibe coding cleanup
+title_tag: Vibe coding cleanup for Lovable, Replit and Base44 apps
+description: Built your app with Lovable, Replit, Base44, Cursor, or Claude Code? We fix what's holding it back, close the security gaps, and get it ready for real customers.
+heading: We use AI every day. We also fix what it breaks.
+lede: You built it with Lovable, Replit, Base44, Cursor, or Claude Code, and it has outgrown them. We fix what's holding it back, close the security gaps, and make it production ready for real customers.
+cta: Tell us about your app
+
+fixes:
+  - title: Security gaps
+    text: Exposed keys, database rules that let anyone read or change data, and missing checks on who can see what.
+  - title: Code that fights every change
+    text: Duplicated logic and tangled files, where each new prompt breaks something else.
+  - title: Launch and hosting
+    text: Real hosting, your own domain, email that arrives, backups, and monitoring.
+  - title: Payments and accounts
+    text: Stripe billing, sign-in, and permissions that hold up with real customers.
+  - title: Tests
+    text: Automated tests around what matters, so fixes stay fixed.
+  - title: Moving off the builder
+    text: Your code out of the tool and onto hosting you control, when you're ready.
+
+tools:
+  - title: Lovable
+    text: We pick up from the code your Lovable project syncs to GitHub, and its Supabase backend.
+  - title: Replit
+    text: We take Replit apps from the workspace to production hosting you control.
+  - title: Base44
+    text: We review what Base44 generated and plan the move to code you own.
+  - title: Bolt, Cursor, and Claude Code
+    text: We review and test AI-written code the same way we review our own.
+
+steps:
+  - title: Review what the tool built
+    text: >-
+      A [code audit](/code-audit/) finds the security gaps and the fragile parts, and tells you what to
+      fix first.
+  - title: Fix what's urgent
+    text: >-
+      Security first, then the bugs and the parts that break when you change them.
+  - title: Make it production ready
+    text: >-
+      Hosting, monitoring, backups, and tests, so it holds up with real customers. Then we can
+      [look after it](/maintenance/).
+
+faq_title: Questions about vibe coded apps
+faq:
+  - q: Is Lovable production ready?
+    a: >-
+      It can get a working app in front of customers, but it isn't production ready on its own. The
+      security rules, error handling, backups, and monitoring usually need work first, and that's what
+      we add. The same goes for Replit and Base44.
+  - q: Are vibe coded apps safe?
+    a: >-
+      Not by default. AI tools write code that works on the happy path and often skips the checks that
+      keep data private. A [code audit](/code-audit/) finds the gaps, and then we close them.
+  - q: Is our Supabase row level security set up correctly?
+    a: >-
+      If you're not sure, it needs a look. When row level security is off or too broad, anyone with your
+      app's public key can read or change your data. We check every table's policies.
+  - q: I vibe coded an app. Now what?
+    a: >-
+      Get it reviewed before real customers depend on it, then fix what matters most: security, your
+      data, and the parts that break. We can audit it, clean it up, deploy it, and look after it.
+  - q: Should we stay on Lovable or move off it?
+    a: >-
+      Stay while it helps you move fast. Move when you need what it can't do well, like a custom
+      backend, complex permissions, or hosting and costs you control. We can help with either.
+  - q: Why should AI-generated code be reviewed before launch?
+    a: >-
+      Because it looks finished before it is. AI-written code can pass a demo while missing security
+      checks, error handling, and the edge cases real customers find on day one.
+
+contact_heading: Tell us about your app
+contact_lede: Which tool you built it with, and where it's stuck. We'll tell you honestly what it needs.
+---
+{% include blocks/features.html id="fixes" title="What we fix in vibe coded apps" items=page.fixes %}
+{% include blocks/features.html id="tools" title="Apps built with Lovable, Replit, Base44, and more" items=page.tools %}
+{% include blocks/quote.html id="andrew-hyde" %}
+{% include blocks/steps-section.html id="process" title="How a vibe coding cleanup works" items=page.steps %}

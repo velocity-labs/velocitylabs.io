@@ -1,0 +1,23 @@
+{%- comment -%}
+  Projects related to a service, as case cards (blocks/project-card.html).
+  id, title, slugs (comma-separated, from _data/projects.yml); optional lede.
+{%- endcomment -%}
+{%- assign slugs = include.slugs | split: "," -%}
+<section id="{{ include.id }}" aria-labelledby="{{ include.id }}-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="{{ include.id }}-title" data-reveal="rise">{{ include.title }}</h2>
+      {%- if include.lede %}
+      <p class="lede" data-reveal="rise" style="--d:.12s">{{ include.lede }}</p>
+      {%- endif %}
+    </div>
+    <div class="cases cases-row" data-arc-group>
+      {%- for slug in slugs %}
+      {%- assign project = site.data.projects | where: "slug", slug | first %}
+      {%- assign delay = forloop.index0 | times: 0.14 | round: 2 %}
+      {% include blocks/project-card.html project=project delay=delay %}
+      {%- endfor %}
+    </div>
+    <p class="more-link"><a href="/portfolio/">See more of our work</a></p>
+  </div>
+</section>

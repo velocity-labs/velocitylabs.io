@@ -1,0 +1,73 @@
+---
+layout: service
+service: ruby-on-rails-upgrades
+need: project-rescue
+title: Ruby on Rails upgrade services and support
+description: Rails upgrade services from a team that's worked with Rails since 2007. Ruby, Rails and gem upgrades a version at a time, with tests to make them safe.
+heading: Ruby on Rails upgrades, from a team that's worked with Rails since 2007.
+lede: You keep your phone and laptop up to date, so why not the software your business runs on? We upgrade Ruby, Rails, and your gems a step at a time, with tests to prove nothing broke.
+cta: Plan your Rails upgrade
+
+reasons:
+  - title: Security
+    text: Old versions stop getting security fixes, while attackers keep looking for the known holes in them.
+  - title: Performance
+    text: Newer versions of Ruby and Rails are faster, and your app gets the improvements for free.
+  - title: Falling further behind
+    text: Each version you skip makes the next upgrade harder, and eventually a rewrite starts to look tempting.
+
+covers:
+  - title: Your Ruby version
+    text: Up to a supported release, so you keep getting security fixes.
+  - title: Your Rails version
+    text: One version at a time, from Rails 4 and 5 up to the latest.
+  - title: Gems and JavaScript libraries
+    text: The third-party code your app depends on, updated or replaced where it's been abandoned.
+  - title: Your server environment
+    text: Hosting, databases, and build tools brought up to versions that are still supported.
+  - title: Tests
+    text: Tests around the parts that matter, so we can prove each step didn't break anything.
+  - title: The deploy
+    text: Shipped in small steps your business keeps running through, not one risky big bang.
+
+steps:
+  - title: We look at your app
+    text: >-
+      Which versions you're on, how much test coverage you have, and how many dependencies need to
+      move. Then we tell you what the upgrade will take.
+  - title: We upgrade a step at a time
+    text: >-
+      One version at a time, with tests, fixing what each step breaks before moving on.
+  - title: We keep it current
+    text: >-
+      Deployed safely, and with a [maintenance plan](/maintenance/) you never end up years behind again.
+
+faq_title: Questions about Rails upgrades
+faq:
+  - q: Is Ruby on Rails dead?
+    a: >-
+      No. Rails is actively developed, with a new version every year or so, and it still runs large
+      products like Shopify and GitHub. Fewer new apps start on it than ten years ago, but the apps
+      already on it need upgrading and looking after, and that's work we do.
+  - q: How much does a Rails upgrade cost?
+    a: >-
+      It depends on how far behind the app is, how much test coverage it has, and how many dependencies
+      it has, so we look at your code first. Most Rails apps can be upgraded within a full week of
+      development work.
+  - q: Should we rewrite our Rails app in something else?
+    a: >-
+      Usually not. A rewrite is expensive and risky, and Rails is still a strong choice for the apps
+      built on it. A [code audit](/code-audit/) will tell you where your app stands.
+  - q: Can you keep our Rails app up to date after the upgrade?
+    a: >-
+      Yes. The Standard and Priority [maintenance plans](/maintenance/) keep the framework and language
+      current, so you don't fall behind again.
+
+contact_heading: Plan your Rails upgrade
+contact_lede: Tell us which versions you're on, and we'll tell you what it will take.
+---
+{% include blocks/features.html id="why" title="Why upgrade Rails?" items=page.reasons %}
+{% include blocks/features.html id="covers" title="What a Rails upgrade covers" items=page.covers %}
+{% include blocks/quote.html id="andrew-hyde" %}
+{% include blocks/steps-section.html id="process" title="How a Rails upgrade works" items=page.steps %}
+{% include blocks/work-band.html id="work" title="Rails apps we've upgraded" slugs="land-surveying-firm,princess-dental-staffing,goalistics" %}

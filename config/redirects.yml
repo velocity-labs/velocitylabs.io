@@ -1,6 +1,10 @@
 # Pages that moved: old path => new path. main.rb (MovedPages) answers each
 # with a single 301 to the new path, with or without the trailing slash and
 # keeping any query string. The page's Markdown copy (old.md => new.md)
-# redirects too. test/redirects_test.rb checks every entry, and
-# test/legacy_urls_test.rb checks every URL the live sitemap has listed.
+# redirects too, when the new page has one. test/redirects_test.rb checks
+# every entry, and test/legacy_urls_test.rb checks every URL the live sitemap
+# has listed.
 /ruby-on-rails/code-audits/: /code-audit/
+/ruby-on-rails/maintenance/: /maintenance/
+/ruby-on-rails/maintenance/terms/: /maintenance/terms/
+/ruby-on-rails/maintenance/thank-you/: /maintenance/thank-you/

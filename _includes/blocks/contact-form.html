@@ -2,10 +2,12 @@
   The contact form. site/contact-form.js validates it, adds the form token and
   reCAPTCHA token, posts it to /contact-form (main.rb) and reports the result
   in the status region. service: the page's service id from
-  _data/services.yml, preselected in "What do you need?"; when that service
-  has a Google Ads conversion, sending the form records it.
+  _data/services.yml, preselected in "What do you need?" (or need, when the
+  page's own service has no option there); when that service has a Google
+  Ads conversion, sending the form records it.
 {%- endcomment -%}
 {%- assign page_service = site.data.services | where: "id", include.service | first -%}
+{%- assign preselected = include.need | default: include.service -%}
 <form class="contact-form" action="/contact-form" method="post" novalidate data-contact-form data-recaptcha-key="{{ site.recaptcha_v3_site_key }}"{% if page_service.conversion %} data-conversion="{{ page_service.conversion }}"{% endif %}>
   {%- comment %} data-missing names each required field in "Please add ..." {% endcomment %}
   <div class="field"><label for="contact-name">Name</label><input id="contact-name" name="name" autocomplete="name" required data-missing="your name"></div>
@@ -14,7 +16,7 @@
     <legend>What do you need?</legend>
     <div class="needs">
       {%- for service in site.data.services %}{% if service.need %}
-      <label><input type="radio" name="need" value="{{ service.id }}"{% if service.id == include.service %} checked{% endif %}><span>{{ service.need }}</span></label>
+      <label><input type="radio" name="need" value="{{ service.id }}"{% if service.id == preselected %} checked{% endif %}><span>{{ service.need }}</span></label>
       {%- endif %}{% endfor %}
     </div>
   </fieldset>

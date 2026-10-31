@@ -1,7 +1,7 @@
 ---
 layout: page
 sitemap: false
-title: Ruby on Rails Application Maintenance Terms
+title: Maintenance terms
 ---
 
 <p>

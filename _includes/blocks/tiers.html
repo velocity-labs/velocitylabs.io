@@ -1,6 +1,7 @@
 {%- comment -%}
   Priced levels side by side. id, title, tiers (a list of { name, tagline,
-  price, unit, best_for, plus, items, featured }); optional lede (Markdown)
+  price, unit, detail (a line under the price, such as the plan's hours),
+  best_for, plus, items, featured }); optional lede (Markdown)
   and cta (button label prefix, e.g. "Order" makes "Order Essentials"). Each
   button leads to the contact form and starts the message with the level
   ("I'd like the Standard code audit ($1,500)."), naming it with item (e.g.
@@ -22,6 +23,9 @@
           <h3 id="{{ include.id }}-{{ tier.name | slugify }}">{{ tier.name }}</h3>
           <p class="tier-tagline">{{ tier.tagline }}</p>
           <p class="tier-price"><b>{{ tier.price }}</b> <span>{{ tier.unit | default: "fixed fee" }}</span></p>
+          {%- if tier.detail %}
+          <p class="tier-detail">{{ tier.detail }}</p>
+          {%- endif %}
         </header>
         <p class="tier-best"><strong>Best for:</strong> {{ tier.best_for }}</p>
         {%- if tier.plus %}
@@ -33,7 +37,7 @@
           {%- endfor %}
         </ul>
         {%- if include.cta %}
-        <a class="btn {% if tier.featured %}btn-sun{% else %}btn-line{% endif %}" href="#contact" data-prefill="I'd like the {{ tier.name }} {{ include.item }} ({{ tier.price }}).">{{ include.cta }} {{ tier.name }}</a>
+        <a class="btn {% if tier.featured %}btn-sun{% else %}btn-line{% endif %}" href="#contact" data-prefill="I'd like the {{ tier.name }} {{ include.item }} ({{ tier.price }}{% if tier.unit %} {{ tier.unit }}{% endif %}).">{{ include.cta }} {{ tier.name }}</a>
         {%- endif %}
       </article>
       {%- endfor %}

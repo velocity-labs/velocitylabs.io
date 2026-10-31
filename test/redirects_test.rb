@@ -24,8 +24,11 @@ class RedirectsTest < AppTest
     assert_equal "#{to}?ref=newsletter&utm_source=mail", last_response.location
   end
 
+  # Only indexable pages have Markdown copies (_plugins/markdown_export.rb)
   def test_markdown_copies_redirect_too
     MOVES.each do |from, to|
+      next unless File.exist?(File.expand_path("../_site#{to.chomp('/')}.md", __dir__))
+
       get "#{from.chomp('/')}.md"
       assert_equal 301, last_response.status, "#{from.chomp('/')}.md"
       assert_equal "#{to.chomp('/')}.md", last_response.location

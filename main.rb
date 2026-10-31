@@ -43,17 +43,18 @@ end
 
 # Pages that moved (config/redirects.yml) get one 301 straight to their new
 # path: with or without the trailing slash, keeping the query string, and for
-# the page's Markdown copy too. It runs ahead of ForceHttps, so in production
-# (canonical: true) an old http or www link also lands on https and the bare
-# domain in that single hop.
+# the page's Markdown copy too when the built site (site_dir) has one. It runs
+# ahead of ForceHttps, so in production (canonical: true) an old http or www
+# link also lands on https and the bare domain in that single hop.
 class MovedPages
-  def initialize(app, moves, canonical: false)
+  def initialize(app, moves, canonical: false, site_dir: nil)
     @app = app
     @canonical = canonical
     @moves = moves.each_with_object({}) do |(from, to), map|
       from = from.chomp('/')
       map[from] = to
-      map["#{from}.md"] = "#{to.chomp('/')}.md"
+      markdown = "#{to.chomp('/')}.md"
+      map["#{from}.md"] = markdown if site_dir && File.exist?(File.join(site_dir, markdown))
     end
   end
 
@@ -104,7 +105,8 @@ class SecurityHeaders
   end
 end
 
-use MovedPages, YAML.load_file(File.expand_path('config/redirects.yml', __dir__)), canonical: settings.production?
+use MovedPages, YAML.load_file(File.expand_path('config/redirects.yml', __dir__)),
+    canonical: settings.production?, site_dir: settings.public_folder
 use ForceHttps if settings.production?
 use SecurityHeaders, hsts: settings.production?
 use Rack::Attack
