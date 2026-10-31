@@ -1,0 +1,40 @@
+{%- comment -%}
+  Priced levels side by side. id, title, tiers (a list of { name, tagline,
+  price, unit, best_for, plus, items, featured }); optional lede (Markdown)
+  and cta (button label prefix, e.g. "Order" makes "Order Essentials"; each
+  button leads to the contact form). The bars show each level's depth.
+{%- endcomment -%}
+<section id="{{ include.id }}" aria-labelledby="{{ include.id }}-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="{{ include.id }}-title" data-reveal="rise">{{ include.title }}</h2>
+      {%- if include.lede %}
+      <div class="lede" data-reveal="rise" style="--d:.12s">{{ include.lede | markdownify }}</div>
+      {%- endif %}
+    </div>
+    <div class="tiers">
+      {%- for tier in include.tiers %}
+      <article class="tier{% if tier.featured %} featured{% endif %}" aria-labelledby="{{ include.id }}-{{ tier.name | slugify }}" data-reveal="lift" style="--d:{{ forloop.index0 | times: 0.12 | round: 2 }}s">
+        <header>
+          <span class="bars" data-level="{{ forloop.index }}" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3 id="{{ include.id }}-{{ tier.name | slugify }}">{{ tier.name }}</h3>
+          <p class="tier-tagline">{{ tier.tagline }}</p>
+          <p class="tier-price"><b>{{ tier.price }}</b> <span>{{ tier.unit | default: "fixed fee" }}</span></p>
+        </header>
+        <p class="tier-best"><strong>Best for:</strong> {{ tier.best_for }}</p>
+        {%- if tier.plus %}
+        <p class="tier-plus">{{ tier.plus }}:</p>
+        {%- endif %}
+        <ul>
+          {%- for item in tier.items %}
+          <li>{{ item }}</li>
+          {%- endfor %}
+        </ul>
+        {%- if include.cta %}
+        <a class="btn {% if tier.featured %}btn-sun{% else %}btn-line{% endif %}" href="#contact">{{ include.cta }} {{ tier.name }}</a>
+        {%- endif %}
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

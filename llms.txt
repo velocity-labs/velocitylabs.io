@@ -2,7 +2,8 @@
 layout: null
 sitemap: false
 ---
-{%- assign service_urls = "/ruby-on-rails/code-audits/,/ruby-on-rails/maintenance/,/ruby-on-rails/upgrades/,/process/story-workshop/" | split: "," -%}
+{%- comment %} the services in _data/services.yml order, then the story workshop; services whose page isn't built yet are skipped {% endcomment -%}
+{%- assign service_urls = site.data.services | map: "url" | push: "/process/story-workshop/" -%}
 # {{ site.company.name }}
 
 > {{ site.company.description }}
@@ -17,7 +18,9 @@ sitemap: false
 
 {% for url in service_urls -%}
 {%- assign service = site.pages | where: "url", url | first -%}
-- [{{ service.title }}]({{ service.markdown_url | default: service.url | absolute_url }}): {{ service.lead | strip_newlines | normalize_whitespace }}
+{%- if service -%}
+- [{{ service.title }}]({{ service.markdown_url | default: service.url | absolute_url }}): {{ service.lead | default: service.description | strip_newlines | normalize_whitespace }}
+{% endif -%}
 {% endfor %}
 ## Company
 

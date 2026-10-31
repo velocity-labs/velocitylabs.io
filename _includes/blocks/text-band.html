@@ -1,0 +1,11 @@
+{%- comment -%}
+  A short band of prose under a heading. id, title, text (Markdown).
+{%- endcomment -%}
+<section id="{{ include.id }}" class="text-band" aria-labelledby="{{ include.id }}-title">
+  <div class="wrap">
+    <h2 id="{{ include.id }}-title" data-reveal="rise">{{ include.title }}</h2>
+    <div class="text-band-body" data-reveal="rise" style="--d:.12s">
+      {{ include.text | markdownify }}
+    </div>
+  </div>
+</section>

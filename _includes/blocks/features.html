@@ -1,0 +1,22 @@
+{%- comment -%}
+  A band of short points in a grid. id, title, items (a list of
+  { title, text } with the text in Markdown); optional lede.
+{%- endcomment -%}
+<section id="{{ include.id }}" aria-labelledby="{{ include.id }}-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="{{ include.id }}-title" data-reveal="rise">{{ include.title }}</h2>
+      {%- if include.lede %}
+      <p class="lede" data-reveal="rise" style="--d:.12s">{{ include.lede }}</p>
+      {%- endif %}
+    </div>
+    <ul class="features">
+      {%- for item in include.items %}
+      <li data-reveal="rise" style="--d:{{ forloop.index0 | modulo: 3 | times: 0.1 | round: 2 }}s">
+        <h3>{{ item.title }}</h3>
+        {{ item.text | markdownify }}
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

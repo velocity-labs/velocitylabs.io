@@ -1,0 +1,117 @@
+---
+layout: service
+service: code-audit
+permalink: /code-audit/
+title: "Code audit services: independent code review"
+description: Fixed-fee code audits with a plain-English report and fix plan, most urgent first. Essentials $1,000, Standard $1,500, Comprehensive $2,500.
+heading: A code audit tells you what you have before you build on it.
+lede: An independent review of your application's code by senior developers who have been building and maintaining web applications since 2007. You get a clear grade, the risks that matter, and a prioritized plan, written so owners and developers can both act on it.
+cta: Order a code audit
+
+# From the pricing sheet (Audits/pricing.pdf)
+includes:
+  - title: Graded on eight areas
+    text: Security, data, performance, architecture, code quality, testing, dependencies, and operations.
+  - title: A report for owners and developers
+    text: A plain-language summary up front, specific findings with fixes behind it.
+  - title: Prioritized next steps
+    text: What to fix first, with effort estimates.
+  - title: Your code stays contained
+    text: Reviewed in an isolated, disposable environment, never copied anywhere else and deleted immediately after.
+  - title: Hands off your systems
+    text: We never connect to your production servers, databases, or accounts.
+  - title: Help with the fixes
+    text: We can do the work, alongside your team or on our own.
+
+tiers:
+  - name: Essentials
+    tagline: A fast health check
+    price: "$1,000"
+    best_for: Answering "is this codebase OK?" before you buy, hire, or launch.
+    items:
+      - Review of your code, configuration, CI, and database schema
+      - Automated scans for security issues, vulnerable and outdated dependencies, leaked secrets, and code quality
+      - The essential checks for each technology in your stack
+      - Critical and high findings written up in full
+  - name: Standard
+    tagline: A thorough review
+    price: "$1,500"
+    featured: true
+    best_for: An inherited codebase, a pre-launch review, or before hiring a team.
+    plus: Everything in Essentials, plus
+    items:
+      - Every check for each technology, not just the essentials
+      - Your app and tests running in our isolated environment
+      - How your team ships, when the code comes with its git history
+      - Every finding written up in full
+  - name: Comprehensive
+    tagline: Due diligence depth
+    price: "$2,500"
+    best_for: Acquisitions and technical due diligence, compliance preparation, or after an incident.
+    plus: Everything in Standard, plus
+    items:
+      - Line-by-line review of sign-in, payments, and data access
+      - Steps to reproduce every finding
+      - "Your public website: accessibility, search visibility, and security headers"
+      - "Domain and email setup: DNS, SPF, DKIM, and DMARC"
+
+steps:
+  - title: Tell us about your app
+    text: >-
+      [Book a 30-minute call](BOOKING_URL){:target="_blank" rel="noopener"} or send us a message.
+      If you're not sure which level fits, we'll recommend one.
+  - title: We review a copy of your code
+    text: >-
+      In an isolated, disposable environment that's deleted as soon as we're done. We never connect
+      to your production servers, databases, or accounts.
+  - title: You get the report and a plan
+    text: >-
+      A plain-language summary with a grade for each area, specific findings with their fixes, and
+      what to fix first, with effort estimates. If you want, we'll do the fixes too.
+
+vibe: >-
+  Built with Lovable, Replit, or Base44? An audit is a quick way to see what the tool left behind
+  before real customers find it: security gaps, exposed keys, and data that isn't locked down. When
+  there's work to do, our [vibe coding cleanup](/vibe-coding-cleanup/) takes it from there.
+
+faq_title: Questions about code audits
+faq:
+  - q: How much does a code audit cost?
+    a: >-
+      Each level is a fixed fee: $1,000 for Essentials, $1,500 for Standard, and $2,500 for
+      Comprehensive. [Compare what each one covers](#pricing).
+  - q: What's the difference between a code audit and a code review?
+    a: >-
+      A code review checks individual changes as a team makes them. A code audit is an independent
+      review of the whole codebase at once: security, data, performance, architecture, code quality,
+      testing, dependencies, and operations, written up so owners and developers can both act on it.
+  - q: How long does a code audit take?
+    a: Usually a few days, depending on the size of your app and the level you choose.
+  - q: What's in the report?
+    a: >-
+      A plain-language summary up front, with a grade for each of the eight areas and the risks that
+      matter. Behind it are the specific findings with their fixes, and a prioritized plan with effort
+      estimates, so owners and developers can both act on it.
+  - q: Do you need access to our servers?
+    a: >-
+      No. We review a copy of your code in an isolated, disposable environment that's deleted right
+      after, and we never connect to your production servers, databases, or accounts.
+  - q: Can you audit an app built with Lovable, Replit, or Base44?
+    a: >-
+      Yes. AI-built apps get the same review, and it's often the fastest way to find the security gaps
+      they ship with. If the audit turns up work, [vibe coding cleanup](/vibe-coding-cleanup/) is how
+      we fix it.
+  - q: Do we need a technical due diligence review before buying a software business?
+    a: >-
+      If the software is a big part of what you're buying, it's worth it. The Comprehensive audit is
+      built for acquisitions: a line-by-line review of sign-in, payments, and data access, steps to
+      reproduce every finding, and a check of the public website and the domain and email setup.
+
+contact_heading: Order a code audit
+contact_lede: Tell us about your app and we'll recommend the level that fits.
+---
+{% include blocks/features.html id="includes" title="What every code audit includes" items=page.includes %}
+{% include blocks/tiers.html id="pricing" title="Code audit pricing" lede="Three levels, each a fixed fee. Not sure which fits? [Tell us about your app](#contact) and we'll recommend one." tiers=page.tiers cta="Order" %}
+{% include blocks/quote.html id="robert-wallace" %}
+{% include blocks/steps-section.html id="process" title="How a code audit works" items=page.steps %}
+{% include blocks/text-band.html id="vibe-coded-apps" title="Code audits for vibe coded apps" text=page.vibe %}

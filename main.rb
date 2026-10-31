@@ -41,6 +41,33 @@ class ForceHttps
   end
 end
 
+# Pages that moved (config/redirects.yml) get one 301 straight to their new
+# path: with or without the trailing slash, keeping the query string, and for
+# the page's Markdown copy too. It runs ahead of ForceHttps, so in production
+# (canonical: true) an old http or www link also lands on https and the bare
+# domain in that single hop.
+class MovedPages
+  def initialize(app, moves, canonical: false)
+    @app = app
+    @canonical = canonical
+    @moves = moves.each_with_object({}) do |(from, to), map|
+      from = from.chomp('/')
+      map[from] = to
+      map["#{from}.md"] = "#{to.chomp('/')}.md"
+    end
+  end
+
+  def call(env)
+    req = Rack::Request.new(env)
+    target = @moves[req.path_info.chomp('/')] if req.get? || req.head?
+    return @app.call(env) unless target
+
+    target += "?#{req.query_string}" unless req.query_string.empty?
+    target = "https://#{req.host.delete_prefix('www.')}#{target}" if @canonical
+    [301, { 'location' => target, 'content-type' => 'text/html' }, []]
+  end
+end
+
 # Security and caching headers for every response, including static files
 class SecurityHeaders
   HEADERS = {
@@ -77,6 +104,7 @@ class SecurityHeaders
   end
 end
 
+use MovedPages, YAML.load_file(File.expand_path('config/redirects.yml', __dir__)), canonical: settings.production?
 use ForceHttps if settings.production?
 use SecurityHeaders, hsts: settings.production?
 use Rack::Attack

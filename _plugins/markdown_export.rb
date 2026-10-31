@@ -11,6 +11,7 @@ module VelocityLabs
     # Main content element for each exported layout, in llms-full.txt order
     CONTENT_SELECTORS = {
       'home'    => '#main',
+      'service' => '#main',
       'landing' => '#main',
       'page'    => '#main',
       'post'    => '.post-body'

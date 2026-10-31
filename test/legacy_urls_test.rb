@@ -40,8 +40,9 @@ class LegacyUrlsTest < AppTest
       target = URI(last_response.location)
       return "#{path}: 301 to another host (#{target})" unless target.host.nil? || target.host == last_request.host
 
-      get target.request_uri
-      "#{path}: 301 to #{target.request_uri}, which returned #{last_response.status}" unless last_response.status == 200
+      target_path = [target.path, target.query].compact.join('?')
+      get target_path
+      "#{path}: 301 to #{target_path}, which returned #{last_response.status}" unless last_response.status == 200
     else
       "#{path}: #{last_response.status}"
     end
