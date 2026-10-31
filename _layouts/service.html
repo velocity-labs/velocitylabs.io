@@ -5,8 +5,7 @@ layout: base
   A service page. Front matter: service (its id in _data/services.yml, which
   names the page, preselects the contact form option and records its Ads
   conversion), heading, lede, cta, faq (a list of { q, a }), and optional
-  eyebrow (default: the service's name), need (the form option to preselect
-  when the service has none of its own), faq_title, contact_heading,
+  eyebrow (default: the service's name), faq_title, contact_heading,
   contact_lede. The page's own content supplies the bands between the hero
   and the FAQ, usually from blocks.
 {%- endcomment -%}
@@ -17,4 +16,4 @@ layout: base
 {%- if page.faq %}
 {% include blocks/faq.html items=page.faq title=page.faq_title %}
 {%- endif %}
-{% include blocks/contact.html service=page.service need=page.need heading=page.contact_heading lede=page.contact_lede %}
+{% include blocks/contact.html service=page.service heading=page.contact_heading lede=page.contact_lede %}

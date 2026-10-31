@@ -10,6 +10,7 @@
 #             _frontend/javascripts/home/orbit.js, keyed by orbit.
 # footer:     label in the footer's Services column (omit to leave it out)
 # need:       label of the contact form option (omit for no option)
+# own_page:   offer the form option only on the service's own page
 # conversion: Google Ads conversion sent when a form on this service's page
 #             is sent
 
@@ -79,6 +80,8 @@
   url: /ruby-on-rails/upgrades/
   name: Ruby on Rails upgrades
   footer: Ruby on Rails upgrades
+  need: Rails upgrade
+  own_page: true # the site isn't Rails-specific, so other forms don't offer it
   conversion: AW-960263497/8nV2CPTngoUBEMnq8ckD
 
 - id: partners
