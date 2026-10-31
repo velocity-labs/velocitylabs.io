@@ -59,7 +59,15 @@ faq:
   - q: Is our Supabase row level security set up correctly?
     a: >-
       If you're not sure, it needs a look. When row level security is off or too broad, anyone with your
-      app's public key can read or change your data. We check every table's policies.
+      app's public key can read or change your data. Supabase only turns it on automatically for tables
+      made in its dashboard, not for ones an AI tool creates in code. We check every table's policies.
+  - q: What do Supabase's recent security changes mean for our app?
+    a: >-
+      Two things to plan for. Supabase is making API access opt-in, so a new table needs an explicit
+      grant before your app can reach it, and a table an AI tool adds may fail with a permission error
+      until it has one. A grant still doesn't protect your rows; row level security does. And the old
+      anon and service_role keys are being replaced by publishable and secret keys, with the old ones
+      removed in late 2026. We can make both changes without breaking your app.
   - q: I vibe coded an app. Now what?
     a: >-
       Get it reviewed before real customers depend on it, then fix what matters most: security, your

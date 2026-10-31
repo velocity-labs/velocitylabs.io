@@ -3,7 +3,15 @@
 // Numbered steps (blocks/steps.html). A satellite carries the sun from step to
 // step, passing behind each number, and the line it has covered lights up.
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; counter-reset: step; }
-.steps li { counter-increment: step; display: grid; gap: .6rem; }
+.steps li { counter-increment: step; display: grid; gap: .6rem; align-content: start; }
+// side by side, each step's number, heading and text share rows across the
+// columns, so a two-line heading doesn't push its text out of line
+@media (min-width: $stack + 1px) {
+  @supports (grid-template-rows: subgrid) {
+    .steps { grid-template-rows: auto auto auto; row-gap: .6rem; }
+    .steps li { grid-row: span 3; grid-template-rows: subgrid; }
+  }
+}
 .steps li::before {
   content: counter(step); font: 800 1rem/1 var(--display);
   width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 2px dashed var(--orbit);
