@@ -2,10 +2,11 @@ import { $$, absTop } from '../lib/dom.js';
 import { reduce } from '../lib/motion.js';
 import { onLayout, onFrame } from '../lib/frame.js';
 
-// A moon circles each team photo (_includes/home/team.html) as the reader scrolls
+// A moon circles each team photo (_includes/home/team.html) as the reader
+// scrolls. Only the photos' moons: project covers and the 404 draw moons too.
 export function init() {
   if (reduce) return;
-  const moons = $$('.moon');
+  const moons = $$('.sat .moon');
   if (!moons.length) return;
   const section = moons[0].closest('section');
 

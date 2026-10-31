@@ -8,8 +8,8 @@
 
 // a moon circles each photo as the reader scrolls (site/moons.js)
 .sat { position: relative; display: block; width: max-content; }
-.moon { position: absolute; inset: -7px; border-radius: 50%; pointer-events: none; will-change: transform; }
-.moon::after { content: ""; position: absolute; left: 50%; top: -4px; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 8px rgba(255, 186, 66, .6); }
+.sat .moon { position: absolute; inset: -7px; border-radius: 50%; pointer-events: none; will-change: transform; }
+.sat .moon::after { content: ""; position: absolute; left: 50%; top: -4px; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 8px rgba(255, 186, 66, .6); }
 
 @media (max-width: $stack) {
   .team { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
