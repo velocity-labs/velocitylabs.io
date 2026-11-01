@@ -5,7 +5,7 @@
     <div>
       <a class="brand" href="/">{{ company.name }}</a>
       <p class="tagline">Custom software development in {{ company.address.city }}, Arizona, since {{ company.founded }}.</p>
-      {%- comment %} matches the LocalBusiness data in site/jsonld.html: keep one name, address and phone everywhere {% endcomment %}
+      {%- comment %} matches the Organization data in site/jsonld.html: keep one name, address and phone everywhere {% endcomment %}
       <address>
         <p>{{ company.address.street }}<br>{{ company.address.city }}, {{ company.address.state }} {{ company.address.zip }}</p>
         <p><a href="tel:+1{{ phone_digits }}">{{ company.phone }}</a><br><a href="mailto:{{ company.email }}">{{ company.email }}</a></p>

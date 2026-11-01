@@ -1,14 +1,16 @@
 {%- comment -%}
-  The business for search engines, rendered on the home page from
+  The company for search engines, rendered on the home page from
   site.company so it always matches the footer's name, address and phone.
+  An Organization, not a LocalBusiness: the team works remotely, and the
+  address is where mail goes, not an office clients can visit.
 {%- endcomment -%}
 {%- assign company = site.company -%}
 {%- assign phone_digits = company.phone | remove: "(" | remove: ")" | remove: " " | remove: "-" -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": {{ "/#business" | absolute_url | jsonify }},
+  "@type": "Organization",
+  "@id": {{ "/#organization" | absolute_url | jsonify }},
   "name": {{ company.name | jsonify }},
   "description": {{ page.description | jsonify }},
   "url": {{ "/" | absolute_url | jsonify }},

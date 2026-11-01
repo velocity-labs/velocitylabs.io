@@ -66,7 +66,7 @@ class SiteTest < AppTest
   def test_business_details_match_the_config
     company = YAML.load_file(File.join(ROOT, '_config.yml'), aliases: true)['company']
     business = built('/').css('script[type="application/ld+json"]').map { |script| JSON.parse(script.text) }
-                         .find { |data| data['@type'] == 'LocalBusiness' }
+                         .find { |data| data['@type'] == 'Organization' }
 
     assert_equal company['name'], business['name']
     assert_equal "1#{company['phone'].delete('^0-9')}", business['telephone'].delete('^0-9')
