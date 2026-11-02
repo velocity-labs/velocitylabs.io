@@ -39,7 +39,28 @@
 #orbit.focus .ring:not(.hot) { opacity: .35; }
 #orbit.focus .ring.far:not(.hot) { opacity: .18; }
 .core-label { fill: var(--sun-ink); font: 800 13px var(--display); }
-#core { transform-origin: 308px 300px; } // the sun's center, so phones can scale it in place
+#core { transform-origin: 308px 300px; user-select: none; -webkit-user-select: none; } // the sun's center, so phones can scale it in place
+// the sun beats gently, an invitation to click; on a desktop it answers the mouse
+// like the planets do, since a click on it sets off the supernova (home/supernova.js)
+.core-corona, .core-body { transform-box: fill-box; transform-origin: center; }
+.motion .core-corona { animation: breathe 4s ease-in-out infinite; }
+.motion .core-body { animation: beat 4s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: scale(1.14); opacity: .85; } }
+@keyframes beat { 50% { transform: scale(1.04); } }
+// the occasional solar flare (home/flares.js): a bundle of hot filaments off the limb, their glow, and sparks
+.flare { stroke: #FFEBB4; stroke-linecap: round; }
+.flare-strand { stroke: #FFD27A; stroke-linecap: round; }
+.flare-haze { stroke: var(--sun); stroke-width: 6; stroke-linecap: round; }
+.spark { fill: #FFEBC2; }
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
+  #core { cursor: pointer; transition: transform .3s cubic-bezier(.3, 1.4, .5, 1); }
+  #core:hover { transform: scale(1.08); }
+}
+// the supernova easter egg (home/supernova.js) draws its blast on a canvas
+// behind the orbit that spills well past the figure; the copy stays on top
+.orbit-figure, #orbit { position: relative; }
+.hero-copy { position: relative; z-index: 1; }
+.nova-sky { position: absolute; left: -90%; top: -80%; width: 280%; height: 260%; pointer-events: none; }
 
 @media (max-width: $stack) {
   .hero .wrap { grid-template-columns: minmax(0, 1fr); }
