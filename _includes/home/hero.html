@@ -15,10 +15,25 @@
     </div>
     <figure class="orbit-figure">
       <svg id="orbit" viewBox="0 123 640 440" role="group" aria-label="Your app at the center, surrounded by what comes after building it. Each planet links to its service below.">
+        <defs>
+          <!-- the sun: lit from the upper left, with a soft corona that breathes -->
+          <radialGradient id="sun-face" cx="42%" cy="38%" r="65%">
+            <stop offset="0" stop-color="#FFE29A"/>
+            <stop offset=".55" stop-color="#FFBA42"/>
+            <stop offset="1" stop-color="#F09A2A"/>
+          </radialGradient>
+          <!-- the glow around a solar flare (home/flares.js) -->
+          <filter id="flare-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+          <radialGradient id="sun-corona">
+            <stop offset=".45" stop-color="#FFBA42" stop-opacity=".35"/>
+            <stop offset=".7" stop-color="#FFBA42" stop-opacity=".12"/>
+            <stop offset="1" stop-color="#FFBA42" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
         <g id="back"></g>
         <g id="core">
-          <circle cx="308" cy="300" r="35" fill="#FFBA42" opacity=".18"/>
-          <circle cx="308" cy="300" r="26" fill="#FFBA42"/>
+          <circle class="core-corona" cx="308" cy="300" r="46" fill="url(#sun-corona)" opacity="1"/>
+          <circle class="core-body" cx="308" cy="300" r="26" fill="url(#sun-face)"/>
           <text class="core-label" text-anchor="middle"><tspan x="308" y="297">Your</tspan><tspan x="308" y="311">app</tspan></text>
         </g>
         <g id="front"></g>

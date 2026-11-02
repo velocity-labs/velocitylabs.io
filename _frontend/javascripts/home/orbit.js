@@ -1,6 +1,8 @@
 import { $, $$, svg, clamp01, ease, seeded } from '../lib/dom.js';
 import { reduce, whenSeen } from '../lib/motion.js';
 import { onLayout, onFrame } from '../lib/frame.js';
+import { supernova } from './supernova.js';
+import { flares } from './flares.js';
 
 // The home hero's orbit (_includes/home/hero.html). One planet per orbit, one
 // per service. The orbits are circles on a plane tipped away from the viewer
@@ -59,6 +61,11 @@ export function init() {
       scale: f
     };
   }
+  // a planet drawn part of the way (k, 0 to 1) in toward the sun, shrinking as it goes
+  function pulled(p, k) {
+    if (!k) return p;
+    return { ...p, x: p.x + (CX - p.x) * k, y: p.y + (CY - p.y) * k, scale: p.scale * (1 - 0.7 * k) };
+  }
   // half an orbit as a path: 0 to 180 degrees is the near half, 180 to 360 the far half
   function halfOrbit(body, from) {
     let d = '';
@@ -96,7 +103,8 @@ export function init() {
     link.append(hit, halo, dot, tag);
     const node = {
       body, link, rings: [far, near], hit, halo, dot, tag, label, sub,
-      load: 0, show: 1, fade: 1, depth: 0, fontSize: 15, w: 0, h: 15, hover: false, focus: false
+      load: 0, show: 1, fade: 1, depth: 0, fontSize: 15, w: 0, h: 15, hover: false, focus: false,
+      alive: 1, pull: 0 // home/supernova.js fades out swallowed planets and pulls one in
     };
     // the hovered or keyboard-focused planet and its orbit light up
     const sync = () => {
@@ -188,7 +196,7 @@ export function init() {
   function draw() {
     nodes.forEach((node) => {
       const degrees = node.body.angle - node.body.speed * (spin + driftSec) + node.load;
-      const p = point(node.body, degrees);
+      const p = pulled(point(node.body, degrees), node.pull);
       const scale = p.scale; // nearer planets look bigger (and brighter, below)
       node.depth = p.depth;
       node.p = p;
@@ -199,7 +207,7 @@ export function init() {
       });
       node.dot.setAttribute('r', (node.body.r * scale).toFixed(2));
       node.halo.setAttribute('r', (node.body.r * scale + 7).toFixed(2));
-      node.link.style.opacity = node.hover || node.focus ? 1 : (0.85 + 0.15 * p.depth).toFixed(3);
+      node.link.style.opacity = ((node.hover || node.focus ? 1 : 0.85 + 0.15 * p.depth) * node.alive).toFixed(3);
       placeLabel(node, p, scale, degrees);
     });
     // where two labels cross, the farther planet's label fades (a hovered one always stays),
@@ -209,14 +217,14 @@ export function init() {
       for (let j = i + 1; j < nodes.length; j++) {
         const m = nodes[i];
         const k = nodes[j];
-        if (!overlap(m.box, k.box)) continue;
+        if (m.alive < 0.5 || k.alive < 0.5 || !overlap(m.box, k.box)) continue;
         const behind = m.hover || m.focus ? k : k.hover || k.focus ? m : m.depth < k.depth ? m : k;
         behind.want = 0.12;
       }
     }
     nodes.forEach((m) => {
       if (m.hover || m.focus) return;
-      nodes.forEach((k) => { if (k.depth > m.depth && covers(k, m.box)) m.want = 0.12; });
+      nodes.forEach((k) => { if (k.alive >= 0.5 && k.depth > m.depth && covers(k, m.box)) m.want = 0.12; });
     });
     nodes.forEach((node, i) => {
       node.fade += (node.want - node.fade) * 0.15;
@@ -253,6 +261,9 @@ export function init() {
   }
 
   if (reduce) return;
+
+  supernova({ orbit, nodes, project: (dist, degrees) => point({ dist }, degrees), tilt: TILT, cx: CX, cy: CY });
+  flares(orbit);
 
   // planets swing into place on load, then keep slowly orbiting while the hero is on screen
   let inView = true;

@@ -21,3 +21,16 @@
   descent-override: 29.33%;
   line-gap-override: 0%;
 }
+
+// Atkinson Hyperlegible slashes its zero, which makes prices and copy read like
+// code, and it has no alternate glyph to switch to. So body text borrows
+// Montserrat's plain zero: --body lists this face first, unicode-range keeps it
+// to the digit 0, and it's the same file the headings already load.
+@font-face {
+  font-family: 'Plain Zero';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('../../../node_modules/@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0030;
+}
