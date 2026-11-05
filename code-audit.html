@@ -21,7 +21,9 @@ includes:
   - title: Hands off your systems
     text: We never connect to your production servers, databases, or accounts.
   - title: Help with the fixes
-    text: We can do the work, alongside your team or on our own.
+    text: >-
+      We can do the work, alongside your team or on our own. Start hourly development with us within
+      30 days of the report and up to $1,000 of the audit fee comes off your first invoice.
 
 tiers:
   - name: Essentials
@@ -87,7 +89,9 @@ faq:
   - q: How much does a code audit cost?
     a: >-
       Each level is a fixed fee: $1,000 for Essentials, $1,500 for Standard, and $2,500 for
-      Comprehensive. [Compare what each one covers](#pricing).
+      Comprehensive. [Compare what each one covers](#pricing). If you hire us for hourly development
+      within 30 days of your report, we credit up to $1,000 of the audit fee to your first invoice,
+      which covers Essentials in full. Maintenance plans aren't included.
   - q: What's the difference between a code audit and a code review?
     a: >-
       A code review usually looks at one change before it's merged. A code audit is an independent
@@ -125,7 +129,7 @@ contact_lede: Tell us about your app and we'll recommend the level that fits.
 contact_question: What's going on with your app?
 ---
 {% include blocks/features.html id="includes" title="What every code audit includes" items=page.includes %}
-{% include blocks/tiers.html id="pricing" title="Code audit pricing" lede="Three levels, each a fixed fee. Not sure which fits? [Tell us about your app](#contact) and we'll recommend one." tiers=page.tiers cta="Order" item="code audit" %}
+{% include blocks/tiers.html id="pricing" title="Code audit pricing" lede="Three levels, each a fixed fee. Hire us for hourly development within 30 days of your report and up to $1,000 of the fee is credited to your first invoice. Not sure which fits? [Tell us about your app](#contact) and we'll recommend one." tiers=page.tiers cta="Order" item="code audit" %}
 {% include blocks/quote.html id="robert-wallace" %}
 {% include blocks/steps-section.html id="process" title="How a code audit works" items=page.steps %}
 {% include blocks/text-band.html id="technologies" title="Technologies we audit" text=page.stacks %}
