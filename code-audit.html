@@ -5,7 +5,7 @@ permalink: /code-audit/
 title: "Code audit services: independent code review"
 description: Fixed-fee code audits with a plain-English report and fix plan, most urgent first. Essentials $1,000, Standard $1,500, Comprehensive $2,500.
 heading: A code audit tells you what you have before you build on it.
-lede: An independent review of your application's code by senior developers who have been building and maintaining web applications since 2007. You get a clear grade, the risks that matter, and a prioritized plan, written so owners and developers can both act on it.
+lede: An independent code review of your application by senior developers who have been building and maintaining web applications since 2007. You get a clear grade, the risks that matter, and a prioritized plan, written so owners and developers can both act on it.
 cta: Order a code audit
 
 # From the pricing sheet (Audits/pricing.pdf)
@@ -69,6 +69,14 @@ steps:
       A plain-language summary with a grade for each area, specific findings with their fixes, and
       what to fix first, with effort estimates. If you want, we'll do the fixes too.
 
+stacks: >-
+  Our code audit services cover the stacks most business apps run on: Ruby on Rails, Laravel and
+  PHP, Python (Django, FastAPI, and Flask), Node.js, Next.js, React, React Native and Expo, and
+  TypeScript, on PostgreSQL, MySQL, or MongoDB, including apps built on Supabase, Firebase, or
+  WordPress. Every audit includes a security audit: we check sign-in, permissions, payments, file
+  uploads, and secrets against the known weaknesses of your framework, so a Rails security audit
+  looks for different problems than a Laravel or Next.js one.
+
 vibe: >-
   Built with Lovable, Replit, or Base44? An audit is a quick way to see what the tool left behind
   before real customers find it: security gaps, exposed keys, and data that isn't locked down. When
@@ -80,6 +88,11 @@ faq:
     a: >-
       Each level is a fixed fee: $1,000 for Essentials, $1,500 for Standard, and $2,500 for
       Comprehensive. [Compare what each one covers](#pricing).
+  - q: What's the difference between a code audit and a code review?
+    a: >-
+      A code review usually looks at one change before it's merged. A code audit is an independent
+      code review of the whole application: its security, data, architecture, tests, and dependencies,
+      graded and written up with a plan for what to fix first.
   - q: How long does a code audit take?
     a: Typically less than a week, depending on the size of your app and the level you choose.
   - q: What's in the report?
@@ -91,6 +104,11 @@ faq:
     a: >-
       No. We review a copy of your code in an isolated, disposable environment that's deleted right
       after, and we never connect to your production servers, databases, or accounts.
+  - q: Do you do Ruby on Rails code audits and security audits?
+    a: >-
+      Yes. We've built and maintained Rails applications since 2007, and Rails has its own checklist
+      in every audit, from mass assignment and SQL injection to credentials, outdated gems, and
+      upgrade readiness. The same depth applies to the other stacks we audit.
   - q: Can you audit an app built with Lovable, Replit, or Base44?
     a: >-
       Yes. AI-built apps get the same review, and it's often the fastest way to find the security gaps
@@ -110,4 +128,5 @@ contact_question: What's going on with your app?
 {% include blocks/tiers.html id="pricing" title="Code audit pricing" lede="Three levels, each a fixed fee. Not sure which fits? [Tell us about your app](#contact) and we'll recommend one." tiers=page.tiers cta="Order" item="code audit" %}
 {% include blocks/quote.html id="robert-wallace" %}
 {% include blocks/steps-section.html id="process" title="How a code audit works" items=page.steps %}
+{% include blocks/text-band.html id="technologies" title="Technologies we audit" text=page.stacks %}
 {% include blocks/text-band.html id="vibe-coded-apps" title="Code audits for vibe coded apps" text=page.vibe %}
