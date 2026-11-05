@@ -175,4 +175,13 @@ class MiddlewareTest < AppTest
     _, h, = call(headers, 'https://velocitylabs.io/blog/')
     assert_nil h['cache-control']
   end
+
+  def test_pdfs_are_not_indexed
+    get '/downloads/code-audit-pricing.pdf'
+    assert_equal 200, last_response.status
+    assert_equal 'noindex', last_response.headers['x-robots-tag']
+
+    get '/code-audit/'
+    assert_nil last_response.headers['x-robots-tag']
+  end
 end

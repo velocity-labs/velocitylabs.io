@@ -8,7 +8,8 @@ heading: A code audit tells you what you have before you build on it.
 lede: An independent code review of your application by senior developers who have been building and maintaining web applications since 2007. You get a clear grade, the risks that matter, and a prioritized plan, written so owners and developers can both act on it.
 cta: Order a code audit
 
-# From the pricing sheet (Audits/pricing.pdf)
+# From the pricing sheet (Audits/pricing.pdf in Drive; its direct-client version is
+# downloads/code-audit-pricing.pdf, so regenerate and copy it when the tiers change)
 includes:
   - title: Graded on eight areas
     text: Security, data, performance, architecture, code quality, testing, dependencies, and operations.
@@ -129,7 +130,7 @@ contact_lede: Tell us about your app and we'll recommend the level that fits.
 contact_question: What's going on with your app?
 ---
 {% include blocks/features.html id="includes" title="What every code audit includes" items=page.includes %}
-{% include blocks/tiers.html id="pricing" title="Code audit pricing" lede="Three levels, each a fixed fee. Hire us for hourly development within 30 days of your report and up to $1,000 of the fee is credited to your first invoice. Not sure which fits? [Tell us about your app](#contact) and we'll recommend one." tiers=page.tiers cta="Order" item="code audit" %}
+{% include blocks/tiers.html id="pricing" title="Code audit pricing" lede="Three levels, each a fixed fee. Hire us for hourly development within 30 days of your report and up to $1,000 of the fee is credited to your first invoice. Not sure which fits? [Tell us about your app](#contact) and we'll recommend one. [Download the pricing sheet (PDF)](/downloads/code-audit-pricing.pdf)" tiers=page.tiers cta="Order" item="code audit" %}
 {% include blocks/quote.html id="robert-wallace" %}
 {% include blocks/steps-section.html id="process" title="How a code audit works" items=page.steps %}
 {% include blocks/text-band.html id="technologies" title="Technologies we audit" text=page.stacks %}

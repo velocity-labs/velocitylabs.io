@@ -88,6 +88,8 @@ class SecurityHeaders
     status, headers, body = @app.call(env)
     HEADERS.each { |name, value| headers[name] ||= value }
     headers['strict-transport-security'] = HSTS if @hsts
+    # PDFs can be shared but shouldn't rank in place of the pages they come from
+    headers['x-robots-tag'] = 'noindex' if env['PATH_INFO'].end_with?('.pdf')
     if (cache = cache_control(env['PATH_INFO'])) && status == 200
       headers['cache-control'] = cache
     end
