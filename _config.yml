@@ -90,6 +90,14 @@ company:
 # target of every "Book a call" link
 booking_url: https://calendar.app.google/o6hWQt45536m5hUR7
 
+## Google Analytics and Ads ##
+# _includes/_google-analytics.html loads them only on the live site (every
+# jekyll build is "production" to jekyll-vite, so it checks the hostname).
+# Key events: javascripts/site/analytics.js
+google:
+  analytics_id: G-0JDTLFF9Z4
+  ads_id:       AW-960263497
+
 ## SEO + Feed (jekyll-seo-tag, jekyll-feed) ##
 title:       *company_name
 description: *company_description

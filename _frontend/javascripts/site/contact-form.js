@@ -1,7 +1,10 @@
 // The contact form (_includes/blocks/contact-form.html). It adds the signed
 // form token and a reCAPTCHA v3 token, posts to /contact-form (main.rb), and
 // reports the result in the form's status region. A sent form records the
-// page's Google Ads conversion, when it has one.
+// page's Google Ads conversion, when it has one, and the generate_lead key
+// event (analytics.js).
+import { track } from './analytics.js';
+
 const EMAIL = 'contact@velocitylabs.io';
 
 export function init(form) {
@@ -139,6 +142,7 @@ export function init(form) {
         return;
       }
 
+      track('generate_lead', { service: data.get('need') || 'none' });
       form.classList.add('sent');
       show('success', "Thanks! Your message has been sent. We'll get back to you shortly.");
       form.reset();

@@ -149,4 +149,18 @@ class SiteTest < AppTest
       [last_response.status, last_response.body]
     end
   end
+
+  # analytics.js sends book_call for links to these hosts, and GA only loads
+  # on the live host with the IDs from _config.yml
+  def test_analytics_loads_on_the_live_site_and_sees_every_booking_link
+    config = YAML.load_file(File.join(ROOT, '_config.yml'), aliases: true)
+    booking = URI(config['booking_url']).host
+    assert_includes %w[calendar.app.google calendar.google.com], booking
+
+    script = built('/').css('head script').map(&:text).join
+    assert_includes script, "location.hostname === 'velocitylabs.io'"
+    assert_includes script, "gtag('config', '#{config['google']['analytics_id']}')"
+    assert_includes script, "gtag/js?id=#{config['google']['analytics_id']}"
+    assert_includes script, "gtag('config', '#{config['google']['ads_id']}')"
+  end
 end

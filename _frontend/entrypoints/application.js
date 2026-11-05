@@ -1,6 +1,7 @@
 // Runs on every page. Each effect does nothing on pages without its element.
 import { start as startFrames } from '../javascripts/lib/frame.js';
 import { whenSeen } from '../javascripts/lib/motion.js';
+import { init as initAnalytics } from '../javascripts/site/analytics.js';
 import { init as initConsent } from '../javascripts/site/consent.js';
 import { init as initMenu } from '../javascripts/site/menu.js';
 import { init as initExternalLinks } from '../javascripts/site/external-links.js';
@@ -19,6 +20,7 @@ import { init as initTechFilter } from '../javascripts/site/tech-filter.js';
 // the failsafe in base.html shows everything if this never runs
 window.orbitStarted = true;
 
+initAnalytics();
 initConsent();
 initMenu();
 initExternalLinks();

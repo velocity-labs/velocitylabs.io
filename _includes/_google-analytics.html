@@ -40,18 +40,24 @@
   var savedConsent = cookieConsent.saved() || (navigator.globalPrivacyControl ? 'denied' : null);
   if (savedConsent) gtag('consent', 'update', cookieConsent.state(savedConsent));
 
-  gtag('js', new Date());
-  gtag('config', 'G-0JDTLFF9Z4');
-  gtag('config', 'AW-960263497');
+  // Only the live site reports to Google, so local and review builds don't
+  // count as traffic. Elsewhere gtag() just queues, and analytics.js logs
+  // its events to the console instead.
+  window.analyticsLive = location.hostname === '{{ site.url | remove: "https://" | remove: "http://" }}';
+  if (analyticsLive) {
+    gtag('js', new Date());
+    gtag('config', '{{ site.google.analytics_id }}');
+    gtag('config', '{{ site.google.ads_id }}');
+  }
 </script>
 <script>
   // gtag.js is ~320KB, so load it after the page has loaded instead of letting
   // it compete with the page itself. The commands queued in dataLayer above run
   // when it arrives.
-  window.addEventListener('load', function () {
+  if (analyticsLive) window.addEventListener('load', function () {
     var script = document.createElement('script');
     script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0JDTLFF9Z4';
+    script.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google.analytics_id }}';
     document.head.appendChild(script);
   });
 </script>
