@@ -1,0 +1,140 @@
+@use 'breakpoints' as *;
+
+// A case study (portfolio/<slug>.html): the site in a browser frame beside
+// its numbers, then the story as a timeline
+
+// the screenshot, with a warm glow behind it, and the numbers in a 2x2 grid beside it
+.case-shot .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.browser {
+  position: relative; margin: 0; max-width: 40rem; border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--orbit); background: var(--panel);
+  box-shadow: 0 2.5rem 6rem -1.5rem rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 186, 66, .06), 0 0 8rem -2rem rgba(255, 186, 66, .25);
+}
+.browser-bar { display: flex; align-items: center; gap: .45rem; padding: .7rem 1rem; border-bottom: 1px solid var(--orbit); }
+.browser-bar i { width: .7rem; height: .7rem; border-radius: 50%; background: var(--orbit); }
+.browser-bar span {
+  margin: 0 auto; padding: .2rem 1rem; border-radius: 999px; background: var(--night);
+  color: var(--dust); font-size: .8rem; transform: translateX(-1.2rem);
+}
+.browser img { display: block; width: 100%; height: auto; }
+
+.case-numbers {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem;
+}
+.case-numbers div { display: grid; align-content: start; gap: .4rem; padding: 1.25rem 0; border-top: 2px solid var(--sun); }
+.case-numbers b { font: 800 clamp(1.9rem, 3vw, 2.6rem)/1 var(--display); color: var(--sun); letter-spacing: -0.02em; }
+.case-numbers span { color: var(--dust); font-size: .95rem; }
+
+
+// the project's technologies under the hero's lede
+.page-hero .stack { margin-top: 1.75rem; max-width: 44rem; }
+
+@media (max-width: $stack) {
+  .case-shot .wrap { grid-template-columns: minmax(0, 1fr); }
+  .browser { max-width: 40rem; margin: 0 auto; }
+}
+@media (max-width: $phone) {
+  .browser-bar span { display: none; }
+}
+
+// The timeline: one line down the middle, the year on one
+// side and the milestone's card on the other, alternating; down the left on phones
+.case-center { justify-items: center; text-align: center; }
+.case-line { list-style: none; margin: 0 auto; padding: 0; max-width: 60rem; position: relative; }
+.case-line::before {
+  content: ""; position: absolute; left: 50%; top: .5rem; bottom: .5rem; width: 2px; transform: translateX(-50%);
+  background: linear-gradient(var(--orbit), var(--sun) 12%, var(--sun) 88%, var(--orbit));
+  opacity: .8;
+}
+.case-line > li { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 4.5rem; align-items: start; }
+.case-line > li + li { margin-top: 3.5rem; }
+// the dot on the line
+.case-line > li::before {
+  content: ""; position: absolute; left: 50%; top: 1.6rem; width: 1.15rem; height: 1.15rem; transform: translate(-50%, -50%);
+  border-radius: 50%; background: var(--night); border: 3px solid var(--sun); z-index: 1;
+}
+.case-line > li.start::before { border-color: var(--dust); }
+.case-line > li.now::before {
+  width: 1.6rem; height: 1.6rem; background: var(--sun);
+  box-shadow: 0 0 0 .5rem rgba(255, 186, 66, .15), 0 0 2.5rem rgba(255, 186, 66, .6);
+}
+.case-line .when { margin: 0;
+  grid-row: 1; padding-top: .9rem; color: var(--sun);
+  font: 800 clamp(1.4rem, 2.6vw, 2.1rem)/1 var(--display); letter-spacing: -0.02em;
+}
+.case-line > .start .when { color: var(--dust); }
+.case-card {
+  grid-row: 1; padding: 1.6rem 1.75rem; border-radius: 14px; background: var(--panel); border: 1px solid var(--orbit);
+  box-shadow: 0 1.5rem 3rem -1.5rem rgba(0, 0, 0, .5);
+}
+.case-card h3 { font-size: 1.3rem; text-wrap: balance; }
+.case-card p { color: #D5DAEC; margin-top: .6rem; }
+.case-card > p:first-child { margin-top: 0; }
+.case-card .stack { margin-top: 1rem; }
+.case-line > .now .case-card { border-color: var(--sun); background: linear-gradient(160deg, rgba(255, 186, 66, .14), var(--panel) 55%); }
+// odd steps: year left, card right; even steps: card left, year right
+.case-line > li:nth-child(odd) .when { grid-column: 1; text-align: right; }
+.case-line > li:nth-child(odd) .case-card { grid-column: 2; }
+.case-line > li:nth-child(even) .when { grid-column: 2; }
+.case-line > li:nth-child(even) .case-card { grid-column: 1; }
+
+@media (max-width: $phone) {
+  .case-line { padding-left: 2.25rem; }
+  .case-line::before { left: .6rem; transform: none; }
+  .case-line > li, .case-line > li:nth-child(n) { grid-template-columns: minmax(0, 1fr); row-gap: .75rem; }
+  .case-line > li::before { left: -1.65rem; top: .6rem; transform: translate(-50%, -50%); }
+  .case-line > li:nth-child(n) .when { grid-column: 1; grid-row: 1; text-align: left; padding-top: 0; }
+  .case-line > li:nth-child(n) .case-card { grid-column: 1; grid-row: 2; }
+}
+
+// who did the work: the partners side by side
+.case-team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+.case-person { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.case-person img { width: 6rem; height: 6rem; border-radius: 50%; border: 2px solid var(--sun); object-fit: cover; }
+.case-person h3 { font-size: 1.25rem; }
+.case-person .role { color: var(--sun); font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin: .3rem 0 .6rem; }
+.case-person p:not(.role) { color: var(--dust); }
+
+// what this took: the services the story proves, each a card linking to its page
+.case-services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.5rem; }
+.case-services li { grid-column: span 2; }
+// five cards: three on top, two wider below
+.case-services:has(> li:nth-child(5):last-child) li:nth-child(n+4) { grid-column: span 3; }
+.case-services a {
+  display: flex; flex-direction: column; gap: .6rem; height: 100%; padding: 1.75rem; border-radius: 14px;
+  background: var(--panel); border: 1px solid var(--orbit); text-decoration: none; color: inherit;
+  transition: border-color .2s, transform .2s;
+}
+.case-services a:hover { border-color: var(--sun); transform: translateY(-3px); }
+.case-services h3 { font-size: 1.2rem; }
+.case-services p { color: var(--dust); }
+.case-more { margin-top: auto; padding-top: .5rem; color: var(--sun); font-weight: 700; }
+
+@media (max-width: $stack) {
+  .case-team, .case-services { grid-template-columns: minmax(0, 1fr); }
+  .case-services li:nth-child(n) { grid-column: auto; }
+}
+
+// "Read the case study" under a project card
+.case-link { margin-top: .9rem; font-weight: 700; }
+.case-link a { color: var(--sun); text-decoration: none; }
+.case-link a:hover { text-decoration: underline; }
+
+// /case-studies/: a wide card per study, screenshot beside the headline
+.studies { display: grid; gap: 2rem; }
+.study {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center;
+  padding: clamp(1.25rem, 3vw, 2rem); border-radius: 18px; background: var(--panel); border: 1px solid var(--orbit);
+  color: inherit; text-decoration: none; transition: border-color .2s, transform .2s;
+}
+.study:hover { border-color: var(--sun); transform: translateY(-3px); }
+.study-shot { display: block; border-radius: 10px; overflow: hidden; border: 1px solid var(--orbit); }
+.study-shot img { display: block; width: 100%; height: auto; }
+.study-text { display: flex; flex-direction: column; gap: .8rem; }
+.study-client { color: var(--sun); font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.study h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); text-wrap: balance; }
+.study-summary { color: var(--dust); }
+
+@media (max-width: $stack) {
+  .study { grid-template-columns: minmax(0, 1fr); }
+}

@@ -20,6 +20,9 @@
         </div>
         <p data-reveal="rise" style="--d:.56s">{{ featured.summary }}</p>
         {% include blocks/stack.html techs=featured.technologies reveal=0.68 %}
+        {%- if featured.case_study %}
+        <p class="case-link" data-reveal="rise" style="--d:.8s"><a href="{{ featured.case_study }}">Read the case study →</a></p>
+        {%- endif %}
       </div>
     </article>
     <div class="cases" data-arc-group>

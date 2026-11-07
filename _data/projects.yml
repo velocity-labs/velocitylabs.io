@@ -3,10 +3,16 @@
 # show), summary and technologies. The home page (index.html) and service pages
 # (blocks/work-band.html) pick cards by slug. Projects without a slug are listed
 # alphabetically under "Earlier work". Technology pills link to
-# /portfolio/?tech=<slug>, which shows the cards that use it.
+# /portfolio/?tech=<slug>, which shows the cards that use it. A project with a
+# case_study (its page's URL) links to it from its cards and is listed on
+# /case-studies/, with case_line, case_summary and case_image there.
 
 - slug: princess-dental-staffing
   title: Princess Dental Staffing
+  case_study: /portfolio/princess-dental-staffing/
+  case_line: From one local market to over 200,000 temps placed nationwide
+  case_summary: We rebuilt this dental staffing platform in 2015 and have been its development team ever since, through subscriptions, AI integration and a mobile app launch, as it grew to more than 40 cities.
+  case_image: { src: /images/work/princess-dental-staffing-wide.webp, width: 1600, height: 744 }
   summary: Dental practices use it to hire staff and book temps online. Along the way we built its Stripe subscriptions, the API behind its mobile app, and AI-based matching, as it grew from one local market to nationwide.
   technologies: [Ruby on Rails, PostgreSQL, Stripe, Mistral, Twilio, SendGrid, Solr, Amazon S3, Amazon CloudFront, Heroku]
   image: { src: /images/work/princess-dental-staffing.webp, width: 1240, height: 2000, alt: "Princess Dental Staffing home page: Make your next hire with Princess" }

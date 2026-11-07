@@ -81,6 +81,8 @@
 - id: ruby-on-rails-upgrades
   url: /ruby-on-rails/upgrades/
   name: Ruby on Rails upgrades
+  summary: Ruby, Rails and gem upgrades a version at a time, with tests to make each step safe, so your app stays secure and supported.
+  cta: How an upgrade works
   footer: Ruby on Rails upgrades
   need: Rails upgrade
   own_page: true # the site isn't Rails-specific, so other forms don't offer it

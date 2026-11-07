@@ -42,7 +42,10 @@ class SiteTest < AppTest
   # Liquid on purpose, so pre, code, script and style are skipped.
   def test_no_unrendered_liquid
     liquid = /\{\{|\}\}|\{%|%\}/
-    problems = (listed_paths + ['/404/']).flat_map do |path|
+    # every built page, including drafts and others left out of the sitemap
+    built_paths = Dir.glob('**/index.html', base: SITE).reject { |file| file.start_with?('vite/') }
+                     .map { |file| "/#{File.dirname(file)}/".sub(%r{\A/\./\z}, '/') }
+    problems = built_paths.flat_map do |path|
       doc = built(path)
       doc.css('pre, code, script, style').each(&:remove)
       text = doc.xpath('//text()').map(&:text).grep(liquid).map { |t| "#{path}: #{t.strip[0, 80]}" }

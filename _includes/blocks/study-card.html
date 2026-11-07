@@ -1,0 +1,16 @@
+{%- comment -%}
+  A case study as one wide card: the project's screenshot beside its
+  headline and summary, linking to the study. project: an entry in
+  _data/projects.yml with a case_study.
+{%- endcomment -%}
+{%- assign project = include.project -%}
+{%- assign shot = project.case_image | default: project.image -%}
+<a class="study" href="{{ project.case_study }}" data-reveal="rise">
+  <span class="study-shot"><img src="{{ shot.src }}" alt="" width="{{ shot.width }}" height="{{ shot.height }}" loading="lazy"></span>
+  <span class="study-text">
+    <span class="study-client">{{ project.title }}</span>
+    <h3>{{ project.case_line }}</h3>
+    <span class="study-summary">{{ project.case_summary | default: project.summary }}</span>
+    <span class="case-more">Read the case study →</span>
+  </span>
+</a>

@@ -1,0 +1,25 @@
+---
+layout: page
+bands: true
+deco: true
+title: "Case studies: custom software we've built and grown"
+description: "Case studies from Velocity Labs: how we've rebuilt, launched and grown custom web apps with our clients, told from the first line of code to today."
+eyebrow: Case studies
+heading: How our clients' apps got where they are
+lead: The longer stories behind our work, from the problem a client brought us to where their app is today.
+---
+{%- comment %} every project in _data/projects.yml with a case_study, in file order {% endcomment -%}
+{%- assign studies = site.data.projects | where_exp: "project", "project.case_study" -%}
+<section id="studies" aria-labelledby="studies-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="studies-title" data-reveal="rise">Read the full story</h2>
+    </div>
+    <div class="studies">
+      {%- for project in studies %}
+      {% include blocks/study-card.html project=project %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{% include blocks/cta-band.html %}

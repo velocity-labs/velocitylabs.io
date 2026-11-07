@@ -21,5 +21,8 @@
     <h3>{{ project.title }}</h3>
     <p>{{ project.summary }}</p>
     {% include blocks/stack.html techs=project.technologies %}
+    {%- if project.case_study %}
+    <p class="case-link"><a href="{{ project.case_study }}">Read the case study →</a></p>
+    {%- endif %}
   </figcaption>
 </figure>

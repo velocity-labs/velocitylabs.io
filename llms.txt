@@ -25,6 +25,7 @@ sitemap: false
 ## Company
 
 - [Home]({{ "/index.md" | absolute_url }}): Who we are, how we work, our team and client testimonials
+- [Case studies]({{ "/case-studies.md" | absolute_url }}): the longer stories behind our work, starting with Princess Dental Staffing
 - [Our work]({{ "/portfolio.md" | absolute_url }}): Web applications we have built, rescued and maintained for clients
 - [Free tools]({{ "/tools.md" | absolute_url }}): free web tools we have built, starting with rentcheck (HUD Fair Market Rent and income limits by ZIP code)
 - [Open source]({{ "/open-source.md" | absolute_url }}): Ruby gems and Heroku tooling we've built and published

@@ -2,7 +2,7 @@
   The top of an inner page: its one h1 and optional lede. Optional:
   eyebrow (a small label above the h1), cta (the page's main action, a link
   to #contact), booking: true (adds "Book a 30-minute call"), deco: true
-  (decorative rings in the corner).
+  (decorative rings in the corner), techs (technology pills under the lede).
 {%- endcomment -%}
 <section class="page-hero{% if include.deco %} has-deco{% endif %}" aria-labelledby="page-title">
   {%- if include.deco %}
@@ -15,6 +15,9 @@
     <h1 id="page-title" class="hl" style="--d:.05s">{{ include.heading }}</h1>
     {%- if include.lede %}
     <p class="lede hl" style="--d:.2s">{{ include.lede }}</p>
+    {%- endif %}
+    {%- if include.techs %}
+    <div class="hl" style="--d:.3s">{% include blocks/stack.html techs=include.techs %}</div>
     {%- endif %}
     {%- if include.cta or include.booking %}
     <div class="ctas hl" style="--d:.35s">

@@ -1,0 +1,169 @@
+---
+layout: page
+bands: true
+deco: true
+permalink: /portfolio/princess-dental-staffing/
+title: "Princess Dental Staffing case study: a dental staffing platform, rebuilt and grown"
+description: "How we rebuilt Princess Dental Staffing, launched in 2016, and have been its development team since, from one local market to over 200,000 temps placed nationwide."
+eyebrow: Case study · Dental staffing
+heading: From one local market to over 200,000 temps placed nationwide
+lead: Princess Dental Staffing connects dental practices with hygienists, assistants and front office staff. We started rebuilding it in 2015, launched the new app in 2016, and we've been its development team ever since.
+
+image:
+  path: /images/share/princess-dental-staffing.png
+  width: 1200
+  height: 630
+  alt: "Case study: Princess Dental Staffing, from one local market to over 200,000 temps placed"
+project: princess-dental-staffing
+quote: princess-dental-staffing
+team: [Chris Irish, Curtis Miller] # names in _data/people.yml
+services: [project-rescue, code-audit, ruby-on-rails-upgrades, maintenance, ai-integration] # ids in _data/services.yml
+cta:
+  title: Is your app holding your business back?
+  lede: We rebuilt one, and we've helped it grow for ten years. Tell us what you're dealing with.
+
+how_we_work: >-
+  One team since 2015. We hold regular planning calls with the owners, track every piece of
+  work in the open, and pitch in wherever the business needs us, from marketing launches to the
+  mobile app. Ten years on, Princess still brings us its hardest problems.
+
+numbers:
+  - { value: "200,000+", label: temps placed }
+  - { value: "~$90M", label: earned by candidates }
+  - { value: "10+", label: years as their development team }
+  - { value: "2016", label: "the new app launched" }
+
+# when: the label on the line (default: the title, when the date doesn't matter); kind: start, milestone or now (styles the dot)
+milestones:
+  - when: Before 2015
+    kind: start
+    title: A staffing business that had outgrown its software
+    text: >-
+      Princess placed temps for dental offices in one local market. The business was ready to
+      grow, but the app it ran on was slow and buggy, and it had stopped improving. Too much of
+      the work was still done by hand. It needed a major refresh, and every practice and
+      candidate had to come with it to the new one.
+  - when: "2015"
+    title: The rebuild
+    text: >-
+      It started with a code audit of the old app, which made the case for a rebuild over more
+      patches. We started rebuilding the platform from the ground up in Ruby on Rails, for temp
+      and permanent hiring of dentists, hygienists, assistants and front office staff.
+  - when: "2016"
+    title: The new app launches
+    text: >-
+      The new Princess went live, and we moved every practice and candidate over from the old
+      app. It texted candidates and offices about new shifts and bookings, which few apps did in
+      2016. By 2018, Princess had five times the users and three times the revenue.
+  - title: Subscriptions
+    text: >-
+      Tiered monthly plans for practices, from temps only to all access, with a free trial,
+      one account for every office, and no hiring fees. Candidates join free.
+  - title: Finding the right candidate
+    text: >-
+      A searchable candidate database with dental-specific keywords. Candidates set their own wage and choose which offers to take.
+  - title: Nationwide
+    text: >-
+      From one local market to more than 40 cities across the country. We worked alongside
+      Princess's marketing team to support each new market as it opened.
+  - title: AI integration
+    text: >-
+      AI built into the platform where it saves practices and candidates time.
+  - title: A mobile app
+    text: >-
+      We built the API behind the Princess mobile app and worked closely with its mobile
+      developers through a successful launch. Candidates can manage their schedules and apply
+      for openings on the go.
+  - title: Keeping it current
+    text: >-
+      Many Rails upgrades over the years have kept the platform secure, fast and up to date,
+      without ever starting over again.
+  - when: Today
+    kind: now
+    title: Over 200,000 temps placed, and still growing
+    text: >-
+      Princess keeps growing, and candidates have earned an estimated $90 million through it.
+      More than ten years on, we're still its development team, building what comes next.
+---
+<section class="case-shot" aria-label="The Princess Dental Staffing site">
+  <div class="wrap">
+    <figure class="browser" data-reveal="swing">
+      <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>princessdentalstaffing.com</span></div>
+      <img src="/images/work/princess-dental-staffing-wide.webp" width="1600" height="744" alt="The Princess Dental Staffing home page: Make your next hire with Princess">
+    </figure>
+    <div class="case-numbers">
+      {%- for number in page.numbers %}
+      <div data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.1 | round: 2 }}s"><b>{{ number.value }}</b><span>{{ number.label }}</span></div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="story" aria-labelledby="story-title">
+  <div class="wrap">
+    <div class="section-head case-center">
+      <h2 id="story-title" data-reveal="rise">Ten years, one team</h2>
+    </div>
+    <ol class="case-line">
+      {%- for step in page.milestones %}
+      <li class="{{ step.kind | default: 'milestone' }}">
+        {%- if step.when %}
+        <p class="when" data-reveal="rise">{{ step.when }}</p>
+        {%- else %}
+        <h3 class="when" data-reveal="rise">{{ step.title }}</h3>
+        {%- endif %}
+        <div class="case-card" data-reveal="rise" style="--d:.1s">
+          {%- if step.when %}
+          <h3>{{ step.title }}</h3>
+          {%- endif %}
+          {{ step.text | markdownify }}
+          {%- if step.techs %}
+          {% include blocks/stack.html techs=step.techs %}
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+
+{% include blocks/quote.html id=page.quote %}
+{% include blocks/text-band.html id="how-we-work" title="How we work together" text=page.how_we_work %}
+
+<section id="team" aria-labelledby="team-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="team-title" data-reveal="rise">Who did the work</h2>
+    </div>
+    <div class="case-team">
+      {%- for name in page.team %}
+      {%- assign person = site.data.people | where: "name", name | first %}
+      <div class="case-person" data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.12 | round: 2 }}s">
+        <img src="{{ person.photo }}" alt="" width="96" height="96" loading="lazy">
+        <div>
+          <h3>{{ person.name }}</h3>
+          <p class="role">{{ person.title }}</p>
+          <p>{{ person.summary }}</p>
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="services" aria-labelledby="services-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="services-title" data-reveal="rise">What this took</h2>
+    </div>
+    <ul class="case-services">
+      {%- for id in page.services %}
+      {%- assign service = site.data.services | where: "id", id | first %}
+      <li data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.1 | round: 2 }}s">
+        <a href="{{ service.url }}"><h3>{{ service.name }}</h3><p>{{ service.summary }}</p><span class="case-more">{{ service.cta }} →</span></a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% include blocks/cta-band.html title=page.cta.title lede=page.cta.lede %}

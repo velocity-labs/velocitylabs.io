@@ -53,3 +53,10 @@
     text: "@robertawallace"
   name: "Robert Wallace"
   quote: "I've worked with many product development teams, and I can say definitively that they're one of the best around. Their technical abilities are first class."
+
+# From Princess Dental Staffing's verified review on Clutch (June 2018):
+# https://clutch.co/profile/velocity-labs
+- id: princess-dental-staffing
+  name: "Dr. Chris Lewandowski"
+  company: Princess Dental Staffing
+  quote: "They have yet to encounter a problem that they can't solve or fix."
