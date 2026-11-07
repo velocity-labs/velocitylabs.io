@@ -96,10 +96,13 @@
 .case-person p:not(.role) { color: var(--dust); }
 
 // what this took: the services the story proves, each a card linking to its page
-.case-services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.5rem; }
-.case-services li { grid-column: span 2; }
-// five cards: three on top, two wider below
-.case-services:has(> li:nth-child(5):last-child) li:nth-child(n+4) { grid-column: span 3; }
+.case-services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+// wide screens: three across, and five cards as three on top, two wider below
+@media (min-width: $stack + 1px) {
+  .case-services { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .case-services li { grid-column: span 2; }
+  .case-services:has(> li:nth-child(5):last-child) li:nth-child(n+4) { grid-column: span 3; }
+}
 .case-services a {
   display: flex; flex-direction: column; gap: .6rem; height: 100%; padding: 1.75rem; border-radius: 14px;
   background: var(--panel); border: 1px solid var(--orbit); text-decoration: none; color: inherit;
@@ -111,8 +114,7 @@
 .case-more { margin-top: auto; padding-top: .5rem; color: var(--sun); font-weight: 700; }
 
 @media (max-width: $stack) {
-  .case-team, .case-services { grid-template-columns: minmax(0, 1fr); }
-  .case-services li:nth-child(n) { grid-column: auto; }
+  .case-team { grid-template-columns: minmax(0, 1fr); }
 }
 
 // "Read the case study" under a project card
