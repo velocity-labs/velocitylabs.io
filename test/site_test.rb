@@ -37,6 +37,22 @@ class SiteTest < AppTest
     assert_empty titles.group_by { |_, title| title }.select { |_, pages| pages.size > 1 }.keys, 'titles used twice'
   end
 
+  # A broken Liquid tag or filter leaves its source on the page, like a stray
+  # "| slugify }}" after the technology pills. Code samples in posts may show
+  # Liquid on purpose, so pre, code, script and style are skipped.
+  def test_no_unrendered_liquid
+    liquid = /\{\{|\}\}|\{%|%\}/
+    problems = (listed_paths + ['/404/']).flat_map do |path|
+      doc = built(path)
+      doc.css('pre, code, script, style').each(&:remove)
+      text = doc.xpath('//text()').map(&:text).grep(liquid).map { |t| "#{path}: #{t.strip[0, 80]}" }
+      attrs = doc.xpath('//@*').map(&:value).grep(liquid).map { |v| "#{path}: attribute #{v[0, 80]}" }
+      (text + attrs).uniq
+    end
+
+    assert_empty problems
+  end
+
   # Other sites link to these sections of the home page
   def test_home_page_keeps_its_linked_sections
     home = built('/')
