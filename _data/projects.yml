@@ -16,6 +16,12 @@
       - { value: "~$90M", label: earned by candidates }
       - { value: "10+", label: years as their development team }
 
+- slug: rentcheck
+  title: rentcheck
+  summary: "Our own free tool: enter a ZIP code and see HUD's Fair Market Rent and income limits for the area, whether your rent is above it, and whether you may qualify for housing help."
+  technologies: [Python, FastAPI, Jinja, HUD User API, Docker, Kamal, DigitalOcean]
+  image: { src: /images/work/rentcheck.webp, width: 1000, height: 750, alt: "rentcheck results for a 2-bedroom home in 85013: a Fair Market Rent of $1,800 a month and HUD's income limits" }
+
 - slug: land-surveying-firm
   title: Land surveying firm
   summary: We audited this firm's job and invoicing app, fixed the three urgent issues we found, rebuilt its invoice engine, upgraded Rails, and still look after it.

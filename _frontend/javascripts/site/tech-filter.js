@@ -49,4 +49,20 @@ export function init() {
     // cards coming back into view appear at once rather than waiting to reveal
     cards.forEach((card) => card.classList.add('in'));
   });
+
+  // a card's technology pill filters in place instead of reloading the page,
+  // then brings the filter back into view so the result is visible
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('.stack a[href]');
+    if (!link) return;
+    const url = new URL(link.href);
+    if (url.origin !== window.location.origin || url.pathname !== window.location.pathname) return;
+    event.preventDefault();
+    address(choose(url.searchParams.get('tech') || ''));
+    cards.forEach((card) => card.classList.add('in'));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    filter.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    filter.querySelector('button[aria-pressed="true"]').focus({ preventScroll: true });
+  });
 }

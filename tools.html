@@ -1,0 +1,47 @@
+---
+layout: page
+bands: true
+deco: true
+title: Free tools
+description: "Free web tools from Velocity Labs, starting with rentcheck: see HUD's Fair Market Rent and income limits for any US ZIP code."
+eyebrow: Tools
+heading: Free tools we've built
+lead: Small web tools on public data that help people answer one question well. Free to use, no sign-in.
+
+# url: where the tool is live; logo: its icon; technologies: pills that open the portfolio filtered to each one
+tools:
+  - name: rentcheck
+    kind: Web app · Python
+    url: https://rentcheck.velocitylabs.io
+    logo: /images/tools/rentcheck.svg
+    technologies: [Python, FastAPI, Jinja, HUD User API, Docker, Kamal, DigitalOcean]
+    text: >-
+      Checks whether rent is fair. Enter a ZIP code, the number of bedrooms and your household
+      size, and rentcheck shows HUD's Fair Market Rent for the area, a five-year trend and HUD's
+      income limits. Add your rent to compare it with HUD's figure, or your income to see whether
+      you may qualify for housing help. Built with FastAPI on the HUD User Data API.
+---
+<section id="tools" aria-labelledby="tools-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="tools-title" data-reveal="rise">What we've built</h2>
+    </div>
+    <div class="repos">
+      {%- for tool in page.tools %}
+      <article class="repo" data-reveal="rise" style="--d:{{ forloop.index0 | modulo: 2 | times: 0.1 | round: 2 }}s">
+        <div class="tool-head">
+          {%- if tool.logo %}<img src="{{ tool.logo }}" alt="" width="56" height="56">{% endif %}
+          <h3>{{ tool.name }}</h3>
+        </div>
+        <p class="repo-kind">{{ tool.kind }}</p>
+        <div class="repo-text">{{ tool.text | markdownify }}</div>
+        {% include blocks/stack.html techs=tool.technologies %}
+        <ul class="repo-links">
+          <li><a href="{{ tool.url }}">Try {{ tool.name }}</a></li>
+        </ul>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{% include blocks/cta-band.html %}

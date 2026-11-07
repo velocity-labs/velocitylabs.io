@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- rentcheck logo: a house outline with an amber check inside. -->
+  <rect width="64" height="64" rx="14" fill="#213247"/>
+  <path d="M14 33 L32 17 L50 33 V49 H14 Z" fill="none" stroke="#eef2f7" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M23 36 L30 43 L42 29" fill="none" stroke="#f2b33d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

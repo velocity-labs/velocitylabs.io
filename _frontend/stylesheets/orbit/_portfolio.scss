@@ -33,3 +33,6 @@
 @media (max-width: $phone) {
   .repos { grid-template-columns: minmax(0, 1fr); }
 }
+.tool-head { display: flex; align-items: center; gap: 1rem; }
+.tool-head img { flex: none; width: 3.5rem; height: 3.5rem; border-radius: 12px; }
+.repo .stack { margin: 0; }
