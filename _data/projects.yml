@@ -14,7 +14,7 @@
   case_summary: We rebuilt this dental staffing platform in 2015 and have been its development team ever since, through subscriptions, AI integration and a mobile app launch, as it grew to more than 40 cities.
   case_image: { src: /images/work/princess-dental-staffing-wide.webp, width: 1600, height: 744 }
   summary: Dental practices use it to hire staff and book temps online. Along the way we built its Stripe subscriptions, the API behind its mobile app, and AI-based matching, as it grew from one local market to nationwide.
-  technologies: [Ruby on Rails, PostgreSQL, Stripe, Mistral, Twilio, SendGrid, Solr, Amazon S3, Amazon CloudFront, Heroku]
+  technologies: [Ruby on Rails, PostgreSQL, Stripe, AI Integration, API Integration, AWS, Heroku]
   image: { src: /images/work/princess-dental-staffing.webp, width: 1240, height: 2000, alt: "Princess Dental Staffing home page: Make your next hire with Princess" }
   feature:
     heading: The dental staffing app we rebuilt in 2015 has placed 200,000 temps. We still work on it.
@@ -25,25 +25,25 @@
 - slug: rentcheck
   title: rentcheck
   summary: "Our own free tool: enter a ZIP code and see HUD's Fair Market Rent and income limits for the area, whether your rent is above it, and whether you may qualify for housing help."
-  technologies: [Python, FastAPI, Jinja, API Integration, Docker, Kamal, DigitalOcean]
+  technologies: [Python, API Integration, Docker]
   image: { src: /images/work/rentcheck.webp, width: 1000, height: 750, alt: "rentcheck results for a 2-bedroom home in 85013: a Fair Market Rent of $1,800 a month and HUD's income limits" }
 
 - slug: paycheck
   title: paycheck
   summary: "Our own free tool: pick a job and a place to see what it pays, from the Bureau of Labor Statistics' wage data, where your own pay falls, and which local jobs pay the wage you want."
-  technologies: [Node.js, TypeScript, Express, SQLite, API Integration, Docker, Kamal, DigitalOcean]
+  technologies: [Node.js, TypeScript, API Integration, Docker]
   image: { src: /images/work/paycheck.webp, width: 1000, height: 750, alt: "paycheck results for software developers in Phoenix: a median of $131,750 a year, with a pay of $118,000 marked at about the 38th percentile" }
 
 - slug: land-surveying-firm
   title: Land surveying firm
   summary: We audited this firm's job and invoicing app, fixed the three urgent issues we found, rebuilt its invoice engine, upgraded Rails, and still look after it.
-  technologies: [Ruby on Rails, PostgreSQL, RSpec]
+  technologies: [Ruby on Rails, PostgreSQL]
   image: { src: /images/work/land-surveying-firm.webp, width: 1000, height: 625, alt: "The surveying firm's daily workflow screen, listing the day's work orders" }
 
 - slug: registria
   title: Registria
   summary: Product registration data for consumer brands. We're the largest contributor to the job platform behind their clients' scheduled reports and data deliveries.
-  technologies: [Ruby on Rails, PostgreSQL, Alteryx, Claude Code]
+  technologies: [Ruby on Rails, PostgreSQL]
   cover: { kicker: Since April 2026, line: "Alteryx workflows, rebuilt in Rails.", sub: "Reports and data deliveries across US, EU and Australian regions" }
 
 - slug: flashdrafts
@@ -61,13 +61,13 @@
 - slug: go-swim
   title: Go Swim
   summary: "A swim instruction video site we took over after launch and developed for six years: subscriptions, payments, and video delivery."
-  technologies: [Ruby on Rails, Stripe, Vimeo, Amazon CloudFront]
+  technologies: [Ruby on Rails, Stripe, API Integration, AWS]
   image: { src: /images/work/go-swim.webp, width: 1000, height: 625, alt: "Go Swim home page: videos to inspire, educate and make you a better swimmer" }
 
 - slug: valley-metro
   title: Valley Metro
   summary: "Rider tools for the Phoenix area's transit agency, which we built and ran: an online trip planner, timetables, service alerts, a mobile site, and a real-time light rail feed."
-  technologies: [Ruby on Rails, SOAP]
+  technologies: [Ruby on Rails, API Integration]
   image: { src: /images/work/valley-metro.webp, width: 1000, height: 625, alt: "Valley Metro's home page, with its transit trip planner" }
 
 - slug: tap-inspect
