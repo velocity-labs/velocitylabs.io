@@ -22,15 +22,21 @@
       - { value: "~$90M", label: earned by candidates }
       - { value: "10+", label: years as their development team }
 
+- slug: grant-lookout
+  title: Grant Lookout
+  summary: "Follows federal and state grant opportunities and tells you on your phone about new matches, moved deadlines and amended notices, with AI summaries of long notices. Android and iOS apps, with a web admin area."
+  technologies: [React Native, TypeScript, Next.js, Supabase, PostgreSQL, AI Integration, API Integration]
+  image: { src: /images/work/grant-lookout.webp, width: 1000, height: 750, alt: "The Grant Lookout website: \"On the lookout for federal and state grants\", beside a phone showing grant opportunities that match a saved search" }
+
 - slug: rentcheck
   title: rentcheck
-  summary: "Our own free tool: enter a ZIP code and see HUD's Fair Market Rent and income limits for the area, whether your rent is above it, and whether you may qualify for housing help."
+  summary: "Enter a ZIP code and see HUD's Fair Market Rent and income limits for the area, whether your rent is above it, and whether you may qualify for housing help."
   technologies: [Python, API Integration, Docker]
   image: { src: /images/work/rentcheck.webp, width: 1000, height: 750, alt: "rentcheck results for a 2-bedroom home in 85013: a Fair Market Rent of $1,800 a month and HUD's income limits" }
 
 - slug: paycheck
   title: paycheck
-  summary: "Our own free tool: pick a job and a place to see what it pays, from the Bureau of Labor Statistics' wage data, where your own pay falls, and which local jobs pay the wage you want."
+  summary: "Pick a job and a place to see what it pays, from the Bureau of Labor Statistics' wage data, where your own pay falls, and which local jobs pay the wage you want."
   technologies: [Node.js, TypeScript, API Integration, Docker]
   image: { src: /images/work/paycheck.webp, width: 1000, height: 750, alt: "paycheck results for software developers in Phoenix: a median of $131,750 a year, with a pay of $118,000 marked at about the 38th percentile" }
 
