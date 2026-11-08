@@ -28,6 +28,12 @@
   technologies: [Python, FastAPI, Jinja, HUD User API, Docker, Kamal, DigitalOcean]
   image: { src: /images/work/rentcheck.webp, width: 1000, height: 750, alt: "rentcheck results for a 2-bedroom home in 85013: a Fair Market Rent of $1,800 a month and HUD's income limits" }
 
+- slug: paycheck
+  title: paycheck
+  summary: "Our own free tool: pick a job and a place to see what it pays, from the Bureau of Labor Statistics' wage data, where your own pay falls, and which local jobs pay the wage you want."
+  technologies: [Node.js, TypeScript, Express, SQLite, BLS data, Docker, Kamal, DigitalOcean]
+  image: { src: /images/work/paycheck.webp, width: 1000, height: 750, alt: "paycheck results for software developers in Phoenix: a median of $131,750 a year, with a pay of $118,000 marked at about the 38th percentile" }
+
 - slug: land-surveying-firm
   title: Land surveying firm
   summary: We audited this firm's job and invoicing app, fixed the three urgent issues we found, rebuilt its invoice engine, upgraded Rails, and still look after it.

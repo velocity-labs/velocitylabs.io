@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- paycheck logo: three rising bars, the tallest in white, on ledger green. -->
+  <rect width="64" height="64" rx="14" fill="#1f6b45"/>
+  <rect x="14" y="34" width="8" height="16" rx="2" fill="#d5e8d9"/>
+  <rect x="28" y="22" width="8" height="28" rx="2" fill="#d5e8d9"/>
+  <rect x="42" y="14" width="8" height="36" rx="2" fill="#ffffff"/>
+</svg>
