@@ -10,7 +10,9 @@ layout: base
 {%- endcomment -%}
 {%- assign heading = page.heading | default: page.title -%}
 {%- comment %} a case study names its project (page.project): its technologies go in the hero {% endcomment -%}
-{%- assign project = site.data.projects | where: "slug", page.project | first -%}
+{%- comment %} only when it names one: where "slug", nil would match an earlier project, which has no slug {% endcomment -%}
+{%- assign project = nil -%}
+{%- if page.project %}{% assign project = site.data.projects | where: "slug", page.project | first %}{% endif -%}
 {% include blocks/page-hero.html eyebrow=page.eyebrow heading=heading lede=page.lead deco=page.deco techs=project.technologies %}
 {%- if page.bands %}
 {{ content }}
