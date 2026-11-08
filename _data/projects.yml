@@ -80,66 +80,88 @@
 
 - title: The Trumpet
   summary: We redeveloped the core news platform for the Philadelphia Church of God.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: "Stahls'"
   summary: An Internet of Things MVP for heat transfer machines, with a Rails API behind it.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: Goalistics BEST
   summary: A new Rails app for tracking activities, with an admin dashboard.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: "Alice Cooper's Solid Rock"
   summary: We took over maintenance and new feature development.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: X3 Watch
   summary: We developed the core app and API for this free accountability software, designed to help with online integrity.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: The Doctors
   summary: We joined an existing team to finish missing features and launch on a very short timeline.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: Verizon
   summary: A game-based marketing site built to drive renewals.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: Go Fish
   summary: The card game Go Fish, for iOS.
+  technologies: [iOS]
 
 - title: WTCA
   summary: A custom content management system for the whole site.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: SourceOne Dental
   summary: A multi-vendor, one-stop marketplace for the dental community, in the style of Amazon Marketplace.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: Sprouts
   summary: Online holiday order reservations to complement in-store ordering, and a custom content management system for the site.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: Snapped4U
   summary: A marketplace for photos of people, pets and fundraisers, sold at a set price or priced by the photographer.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: My Weight World
   summary: A startup's weight loss community, with weight tracking, goals, calorie counting and health videos.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: Yoogot
   summary: An online marketplace for selling, buying, trading, or donating items to people in need.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: Arizona Charter Schools Association
   summary: A custom content management system, and a searchable map that helps parents screen local schools.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: SoChurch
   summary: A social network for churches to communicate with and engage their members.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: Pick.im
   summary: We built the core features, including location-based search and admin tools, and launched on a short timeline.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: Minuteglass
   summary: The core web app and API for a time tracking service for people and organizations.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: United Way
   summary: A custom content management system for United Way's site.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: Give The OK
   summary: The core web app for helping designers work with their clients.
+  technologies: [Ruby on Rails, PostgreSQL]
 
 - title: B12
   summary: A new company website centered on their design philosophy and portfolio.
+  technologies: [Ruby on Rails, MySQL]
 
 - title: Auctions a la Carte
   summary: We re-architected their backend infrastructure to be flexible and scalable.
+  technologies: [Ruby on Rails, MySQL]

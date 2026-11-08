@@ -7,7 +7,7 @@
 
 // Short points in a grid (blocks/features.html)
 .features { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem 3rem; }
-.features li { display: grid; align-content: start; gap: .45rem; padding-top: 1.25rem; border-top: 1px solid var(--orbit); }
+.features > li { display: grid; align-content: start; gap: .45rem; padding-top: 1.25rem; border-top: 1px solid var(--orbit); }
 .features h3 { font-size: 1.15rem; }
 .features p { color: var(--dust); }
 

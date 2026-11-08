@@ -10,7 +10,8 @@ lead: Some we built from scratch, some we took over from other developers, and s
 ---
 {%- assign featured = site.data.projects | where_exp: "project", "project.slug" -%}
 {%- assign earlier = site.data.projects | where_exp: "project", "project.slug == nil" | sort_natural: "title" -%}
-{%- assign techs = featured | map: "technologies" | join: "|" | split: "|" | uniq -%}
+{%- comment %} the filter covers every project, featured and earlier {% endcomment -%}
+{%- assign techs = site.data.projects | map: "technologies" | join: "|" | split: "|" | uniq -%}
 <section id="projects" aria-labelledby="projects-title">
   <div class="wrap">
     <div class="section-head">
@@ -22,8 +23,8 @@ lead: Some we built from scratch, some we took over from other developers, and s
       <div class="pills" role="group" aria-labelledby="tech-filter-label">
         <button type="button" data-tech="" aria-pressed="true">All</button>
         {%- comment %} the most used first {% endcomment %}
-        {%- for uses in (1..featured.size) reversed %}{% for tech in techs %}
-        {%- assign count = featured | where_exp: "project", "project.technologies contains tech" | size %}
+        {%- for uses in (1..site.data.projects.size) reversed %}{% for tech in techs %}
+        {%- assign count = site.data.projects | where_exp: "project", "project.technologies contains tech" | size %}
         {%- if count == uses %}
         <button type="button" data-tech="{{ tech | slugify }}" aria-pressed="false">{{ tech }}</button>
         {%- endif %}
@@ -31,7 +32,7 @@ lead: Some we built from scratch, some we took over from other developers, and s
       </div>
       <p class="filter-status" role="status"></p>
     </div>
-    <div class="cases cases-row" data-arc-group>
+    <div class="cases cases-row" data-arc-group data-filter-group>
       {%- for project in featured %}
       {%- assign delay = forloop.index0 | modulo: 3 | times: 0.14 | round: 2 %}
       {% include blocks/project-card.html project=project delay=delay %}
@@ -39,8 +40,8 @@ lead: Some we built from scratch, some we took over from other developers, and s
     </div>
   </div>
 </section>
-{%- comment %} hidden while a technology is chosen, since these projects aren't tagged {% endcomment %}
-<section id="earlier" aria-labelledby="earlier-title" data-unfiltered>
+{%- comment %} filtered too; hidden when none of its projects use the chosen technology {% endcomment %}
+<section id="earlier" aria-labelledby="earlier-title" data-filter-group>
   <div class="wrap">
     <div class="section-head">
       <h2 id="earlier-title" data-reveal="rise">Earlier work</h2>
@@ -48,9 +49,11 @@ lead: Some we built from scratch, some we took over from other developers, and s
     </div>
     <ul class="features earlier">
       {%- for project in earlier %}
-      <li data-reveal="rise" style="--d:{{ forloop.index0 | modulo: 3 | times: 0.1 | round: 2 }}s">
+      {%- capture slugs %}{% for tech in project.technologies %}{{ tech | slugify }} {% endfor %}{% endcapture %}
+      <li data-reveal="rise" style="--d:{{ forloop.index0 | modulo: 3 | times: 0.1 | round: 2 }}s" data-techs="{{ slugs | strip }}">
         <h3>{{ project.title }}</h3>
         <p>{{ project.summary }}</p>
+        {%- if project.technologies %}{% include blocks/stack.html techs=project.technologies %}{% endif %}
       </li>
       {%- endfor %}
     </ul>

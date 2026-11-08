@@ -9,6 +9,8 @@ export function init() {
   const buttons = $$('button[data-tech]', filter);
   const cards = $$('[data-techs]');
   const unfiltered = $$('[data-unfiltered]');
+  // the featured cards and the earlier list; one with nothing to show hides
+  const groups = $$('[data-filter-group]');
   const status = filter.querySelector('[role="status"]');
 
   // shows the cards that use the technology (all of them for ''), and returns
@@ -23,6 +25,9 @@ export function init() {
       if (!card.hidden) shown += 1;
     });
     unfiltered.forEach((element) => { element.hidden = Boolean(chosen); });
+    groups.forEach((group) => {
+      group.hidden = $$('[data-techs]', group).every((card) => card.hidden);
+    });
     status.textContent = chosen
       ? `${shown} ${shown === 1 ? 'project uses' : 'projects use'} ${button.textContent}.`
       : `Showing all ${shown} projects.`;
