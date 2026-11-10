@@ -4,7 +4,7 @@ ruby '4.0.7'
 
 # Web server (loaded by main.rb via Bundler.require)
 gem 'puma',               '~> 8.0'
-gem 'rack',               '~> 3.0'
+gem 'rack',               '~> 3.2'
 gem 'rake',               '~> 13.0'
 gem 'sinatra',            '~> 4.0'
 gem 'rack-attack',        '~> 6.7'
