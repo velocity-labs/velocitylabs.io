@@ -19,7 +19,7 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap',     '~> 1.4'
   gem 'kramdown',           '~> 2.4'
   gem 'kramdown-parser-gfm'
-  gem 'nokogiri',           '~> 1.16'
+  gem 'nokogiri',           '~> 1.19'
   gem 'reverse_markdown',   '~> 3.0', require: false # used by _plugins/markdown_export.rb
 end
 
