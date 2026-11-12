@@ -76,8 +76,7 @@ class SecurityHeaders
     'referrer-policy'        => 'strict-origin-when-cross-origin',
     'permissions-policy'     => 'camera=(), microphone=(), geolocation=(), payment=(), usb=()'
   }.freeze
-  # Short while https settles in; raise to 31536000 (one year) once stable
-  HSTS = 'max-age=86400'.freeze
+  HSTS = 'max-age=31536000'.freeze # one year
 
   def initialize(app, hsts: false)
     @app = app

@@ -83,7 +83,7 @@ Heroku (app `velocitylabs`) auto-deploys `main` from GitHub, but only after CI p
 - `.github/workflows/link-check.yml` runs `bin/check-links` monthly and keeps a `link-check` issue open while dead links exist
 - `.github/workflows/uptime.yml` checks the live site every 15 minutes (home page, app server, http redirect, certificate expiry) and keeps an `uptime` issue open while it's down
 - `.github/dependabot.yml` opens weekly update PRs with a 14-day cooldown; `package.json` "resolutions" pins need manual review
-- `SecurityHeaders` in main.rb sets security headers and caching (hashed `/vite/assets/*` cached a year). HSTS starts at one day (added 2026-10-22); raise `HSTS` to `max-age=31536000` once https has been stable for a couple of weeks
+- `SecurityHeaders` in main.rb sets security headers and caching (hashed `/vite/assets/*` cached a year). HSTS is one year (`max-age=31536000`, raised from one day on 2026-11-12)
 - Always compare against `origin/main` (`git fetch` first) before branching or merging; local `main` can be stale. The default branch was `master` until 2026-10-30
 
 ## Environment Variables (production)
