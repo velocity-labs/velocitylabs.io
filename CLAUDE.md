@@ -78,7 +78,7 @@ Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter: `layout: post`, `t
 
 ## Deployment and CI
 
-Heroku (app `velocitylabs`) auto-deploys `main` from GitHub, but only after CI passes ("Wait for CI to pass"). A commit with no checks stays pending and never deploys, so `.github/workflows/ci.yml` runs on every push: the dependency cooldown check, a full site build, and the app tests. `heroku rollback` restores the previous release if a deploy misbehaves.
+Heroku (app `velocitylabs`) auto-deploys `main` from GitHub, but only after CI passes ("Wait for CI to pass"). A commit with no checks stays pending and never deploys, so `.github/workflows/ci.yml` runs on every push: the dependency cooldown check, a vulnerability audit (`bundle-audit`, `yarn audit`), a full site build, and the app tests. `heroku rollback` restores the previous release if a deploy misbehaves.
 
 - `.github/workflows/link-check.yml` runs `bin/check-links` monthly and keeps a `link-check` issue open while dead links exist
 - `.github/workflows/uptime.yml` checks the live site every 15 minutes (home page, app server, http redirect, certificate expiry) and keeps an `uptime` issue open while it's down

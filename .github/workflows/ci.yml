@@ -28,6 +28,19 @@ jobs:
         env:
           COOLDOWN_DAYS: 10
 
+  # Fails when a locked gem or npm package has a known vulnerability. Fix by
+  # updating to a patched release that's old enough for the cooldown check.
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+      - run: gem install bundler-audit --version 0.9.3 --no-document
+      - run: bundle-audit check --update
+      - run: npx --yes yarn@1.22.22 audit
+
   # Builds the site the same way Heroku does, then tests the app against it
   build:
     runs-on: ubuntu-latest
