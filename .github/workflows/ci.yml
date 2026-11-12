@@ -37,7 +37,8 @@ jobs:
         with:
           persist-credentials: false
       - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
-      - run: gem install bundler-audit --version 0.9.3 --no-document
+      # Pin bundler-audit's dependency too, or a brand-new thor would install
+      - run: gem install thor --version 1.5.0 --no-document && gem install bundler-audit --version 0.9.3 --no-document
       - run: bundle-audit check --update
       - run: npx --yes yarn@1.22.22 audit
 
