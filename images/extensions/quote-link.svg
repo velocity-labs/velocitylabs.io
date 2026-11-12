@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Quote with Link logo: a quoted passage with an amber link. -->
+  <!-- Quote with Link icon: bold quotation marks with a link in the extension's purple. -->
   <rect width="64" height="64" rx="14" fill="#213247"/>
-  <path d="M14 15 V33 M21 17 H46 M21 25 H42 M21 33 H38" fill="none" stroke="#eef2f7" stroke-width="4" stroke-linecap="round"/>
-  <path d="M33 47 h-5 a5 5 0 0 1 0 -10 h5 M39 37 h5 a5 5 0 0 1 0 10 h-5 M30 42 H42" fill="none" stroke="#f2b33d" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M14 34 C14 24 18 18 26 15 L28 19 C23 21 21 25 21 28 H26 V40 H14 Z M32 34 C32 24 36 18 44 15 L46 19 C41 21 39 25 39 28 H44 V40 H32 Z" fill="#eef2f7"/>
+  <path d="M38 53 h-4 a4.5 4.5 0 0 1 0 -9 h4 M44 44 h4 a4.5 4.5 0 0 1 0 9 h-4 M36 48.5 H46" fill="none" stroke="#a371f7" stroke-width="4" stroke-linecap="round"/>
 </svg>

@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Word Count logo: lines of text with an amber reading-progress ring. -->
+  <!-- Word Count icon: the panel's reading-progress ring, in the extension's green,
+       around lines of text. -->
   <rect width="64" height="64" rx="14" fill="#213247"/>
-  <path d="M12 18 H34 M12 27 H30 M12 36 H26 M12 45 H22" fill="none" stroke="#eef2f7" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="44" cy="40" r="10" fill="none" stroke="#eef2f7" stroke-opacity="0.3" stroke-width="5"/>
-  <path d="M44 30 A10 10 0 1 1 34 40" fill="none" stroke="#f2b33d" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#eef2f7" stroke-opacity="0.25" stroke-width="6"/>
+  <path d="M32 12 A20 20 0 1 1 12 32" fill="none" stroke="#3fb950" stroke-width="6" stroke-linecap="round"/>
+  <path d="M25 27 H39 M25 33 H39 M25 39 H33" stroke="#eef2f7" stroke-width="3.5" stroke-linecap="round"/>
 </svg>
