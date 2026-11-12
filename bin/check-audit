@@ -1,0 +1,116 @@
+#!/usr/bin/env ruby
+# Fails when a locked gem or npm package has a known vulnerability AND a fixed
+# release that's old enough for our cooldown (COOLDOWN_DAYS, default 14, as in
+# bin/check-cooldown). A fix that's still too new only prints a warning: we
+# can't adopt it yet, so it shouldn't block deploys.
+#
+#   bin/check-audit              # audits Gemfile.lock and yarn.lock in this directory
+#   bin/check-audit path/to/dir  # audits the lockfiles in another directory
+#
+# Needs bundle-audit (gem install bundler-audit) and yarn 1 on the PATH.
+
+require 'date'
+require 'json'
+require 'net/http'
+require 'open3'
+require 'uri'
+
+DAYS = Integer(ENV.fetch('COOLDOWN_DAYS', 14))
+CUTOFF = Date.today - DAYS
+DIR = ARGV.first || '.'
+CI = ENV['GITHUB_ACTIONS'] == 'true'
+
+def fetch_json(url)
+  response = Net::HTTP.get_response(URI(url))
+  raise "#{url} returned #{response.code}" unless response.is_a?(Net::HTTPSuccess)
+
+  JSON.parse(response.body)
+end
+
+def release?(version)
+  !Gem::Version.new(version).prerelease?
+rescue ArgumentError
+  false
+end
+
+# Advisory = { package:, version:, id:, title:, severity:, fixed?: ->(v) {...}, releases: { version => date } }
+
+def gem_advisories
+  Dir.chdir(DIR) { system('bundle-audit', 'update', '--quiet') } || abort('bundle-audit update failed')
+  out, = Open3.capture2('bundle-audit', 'check', DIR, '--format', 'json')
+  results = JSON.parse(out)['results'].select { |r| r['type'] == 'unpatched_gem' }
+  releases = {}
+  results.map do |r|
+    name = r['gem']['name']
+    releases[name] ||= fetch_json("https://rubygems.org/api/v1/versions/#{name}.json")
+                       .select { |v| v['platform'] == 'ruby' }
+                       .to_h { |v| [v['number'], Date.parse(v['created_at'])] }
+    patched = r['advisory']['patched_versions'].map { |req| Gem::Requirement.new(*req.split(/,\s*/)) }
+    { package: "#{name} (gem)", version: r['gem']['version'], id: r['advisory']['id'],
+      title: r['advisory']['title'], severity: r['advisory']['criticality'] || 'unknown',
+      fixed: ->(v) { patched.any? { |req| req.satisfied_by?(Gem::Version.new(v)) } },
+      releases: releases[name] }
+  end
+end
+
+# npm ranges like ">=1.2.3", ">=2.0.1 <3.0.0 || >=3.0.2", "<0.0.0" (no fix)
+def npm_range(range)
+  sets = range.split('||').map do |set|
+    set.scan(/(>=|<=|>|<|=)?\s*v?(\d[\w.\-]*)/).map do |op, ver|
+      Gem::Requirement.new("#{op == '=' || op.nil? ? '=' : op} #{ver.sub(/-.*/, '')}")
+    end
+  end
+  ->(v) { sets.any? { |reqs| reqs.all? { |req| req.satisfied_by?(Gem::Version.new(v)) } } }
+end
+
+def npm_advisories
+  out, = Open3.capture2({ 'NODE_OPTIONS' => '--no-deprecation' }, 'yarn', 'audit', '--json', chdir: DIR)
+  releases = {}
+  out.lines.filter_map { |line| JSON.parse(line) rescue nil }
+     .select { |e| e['type'] == 'auditAdvisory' }
+     .map { |e| e['data']['advisory'] }
+     .uniq { |a| a['id'] }
+     .flat_map do |a|
+       name = a['module_name']
+       releases[name] ||= fetch_json("https://registry.npmjs.org/#{name.sub('/', '%2F')}")['time']
+                          .reject { |v, _| %w[created modified].include?(v) }
+                          .transform_values { |t| Date.parse(t) }
+       fixed = npm_range(a['patched_versions'])
+       a['findings'].map { |f| f['version'] }.uniq.map do |version|
+         { package: "#{name} (npm)", version: version, id: "GHSA #{a['github_advisory_id'] || a['id']}",
+           title: a['title'], severity: a['severity'], fixed: fixed, releases: releases[name] }
+       end
+     end
+end
+
+# bundle-audit lists a native gem once per platform
+advisories = (gem_advisories + npm_advisories).uniq { |a| a.values_at(:package, :version, :id) }
+blocking = []
+waiting = []
+
+advisories.each do |a|
+  current = Gem::Version.new(a[:version])
+  fixes = a[:releases].select { |v, _| release?(v) && Gem::Version.new(v) > current && a[:fixed].call(v) }
+  ready = fixes.select { |_, date| date <= CUTOFF }.min_by { |v, _| Gem::Version.new(v) }
+  line = "#{a[:package]} #{a[:version]}: #{a[:title]} [#{a[:severity]}, #{a[:id]}]"
+  if ready
+    blocking << "#{line}\n    update to #{ready[0]} (published #{ready[1]})"
+  else
+    soonest = fixes.min_by { |_, date| date }
+    waiting << "#{line}\n    " +
+               (soonest ? "fix #{soonest[0]} clears the cooldown on #{soonest[1] + DAYS}" : 'no fixed release yet')
+  end
+end
+
+puts "#{advisories.size} advisories: #{blocking.size} fixable now, #{waiting.size} waiting on a fix or the #{DAYS}-day cooldown"
+
+if waiting.any?
+  puts "\nWaiting (not failing):", waiting.map { |w| "  #{w}" }
+  waiting.each { |w| puts "::warning title=Vulnerable dependency (fix not adoptable yet)::#{w.lines.first.strip}" } if CI
+end
+
+if blocking.any?
+  puts "\nFixed in a release old enough to adopt:", blocking.map { |b| "  #{b}" }
+  blocking.each { |b| puts "::error title=Vulnerable dependency::#{b.lines.first.strip}" } if CI
+  exit 1
+end

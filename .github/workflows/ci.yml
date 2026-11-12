@@ -28,8 +28,9 @@ jobs:
         env:
           COOLDOWN_DAYS: 10
 
-  # Fails when a locked gem or npm package has a known vulnerability. Fix by
-  # updating to a patched release that's old enough for the cooldown check.
+  # Fails when a locked gem or npm package has a known vulnerability with a fix
+  # that's old enough to adopt; a fix still in the cooldown only warns
+  # (see bin/check-audit).
   audit:
     runs-on: ubuntu-latest
     steps:
@@ -39,8 +40,8 @@ jobs:
       - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
       # Pin bundler-audit's dependency too, or a brand-new thor would install
       - run: gem install thor --version 1.5.0 --no-document && gem install bundler-audit --version 0.9.3 --no-document
-      - run: bundle-audit check --update
-      - run: npx --yes yarn@1.22.22 audit
+      - run: npm install --global yarn@1.22.22
+      - run: ruby bin/check-audit
 
   # Builds the site the same way Heroku does, then tests the app against it
   build:

@@ -22,6 +22,7 @@ yarn remove <package>        # remove a dependency
 # (gems, npm packages, Ruby, Bundler, GitHub Actions). Pin anything newer,
 # including transitive deps (Gemfile constraints / package.json "resolutions").
 bin/check-cooldown           # verify Gemfile.lock + yarn.lock (also runs in CI)
+bin/check-audit              # known vulnerabilities with an adoptable fix (also runs in CI)
 yarn install --ignore-scripts  # install scripts are a supply-chain vector
 bin/check-links              # check every link on the live site (also runs monthly)
 bin/check-links http://localhost:3000  # or on a local build, before it ships
@@ -78,7 +79,7 @@ Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter: `layout: post`, `t
 
 ## Deployment and CI
 
-Heroku (app `velocitylabs`) auto-deploys `main` from GitHub, but only after CI passes ("Wait for CI to pass"). A commit with no checks stays pending and never deploys, so `.github/workflows/ci.yml` runs on every push: the dependency cooldown check, a vulnerability audit (`bundle-audit`, `yarn audit`), a full site build, and the app tests. `heroku rollback` restores the previous release if a deploy misbehaves.
+Heroku (app `velocitylabs`) auto-deploys `main` from GitHub, but only after CI passes ("Wait for CI to pass"). A commit with no checks stays pending and never deploys, so `.github/workflows/ci.yml` runs on every push: the dependency cooldown check, a vulnerability audit (`bin/check-audit`: fails only when a fix has cleared the cooldown, otherwise warns), a full site build, and the app tests. `heroku rollback` restores the previous release if a deploy misbehaves.
 
 - `.github/workflows/link-check.yml` runs `bin/check-links` monthly and keeps a `link-check` issue open while dead links exist
 - `.github/workflows/uptime.yml` checks the live site every 15 minutes (home page, app server, http redirect, certificate expiry) and keeps an `uptime` issue open while it's down
