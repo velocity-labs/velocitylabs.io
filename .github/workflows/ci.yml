@@ -23,6 +23,10 @@ jobs:
         with:
           persist-credentials: false
       - run: ruby bin/check-cooldown
+        # Lowered to 10 days for the rack/addressable/nokogiri security fixes
+        # (2026-11-12). Remove on or after 2026-11-16, when they turn 14.
+        env:
+          COOLDOWN_DAYS: 10
 
   # Builds the site the same way Heroku does, then tests the app against it
   build:
