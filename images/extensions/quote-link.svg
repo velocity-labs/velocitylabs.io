@@ -1,6 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Quote with Link icon: bold quotation marks with a link in the extension's purple. -->
+  <!-- Quote with Link icon: bold quotation marks with a link in the extension's purple.
+       The link's straight runs sit on a 4-unit grid so they land on whole pixels at
+       128, 64 and 32px. -->
   <rect width="64" height="64" rx="14" fill="#213247"/>
   <path d="M14 34 C14 24 18 18 26 15 L28 19 C23 21 21 25 21 28 H26 V40 H14 Z M32 34 C32 24 36 18 44 15 L46 19 C41 21 39 25 39 28 H44 V40 H32 Z" fill="#eef2f7"/>
-  <path d="M38 53 h-4 a4.5 4.5 0 0 1 0 -9 h4 M44 44 h4 a4.5 4.5 0 0 1 0 9 h-4 M36 48.5 H46" fill="none" stroke="#a371f7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M38 52 h-4 a4 4 0 0 1 0 -8 h4 M44 44 h4 a4 4 0 0 1 0 8 h-4 M36 48 H46" fill="none" stroke="#a371f7" stroke-width="4" stroke-linecap="round"/>
 </svg>
