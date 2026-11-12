@@ -19,6 +19,21 @@ class PagesTest < AppTest
     assert_match %r{\Atext/markdown}, last_response.content_type
   end
 
+  def test_pages_redirect_to_their_trailing_slash_url
+    get '/portfolio'
+    assert_equal 301, last_response.status
+    assert_match %r{/portfolio/\z}, last_response.location
+
+    get '/portfolio', tech: 'rails'
+    assert_match %r{/portfolio/\?tech=rails\z}, last_response.location
+
+    get '/portfolio/'
+    assert_equal 200, last_response.status
+
+    get '/llms.txt'
+    assert_equal 200, last_response.status
+  end
+
   def test_legacy_ref_redirects
     get '/', ref: 'foo/blog'
     assert_equal 302, last_response.status

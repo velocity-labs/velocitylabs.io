@@ -235,6 +235,13 @@ get "/*" do |title|
   if request.user_agent == '<?php system("id"); ?>' or IP_BLACKLIST.include?(request.ip)
     ''
   else
+    # Pages live at their trailing-slash URL (permalinks, canonicals, sitemap);
+    # send the bare form there so each page has one URL
+    if !title.end_with?('/') && File.file?("_site/#{title}/index.html")
+      query = request.query_string.empty? ? '' : "?#{request.query_string}"
+      redirect "/#{title}/#{query}", 301
+    end
+
     begin
       last_modified File.mtime("_site/#{title}/index.html")
       File.read("_site/#{title}/index.html")
