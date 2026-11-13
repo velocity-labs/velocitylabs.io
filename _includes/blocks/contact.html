@@ -2,7 +2,8 @@
   The contact section: a panel with the form, and a sun that rises over it as
   the reader arrives (site/dawn.js). Optional: heading, lede, question (what
   the message box asks), service (the page's service, which the form sends
-  instead of asking) and extension (an extension page's id: a support form).
+  instead of asking), extension (an extension page's id: a support form) and
+  booking: false (leaves out "Book a 30-minute call").
 {%- endcomment -%}
 <section id="contact" aria-labelledby="contact-title">
   <div class="wrap">
@@ -11,10 +12,12 @@
       <div>
         <h2 id="contact-title">{{ include.heading | default: "Tell us what you're dealing with" }}</h2>
         <p class="lede">{{ include.lede | default: "We'll tell you honestly whether we're the right fit." }}</p>
+        {%- unless include.booking == false %}
         <div class="direct">
           <span>Prefer to talk first?</span>
           <a href="{{ site.booking_url }}" target="_blank" rel="noopener">Book a 30-minute call</a>
         </div>
+        {%- endunless %}
       </div>
       {% include blocks/contact-form.html service=include.service question=include.question extension=include.extension %}
     </div>

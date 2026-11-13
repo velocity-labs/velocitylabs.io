@@ -95,4 +95,13 @@ layout: base
   </div>
 </section>
 
-{% include blocks/contact.html extension=ext.id heading="Questions or problems?" lede="Tell us what happened and we'll get back to you. Ideas for what it should do next are welcome too." question="What's going on?" %}
+<section class="ext-more" aria-labelledby="more-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="more-title" data-reveal="rise">More extensions from us</h2>
+    </div>
+    {% include blocks/extension-cards.html except=ext.id %}
+  </div>
+</section>
+
+{% include blocks/contact.html booking=false extension=ext.id heading="Questions or problems?" lede="Tell us what happened and we'll get back to you. Ideas for what it should do next are welcome too." question="What's going on?" %}

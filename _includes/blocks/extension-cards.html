@@ -1,0 +1,21 @@
+{%- comment -%}
+  Cards for the browser extensions in _data/extensions.yml. The whole card
+  links to the extension's page (the name's link stretches over it); Privacy
+  and Support go straight to those sections. Optional: except (an id to leave
+  out, on that extension's own page).
+{%- endcomment -%}
+<div class="repos ext-cards">
+  {%- for ext in site.data.extensions %}{% if ext.id != include.except %}
+  <article class="repo ext-card" id="{{ ext.id }}" data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.1 | round: 2 }}s">
+    <div class="tool-head">
+      <img src="{{ ext.logo }}" alt="" width="56" height="56">
+      <h3><a class="ext-card-link" href="/extensions/{{ ext.id }}/">{{ ext.name }}</a></h3>
+    </div>
+    <p class="repo-text">{{ ext.tagline }}</p>
+    <ul class="repo-links">
+      <li><a href="/extensions/{{ ext.id }}/#privacy" aria-label="{{ ext.name }} privacy">Privacy</a></li>
+      <li><a href="/extensions/{{ ext.id }}/#contact" aria-label="{{ ext.name }} support">Support</a></li>
+    </ul>
+  </article>
+  {%- endif %}{% endfor %}
+</div>

@@ -44,8 +44,14 @@
 .ext-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .ext-cards .repo { padding: 1.5rem; }
 .ext-cards h3 { font-size: 1.25rem; }
-.ext-cards h3 a { color: inherit; text-decoration: none; }
-.ext-cards h3 a:hover { color: var(--sun); }
+// The whole card opens the extension's page: the name's link covers it, and
+// the Privacy and Support links sit above that
+.ext-card { position: relative; transition: border-color .2s; }
+.ext-card:hover, .ext-card:focus-within { border-color: var(--sun); }
+.ext-card-link { color: inherit; text-decoration: none; }
+.ext-card-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.ext-card:hover .ext-card-link { color: var(--sun); }
+.ext-card .repo-links a { position: relative; z-index: 1; }
 @media (max-width: $stack) {
   .ext-cards { grid-template-columns: minmax(0, 1fr); }
 }

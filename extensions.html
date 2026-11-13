@@ -17,20 +17,7 @@ lead: Small, useful extensions for Chrome, Edge, Firefox and Safari. Each one se
     <div class="section-head">
       <h2 id="extensions-title" data-reveal="rise">What we've built</h2>
     </div>
-    <div class="repos ext-cards">
-      {%- for ext in site.data.extensions %}
-      <article class="repo" id="{{ ext.id }}" data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.1 | round: 2 }}s">
-        <div class="tool-head">
-          <img src="{{ ext.logo }}" alt="" width="56" height="56">
-          <h3><a href="/extensions/{{ ext.id }}/">{{ ext.name }}</a></h3>
-        </div>
-        <p class="repo-text">{{ ext.tagline }}</p>
-        <ul class="repo-links">
-          <li><a href="/extensions/{{ ext.id }}/" aria-label="More about {{ ext.name }}">Learn more</a></li>
-        </ul>
-      </article>
-      {%- endfor %}
-    </div>
+    {% include blocks/extension-cards.html %}
   </div>
 </section>
 

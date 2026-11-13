@@ -87,13 +87,16 @@ class SiteTest < AppTest
   def test_extension_pages_follow_extensions_yml
     extensions = YAML.load_file(File.join(ROOT, '_data/extensions.yml'))
     overview = built('/extensions/')
-    assert_equal extensions.map { |e| "/extensions/#{e['id']}/" }, overview.css('.ext-cards h3 a').map { |a| a['href'] }
+    assert_equal extensions.map { |e| "/extensions/#{e['id']}/" }, overview.css('.ext-card-link').map { |a| a['href'] }
     extensions.each do |extension|
       page = built("/extensions/#{extension['id']}/")
       assert_equal extension['name'], page.at_css('h1').text.strip
       assert page.at_css('#privacy'), "#{extension['id']} has no privacy section"
       assert_equal extension['id'], page.at_css('#contact input[name="extension"]')&.[]('value')
       assert_equal extension['screenshots'].size, page.css('.shots img').size
+      others = extensions.reject { |e| e == extension }.map { |e| "/extensions/#{e['id']}/" }
+      assert_equal others, page.css('.ext-more .ext-card-link').map { |a| a['href'] }
+      refute page.at_css('#contact a[href*="calendly"], #contact .direct'), "#{extension['id']}'s support form offers a call"
     end
   end
 
