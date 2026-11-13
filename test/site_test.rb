@@ -94,6 +94,9 @@ class SiteTest < AppTest
       assert page.at_css('#privacy'), "#{extension['id']} has no privacy section"
       assert_equal extension['id'], page.at_css('#contact input[name="extension"]')&.[]('value')
       assert_equal extension['screenshots'].size, page.css('.shots img').size
+      (extension['stores'] || {}).each_key do |store|
+        assert File.file?(File.join(ROOT, "images/extensions/badges/#{store}.svg")), "no #{store} badge in images/extensions/badges/"
+      end
       others = extensions.reject { |e| e == extension }.map { |e| "/extensions/#{e['id']}/" }
       assert_equal others, page.css('.ext-more .ext-card-link').map { |a| a['href'] }
       refute page.at_css('#contact a[href*="calendly"], #contact .direct'), "#{extension['id']}'s support form offers a call"

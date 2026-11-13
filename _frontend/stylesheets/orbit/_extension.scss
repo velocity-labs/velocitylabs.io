@@ -10,8 +10,9 @@
 }
 .ext-install img { width: 4.5rem; height: 4.5rem; border-radius: 16px; }
 .ext-install h2 { font-size: 1.3rem; }
-.ext-stores { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; width: 100%; }
-.ext-stores .btn { width: 100%; justify-content: center; }
+.ext-stores { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.store-badge { display: inline-block; }
+.store-badge img { display: block; height: 3rem; width: auto; }
 .ext-stores:empty { display: none; }
 .ext-soon { color: var(--star); font-weight: 700; }
 .ext-also { color: var(--dust); font-size: .9rem; }

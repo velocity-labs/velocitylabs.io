@@ -7,6 +7,9 @@ layout: base
   page's title and description. Sections: what it does, screenshots, how to
   use it, privacy (#privacy, the URL the store listings give as the privacy
   policy) and support (#contact, a form that sends the extension's name).
+  Each store with a URL in `stores` shows its official badge, from
+  images/extensions/badges/<chrome|edge|firefox|safari>.svg: download it from
+  the store's branding page as its listing goes live, and don't alter it.
 {%- endcomment -%}
 {%- assign ext = site.data.extensions | where: "id", page.extension | first -%}
 {%- assign browsers = "chrome:Chrome,edge:Edge,firefox:Firefox,safari:Safari" | split: "," -%}
@@ -32,7 +35,8 @@ layout: base
         {%- for pair in browsers %}
         {%- assign key = pair | split: ":" | first %}{% assign label = pair | split: ":" | last %}
         {%- if ext.stores[key] %}
-        <li><a class="btn btn-sun" href="{{ ext.stores[key] }}">Add to {{ label }}</a></li>
+        {%- comment %} the store's official badge, unaltered: images/extensions/badges/<key>.svg {% endcomment %}
+        <li><a class="store-badge" href="{{ ext.stores[key] }}"><img src="/images/extensions/badges/{{ key }}.svg" alt="Add to {{ label }}" height="48"></a></li>
         {%- else %}{% assign soon = soon | push: label %}{% endif %}
         {%- endfor %}
       </ul>
