@@ -191,6 +191,13 @@ SERVICE_NEEDS = YAML.load_file(File.expand_path('_data/services.yml', __dir__))
                     .each_with_object({}) { |service, needs| needs[service['id']] = service['need'] if service['need'] }
                     .freeze
 
+# An extension page's support form sends its extension (id => name) and the
+# browser the visitor chose, from the lists the site builds the form from
+EXTENSION_NAMES = YAML.load_file(File.expand_path('_data/extensions.yml', __dir__))
+                      .to_h { |extension| [extension['id'], extension['name']] }
+                      .freeze
+SUPPORT_BROWSERS = YAML.load_file(File.expand_path('_data/support_browsers.yml', __dir__)).freeze
+
 def generate_form_token
   timestamp = Time.now.to_i
   nonce = SecureRandom.hex(16)
@@ -336,6 +343,11 @@ post '/contact-form/?' do
     details = [['Name', params[:name].to_s], ['Email', params[:email].to_s]]
     details << ['Phone', phone] unless phone.empty?
     details << ['Need', need] if need
+    # Unknown values (say, from a cached page) are left out, like an unknown need
+    extension = EXTENSION_NAMES[params[:extension].to_s]
+    browser   = SUPPORT_BROWSERS.find { |name| name == params[:browser].to_s }
+    details << ['Extension', extension] if extension
+    details << ['Browser', browser] if browser
 
     rows = details.map.with_index do |(label, value), i|
       width = i.zero? ? ' width="25%"' : ''
@@ -375,7 +387,11 @@ post '/contact-form/?' do
       from:     ENV.fetch('CONTACT_FORM_FROM', 'Velocity Labs <contact@velocitylabs.io>'),
       to:       ['contact@velocitylabs.io'],
       reply_to: params[:email].to_s, # validated above
-      subject:  "Contact form from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}#{" (#{need})" if need}",
+      subject:  if extension
+                  "#{extension} support from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}"
+                else
+                  "Contact form from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}#{" (#{need})" if need}"
+                end,
       text:     text_body,
       html:     html_body
     }.to_json

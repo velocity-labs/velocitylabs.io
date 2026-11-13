@@ -82,6 +82,21 @@ class SiteTest < AppTest
   end
 
   # The home page's structured data comes from the same settings as the footer
+  # _data/extensions.yml drives the cards on /extensions/ and a page for each,
+  # whose support form sends that extension
+  def test_extension_pages_follow_extensions_yml
+    extensions = YAML.load_file(File.join(ROOT, '_data/extensions.yml'))
+    overview = built('/extensions/')
+    assert_equal extensions.map { |e| "/extensions/#{e['id']}/" }, overview.css('.ext-cards h3 a').map { |a| a['href'] }
+    extensions.each do |extension|
+      page = built("/extensions/#{extension['id']}/")
+      assert_equal extension['name'], page.at_css('h1').text.strip
+      assert page.at_css('#privacy'), "#{extension['id']} has no privacy section"
+      assert_equal extension['id'], page.at_css('#contact input[name="extension"]')&.[]('value')
+      assert_equal extension['screenshots'].size, page.css('.shots img').size
+    end
+  end
+
   def test_business_details_match_the_config
     company = YAML.load_file(File.join(ROOT, '_config.yml'), aliases: true)['company']
     business = built('/').css('script[type="application/ld+json"]').map { |script| JSON.parse(script.text) }

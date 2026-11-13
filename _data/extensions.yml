@@ -1,0 +1,107 @@
+# The browser extensions (velocity-labs/browser-extensions). One list drives the cards on
+# /extensions/, each extension's page (/extensions/<id>/, layout: extension), and the
+# "Extension" line main.rb adds to support emails.
+#
+# id: the extension's folder, its page's address and its support form value
+# tagline: one line, for its card and its page's lede
+# description: its page's meta description
+# text: what it does (Markdown)
+# use: how to use it, one step per item (Markdown)
+# permissions: what it can do, in plain words
+# stores: the store listing for each browser, once approved. Until a browser's URL is set the
+#   page says "Coming soon" for it; add each one as its listing goes live.
+# privacy: what is particular to this extension (storage, saving files); the shared rules are
+#   in the layout. Keep it true to PRIVACY.md in the extension's folder.
+# screenshots: in images/extensions/<id>/, from the extension's store/screenshots/
+- id: table-export
+  name: Table Export
+  tagline: Export any table on a page as CSV, JSON or YAML.
+  description: "Table Export is a free browser extension for Chrome, Edge, Firefox and Safari that exports any table on a web page as CSV, JSON or YAML. It sends nothing anywhere."
+  logo: /images/extensions/table-export.svg
+  text: >-
+    Hover a table and click the download icon, or pick one from the list in its panel, then
+    preview it, choose the rows you want, and download or copy it. It skips page clutter like
+    pagination and filter rows, fills in merged cells, and keeps spreadsheet formulas from
+    sneaking in through the data.
+  use:
+    - Click **Table Export** in your browser's toolbar. Its panel lists the tables on the page.
+    - Hover a table and click the download icon over it, or choose the table in the panel.
+    - Pick CSV, JSON or YAML, check the preview, set the rows and file name, then **Download** or **Copy**.
+  permissions:
+    - Read the page you're on, after you click its button
+    - Save the file you export
+    - Remember your format and options, in your browser only
+  privacy:
+    - It asks for `activeTab` and `scripting` (to read the tables on the tab you clicked on), `downloads` (to save the file) and `storage` (to remember your format and whether to export media as URLs).
+    - Your settings are kept in the extension's own storage, which websites can't read.
+    - Safari has no downloads permission for extensions, so there Table Export saves the file from the page itself. Nothing leaves your computer either way.
+  stores: {}
+  screenshots:
+    - file: 1-pick-a-table.webp
+      alt: An article with a table of flour types. A download icon sits over the table, and the Table Export panel lists the page's two tables.
+    - file: 2-export-dialog.webp
+      alt: The export dialog showing the table as CSV, with a row range, the file name and Copy and Download buttons.
+    - file: 3-json.webp
+      alt: The same table previewed as JSON, with the header row as each object's keys.
+    - file: 4-light-mode.webp
+      alt: The export dialog in light mode.
+
+- id: word-count
+  name: Word Count
+  tagline: Count the words on a page and see how long it takes to read.
+  description: "Word Count is a free browser extension for Chrome, Edge, Firefox and Safari that shows a page's reading time, word count and reading progress. It sends nothing anywhere."
+  logo: /images/extensions/word-count.svg
+  text: >-
+    A ring fills as you scroll and counts down the minutes left, next to the word, sentence and
+    character counts and the time it takes to read aloud. Select some text to count just that.
+    It counts the article itself, not the menus and comments around it, and handles languages
+    written without spaces.
+  use:
+    - Click **Word Count** in your browser's toolbar. Its panel shows the reading time and counts.
+    - Scroll, and the ring fills as you read. Minimized, the panel keeps the minutes left.
+    - Select some text to count just that, or switch between the article and the whole page.
+  permissions:
+    - Read the page you're on, after you click its button
+  privacy:
+    - It asks for `activeTab` and `scripting` only, to count the words on the tab you clicked on.
+    - It stores nothing, not even settings.
+  stores: {}
+  screenshots:
+    - file: 1-reading-progress.webp
+      alt: An article about sourdough with the Word Count panel showing a 3 minute read, a ring with 2 minutes left, and counts for speaking time, sentences and characters.
+    - file: 2-selection.webp
+      alt: A highlighted passage, with the panel adding a count for just the selection.
+    - file: 3-minimized.webp
+      alt: The panels minimized to small pills at the bottom of the page, Word Count's showing 1 minute left.
+    - file: 4-light-mode.webp
+      alt: The Word Count panel in light mode.
+
+- id: quote-link
+  name: Quote with Link
+  tagline: Copy a quote with a link back to the exact spot on the page.
+  description: "Quote with Link is a free browser extension for Chrome, Edge, Firefox and Safari that copies selected text as a quote with a link back to it, as Markdown, plain text, rich text or HTML."
+  logo: /images/extensions/quote-link.svg
+  text: >-
+    Select some text and copy it as Markdown, plain text, rich text or HTML, with bold, links and
+    lists intact. The link has tracking codes stripped and opens the page scrolled to the quote,
+    highlighted.
+  use:
+    - Click **Quote with Link** in your browser's toolbar to turn on quote mode for the tab.
+    - Select some text. A **Copy as Markdown** button appears beside it; its ▾ menu picks another format, which becomes your default.
+    - Paste anywhere. From the keyboard, Alt+Q (Option+Q on a Mac) reaches the copy button. The panel's **Page link** copies just the page's link.
+  permissions:
+    - Read the page you're on, after you click its button
+    - Remember your format, in your browser only
+  privacy:
+    - It asks for `activeTab` and `scripting` (to read the text you select on the tab you clicked on) and `storage` (to remember your format).
+    - What you copy goes to your clipboard and nowhere else. Your format is kept in the extension's own storage, which websites can't read.
+  stores: {}
+  screenshots:
+    - file: 1-copy-button.webp
+      alt: A highlighted passage in an article, with a Copy as Markdown button beside it and the Quote with Link panel.
+    - file: 2-formats.webp
+      alt: The copy button's menu open, offering Markdown, plain text, rich text and HTML.
+    - file: 3-pasted.webp
+      alt: The quote pasted into a notes app as Markdown, with a link that opens the page at the quote.
+    - file: 4-light-mode.webp
+      alt: The copy button and panel in light mode.

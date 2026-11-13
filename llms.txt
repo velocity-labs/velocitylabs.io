@@ -28,7 +28,10 @@ sitemap: false
 - [Case studies]({{ "/case-studies.md" | absolute_url }}): the longer stories behind our work, starting with Princess Dental Staffing
 - [Our work]({{ "/portfolio.md" | absolute_url }}): Web applications we have built, rescued and maintained for clients
 - [Free tools]({{ "/tools.md" | absolute_url }}): free web tools we have built: rentcheck (HUD Fair Market Rent and income limits by ZIP code) and paycheck (what any job pays in any state or metro area, from BLS wage data)
-- [Browser extensions]({{ "/extensions.md" | absolute_url }}): free Chrome and Firefox extensions we have built: Table Export (any table as CSV, JSON or YAML), Word Count (reading time and counts) and Quote with Link (a selected passage as a quote with a link back to it)
+- [Browser extensions]({{ "/extensions.md" | absolute_url }}): free extensions for Chrome, Edge, Firefox and Safari that we have built, each asking for the least access it can and sending nothing anywhere
+{%- for ext in site.data.extensions %}
+- [{{ ext.name }}]({{ ext.id | prepend: "/extensions/" | append: ".md" | absolute_url }}): {{ ext.tagline }} Includes its privacy policy and a support form.
+{%- endfor %}
 - [Open source]({{ "/open-source.md" | absolute_url }}): Ruby gems and Heroku tooling we've built and published
 - [Contact]({{ "/#contact" | absolute_url }}): Start a project with us
 

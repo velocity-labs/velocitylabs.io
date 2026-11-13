@@ -1,0 +1,11 @@
+# The extension support form's "Browser" choices (_includes/blocks/contact-form.html).
+# site/contact-form.js picks the visitor's own by these names; main.rb accepts only these.
+- Chrome
+- Edge
+- Firefox
+- Safari
+- Brave
+- Vivaldi
+- Opera
+- Arc
+- Other

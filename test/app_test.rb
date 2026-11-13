@@ -85,6 +85,27 @@ class ContactFormTest < AppTest
     assert_includes email['text'], 'Need:  Code audit'
   end
 
+  def test_extension_support_names_the_extension_and_browser
+    with_fake_network { post '/contact-form', contact_params('extension' => 'table-export', 'browser' => 'Safari') }
+
+    email = JSON.parse(@resend_requests.fetch(0).body)
+    assert_equal 'Table Export support from Jane Doe', email['subject']
+    assert_includes email['html'], '<td>Extension:</td><td>Table Export</td>'
+    assert_includes email['html'], '<td>Browser:</td><td>Safari</td>'
+    assert_equal ['contact@velocitylabs.io'], email['to']
+  end
+
+  # Only the listed extensions and browsers are passed on
+  def test_unknown_extension_or_browser_is_left_out
+    with_fake_network { post '/contact-form', contact_params('extension' => '<script>', 'browser' => 'Netscape <b>') }
+
+    assert_equal 'success', json['status']
+    email = JSON.parse(@resend_requests.fetch(0).body)
+    refute_includes email['html'], 'Extension:'
+    refute_includes email['html'], 'Browser:'
+    assert_equal 'Contact form from Jane Doe', email['subject']
+  end
+
   def test_message_keeps_its_line_breaks
     with_fake_network { post '/contact-form', contact_params('message' => "We need an audit.\r\n\r\nIt is <urgent>\nThanks") }
     assert_includes JSON.parse(@resend_requests.fetch(0).body)['html'], "We need an audit.<br>\n<br>\nIt is &lt;urgent&gt;<br>\nThanks"

@@ -1,0 +1,28 @@
+@use 'breakpoints' as *;
+
+// One browser extension's page (_layouts/extension.html)
+
+// What it does, beside the install box
+.ext-grid { display: grid; grid-template-columns: minmax(0, 1fr) 20rem; gap: 3rem; align-items: start; }
+.ext-install {
+  display: grid; gap: .9rem; justify-items: start; padding: 1.75rem; border-radius: 14px;
+  background: var(--panel); border: 1px solid var(--orbit);
+}
+.ext-install img { width: 4.5rem; height: 4.5rem; border-radius: 16px; }
+.ext-install h2 { font-size: 1.3rem; }
+.ext-stores { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; width: 100%; }
+.ext-stores .btn { width: 100%; justify-content: center; }
+.ext-stores:empty { display: none; }
+.ext-soon { color: var(--star); font-weight: 700; }
+.ext-also { color: var(--dust); font-size: .9rem; }
+
+// Screenshots, two to a row
+.shots { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.shots img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--orbit); }
+
+@media (max-width: $stack) {
+  .ext-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: $phone) {
+  .shots { grid-template-columns: minmax(0, 1fr); }
+}

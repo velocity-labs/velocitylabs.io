@@ -39,3 +39,13 @@
 .tool-head { display: flex; align-items: center; gap: 1rem; }
 .tool-head img { flex: none; width: 3.5rem; height: 3.5rem; border-radius: 12px; }
 .repo .stack { margin: 0; }
+
+// The extensions page's cards: three to a row, smaller than the repos'
+.ext-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ext-cards .repo { padding: 1.5rem; }
+.ext-cards h3 { font-size: 1.25rem; }
+.ext-cards h3 a { color: inherit; text-decoration: none; }
+.ext-cards h3 a:hover { color: var(--sun); }
+@media (max-width: $stack) {
+  .ext-cards { grid-template-columns: minmax(0, 1fr); }
+}

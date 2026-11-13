@@ -3,91 +3,30 @@ layout: page
 bands: true
 deco: true
 title: Browser extensions
-description: "Free browser extensions from Velocity Labs for Chrome and Firefox: Table Export, Word Count and Quote with Link. Each asks for the least access it can and sends nothing anywhere."
+description: "Free browser extensions from Velocity Labs for Chrome, Edge, Firefox and Safari: Table Export, Word Count and Quote with Link. Each asks for the least access it can and sends nothing anywhere."
 eyebrow: Extensions
 heading: Browser extensions that mind their own business
-lead: Small, useful extensions for Chrome and Firefox. Each one sees a page only after you click its button, and none of them can send anything anywhere.
-
-# id: anchor used by the store listings; logo: its icon; permissions: what it asks for, in plain words
-# chrome_url / firefox_url: the store listing, once approved. Until a browser's URL is set, the
-# card says "Coming soon" for it; add each one as its listing goes live.
-extensions:
-  - name: Table Export
-    id: table-export
-    kind: Chrome & Firefox extension
-    logo: /images/extensions/table-export.svg
-    technologies: [TypeScript]
-    text: >-
-      Exports any table on a page as CSV, JSON or YAML. Hover a table and click the download icon,
-      or pick one from the list, then preview it, choose the rows you want, and download or copy it.
-      It skips page clutter like pagination and filter rows, fills in merged cells, and keeps
-      spreadsheet formulas from sneaking in through the data.
-    permissions:
-      - Read the page you're on, after you click its button
-      - Save the file you export
-      - Remember your format and options, in your browser only
-  - name: Word Count
-    id: word-count
-    kind: Chrome & Firefox extension
-    logo: /images/extensions/word-count.svg
-    technologies: [TypeScript]
-    text: >-
-      Shows how long a page takes to read. A ring fills as you scroll and counts down the minutes
-      left, next to the word, sentence and character counts and the time it takes to read aloud.
-      Select some text to count just that. It counts the article itself, not the menus and comments
-      around it, and handles languages written without spaces.
-    permissions:
-      - Read the page you're on, after you click its button
-  - name: Quote with Link
-    id: quote-link
-    kind: Chrome & Firefox extension
-    logo: /images/extensions/quote-link.svg
-    technologies: [TypeScript]
-    text: >-
-      Copies a passage as a quote with a link back to it. Select some text and copy it as Markdown,
-      plain text, rich text or HTML, with bold, links and lists intact. The link has tracking codes
-      stripped and opens the page scrolled to the quote, highlighted.
-    permissions:
-      - Read the page you're on, after you click its button
-      - Remember your format, in your browser only
+lead: Small, useful extensions for Chrome, Edge, Firefox and Safari. Each one sees a page only after you click its button, and none of them can send anything anywhere.
 ---
+{%- comment -%}
+  The cards come from _data/extensions.yml; each links to the extension's own
+  page (_layouts/extension.html), which has its store links, privacy and support.
+{%- endcomment %}
 <section id="extensions" aria-labelledby="extensions-title">
   <div class="wrap">
     <div class="section-head">
       <h2 id="extensions-title" data-reveal="rise">What we've built</h2>
     </div>
-    <div class="repos">
-      {%- for extension in page.extensions %}
-      <article class="repo" id="{{ extension.id }}" data-reveal="rise" style="--d:{{ forloop.index0 | modulo: 2 | times: 0.1 | round: 2 }}s">
+    <div class="repos ext-cards">
+      {%- for ext in site.data.extensions %}
+      <article class="repo" id="{{ ext.id }}" data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.1 | round: 2 }}s">
         <div class="tool-head">
-          <img src="{{ extension.logo }}" alt="" width="56" height="56">
-          <h3>{{ extension.name }}</h3>
+          <img src="{{ ext.logo }}" alt="" width="56" height="56">
+          <h3><a href="/extensions/{{ ext.id }}/">{{ ext.name }}</a></h3>
         </div>
-        <p class="repo-kind">{{ extension.kind }}</p>
-        <div class="repo-text">
-          {{ extension.text | markdownify }}
-          <p><strong>It can:</strong></p>
-          <ul>
-            {%- for permission in extension.permissions %}
-            <li>{{ permission }}</li>
-            {%- endfor %}
-          </ul>
-        </div>
-        {% include blocks/stack.html techs=extension.technologies %}
-        {%- assign soon = "" | split: "" -%}
-        {%- unless extension.chrome_url %}{% assign soon = soon | push: "Chrome" %}{% endunless -%}
-        {%- unless extension.firefox_url %}{% assign soon = soon | push: "Firefox" %}{% endunless %}
+        <p class="repo-text">{{ ext.tagline }}</p>
         <ul class="repo-links">
-          {%- if extension.chrome_url %}
-          <li><a href="{{ extension.chrome_url }}">Add to Chrome</a></li>
-          {%- endif %}
-          {%- if extension.firefox_url %}
-          <li><a href="{{ extension.firefox_url }}">Add to Firefox</a></li>
-          {%- endif %}
-          {%- if soon.size > 0 %}
-          <li>Coming soon to {{ soon | join: " and " }}</li>
-          {%- endif %}
-          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="/extensions/{{ ext.id }}/" aria-label="More about {{ ext.name }}">Learn more</a></li>
         </ul>
       </article>
       {%- endfor %}
@@ -106,17 +45,13 @@ extensions:
         It can see a page only after you click its toolbar button on that page, and only that tab.</li>
       <li><strong>"Always on" is one site at a time.</strong> If you want an extension to start by
         itself on a site you use a lot, you can turn that on in its panel. Your browser asks you to
-        confirm, naming the site, and it covers that site only. You can turn it off from the panel
-        or in your browser's extension settings.</li>
+        confirm, naming the site, and it covers that site only.</li>
       <li><strong>Settings stay in your browser.</strong> The few choices they remember, like your
         export format, are kept in the extension's own storage, which websites can't read.</li>
-      <li><strong>Nothing is hidden from you.</strong> In Chrome, the confirmation for "Always on"
-        is a page websites can load, so a site could tell that one of these extensions is
-        installed, though its address changes every session to make that hard. In Firefox, no site
-        can load any part of them.</li>
     </ul>
-    <p>Links from the extensions to this page don't tell us which page you came from.</p>
-    <p class="updated">Last updated November 12, 2026.</p>
+    <p>Each extension's page has its full privacy policy:
+      {% for ext in site.data.extensions %}<a href="/extensions/{{ ext.id }}/#privacy">{{ ext.name }}</a>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}.</p>
+    <p class="updated">Last updated November 13, 2026.</p>
   </div>
 </section>
 {% include blocks/cta-band.html %}

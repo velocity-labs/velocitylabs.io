@@ -13,6 +13,7 @@ module VelocityLabs
       'home'    => '#main',
       'service' => '#main',
       'page'    => '#main',
+      'extension' => '#main',
       'post'    => '.post-body'
     }.freeze
 

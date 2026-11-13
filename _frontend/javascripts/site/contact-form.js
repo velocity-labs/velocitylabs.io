@@ -46,6 +46,23 @@ export function init(form) {
     form.addEventListener('focusin', loadRecaptcha, { once: true });
   }
 
+  // An extension's support form asks which browser: start from the visitor's
+  // own, by the option names in _data/support_browsers.yml. Brands that look
+  // like Chrome (Arc) stay Chrome; they can change it.
+  const browserSelect = form.querySelector('select[data-detect-browser]');
+  if (browserSelect) {
+    const ua = navigator.userAgent;
+    const guess = navigator.brave ? 'Brave'
+      : /Edg\//.test(ua) ? 'Edge'
+      : /OPR\//.test(ua) ? 'Opera'
+      : /Vivaldi/.test(ua) ? 'Vivaldi'
+      : /Firefox\//.test(ua) ? 'Firefox'
+      : /Chrome\//.test(ua) ? 'Chrome'
+      : /Safari\//.test(ua) ? 'Safari'
+      : '';
+    if (Array.from(browserSelect.options).some((option) => option.value === guess)) browserSelect.value = guess;
+  }
+
   // "your name", "a valid email address": how "Please add ..." names a field
   const describe = (field) => {
     if (field.validity.typeMismatch) return 'a valid email address';
@@ -89,6 +106,9 @@ export function init(form) {
       || form.querySelector('input[name="need"][type="hidden"]')?.dataset.label;
     const lines = [`Name: ${data.get('name') || ''}`, `Email: ${data.get('email') || ''}`];
     if (need) lines.push(`Need: ${need}`);
+    const extension = form.querySelector('input[name="extension"]')?.dataset.label;
+    if (extension) lines.push(`Extension: ${extension}`);
+    if (data.get('browser')) lines.push(`Browser: ${data.get('browser')}`);
     lines.push('', data.get('message') || '');
     return lines.join('\n');
   };
@@ -142,7 +162,7 @@ export function init(form) {
         return;
       }
 
-      track('generate_lead', { service: data.get('need') || 'none' });
+      if (!data.get('extension')) track('generate_lead', { service: data.get('need') || 'none' }); // support isn't a lead
       form.classList.add('sent');
       show('success', "Thanks! Your message has been sent. We'll get back to you shortly.");
       form.reset();

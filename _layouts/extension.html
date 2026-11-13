@@ -1,0 +1,98 @@
+---
+layout: base
+---
+{%- comment -%}
+  One browser extension's page (/extensions/<id>/). Front matter: extension (its
+  id in _data/extensions.yml, which supplies everything on the page) plus the
+  page's title and description. Sections: what it does, screenshots, how to
+  use it, privacy (#privacy, the URL the store listings give as the privacy
+  policy) and support (#contact, a form that sends the extension's name).
+{%- endcomment -%}
+{%- assign ext = site.data.extensions | where: "id", page.extension | first -%}
+{%- assign browsers = "chrome:Chrome,edge:Edge,firefox:Firefox,safari:Safari" | split: "," -%}
+{%- assign soon = "" | split: "" -%}
+{% include blocks/page-hero.html eyebrow="Browser extension" heading=ext.name lede=ext.tagline deco=true %}
+
+<section class="ext-intro" aria-labelledby="what-title">
+  <div class="wrap ext-grid">
+    <div class="prose">
+      <h2 id="what-title">What it does</h2>
+      {{ ext.text | markdownify }}
+      <p><strong>It can:</strong></p>
+      <ul>
+        {%- for permission in ext.permissions %}
+        <li>{{ permission }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <aside class="ext-install" aria-labelledby="install-title">
+      <img src="{{ ext.logo }}" alt="" width="96" height="96">
+      <h2 id="install-title">Get {{ ext.name }}</h2>
+      <ul class="ext-stores">
+        {%- for pair in browsers %}
+        {%- assign key = pair | split: ":" | first %}{% assign label = pair | split: ":" | last %}
+        {%- if ext.stores[key] %}
+        <li><a class="btn btn-sun" href="{{ ext.stores[key] }}">Add to {{ label }}</a></li>
+        {%- else %}{% assign soon = soon | push: label %}{% endif %}
+        {%- endfor %}
+      </ul>
+      {%- if soon.size > 0 %}
+      <p class="ext-soon">Coming soon to {% for label in soon %}{{ label }}{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}.</p>
+      {%- endif %}
+      <p class="ext-also">Free. Works in Brave, Vivaldi, Arc and other Chromium browsers through the Chrome Web Store.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="ext-shots" aria-labelledby="shots-title">
+  <div class="wrap">
+    <h2 id="shots-title" class="sr">Screenshots</h2>
+    <ul class="shots">
+      {%- for shot in ext.screenshots %}
+      <li><img src="/images/extensions/{{ ext.id }}/{{ shot.file }}" alt="{{ shot.alt }}" width="1280" height="800" loading="lazy" decoding="async"></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="ext-use" aria-labelledby="use-title">
+  <div class="wrap prose">
+    <h2 id="use-title">How to use it</h2>
+    <ol>
+      {%- for step in ext.use %}
+      <li>{{ step | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+      {%- endfor %}
+    </ol>
+    <p><strong>Always on for a site.</strong> To have {{ ext.name }} start by itself on a site you use a
+      lot, turn on "Always on for this site" in its panel. Each panel has _ to minimize it and × to
+      turn it off.</p>
+  </div>
+</section>
+
+<section id="privacy" class="ext-privacy" aria-labelledby="privacy-title">
+  <div class="wrap prose">
+    <h2 id="privacy-title">Privacy</h2>
+    <p>{{ ext.name }} collects no data. It has no analytics, no accounts and no servers, and its pages
+      block every network request (a Content Security Policy of <code>connect-src 'none'</code>), so
+      it can't send anything anywhere. Anything it reads stays in your browser.</p>
+    <ul>
+      <li><strong>Only after you click.</strong> Installing it gives it no access to any website. It
+        can see a page only after you click its toolbar button on that page, and only that tab.</li>
+      {%- for line in ext.privacy %}
+      <li>{{ line | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+      {%- endfor %}
+      <li><strong>"Always on" is one site at a time.</strong> If you turn it on, your browser asks you
+        to confirm, naming the site, and it covers that site only. Nothing is granted at install, and
+        you can turn it off from the panel or in your browser's extension settings.</li>
+      <li><strong>Nothing hidden.</strong> In Chrome and Edge, the "Always on" confirmation is a page
+        websites can load, so a site could tell that {{ ext.name }} is installed, though its address
+        changes every session to make that hard. It reveals nothing else. In Firefox and Safari the
+        confirmation opens in a small window instead, and no site can load any part of it.</li>
+    </ul>
+    <p>Links from the extension to this site don't tell us which page you came from. If you write to
+      us below, we get only what you send, and use it only to answer you.</p>
+    <p class="updated">Last updated November 13, 2026.</p>
+  </div>
+</section>
+
+{% include blocks/contact.html extension=ext.id heading="Questions or problems?" lede="Tell us what happened and we'll get back to you. Ideas for what it should do next are welcome too." question="What's going on?" %}

@@ -6,14 +6,26 @@
   _data/services.yml. A service page's form sends it without asking "What do
   you need?", since the page already says; the other forms ask, leaving out
   the own_page options. When the page's service has a Google Ads conversion,
-  sending the form records it.
+  sending the form records it. extension: an extension page's id from
+  _data/extensions.yml, which makes it a support form: it sends the extension
+  instead of asking what they need, and asks which browser (filled in from the
+  visitor's browser by site/contact-form.js, and theirs to change).
 {%- endcomment -%}
+{%- assign page_extension = site.data.extensions | where: "id", include.extension | first -%}
 {%- assign page_service = site.data.services | where: "id", include.service | first -%}
 <form class="contact-form" action="/contact-form" method="post" novalidate data-contact-form data-recaptcha-key="{{ site.recaptcha_v3_site_key }}"{% if page_service.conversion %} data-conversion="{{ page_service.conversion }}"{% endif %}>
   {%- comment %} data-missing names each required field in "Please add ..." {% endcomment %}
   <div class="field"><label for="contact-name">Name</label><input id="contact-name" name="name" autocomplete="name" required data-missing="your name"></div>
   <div class="field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" required data-missing="your email address"></div>
-  {%- if page_service.need %}
+  {%- if page_extension %}
+  <input type="hidden" name="extension" value="{{ page_extension.id }}" data-label="{{ page_extension.name }}">
+  <div class="field full"><label for="contact-browser">Browser</label><select id="contact-browser" name="browser" data-detect-browser>
+    <option value="">Choose one</option>
+    {%- for browser in site.data.support_browsers %}
+    <option>{{ browser }}</option>
+    {%- endfor %}
+  </select></div>
+  {%- elsif page_service.need %}
   <input type="hidden" name="need" value="{{ page_service.id }}" data-label="{{ page_service.need }}">
   {%- else %}
   <fieldset>
