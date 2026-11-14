@@ -1,0 +1,49 @@
+# Monthly check of the version support panels on the code audit pages
+# (bin/check-versions, _data/versions/). Keeps one open "version-check" issue
+# up to date while a panel needs updating, and closes it once they're all
+# current. Run it by hand from the Actions tab anytime.
+name: Version check
+
+on:
+  schedule:
+    - cron: "0 15 2 * *" # 15:00 UTC on the 2nd of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - id: check
+        run: |
+          if ruby bin/check-versions --report report.md; then
+            echo "outdated=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "outdated=true" >> "$GITHUB_OUTPUT"
+          fi
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open, update or close the version-check issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          OUTDATED: ${{ steps.check.outputs.outdated }}
+        run: |
+          issue=$(gh issue list --label version-check --state open --json number --jq '.[0].number // empty')
+          if [ "$OUTDATED" = "true" ]; then
+            if [ -n "$issue" ]; then
+              gh issue edit "$issue" --body-file report.md
+            else
+              gh label create version-check --color fbca04 --description "Version panels on the code audit pages need updating" 2>/dev/null || true
+              gh issue create --title "Version panels on the code audit pages need updating" --label version-check --body-file report.md
+            fi
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "Every version panel is up to date as of $(date -u +%Y-%m-%d)."
+          fi

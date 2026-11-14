@@ -26,6 +26,7 @@ bin/check-audit              # known vulnerabilities with an adoptable fix (also
 yarn install --ignore-scripts  # install scripts are a supply-chain vector
 bin/check-links              # check every link on the live site (also runs monthly)
 bin/check-links http://localhost:3000  # or on a local build, before it ships
+bin/check-versions           # are the code audit pages' version panels current? (also runs monthly)
 
 # Local development — use two terminals
 # Terminal 1: watchexec rebuilds _site/ on changes (brew install watchexec)
@@ -83,6 +84,7 @@ Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter: `layout: post`, `t
 Heroku (app `velocitylabs`) auto-deploys `main` from GitHub, but only after CI passes ("Wait for CI to pass"). A commit with no checks stays pending and never deploys, so `.github/workflows/ci.yml` runs on every push: the dependency cooldown check, a vulnerability audit (`bin/check-audit`: fails only when a fix has cleared the cooldown, otherwise warns), a full site build, and the app tests. `heroku rollback` restores the previous release if a deploy misbehaves.
 
 - `.github/workflows/link-check.yml` runs `bin/check-links` monthly and keeps a `link-check` issue open while dead links exist
+- `.github/workflows/version-check.yml` runs `bin/check-versions` monthly against the version panels on the code audit pages (`_data/versions/`) and keeps a `version-check` issue open while one needs updating
 - `.github/workflows/uptime.yml` checks the live site every 15 minutes (home page, app server, http redirect, certificate expiry) and keeps an `uptime` issue open while it's down
 - No Dependabot: update dependencies by hand (`bundle update --conservative`, `yarn upgrade`), keeping to the cooldown that `bin/check-cooldown` enforces in CI; `package.json` "resolutions" pins need manual review
 - `SecurityHeaders` in main.rb sets security headers and caching (hashed `/vite/assets/*` cached a year). HSTS is one year (`max-age=31536000`, raised from one day on 2026-11-12)

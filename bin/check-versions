@@ -1,0 +1,138 @@
+#!/usr/bin/env ruby
+# Checks the version support panels on the code audit pages
+# (_data/versions/*.yml) against each project's own release data, and
+# reports the ones that need updating:
+#
+# - a newer release than the panel's `latest`
+# - a new release series that the panel has no row for
+# - a row still marked supported whose support end date has passed
+# - a panel not checked in more than 90 days
+#
+#   bin/check-versions                    # prints the report
+#   bin/check-versions --report report.md
+#
+# Exits 1 when a panel needs updating, 2 when a source couldn't be read.
+# Uses only the Ruby standard library so it runs without Bundler.
+
+require 'date'
+require 'json'
+require 'net/http'
+require 'uri'
+require 'yaml'
+
+ROOT = File.expand_path('..', __dir__)
+REPORT = ARGV.include?('--report') ? ARGV[ARGV.index('--report') + 1] : nil
+TODAY = Date.today
+STALE_DAYS = 90
+USER_AGENT = 'velocitylabs-version-check (+https://velocitylabs.io)'.freeze
+
+def get(url, limit: 5)
+  uri = URI(url)
+  response = Net::HTTP.start(uri.host, uri.port, use_ssl: true, open_timeout: 15, read_timeout: 30) do |http|
+    http.request(Net::HTTP::Get.new(uri, 'User-Agent' => USER_AGENT, 'Accept' => '*/*'))
+  end
+  return get(URI.join(url, response['location']).to_s, limit: limit - 1) if response.is_a?(Net::HTTPRedirection) && limit.positive?
+  raise "#{url} returned #{response.code}" unless response.is_a?(Net::HTTPSuccess)
+
+  response.body
+end
+
+def json(url) = JSON.parse(get(url))
+
+def stable?(version) = version.match?(/\A\d+(\.\d+)*\z/)
+
+def newest(versions) = versions.select { |v| stable?(v) }.max_by { |v| Gem::Version.new(v) }
+
+# Each panel's newest release, from the project's own release data.
+LATEST = {
+  'rails' => -> { newest(json('https://rubygems.org/api/v1/versions/rails.json').map { |v| v['number'] }) },
+  'laravel' => -> { newest(json('https://repo.packagist.org/p2/laravel/framework.json')['packages']['laravel/framework'].map { |v| v['version'].delete_prefix('v') }) },
+  'django' => -> { json('https://pypi.org/pypi/Django/json')['info']['version'] },
+  'nodejs' => -> { json('https://nodejs.org/dist/index.json').find { |v| v['lts'] }['version'].delete_prefix('v') },
+  'expo' => -> { json('https://registry.npmjs.org/expo/latest')['version'] },
+  'shopify' => -> { get('https://shopify.dev/docs/api/usage/versioning')[/(\d{4}-\d{2})\s*(?:<[^>]+>\s*)*Latest stable/m, 1] }
+}.freeze
+
+# The release series a version belongs to, as the panel's row names give it:
+# "8.1" for Rails 8.1.4, "26" for Node.js 26.13.1, "2026-10" for Shopify.
+SERIES = {
+  'rails' => ->(v) { v.split('.')[0, 2].join('.') },
+  'laravel' => ->(v) { v.split('.').first },
+  'django' => ->(v) { v.split('.')[0, 2].join('.') },
+  'nodejs' => ->(v) { v.split('.').first },
+  'expo' => ->(v) { v.split('.').first },
+  'shopify' => ->(v) { v }
+}.freeze
+
+MONTHS = Date::ABBR_MONTHNAMES.compact.join('|')
+
+# The last date in a cell like "Until Oct 10, 2027" or "Until Apr 2027"
+# (a month alone counts as its last day). nil when the cell has no date.
+def end_date(text)
+  text = text.to_s
+  if (match = text.scan(/(#{MONTHS})[a-z]* (\d{1,2}), (\d{4})/).last)
+    Date.parse(match.join(' '))
+  elsif (match = text.scan(/(#{MONTHS})[a-z]* (\d{4})/).last)
+    Date.parse("#{match[0]} 1 #{match[1]}").next_month.prev_day
+  end
+end
+
+problems = {}
+errors = {}
+
+Dir[File.join(ROOT, '_data/versions/*.yml')].sort.each do |file|
+  key = File.basename(file, '.yml')
+  panel = YAML.safe_load_file(file, permitted_classes: [Date])
+  list = problems[key] = []
+  name = "#{panel['title']} (`_data/versions/#{key}.yml`)"
+
+  checked = panel['checked'].is_a?(Date) ? panel['checked'] : Date.parse(panel['checked'].to_s)
+  list << "Last checked #{checked}, more than #{STALE_DAYS} days ago." if TODAY - checked > STALE_DAYS
+
+  panel['series'].each do |row|
+    next unless row['status'] == 'supported'
+
+    ends = end_date(row['security'])
+    list << "#{row['name']} is marked supported, but its support ended #{ends.strftime('%b %-d, %Y')}." if ends && ends < TODAY
+  end
+
+  unless LATEST[key]
+    errors[name] = 'No release source in bin/check-versions for this panel.'
+    next
+  end
+
+  begin
+    latest = LATEST[key].call or raise 'no version found'
+  rescue StandardError => e
+    errors[name] = "Couldn't read the latest release: #{e.message}"
+    next
+  end
+
+  shown = panel['latest'].to_s.split.first
+  list << "Latest release is #{latest}; the panel shows #{panel['latest']}." if shown != latest
+
+  series = SERIES[key].call(latest)
+  named = panel['series'].map { |row| row['name'].to_s }
+  list << "#{series} is a new release series with no row in the panel." unless named.any? { |n| n.match?(/(\A|[^\d.-])#{Regexp.escape(series)}(?![\d.]*\d)/) }
+ensure
+  problems[key]&.map! { |p| "#{name}: #{p}" }
+end
+
+found = problems.values.flatten
+lines = ["# Version support panels", '', "Checked #{TODAY} by `bin/check-versions`.", '']
+if found.empty? && errors.empty?
+  lines << 'Every panel is up to date.'
+else
+  if found.any?
+    lines += ['## Needs updating', '', *found.map { |p| "- #{p}" }, '']
+    lines << 'Update the rows, `latest` and `checked` in the file (format in `_data/versions/README.md`), checking dates against the source the panel links to.'
+    lines << ''
+  end
+  lines += ["## Couldn't check", '', *errors.map { |n, e| "- #{n}: #{e}" }, ''] if errors.any?
+end
+
+report = lines.join("\n")
+puts report
+File.write(REPORT, "#{report}\n") if REPORT
+exit 1 if found.any?
+exit 2 if errors.any?
