@@ -14,6 +14,9 @@
 .tool-list li { display: grid; justify-items: center; align-content: start; gap: .5rem; width: 4.5rem; color: var(--dust); font-size: .85rem; line-height: 1.3; text-align: center; }
 .tool-list svg { width: 2.75rem; height: 2.75rem; transition: color .2s; }
 .tool-list li:hover svg { color: var(--brand); }
+// On the home page, a grid: 12 across, 8 on tablets, 4 on phones
+.tools .tool-list { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.5rem .75rem; max-width: none; }
+.tools .tool-list li { width: auto; }
 
 // Decorative rings in a section's top right corner (blocks/deco.html)
 .has-deco { position: relative; overflow: hidden; }
@@ -23,9 +26,11 @@
 .deco svg { width: 100%; height: 100%; display: block; overflow: visible; will-change: transform; }
 
 @media (max-width: $stack) {
+  .tools .tool-list { grid-template-columns: repeat(8, minmax(0, 1fr)); }
   .deco { display: none; }
 }
 @media (max-width: $phone) {
   .svc-list { grid-template-columns: minmax(0, 1fr); }
   .tool-list { gap: 1.25rem .75rem; }
+  .tools .tool-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }

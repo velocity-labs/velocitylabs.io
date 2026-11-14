@@ -1,5 +1,5 @@
 # "The tools we build with" row at the end of the home services section
-# (_includes/home/services.html), in this order. Eight per row on wide screens.
+# (_includes/home/services.html), in this order. Twelve per row on wide screens, eight on tablets, four on phones.
 # icon: an SVG in _includes/devicons/ (sources in SOURCES.txt there)
 # color: shown on hover; brand colors, lightened where they'd vanish on the
 #        dark background (PostgreSQL, Heroku, and Next.js in white)
@@ -12,6 +12,10 @@
   icon: rails-plain
   color: "#cc0000"
 
+- name: Sidekiq
+  icon: sidekiq
+  color: "#e5484d"
+
 - name: JavaScript
   icon: javascript-plain
   color: "#f0db4f"
@@ -23,6 +27,10 @@
 - name: React
   icon: react-original
   color: "#61dafb"
+
+- name: Expo
+  icon: expo
+  color: "#ffffff"
 
 - name: Next.js
   icon: nextjs-plain
@@ -40,9 +48,29 @@
   icon: postgresql-plain
   color: "#4169e1"
 
+- name: MySQL
+  icon: mysql
+  color: "#5d9ec4"
+
+- name: Redis
+  icon: redis-plain
+  color: "#ff4438"
+
+- name: Elasticsearch
+  icon: elasticsearch-plain
+  color: "#00bfb3"
+
+- name: Solr
+  icon: solr
+  color: "#d9411e"
+
 - name: Supabase
   icon: supabase-plain
   color: "#3ecf8e"
+
+- name: Docker
+  icon: docker-plain
+  color: "#2496ed"
 
 - name: AWS
   icon: amazonwebservices-plain
@@ -60,10 +88,14 @@
   icon: twilio-original
   color: "#f22f46"
 
+- name: SendGrid
+  icon: sendgrid
+  color: "#1a82e2"
+
+- name: Resend
+  icon: resend
+  color: "#ffffff"
+
 - name: Claude
   icon: claude
   color: "#d97757"
-
-- name: Git
-  icon: git-plain
-  color: "#f34f29"
