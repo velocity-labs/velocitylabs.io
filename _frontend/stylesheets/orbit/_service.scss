@@ -43,6 +43,9 @@
 .text-band h2 { max-width: 30ch; }
 .text-band-body { margin-top: 1.25rem; max-width: 44rem; color: #D5DAEC; font-size: 1.125rem; }
 .text-band-body > * + * { margin-top: 1em; }
+.text-band-body ul { list-style: none; padding: 0; display: grid; gap: .65rem; }
+.text-band-body li { position: relative; padding-left: 1.6rem; }
+.text-band-body li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 4px rgba(255, 186, 66, .15); }
 
 @media (max-width: $stack) {
   .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -50,4 +53,35 @@
 }
 @media (max-width: $phone) {
   .features { grid-template-columns: minmax(0, 1fr); }
+}
+
+// A text band with a panel beside its prose (text-band.html with aside)
+.text-band.has-aside .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); column-gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.text-band.has-aside .wrap { grid-template-rows: 1fr auto auto 1fr; }
+.text-band.has-aside h2 { grid-column: 1; grid-row: 2; }
+.text-band.has-aside .text-band-body { grid-column: 1; grid-row: 3; }
+
+// Rails versions and their support (blocks/version-panel.html)
+.version-panel { grid-column: 2; grid-row: 1 / -1; margin: 0; padding: 1.5rem; background: var(--panel); border: 1px solid var(--orbit); border-radius: 16px; }
+.version-panel figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--orbit); }
+.version-panel-title { font-family: var(--display); font-weight: 700; color: var(--star); }
+.version-panel-latest { font-size: .85rem; color: var(--dust); font-variant-numeric: tabular-nums; }
+.version-panel ul { list-style: none; margin: 0; padding: 0; }
+.version-panel li { display: grid; grid-template-columns: 1fr auto; gap: .2rem 1rem; padding: .85rem 0; border-bottom: 1px solid rgba(58, 70, 119, .6); }
+.version-name { font-weight: 700; color: var(--star); }
+.version-status { justify-self: end; font-size: .8rem; font-weight: 700; padding: .15rem .6rem; border-radius: 999px; white-space: nowrap; }
+.version-support { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: .35rem 0 0; font-size: .85rem; }
+.version-support dt { color: var(--dust); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+.version-support dd { margin: .1rem 0 0; color: #C4CAE0; }
+.is-supported .version-support dd { color: var(--star); }
+.is-supported .version-status { background: rgba(92, 200, 130, .16); color: #7FDCA0; }
+.is-ended .version-status { background: rgba(255, 107, 107, .14); color: #FF9A9A; }
+.is-ended .version-name { color: #C4CAE0; }
+.version-panel-source { margin-top: .9rem; font-size: .8rem; color: var(--dust); }
+.version-panel-source a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+@media (max-width: $stack) {
+  .text-band.has-aside .wrap { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .text-band.has-aside h2, .text-band.has-aside .text-band-body { grid-row: auto; }
+  .version-panel { grid-column: 1; grid-row: auto; margin-top: 2rem; }
 }

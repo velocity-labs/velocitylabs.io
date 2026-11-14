@@ -1,0 +1,28 @@
+# Rails release series and their support, for the panel on /code-audit/ruby-on-rails/
+# (blocks/version-panel.html). Source: rubyonrails.org/maintenance, and rubygems.org
+# for the latest release. Bug fixes run 1 year and security fixes 2 years from a
+# series' first release; the latest series keeps bug fixes until the next one ships.
+# Update `checked` and the rows when a series ships or its support ends.
+checked: 2026-11-13
+latest: 8.1.4.1
+series:
+  - name: Rails 8.1
+    status: supported
+    label: Supported
+    bug_fixes: Until Rails 8.2 ships
+    security: Until Oct 10, 2027
+  - name: Rails 8.0
+    status: ended
+    label: Unsupported
+    bug_fixes: Ended May 7, 2026
+    security: Ended Nov 7, 2026
+  - name: Rails 7.2
+    status: ended
+    label: Unsupported
+    bug_fixes: Ended Aug 9, 2025
+    security: Ended Aug 9, 2026
+  - name: Rails 7.1 and older
+    status: ended
+    label: Unsupported
+    bug_fixes: Ended by Oct 1, 2024
+    security: Ended by Oct 1, 2025

@@ -66,3 +66,19 @@ main > section:nth-of-type(even) + .cta-band { background: none; }
 @media (max-width: $phone) {
   .author-card { flex-direction: column; }
 }
+
+// The sample report's pages fanned out on the right of a page hero
+// (blocks/report-pages.html)
+.page-hero.has-report { overflow: hidden; }
+.page-hero.has-report .wrap { position: relative; }
+.page-hero.has-report .wrap > :not(.report-pages) { position: relative; z-index: 1; max-width: min(40rem, 58%); }
+.report-pages { position: absolute; right: 7%; top: 0; width: 26%; max-width: 300px; aspect-ratio: 640 / 828; pointer-events: none; }
+.report-pages img { position: absolute; inset: 0; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 18px 40px rgba(0, 0, 0, .45), 0 2px 6px rgba(0, 0, 0, .3); }
+.report-pages img:nth-child(1) { transform: translate(34%, 8%) rotate(7deg); }
+.report-pages img:nth-child(2) { transform: translate(14%, 3%) rotate(2.5deg); }
+.report-pages img:nth-child(3) { transform: translate(-8%, -2%) rotate(-4deg); }
+
+@media (max-width: $stack) {
+  .report-pages { display: none; }
+  .page-hero.has-report .wrap > :not(.report-pages) { max-width: none; }
+}

@@ -1,0 +1,11 @@
+{%- comment -%}
+  Pages of the sample audit report, fanned out on the right of a page hero
+  (page-hero.html with report: true). Rendered from ../code-audit/examples/sample-audit
+  (bin/render audit.yml --website-only), pages 1 to 3, into images/code-audit/
+  at 640px wide. Re-render when the report's design changes.
+{%- endcomment -%}
+<div class="report-pages hl" style="--d:.3s" aria-hidden="true">
+  <img src="/images/code-audit/report-scorecard.webp" width="640" height="828" alt="" loading="eager" decoding="async">
+  <img src="/images/code-audit/report-summary.webp" width="640" height="828" alt="" loading="eager" decoding="async">
+  <img src="/images/code-audit/report-cover.webp" width="640" height="828" alt="" fetchpriority="high" decoding="async">
+</div>

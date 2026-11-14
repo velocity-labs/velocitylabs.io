@@ -2,13 +2,17 @@
   The top of an inner page: its one h1 and optional lede. Optional:
   eyebrow (a small label above the h1), cta (the page's main action, a link
   to #contact), booking: true (adds "Book a 30-minute call"), deco: true
-  (decorative rings in the corner), techs (technology pills under the lede).
+  (decorative rings in the corner), report: true (pages of
+  the sample audit report on the right, blocks/report-pages.html), techs (technology pills under the lede).
 {%- endcomment -%}
-<section class="page-hero{% if include.deco %} has-deco{% endif %}" aria-labelledby="page-title">
+<section class="page-hero{% if include.deco %} has-deco{% endif %}{% if include.report %} has-report{% endif %}" aria-labelledby="page-title">
   {%- if include.deco %}
   {% include blocks/deco.html %}
   {%- endif %}
   <div class="wrap">
+    {%- if include.report %}
+    {% include blocks/report-pages.html %}
+    {%- endif %}
     {%- if include.eyebrow %}
     <p class="eyebrow hl">{{ include.eyebrow }}</p>
     {%- endif %}

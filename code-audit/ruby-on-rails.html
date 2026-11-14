@@ -1,0 +1,104 @@
+---
+layout: service
+service: code-audit
+eyebrow: Ruby on Rails code audit
+permalink: /code-audit/ruby-on-rails/
+title: "Ruby on Rails code audit and security audit"
+description: A fixed-fee Rails code audit and security audit from developers who have built Rails apps since 2007. Every check for your Rails version, gems, and data, with a plan for what to fix first.
+heading: A Rails code audit from people who've been building Rails since 2007.
+lede: Most of the apps we audit are Rails apps, often inherited, rushed to launch, or partly written by AI. We review yours against the problems Rails apps actually have, and tell you in plain English which ones matter and what to fix first.
+cta: Order a Rails code audit
+hero_report: true
+
+# Public-level summary of modules/frameworks/rails.md in ../code-audit.
+# Describe what we look at, never the checklist itself.
+checks:
+  - title: Who can see whose data
+    text: >-
+      Record lookups that aren't scoped to the signed-in user, admin areas and mounted engines
+      (Sidekiq, Active Admin) without authorization, and tenant data that leaks between accounts.
+  - title: Sign-in, sessions, and secrets
+    text: >-
+      Devise or hand-rolled authentication, brute-force protection, cookies and CSRF, and
+      credentials, `secret_key_base`, or API keys committed to the repo.
+  - title: Injection and unsafe input
+    text: >-
+      Mass assignment through strong parameters, SQL built from strings in Active Record,
+      `html_safe` and `raw` in views, open redirects, and file uploads through Active Storage.
+  - title: Data that holds up
+    text: >-
+      Validations with no database constraint behind them, callbacks with side effects, race
+      conditions, risky migrations, and background jobs that charge a card twice when they retry.
+  - title: Speed under real traffic
+    text: >-
+      N+1 queries, unbounded queries and missing pagination, caching, slow work in the request,
+      and Puma, Sidekiq, and connection pool settings that don't fit together.
+  - title: Version and upgrade path
+    text: >-
+      Whether your Rails and Ruby versions still get security fixes, the gap between your Rails
+      version and its framework defaults, and the gems that will block the next upgrade.
+
+why: |-
+  Every audit runs Brakeman, bundler-audit, and RuboCop Rails against your code, but scanners only
+  find the patterns they know. The findings that hurt most in Rails apps are usually ones a scanner
+  can't see:
+
+  - A `find` that should have been `current_user.projects.find`
+  - A Sidekiq dashboard mounted without a login
+  - A uniqueness validation with no unique index
+  - A job that sends a customer email again on every retry
+
+  Those come from reading the code, and from having fixed the same problems in our own Rails apps
+  for almost twenty years.
+
+upgrades: |-
+  Rails supports each release with security fixes for about two years, so many apps are running an
+  end-of-life version that no longer gets them. Every Rails audit checks your Rails and Ruby versions against
+  the official maintenance policy.
+
+  If you're behind, the report lays out the upgrade one version at a time, and Standard and
+  Comprehensive also list the gems and deprecations that stand in the way. When you're ready, we
+  can do the [upgrade](/maintenance/) too.
+
+faq_title: Questions about Rails code audits
+faq:
+  - q: How much does a Rails code audit cost?
+    a: >-
+      The same fixed fees as every audit: $1,000 for Essentials, $1,500 for Standard, and $2,500
+      for Comprehensive. [Compare the levels](#pricing). Hire us for hourly development within 30
+      days of your report and up to $1,000 of the fee comes off your first invoice.
+  - q: Is a Rails security audit included?
+    a: >-
+      Yes. Every Rails code audit includes a security audit: data access, admin areas, sign-in,
+      sessions, secrets, injection, and file uploads, checked against the known weaknesses of
+      Rails, plus Brakeman and bundler-audit scans.
+  - q: Which versions of Rails do you audit?
+    a: >-
+      Any of them, from apps that have been running on an old version for a decade to apps on the latest
+      release. If you're behind, the report says how far and lays out the upgrade one version at a
+      time; Standard and Comprehensive also list the gems that stand in the way.
+  - q: Can you audit a Rails API with a React or mobile front end?
+    a: >-
+      Yes. API-only Rails apps get the same review, with extra attention to authentication tokens,
+      CORS, and what each endpoint returns. If the front end is part of the audit, it gets its own
+      checks for React, Next.js, or React Native.
+  - q: Do you need to run our app?
+    a: >-
+      Essentials reviews the code without running it. Standard and Comprehensive boot your app and
+      run your tests in an isolated, disposable environment. Either way, we never connect to your
+      production servers, databases, or accounts.
+  - q: Can you fix what the audit finds?
+    a: >-
+      Yes. We've been maintaining and upgrading Rails apps since 2007. We can work alongside your
+      team or take it on ourselves, and the audit credit applies.
+
+contact_heading: Order a Rails code audit
+contact_lede: Tell us about your Rails app and we'll recommend the level that fits.
+contact_question: What's going on with your Rails app?
+---
+{%- assign audit = site.pages | where: "url", "/code-audit/" | first -%}
+{% include blocks/features.html id="checks" title="What a Rails code audit checks" lede="Every Rails audit covers the eight areas in every code audit, plus checks written for Rails itself." items=page.checks %}
+{% include blocks/text-band.html id="beyond-scanners" title="More than a Brakeman report" text=page.why deco=true %}
+{% include blocks/tiers.html id="pricing" title="Rails code audit pricing" lede="Three levels, each a fixed fee. Essentials covers the most important Rails checks; Standard and Comprehensive cover all of them. [See everything every audit includes](/code-audit/)." tiers=audit.tiers cta="Order" item="Rails code audit" %}
+{% include blocks/text-band.html id="upgrades" title="Is your Rails version still supported?" text=page.upgrades aside="version-panel" %}
+{% include blocks/work-band.html id="work" title="Rails apps we've audited and kept running" slugs="land-surveying-firm,go-swim,princess-dental-staffing" %}
