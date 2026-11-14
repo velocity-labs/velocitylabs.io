@@ -1,0 +1,31 @@
+# Django release series and their support, for the panel on /code-audit/python/
+# (blocks/version-panel.html; see _data/versions/README.md). Source: djangoproject.com/download,
+# and pypi.org for the latest release. Each feature release gets about eight months of bug
+# fixes and security fixes until the next-but-one release; LTS releases get about three years.
+# Update `checked` and the rows when a series ships or its support ends (6.2 LTS is due Apr 2027).
+title: Django support today
+source: Django release roadmap
+source_url: https://www.djangoproject.com/download/
+checked: 2026-11-13
+latest: 6.1.3
+series:
+  - name: Django 6.1
+    status: supported
+    label: Supported
+    bug_fixes: Until Apr 2027
+    security: Until Dec 2027
+  - name: Django 6.0
+    status: supported
+    label: Security only
+    bug_fixes: Ended Aug 4, 2026
+    security: Until Apr 2027
+  - name: Django 5.2 LTS
+    status: supported
+    label: Security only
+    bug_fixes: Ended Dec 3, 2025
+    security: Until Apr 2028
+  - name: Django 5.1 and older
+    status: ended
+    label: Unsupported
+    bug_fixes: Ended by Apr 2025
+    security: Ended by Apr 7, 2026

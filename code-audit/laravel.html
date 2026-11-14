@@ -1,0 +1,104 @@
+---
+layout: service
+service: code-audit
+eyebrow: Laravel code audit
+permalink: /code-audit/laravel/
+title: "Laravel code audit and PHP security audit"
+description: A fixed-fee Laravel code audit and security audit. Checks written for Laravel and PHP, your versions and packages, with a plan for what to fix first.
+heading: A Laravel code audit that knows where Laravel apps break.
+lede: We audit Laravel apps, often inherited, rushed to launch, or partly written by AI, with a checklist written for Laravel and PHP. We tell you in plain English which problems matter and what to fix first.
+cta: Order a Laravel code audit
+hero_report: laravel
+versions: laravel
+
+# Public-level summary of modules/frameworks/laravel.md and modules/languages/php.md
+# in ../code-audit. Describe what we look at, never the checklist itself.
+checks:
+  - title: Who can see whose data
+    text: >-
+      Routes and controller actions with no policy or gate behind them, record lookups that
+      aren't scoped to the signed-in user, and admin areas protected by a login alone.
+  - title: Keys, debug mode, and dev tools
+    text: >-
+      An `APP_KEY` committed to the repo or shared between environments, debug mode left on in
+      production, and Telescope, Horizon, or Debugbar reachable by the public.
+  - title: Injection and unsafe input
+    text: >-
+      Mass assignment through `$guarded` and `$request->all()`, raw SQL built from input,
+      unescaped Blade output, Livewire state users can change, and file uploads.
+  - title: Data that holds up
+    text: >-
+      Uniqueness enforced only in validation, missing foreign keys, race conditions in billing
+      code, and queued jobs that run twice or fire before the transaction commits.
+  - title: Speed under real traffic
+    text: >-
+      N+1 queries and lazy loading, `Model::all()` on large tables, config and route caching,
+      sync queues in production, and workers that keep running old code after a deploy.
+  - title: Version and upgrade path
+    text: >-
+      Whether your Laravel and PHP versions still get security fixes, Livewire and Filament
+      versions with known advisories, and the packages that will block the next upgrade.
+
+why: |-
+  Every audit runs osv-scanner, Trivy, and Semgrep against your code, but scanners only find the
+  patterns they know. The findings that hurt most in Laravel apps are usually ones a scanner
+  can't see:
+
+  - A `Model::find($request->id)` with no policy check
+  - A Telescope gate that lets any logged-in user in
+  - A uniqueness rule with no unique index behind it
+  - A job that charges a customer again on every retry
+
+  Those come from reading the code with a checklist built around how Laravel apps actually get
+  attacked and how they fail in production.
+
+upgrades: |-
+  Laravel gives each major version 18 months of bug fixes and two years of security fixes, and PHP
+  supports each release for four years. Many apps run a Laravel or PHP version that no longer
+  gets security fixes. Every Laravel audit checks both against the official support policies.
+
+  If you're behind, the report lays out the upgrade one version at a time, and Standard and
+  Comprehensive also list the packages and deprecations that stand in the way. When you're ready,
+  we can do the [upgrade](/maintenance/) too.
+
+faq_title: Questions about Laravel code audits
+faq:
+  - q: How much does a Laravel code audit cost?
+    a: >-
+      The same fixed fees as every audit: $1,000 for Essentials, $1,500 for Standard, and $2,500
+      for Comprehensive. [Compare the levels](#pricing). Hire us for hourly development within 30
+      days of your report and up to $1,000 of the fee comes off your first invoice.
+  - q: Is a PHP security audit included?
+    a: >-
+      Yes. Every Laravel code audit includes a security audit: data access, admin areas, keys and
+      secrets, debug tooling, sessions, injection, and file uploads, checked against the known
+      weaknesses of Laravel and PHP, plus dependency and code scans.
+  - q: Which versions of Laravel and PHP do you audit?
+    a: >-
+      Any of them, from apps stuck on an old major to apps on the latest release. If you're behind,
+      the report says how far and lays out the upgrade one version at a time; Standard and
+      Comprehensive also list the packages that stand in the way.
+  - q: Do you audit Livewire, Inertia, and Filament apps?
+    a: >-
+      Yes. Livewire components, Inertia props, and Filament admin panels each get their own
+      checks, since they're where Laravel apps most often expose data or state they shouldn't.
+      API-only apps using Sanctum or Passport get the same review.
+  - q: Do you need to run our app?
+    a: >-
+      Essentials reviews the code without running it. Standard and Comprehensive boot your app and
+      run your tests in an isolated, disposable environment. Either way, we never connect to your
+      production servers, databases, or accounts.
+  - q: Can you fix what the audit finds?
+    a: >-
+      Yes. We can work alongside your team or take it on ourselves, and the audit credit applies.
+
+contact_heading: Order a Laravel code audit
+contact_lede: Tell us about your Laravel app and we'll recommend the level that fits.
+contact_question: What's going on with your Laravel app?
+---
+{%- assign audit = site.pages | where: "url", "/code-audit/" | first -%}
+{% include blocks/features.html id="checks" title="What a Laravel code audit checks" lede="Every Laravel audit covers the eight areas in every code audit, plus checks written for Laravel and PHP." items=page.checks %}
+{% include blocks/text-band.html id="beyond-scanners" title="More than a scanner report" text=page.why deco=true %}
+{% include blocks/tiers.html id="pricing" title="Laravel code audit pricing" lede="Three levels, each a fixed fee. Essentials covers the most important Laravel checks; Standard and Comprehensive cover all of them. [See everything every audit includes](/code-audit/)." tiers=audit.tiers cta="Order" item="Laravel code audit" %}
+{% include blocks/text-band.html id="upgrades" title="Is your Laravel version still supported?" text=page.upgrades aside="version-panel" %}
+{% include blocks/stack-links.html id="other-stacks" title="Other stacks we audit" lede="Every code audit covers the eight areas on our [code audit page](/code-audit/). These have their own checklists too." %}

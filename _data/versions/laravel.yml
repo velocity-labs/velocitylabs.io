@@ -1,0 +1,31 @@
+# Laravel major versions and their support, for the panel on /code-audit/laravel/
+# (blocks/version-panel.html; see _data/versions/README.md). Source: laravel.com/docs
+# release notes (support policy table), and packagist.org for the latest release.
+# Bug fixes run 18 months and security fixes 2 years from a major's release.
+# Update `checked` and the rows when a major ships or its support ends.
+title: Laravel support today
+source: Laravel support policy
+source_url: https://laravel.com/docs/master/releases
+checked: 2026-11-13
+latest: 13.42.0
+series:
+  - name: Laravel 13
+    status: supported
+    label: Supported
+    bug_fixes: Until Q3 2027
+    security: Until Mar 17, 2028
+  - name: Laravel 12
+    status: supported
+    label: Security only
+    bug_fixes: Ended Aug 13, 2026
+    security: Until Feb 24, 2027
+  - name: Laravel 11
+    status: ended
+    label: Unsupported
+    bug_fixes: Ended Sep 3, 2025
+    security: Ended Mar 12, 2026
+  - name: Laravel 10 and older
+    status: ended
+    label: Unsupported
+    bug_fixes: Ended by Aug 6, 2024
+    security: Ended by Feb 4, 2025

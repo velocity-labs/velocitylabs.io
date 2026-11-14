@@ -1,0 +1,105 @@
+---
+layout: service
+service: code-audit
+eyebrow: Mobile app code audit
+permalink: /code-audit/mobile-app/
+title: "Mobile app code audit: React Native, Flutter, iOS, and Android"
+description: A fixed-fee mobile app code audit for React Native, Expo, Flutter, iOS, and Android. Secrets, local storage, deep links, and store requirements, with a plan.
+heading: A mobile app code audit for what ships to every phone.
+lede: Anything in your app ends up on every device that installs it, and the app stores keep raising the bar. We review your React Native, Expo, Flutter, Swift, or Kotlin code against the problems mobile apps actually have, and tell you in plain English which ones matter and what to fix first.
+cta: Order a mobile app code audit
+hero_report: brightpath
+versions: expo
+
+# Public-level summary of modules/frameworks/{react-native,flutter,ios,android}.md
+# in ../code-audit. Describe what we look at, never the checklist itself.
+checks:
+  - title: Secrets in the app bundle
+    text: >-
+      Payment, AI, database, and email keys compiled into the app, where anyone can pull them
+      out, and paid APIs the app calls directly instead of through your server.
+  - title: Tokens and data on the device
+    text: >-
+      Sign-in tokens in plain storage instead of the Keychain or Keystore, local databases left
+      unencrypted, and data and push tokens that stay behind after logout.
+  - title: Deep links, WebViews, and redirects
+    text: >-
+      Links that open screens or take actions without checks, sign-in redirects another app can
+      intercept, and WebViews that load untrusted pages with a bridge into the app.
+  - title: Network and platform settings
+    text: >-
+      Cleartext traffic and security exceptions, exported Android components, backups and
+      debug flags, permissions nothing uses, and logging left in release builds.
+  - title: Speed and stability
+    text: >-
+      Long lists that render everything, work that blocks the UI, oversized images and slow
+      startup, and crash reporting that can't tell you where a crash happened.
+  - title: Store and version requirements
+    text: >-
+      Target SDK and Xcode requirements, privacy manifests and data labels, in-app account
+      deletion, signing keys and store account ownership, and a way to force an update.
+
+why: |-
+  Every audit runs scanners like gitleaks, osv-scanner, and Semgrep against your code, but few
+  scanners understand mobile app configuration, and the best ones need a built app. The findings
+  that hurt most in mobile apps are usually ones a scanner can't see:
+
+  - A server key in an environment variable that the build inlines into the app
+  - A deep link that opens a payment screen with whatever the link says
+  - A login token left in plain storage after the user signs out
+  - An app with no minimum version, so a broken release stays on phones for months
+
+  Those come from reading the code, and from building and shipping mobile apps of our own.
+
+upgrades: |-
+  React Native maintains only its latest three minor releases, Expo ships about three SDKs a year,
+  and Flutter fixes only its current stable release. Every mobile audit checks your framework and
+  SDK versions against the official support policies, and your native libraries against the
+  versions you're on.
+
+  The stores force upgrades too: Google Play now requires new apps and updates to target Android 16
+  (API level 36), and Apple requires builds from Xcode 26. If you're behind, the report lays out
+  the upgrade step by step, and Standard and Comprehensive also list the libraries that stand in the
+  way. When you're ready, we can do the [upgrade](/maintenance/) too.
+
+faq_title: Questions about mobile app code audits
+faq:
+  - q: How much does a mobile app code audit cost?
+    a: >-
+      The same fixed fees as every audit: $1,000 for Essentials, $1,500 for Standard, and $2,500
+      for Comprehensive. [Compare the levels](#pricing). Hire us for hourly development within 30
+      days of your report and up to $1,000 of the fee comes off your first invoice.
+  - q: Do you audit Flutter and native iOS and Android apps?
+    a: >-
+      Yes. React Native and Expo, Flutter, native iOS in Swift, and native Android in Kotlin each
+      have their own checklist, covering the same ground: secrets, storage, deep links, WebViews,
+      performance, dependencies, and store requirements.
+  - q: Is the back end or API included?
+    a: >-
+      If it's in the code you share, yes. Most mobile apps talk to an API, and many of the worst
+      problems live there, so we can review both together. The back end gets the checks for its
+      own stack, like Rails, Node.js, or Django.
+  - q: Do you need a build of the app?
+    a: >-
+      No, but it helps. The source code settles most checks. A release build (APK, AAB, or IPA)
+      shows what really ships, like keys bundled into the app. We only inspect it as data and never
+      install or run it on our own machines.
+  - q: Will the audit help with app store rejections?
+    a: >-
+      It checks the requirements that most often block a release: target SDK and Xcode versions,
+      privacy manifests, data safety and privacy labels, in-app account deletion, and permissions
+      the app declares but doesn't use.
+  - q: Can you fix what the audit finds?
+    a: >-
+      Yes. We can work alongside your team or take it on ourselves, and the audit credit applies.
+
+contact_heading: Order a mobile app code audit
+contact_lede: Tell us about your mobile app and we'll recommend the level that fits.
+contact_question: What's going on with your mobile app?
+---
+{%- assign audit = site.pages | where: "url", "/code-audit/" | first -%}
+{% include blocks/features.html id="checks" title="What a mobile app code audit checks" lede="Every mobile audit covers the eight areas in every code audit, plus checks written for React Native, Flutter, iOS, and Android." items=page.checks %}
+{% include blocks/text-band.html id="beyond-scanners" title="More than a scanner report" text=page.why deco=true %}
+{% include blocks/tiers.html id="pricing" title="Mobile app code audit pricing" lede="Three levels, each a fixed fee. Essentials covers the most important mobile checks; Standard and Comprehensive cover all of them. [See everything every audit includes](/code-audit/)." tiers=audit.tiers cta="Order" item="mobile app code audit" %}
+{% include blocks/text-band.html id="upgrades" title="Is your mobile stack still supported?" text=page.upgrades aside="version-panel" %}
+{% include blocks/work-band.html id="work" title="A mobile app we've built" slugs="grant-lookout" %}

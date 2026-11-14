@@ -72,13 +72,27 @@ steps:
       A plain-language summary with a grade for each area, specific findings with their fixes, and
       what to fix first, with effort estimates. If you want, we'll do the fixes too.
 
-stacks: >-
-  Our code audit services cover the stacks most business apps run on: [Ruby on Rails](/code-audit/ruby-on-rails/), Laravel and
-  PHP, Python (Django, FastAPI, and Flask), Node.js, Next.js, React, React Native and Expo, and
-  TypeScript, on PostgreSQL, MySQL, or MongoDB, including apps built on Supabase, Firebase, or
-  WordPress. Every audit includes a security audit: we check sign-in, permissions, payments, file
-  uploads, and secrets against the known weaknesses of your framework, so a Rails security audit
-  looks for different problems than a Laravel or Next.js one.
+stacks: |-
+  Our code audits cover the stacks most business apps run on, each with its own checklist:
+
+  - [Ruby on Rails](/code-audit/ruby-on-rails/)
+  - [Laravel and PHP](/code-audit/laravel/)
+  - [Python: Django, FastAPI, and Flask](/code-audit/python/)
+  - [Node.js, Next.js, React, Vue, and TypeScript](/code-audit/nodejs/)
+  - [Mobile apps: React Native, Expo, Flutter, iOS, and Android](/code-audit/mobile-app/)
+  - [Shopify apps](/code-audit/shopify-app/)
+  - GraphQL and REST APIs
+  - Browser extensions
+  - Docker, Terraform, Kubernetes, and cloud hosting
+  - PostgreSQL, MySQL, and MongoDB, and apps built on Supabase, Firebase, or WordPress
+  {: .cols}
+
+  We also add checks for what your app does: AI features, payments, SMS and email, background jobs,
+  and health or personal data under HIPAA or GDPR.
+
+  Every audit includes a security audit: we check sign-in, permissions, payments, file uploads, and
+  secrets against the known weaknesses of your framework, so a Rails security audit looks for
+  different problems than a Laravel or Next.js one.
 
 vibe: >-
   Built with Lovable, Replit, or Base44? An audit is a quick way to see what the tool left behind

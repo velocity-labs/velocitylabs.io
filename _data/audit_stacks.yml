@@ -1,0 +1,35 @@
+# The stack code audit pages (code-audit/<slug>.html), in order. Drives the
+# "Other stacks we audit" icons (blocks/stack-links.html), shown on stack pages
+# that have no portfolio work to show.
+# icon: an SVG in _includes/devicons/; color: shown on hover (as in
+# _data/technologies.yml); short: the label under the icon.
+- name: Ruby on Rails
+  short: Rails
+  url: /code-audit/ruby-on-rails/
+  icon: rails-plain
+  color: "#cc0000"
+- name: Laravel and PHP
+  short: Laravel
+  url: /code-audit/laravel/
+  icon: laravel
+  color: "#ff2d20"
+- name: Python (Django, FastAPI, Flask)
+  short: Python
+  url: /code-audit/python/
+  icon: python-plain
+  color: "#4b8bbe"
+- name: Node.js, Next.js, and React
+  short: Node.js
+  url: /code-audit/nodejs/
+  icon: nodejs-plain
+  color: "#5fa04e"
+- name: Mobile apps
+  short: Mobile apps
+  url: /code-audit/mobile-app/
+  icon: expo
+  color: "#ffffff"
+- name: Shopify apps
+  short: Shopify
+  url: /code-audit/shopify-app/
+  icon: shopify
+  color: "#95bf47"

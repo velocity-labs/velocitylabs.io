@@ -1,0 +1,102 @@
+---
+layout: service
+service: code-audit
+eyebrow: Shopify app code audit
+permalink: /code-audit/shopify-app/
+title: "Shopify app code audit and security review"
+description: A fixed-fee Shopify app code audit. Webhooks, session tokens, shop isolation, scopes, and API versions, with a plain-English plan for what to fix first.
+heading: A Shopify app code audit before Shopify, or a merchant, finds the problem.
+lede: One Shopify app usually serves many stores, so the costliest bugs are the ones that let one shop reach another shop's data or token. We review your app's code against the problems Shopify apps actually have, and tell you in plain English which ones matter and what to fix first.
+cta: Order a Shopify app audit
+hero_report: shopify
+versions: shopify
+
+# Public-level summary of modules/platforms/shopify.md in ../code-audit.
+# Describe what we look at, never the checklist itself.
+checks:
+  - title: One shop, one shop's data
+    text: >-
+      Queries and Admin API calls that take the shop from the request instead of the verified
+      session, and records, settings, or tokens that one store could reach for another.
+  - title: Session tokens and install flow
+    text: >-
+      Embedded app routes that skip ID token (session token) checks, hand-rolled OAuth and token
+      exchange, loose shop domain validation, open redirects, and missing frame-ancestors headers.
+  - title: Webhooks and app proxies
+    text: >-
+      HMAC verification on every webhook and signature checks on app proxy requests, plus
+      handlers that run twice on a retry or let an older update overwrite a newer one.
+  - title: Access tokens and scopes
+    text: >-
+      Tokens stored in plain text, logged, or sent to the browser, the move to expiring offline
+      tokens, and requested scopes the code never uses.
+  - title: Compliance and customer data
+    text: >-
+      The mandatory GDPR compliance webhooks (and whether they actually delete or export the data),
+      cleanup on uninstall, and customer data kept longer than the app needs it.
+  - title: Extensions, API version, and libraries
+    text: >-
+      Unescaped settings and metafields in theme app extensions, leftover ScriptTag code, GraphQL
+      rate limits, an old Admin API version or REST calls, and Shopify libraries behind current.
+
+why: |-
+  Every audit runs Semgrep and the scanners for your app's language, and reads your code against
+  the security checks Shopify publishes for apps. But scanners only find the patterns they know. The
+  findings that hurt most in Shopify apps are usually ones a scanner can't see:
+
+  - A settings save that trusts a `shop` parameter from the browser
+  - A webhook body parsed before its HMAC is checked, so the check proves nothing
+  - A `shop/redact` handler that returns 200 and deletes nothing
+  - An `orders/create` retry that creates the same record twice
+
+  Those come from reading the code, the way a reviewer would.
+
+upgrades: |-
+  Shopify releases a new Admin API version every quarter and supports each one for at least 12
+  months. When an app calls a version that's no longer supported, Shopify quietly serves the oldest
+  supported one instead, which can change how your app behaves without warning. Every Shopify app
+  audit checks your pinned API version, REST calls, and Shopify libraries.
+
+  Public apps also face deadlines: expiring offline tokens are required for all public apps from
+  January 1, 2027. If you're behind, the report lays out the path one step at a time, libraries
+  first. When you're ready, we can do the [upgrade](/maintenance/) too.
+
+faq_title: Questions about Shopify app code audits
+faq:
+  - q: How much does a Shopify app code audit cost?
+    a: >-
+      The same fixed fees as every audit: $1,000 for Essentials, $1,500 for Standard, and $2,500
+      for Comprehensive. [Compare the levels](#pricing). Hire us for hourly development within 30
+      days of your report and up to $1,000 of the fee comes off your first invoice.
+  - q: Will an audit help us pass App Store review?
+    a: >-
+      It covers much of what review looks for: compliance webhooks, webhook verification, session
+      tokens, scopes, and the security checks Shopify publishes. It can't guarantee approval, and we
+      recommend you also run Shopify's own `shopify app security check` before each release.
+  - q: Do you need access to our store or Partner account?
+    a: >-
+      No. We review a copy of your code in an isolated, disposable environment. We never install the
+      app on a store, and never connect to your production servers, databases, or accounts.
+  - q: Do you audit custom apps as well as public apps?
+    a: >-
+      Yes. A custom app built for one merchant gets the same review, minus the requirements that only
+      apply to public apps, like App Store review and the expiring token deadline.
+  - q: Which Shopify app stacks do you audit?
+    a: >-
+      The React Router app template and its Remix predecessor, apps built on Shopify's Node, Ruby,
+      PHP, or Python libraries, and hand-rolled apps, along with their theme app extensions, UI
+      extensions, and Functions.
+  - q: Can you fix what the audit finds?
+    a: >-
+      Yes. We can work alongside your team or take it on ourselves, and the audit credit applies.
+
+contact_heading: Order a Shopify app audit
+contact_lede: Tell us about your Shopify app and we'll recommend the level that fits.
+contact_question: What's going on with your Shopify app?
+---
+{%- assign audit = site.pages | where: "url", "/code-audit/" | first -%}
+{% include blocks/features.html id="checks" title="What a Shopify app code audit checks" lede="Every Shopify app audit covers the eight areas in every code audit, plus checks written for Shopify apps." items=page.checks %}
+{% include blocks/text-band.html id="beyond-scanners" title="More than a security scan" text=page.why deco=true %}
+{% include blocks/tiers.html id="pricing" title="Shopify app code audit pricing" lede="Three levels, each a fixed fee. Essentials covers the most important Shopify checks; Standard and Comprehensive cover all of them. [See everything every audit includes](/code-audit/)." tiers=audit.tiers cta="Order" item="Shopify app code audit" %}
+{% include blocks/text-band.html id="upgrades" title="Is your app on a supported API version?" text=page.upgrades aside="version-panel" %}
+{% include blocks/stack-links.html id="other-stacks" title="Other stacks we audit" lede="Every code audit covers the eight areas on our [code audit page](/code-audit/). These have their own checklists too." %}

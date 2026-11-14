@@ -1,8 +1,11 @@
 # Rails release series and their support, for the panel on /code-audit/ruby-on-rails/
-# (blocks/version-panel.html). Source: rubyonrails.org/maintenance, and rubygems.org
+# (blocks/version-panel.html; see _data/versions/README.md). Source: rubyonrails.org/maintenance, and rubygems.org
 # for the latest release. Bug fixes run 1 year and security fixes 2 years from a
 # series' first release; the latest series keeps bug fixes until the next one ships.
 # Update `checked` and the rows when a series ships or its support ends.
+title: Rails support today
+source: Rails maintenance policy
+source_url: https://rubyonrails.org/maintenance
 checked: 2026-11-13
 latest: 8.1.4.1
 series:

@@ -1,11 +1,16 @@
 {%- comment -%}
-  Pages of the sample audit report, fanned out on the right of a page hero
-  (page-hero.html with report: true). Rendered from ../code-audit/examples/sample-audit
-  (bin/render audit.yml --website-only), pages 1 to 3, into images/code-audit/
-  at 640px wide. Re-render when the report's design changes.
+  Pages of a sample audit report, fanned out on the right of a page hero
+  (page-hero.html with report: <set>, or true for brightpath). Each set is
+  images/code-audit/<set>/{cover,summary,scorecard}.webp: pages 1 to 3 of a
+  sample in ../code-audit/examples, rendered with
+  `bin/render examples/<sample>/audit.yml --website-only` at 640px wide.
+  brightpath is sample-audit, laravel sample-audit-laravel, shopify
+  sample-audit-shopify, nextjs sample-audit-telehealth. Re-render when the
+  report's design changes.
 {%- endcomment -%}
+{%- if include.set == true %}{% assign set = "brightpath" %}{% else %}{% assign set = include.set %}{% endif -%}
 <div class="report-pages hl" style="--d:.3s" aria-hidden="true">
-  <img src="/images/code-audit/report-scorecard.webp" width="640" height="828" alt="" loading="eager" decoding="async">
-  <img src="/images/code-audit/report-summary.webp" width="640" height="828" alt="" loading="eager" decoding="async">
-  <img src="/images/code-audit/report-cover.webp" width="640" height="828" alt="" fetchpriority="high" decoding="async">
+  <img src="/images/code-audit/{{ set }}/scorecard.webp" width="640" height="828" alt="" loading="eager" decoding="async">
+  <img src="/images/code-audit/{{ set }}/summary.webp" width="640" height="828" alt="" loading="eager" decoding="async">
+  <img src="/images/code-audit/{{ set }}/cover.webp" width="640" height="828" alt="" fetchpriority="high" decoding="async">
 </div>

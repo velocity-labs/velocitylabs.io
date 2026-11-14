@@ -1,0 +1,37 @@
+# Shopify Admin API versions and their support, for the panel on /code-audit/shopify-app/
+# (blocks/version-panel.html; see _data/versions/README.md). Source: shopify.dev/docs/api/usage/versioning.
+# A new version ships each quarter (YYYY-01/04/07/10) and stays supported at least 12 months.
+# Shows the newest stable, two older supported versions, and the most recently unsupported one.
+# Update `checked` and the rows each quarter.
+title: Admin API versions today
+source: Shopify API versioning
+source_url: https://shopify.dev/docs/api/usage/versioning
+checked: 2026-11-13
+latest: 2026-10
+columns: "Released,Supported until"
+series:
+  - name: "2026-10"
+    status: supported
+    label: Supported
+    bug_fixes: Oct 1, 2026
+    security: Oct 16, 2027
+  - name: "2026-07"
+    status: supported
+    label: Supported
+    bug_fixes: Jul 1, 2026
+    security: Jul 16, 2027
+  - name: "2026-04"
+    status: supported
+    label: Supported
+    bug_fixes: Apr 1, 2026
+    security: Apr 16, 2027
+  - name: "2026-01"
+    status: supported
+    label: Supported
+    bug_fixes: Jan 1, 2026
+    security: Jan 16, 2027
+  - name: "2025-10"
+    status: ended
+    label: Unsupported
+    bug_fixes: Oct 1, 2025
+    security: Ended Oct 16, 2026

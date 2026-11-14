@@ -1,8 +1,10 @@
-Technology logos for the "tools we build with" row (listed in _data/technologies.yml).
+Technology logos for the "tools we build with" row (listed in _data/technologies.yml)
+and the code audit pages' "Other stacks we audit" row (_data/audit_stacks.yml).
 Each is a single-color SVG drawn in currentColor, so CSS sets its color.
 
-Devicon 2.17.0 (https://devicon.dev, MIT, see LICENSE): every file except the two below.
-Simple Icons 15.0.0 (https://simpleicons.org, CC0 1.0): stripe.svg and claude.svg,
-which Devicon doesn't have.
+Devicon 2.17.0 (https://devicon.dev, MIT, see LICENSE): every file except those below.
+Simple Icons 15.0.0 (https://simpleicons.org, CC0 1.0): stripe.svg, claude.svg,
+laravel.svg, shopify.svg and expo.svg, which Devicon doesn't have in one color.
+The last three are for the code audit pages' stack icons (_data/audit_stacks.yml).
 
 The logos are trademarks of their owners, shown to name the tools we work with.

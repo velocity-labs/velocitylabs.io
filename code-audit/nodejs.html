@@ -1,0 +1,110 @@
+---
+layout: service
+service: code-audit
+eyebrow: Node.js code audit
+permalink: /code-audit/nodejs/
+title: "Node.js, Next.js, and React code audit"
+description: A fixed-fee code audit and security audit for Node.js, Next.js, React, and TypeScript apps, with a plain-English plan for what to fix first.
+heading: A code audit for Node.js, Next.js, and React apps.
+lede: JavaScript apps grow fast, often inherited, rushed to launch, or partly written by AI. We review your Node.js back end, Next.js or React front end, and TypeScript against the problems these apps actually have, and tell you in plain English which ones matter and what to fix first.
+cta: Order a Node.js code audit
+hero_report: nextjs
+versions: nodejs
+
+# Public-level summary of modules/frameworks/nodejs.md, nextjs.md, react.md and
+# modules/languages/typescript.md in ../code-audit.
+# Describe what we look at, never the checklist itself.
+checks:
+  - title: Who can see whose data
+    text: >-
+      API routes, server actions, and route handlers that skip authorization, lookups that aren't
+      scoped to the signed-in user, sign-in checked only in middleware, and permissions enforced
+      only in the UI.
+  - title: Sign-in, sessions, and secrets
+    text: >-
+      JWT verification, cookie and CORS settings, password hashing, rate limits on sign-in, and API
+      keys shipped to the browser in the client bundle or a `NEXT_PUBLIC_` variable.
+  - title: Injection and unsafe input
+    text: >-
+      Request bodies used without validation, SQL and NoSQL injection through raw queries, unsafe
+      file paths and uploads, server-side request forgery, prototype pollution, and
+      `dangerouslySetInnerHTML`.
+  - title: Data that holds up
+    text: >-
+      Multi-step writes without transactions, schema sync instead of migrations in production,
+      money stored as floating point, webhooks that skip signature checks, and types that don't
+      match what's really in the data.
+  - title: Speed under real traffic
+    text: >-
+      Work that blocks the event loop, N+1 queries, connection pooling, outbound calls without
+      timeouts, accidental dynamic rendering and caching surprises in Next.js, and oversized
+      React bundles.
+  - title: Version and upgrade path
+    text: >-
+      Whether your Node.js and Next.js versions still get security fixes, React and TypeScript
+      versions that drift apart, abandoned packages, and how strict your TypeScript really is.
+
+why: |-
+  Every audit runs npm audit, OSV-Scanner, Semgrep, ESLint, and the TypeScript compiler against
+  your code, but scanners only find the patterns they know. The findings that hurt most in
+  JavaScript apps are usually ones a scanner can't see:
+
+  - A server action that updates any record whose ID it's given
+  - Sign-in checked in middleware, but not where the data is read
+  - A page cached with one user's data and served to the next
+  - A promise fired and forgotten, so failed emails vanish without a trace
+
+  Those come from reading the code, not from a scan.
+
+upgrades: |-
+  Node.js supports each even-numbered LTS line for about two and a half years, and Next.js
+  supports each major for about two years, so many apps are running versions that no longer get
+  security fixes. Every Node.js audit checks your Node.js and Next.js versions against the
+  official schedules, and that the same Node.js version is pinned everywhere it runs.
+
+  If you're behind, the report lays out the upgrade step by step, along with the React,
+  TypeScript, and package changes that come with it. When you're ready, we can do the
+  [upgrade](/maintenance/) too.
+
+faq_title: Questions about Node.js code audits
+faq:
+  - q: How much does a Node.js code audit cost?
+    a: >-
+      The same fixed fees as every audit: $1,000 for Essentials, $1,500 for Standard, and $2,500
+      for Comprehensive. [Compare the levels](#pricing). Hire us for hourly development within 30
+      days of your report and up to $1,000 of the fee comes off your first invoice.
+  - q: Is a security audit included?
+    a: >-
+      Yes. Every Node.js code audit includes a security audit: data access, sign-in, sessions,
+      secrets, injection, file uploads, and webhooks, plus npm audit, OSV-Scanner, and Semgrep
+      scans of your code and packages.
+  - q: Do you audit Next.js apps on the App Router and server actions?
+    a: >-
+      Yes. Next.js apps get their own checks: authorization in every server action and route
+      handler, data that leaks from server to client components, cached pages served to the wrong
+      user, and the caching rules for your version. Apps on the Pages Router, or halfway between,
+      get the same review.
+  - q: Can you audit a React front end with a different back end?
+    a: >-
+      Yes. A React app gets its own checks whatever it talks to: secrets in the bundle, where
+      tokens are stored, permissions enforced only in the UI, and performance. If the back end is
+      Rails, Laravel, or Python, it can be part of the audit too.
+  - q: Do you need to run our app?
+    a: >-
+      Essentials reviews the code without running it. Standard and Comprehensive boot your app and
+      run your tests in an isolated, disposable environment. Either way, we never connect to your
+      production servers, databases, or accounts.
+  - q: Can you fix what the audit finds?
+    a: >-
+      Yes. We can work alongside your team or take it on ourselves, and the audit credit applies.
+
+contact_heading: Order a Node.js code audit
+contact_lede: Tell us about your app and we'll recommend the level that fits.
+contact_question: What's going on with your Node.js, Next.js, or React app?
+---
+{%- assign audit = site.pages | where: "url", "/code-audit/" | first -%}
+{% include blocks/features.html id="checks" title="What a Node.js code audit checks" lede="Every Node.js audit covers the eight areas in every code audit, plus checks written for Node.js, Next.js, React, and TypeScript." items=page.checks %}
+{% include blocks/text-band.html id="beyond-scanners" title="More than an npm audit report" text=page.why deco=true %}
+{% include blocks/tiers.html id="pricing" title="Node.js code audit pricing" lede="Three levels, each a fixed fee. Essentials covers the most important Node.js and Next.js checks; Standard and Comprehensive cover all of them. [See everything every audit includes](/code-audit/)." tiers=audit.tiers cta="Order" item="Node.js code audit" %}
+{% include blocks/text-band.html id="upgrades" title="Is your Node.js version still supported?" text=page.upgrades aside="version-panel" %}
+{% include blocks/work-band.html id="work" title="Node.js and Next.js apps we've built" slugs="grant-lookout,paycheck" %}

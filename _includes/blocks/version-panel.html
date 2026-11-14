@@ -1,13 +1,16 @@
 {%- comment -%}
-  Rails release series and whether each still gets security fixes, from
-  _data/rails_versions.yml. Sits beside a text band's prose (text-band.html
-  with aside="version-panel").
+  A stack's release series and whether each is still supported, from
+  _data/versions/<page.versions>.yml (format in _data/versions/README.md).
+  Sits beside a text band's prose (text-band.html with aside="version-panel").
 {%- endcomment -%}
-{%- assign versions = site.data.rails_versions -%}
+{%- assign versions = site.data.versions[page.versions] -%}
+{%- assign columns = versions.columns | default: "Bug fixes,Security fixes" | split: "," -%}
 <figure class="version-panel" data-reveal="rise" style="--d:.2s">
   <figcaption>
-    <span class="version-panel-title">Rails support today</span>
+    <span class="version-panel-title">{{ versions.title }}</span>
+    {%- if versions.latest %}
     <span class="version-panel-latest">Latest: {{ versions.latest }}</span>
+    {%- endif %}
   </figcaption>
   <ul>
     {%- for series in versions.series %}
@@ -15,11 +18,11 @@
       <span class="version-name">{{ series.name }}</span>
       <span class="version-status">{{ series.label }}</span>
       <dl class="version-support">
-        <div><dt>Bug fixes</dt><dd>{{ series.bug_fixes }}</dd></div>
-        <div><dt>Security fixes</dt><dd>{{ series.security }}</dd></div>
+        <div><dt>{{ columns[0] }}</dt><dd>{{ series.bug_fixes }}</dd></div>
+        <div><dt>{{ columns[1] }}</dt><dd>{{ series.security }}</dd></div>
       </dl>
     </li>
     {%- endfor %}
   </ul>
-  <p class="version-panel-source">Checked {{ versions.checked | date: "%B %-d, %Y" }} against the <a href="https://rubyonrails.org/maintenance" target="_blank" rel="noopener">Rails maintenance policy</a>.</p>
+  <p class="version-panel-source">Checked {{ versions.checked | date: "%B %-d, %Y" }} against the <a href="{{ versions.source_url }}" target="_blank" rel="noopener">{{ versions.source }}</a>.</p>
 </figure>

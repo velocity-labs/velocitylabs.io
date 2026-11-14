@@ -85,3 +85,14 @@
   .text-band.has-aside h2, .text-band.has-aside .text-band-body { grid-row: auto; }
   .version-panel { grid-column: 1; grid-row: auto; margin-top: 2rem; }
 }
+.stack-links { margin-top: 1.75rem; }
+.stack-links li { width: 5.5rem; }
+.stack-links a { display: grid; justify-items: center; gap: .5rem; color: inherit; text-decoration: none; }
+.stack-links a:hover, .stack-links a:focus-visible { color: var(--star); }
+.stack-links a:hover svg, .stack-links a:focus-visible svg { color: var(--brand); }
+
+// A two-column list in a text band ({: .cols} after a Markdown list)
+.text-band-body ul.cols { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+.text-band-body ul.cols a { color: var(--star); text-decoration: underline; text-decoration-color: rgba(255, 186, 66, .5); text-underline-offset: 3px; }
+.text-band-body ul.cols a:hover { text-decoration-color: var(--sun); }
+@media (max-width: 640px) { .text-band-body ul.cols { grid-template-columns: minmax(0, 1fr); } }

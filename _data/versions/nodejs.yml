@@ -1,0 +1,34 @@
+# Node.js LTS lines and their support, for the panel on /code-audit/nodejs/
+# (blocks/version-panel.html; see _data/versions/README.md). Source: the Node.js
+# release schedule (github.com/nodejs/Release schedule.json), and
+# nodejs.org/dist/index.json for the latest LTS release. Even-numbered lines only:
+# Active LTS (bug fixes) runs about a year, then Maintenance (security fixes)
+# until the end-of-life date. Odd-numbered lines are never LTS.
+# Update `checked` and the rows when a line enters LTS or its support ends.
+title: Node.js support today
+source: Node.js release schedule
+source_url: https://nodejs.org/en/about/previous-releases
+checked: 2026-11-13
+latest: 26.13.1 LTS
+columns: "Active support,Security fixes"
+series:
+  - name: Node.js 26 LTS
+    status: supported
+    label: Supported
+    bug_fixes: Until Oct 20, 2027
+    security: Until Apr 30, 2029
+  - name: Node.js 24 LTS
+    status: supported
+    label: Security only
+    bug_fixes: Ended Oct 20, 2026
+    security: Until Apr 30, 2028
+  - name: Node.js 22 LTS
+    status: supported
+    label: Security only
+    bug_fixes: Ended Oct 21, 2025
+    security: Until Apr 30, 2027
+  - name: Node.js 20 and older
+    status: ended
+    label: Unsupported
+    bug_fixes: Ended by Oct 22, 2024
+    security: Ended by Apr 30, 2026

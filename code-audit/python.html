@@ -1,0 +1,106 @@
+---
+layout: service
+service: code-audit
+eyebrow: Python code audit
+permalink: /code-audit/python/
+title: "Python and Django code audit and security audit"
+description: A fixed-fee code audit and security audit for Django, FastAPI, and Flask apps. Python-specific checks, and a plan for what to fix first.
+heading: A code audit for Django, FastAPI, and Flask apps.
+lede: Python apps get their own checklist, written for the problems Django, FastAPI, and Flask apps actually have. We review your code against it and tell you in plain English which findings matter and what to fix first.
+cta: Order a Python code audit
+hero_report: brightpath
+versions: django
+
+# Public-level summary of modules/frameworks/django.md, frameworks/python-web.md, and
+# languages/python.md in ../code-audit. Describe what we look at, never the checklist itself.
+checks:
+  - title: Who can see whose data
+    text: >-
+      Lookups and Django REST Framework viewsets that aren't scoped to the signed-in user, no
+      default permission policy, FastAPI routes that skip the router's auth, and tenant data that
+      leaks between accounts.
+  - title: Sign-in, sessions, and secrets
+    text: >-
+      Password, session, and token settings, throttling on login and password reset, a
+      `SECRET_KEY` committed to the repo, and the Django admin open wider than your staff need.
+  - title: Injection and unsafe input
+    text: >-
+      Raw SQL and f-string queries, `mark_safe` and `|safe` on user content, serializers and
+      response models that expose or accept fields they shouldn't, open redirects, and uploads.
+  - title: Production settings
+    text: >-
+      `DEBUG` or the Werkzeug debugger reachable in production, browsable APIs and OpenAPI docs
+      left public, CORS set for the wrong kind of auth, and proxy headers trusted blindly.
+  - title: Data and speed under real traffic
+    text: >-
+      N+1 queries, missing indexes, emails and tasks fired before the transaction commits,
+      blocking calls inside async routes, and connection pools that don't fit your workers.
+  - title: Version and upgrade path
+    text: >-
+      Whether your Python, Django, Flask, FastAPI, and Pydantic versions still get security
+      fixes, and the deprecated APIs and abandoned packages that will block the next upgrade.
+
+why: |-
+  Every Python audit runs pip-audit, bandit, ruff, and Semgrep against your code, but scanners only
+  find the patterns they know. The findings that hurt most in Python apps are usually ones a scanner
+  can't see:
+
+  - A viewset that returns every customer's invoices to any signed-in user
+  - A sub-app mounted on FastAPI that never got the auth dependency
+  - A PATCH endpoint that quietly resets the fields you didn't send
+  - A confirmation email sent before the order was saved
+
+  Those come from reading the code, with a checklist written for Django, FastAPI, and Flask
+  rather than a generic one.
+
+upgrades: |-
+  Django supports each feature release with security fixes for about sixteen months, and each LTS
+  release for about three years. Python versions get security fixes for five years, and Python 3.10
+  reached end of life in October 2026. Every Python audit checks your Python and framework versions
+  against the official support policies.
+
+  If you're behind, the report lays out the upgrade one step at a time, and Standard and
+  Comprehensive also list the deprecated APIs and packages that stand in the way. When you're
+  ready, we can do the [upgrade](/maintenance/) too.
+
+faq_title: Questions about Python code audits
+faq:
+  - q: How much does a Python code audit cost?
+    a: >-
+      The same fixed fees as every audit: $1,000 for Essentials, $1,500 for Standard, and $2,500
+      for Comprehensive. [Compare the levels](#pricing). Hire us for hourly development within 30
+      days of your report and up to $1,000 of the fee comes off your first invoice.
+  - q: Is a Django security audit included?
+    a: >-
+      Yes. Every Python code audit includes a security audit: data access, the admin, sign-in,
+      sessions, secrets, injection, and production settings, checked against the known weaknesses
+      of your framework, plus pip-audit, bandit, and Semgrep scans.
+  - q: Do you audit FastAPI and Flask apps too?
+    a: >-
+      Yes. FastAPI and Flask apps get their own checks: router and blueprint auth, response models
+      that leak fields, sessions, the debugger, async routes that block, and Pydantic and
+      SQLAlchemy versions.
+  - q: Which versions of Django do you audit?
+    a: >-
+      Any of them, from apps on a long-unsupported release to apps on the latest one. If you're
+      behind, the report says how far and lays out the upgrade one step at a time; Standard and
+      Comprehensive also list the packages that stand in the way.
+  - q: Do you need to run our app?
+    a: >-
+      Essentials reviews the code without running it. Standard and Comprehensive boot your app and
+      run your tests in an isolated, disposable environment. Either way, we never connect to your
+      production servers, databases, or accounts.
+  - q: Can you fix what the audit finds?
+    a: >-
+      Yes. We can work alongside your team or take it on ourselves, and the audit credit applies.
+
+contact_heading: Order a Python code audit
+contact_lede: Tell us about your Python app and we'll recommend the level that fits.
+contact_question: What's going on with your Python app?
+---
+{%- assign audit = site.pages | where: "url", "/code-audit/" | first -%}
+{% include blocks/features.html id="checks" title="What a Python code audit checks" lede="Every Python audit covers the eight areas in every code audit, plus checks written for Django, FastAPI, and Flask." items=page.checks %}
+{% include blocks/text-band.html id="beyond-scanners" title="More than a scanner report" text=page.why deco=true %}
+{% include blocks/tiers.html id="pricing" title="Python code audit pricing" lede="Three levels, each a fixed fee. Essentials covers the most important Python checks; Standard and Comprehensive cover all of them. [See everything every audit includes](/code-audit/)." tiers=audit.tiers cta="Order" item="Python code audit" %}
+{% include blocks/text-band.html id="upgrades" title="Is your Django version still supported?" text=page.upgrades aside="version-panel" %}
+{% include blocks/work-band.html id="work" title="Python work we've built" slugs="rentcheck" %}

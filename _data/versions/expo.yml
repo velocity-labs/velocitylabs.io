@@ -1,0 +1,34 @@
+# Expo SDK releases and their support, for the panel on /code-audit/mobile-app/
+# (blocks/version-panel.html; see _data/versions/README.md). Sources: expo.dev/changelog
+# and docs.expo.dev/versions, and registry.npmjs.org for the latest release. Expo
+# publishes no fixed support window: Expo Go runs only the newest SDK, and we treat
+# the current and previous SDK as supported. Each SDK pins one React Native minor;
+# React Native maintains its latest three minors (reactnative.dev/versions).
+# Update `checked` and the rows when an SDK ships.
+title: Expo SDK support today
+source: Expo SDK versions
+source_url: https://docs.expo.dev/versions/latest/
+checked: 2026-11-13
+latest: 58.0.25
+columns: Released,React Native
+series:
+  - name: Expo SDK 58
+    status: supported
+    label: Supported
+    bug_fixes: Oct 15, 2026
+    security: "0.88"
+  - name: Expo SDK 57
+    status: supported
+    label: Supported
+    bug_fixes: Jun 30, 2026
+    security: "0.86"
+  - name: Expo SDK 56
+    status: ended
+    label: Unsupported
+    bug_fixes: May 21, 2026
+    security: "0.85"
+  - name: Expo SDK 55 and older
+    status: ended
+    label: Unsupported
+    bug_fixes: Feb 25, 2026 and earlier
+    security: 0.83 and older
