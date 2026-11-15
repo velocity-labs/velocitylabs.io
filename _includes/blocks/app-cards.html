@@ -1,0 +1,22 @@
+{%- comment -%}
+  Cards for the apps in _data/apps.yml, styled like the extension cards. The
+  whole card links to the app's page (the name's link stretches over it);
+  Privacy and Support go straight to those sections. Optional: except (an id
+  to leave out, on that app's own page).
+{%- endcomment -%}
+<div class="repos ext-cards">
+  {%- for app in site.data.apps %}{% if app.id != include.except %}
+  <article class="repo ext-card" id="{{ app.id }}" data-reveal="rise" style="--d:{{ forloop.index0 | times: 0.1 | round: 2 }}s">
+    <div class="tool-head">
+      <img src="{{ app.logo }}" alt="" width="56" height="56">
+      <h3><a class="ext-card-link" href="/apps/{{ app.id }}/">{{ app.name }}</a></h3>
+    </div>
+    <p class="app-platform">{{ app.platform }}</p>
+    <p class="repo-text">{{ app.tagline }}</p>
+    <ul class="repo-links">
+      <li><a href="/apps/{{ app.id }}/#privacy" aria-label="{{ app.name }} privacy">Privacy</a></li>
+      <li><a href="/apps/{{ app.id }}/#contact" aria-label="{{ app.name }} support">Support</a></li>
+    </ul>
+  </article>
+  {%- endif %}{% endfor %}
+</div>

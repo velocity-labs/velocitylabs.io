@@ -2,7 +2,8 @@
   The contact section: a panel with the form, and a sun that rises over it as
   the reader arrives (site/dawn.js). Optional: heading, lede, question (what
   the message box asks), service (the page's service, which the form sends
-  instead of asking), extension (an extension page's id: a support form) and
+  instead of asking), extension (an extension page's id: a support form), app (an app page's
+  id: a support form) and
   booking: false (leaves out "Book a 30-minute call").
 {%- endcomment -%}
 <section id="contact" aria-labelledby="contact-title">
@@ -19,7 +20,7 @@
         </div>
         {%- endunless %}
       </div>
-      {% include blocks/contact-form.html service=include.service question=include.question extension=include.extension %}
+      {% include blocks/contact-form.html service=include.service question=include.question extension=include.extension app=include.app %}
     </div>
   </div>
 </section>

@@ -1,0 +1,44 @@
+# Installable apps (Mac, and later iPhone). One list drives the cards on /apps/, each app's
+# page (/apps/<id>/, layout: app), and the "App" line main.rb adds to support emails.
+#
+# id: the app's page address and its support form value
+# platform: shown on the card and as the page's eyebrow, e.g. "Mac app"
+# tagline: one line, for its card and its page's lede
+# description: its page's meta description
+# requires: the system it needs, under the download button
+# text: what it does (Markdown)
+# features: what it shows or does, in plain words
+# use: how to use it, one step per item (Markdown)
+# privacy: the app's privacy policy, one point per item (Markdown); keep it true to the app
+# store: its App Store listing once live. Until then the page says "Coming soon".
+# screenshots: in images/apps/<id>/, 1280x800
+- id: nocturnal
+  name: Nocturnal
+  platform: Mac app
+  tagline: Keep your Mac awake, and see what woke it up overnight.
+  description: "Nocturnal is a free Mac menu bar app that keeps your Mac awake for as long as you choose, shows what else is keeping it awake, and graphs how it slept. It sends nothing anywhere."
+  logo: /images/apps/nocturnal.png
+  requires: macOS 14 Sonoma or later
+  text: >-
+    Nocturnal lives in your menu bar. Click it to keep your Mac awake until you stop it, for a
+    set time, or while an app is running. It also answers the question macOS doesn't: what is
+    keeping my Mac awake right now, and what woke it up while I was away? It lists the apps and
+    system tasks holding it awake, and graphs the last 24 hours of sleep, including the brief
+    background wakes macOS never mentions.
+  features:
+    - Keeps your Mac awake for 15 minutes to 8 hours, until you stop it, or while an app runs
+    - Lists the apps and system tasks keeping your Mac awake
+    - Graphs when your Mac slept, woke and woke briefly over the last 24 hours
+    - Explains each wake in plain words, and how much battery it used asleep
+  use:
+    - Click the moonrise icon in your menu bar.
+    - Click the top tile to keep your Mac awake, or pick a time, or **Choose App…** to keep it awake while that app runs.
+    - Click **Last 24 hours** to see how your Mac slept and what woke it.
+    - Open **Settings** from the gear for the display, lid and history options.
+  privacy:
+    - "**Nothing leaves your Mac.** Nocturnal has no analytics, no accounts and no servers. It runs in Apple's App Sandbox without permission to use the network, so it can't send anything anywhere."
+    - "**What it reads.** Which apps and system tasks are asking macOS to stay awake, when your Mac sleeps and wakes and why, and your battery level. It reads these from macOS while it runs, and nothing else on your Mac."
+    - "**What it keeps.** A history of sleeps, wakes and battery levels, for as long as you choose in Settings (30 days to start), stored in the app's own folder on your Mac. **Clear History** in Settings deletes it, and so does deleting the app."
+    - "**Links.** The About window's links open this page in your browser. If you write to us below, we get only what you send, and use it only to answer you."
+  store:
+  screenshots: []

@@ -103,6 +103,23 @@ class SiteTest < AppTest
     end
   end
 
+  # _data/apps.yml drives the cards on /apps/ and a page for each, whose
+  # privacy and support anchors the apps' About windows link to
+  def test_app_pages_follow_apps_yml
+    apps = YAML.load_file(File.join(ROOT, '_data/apps.yml'))
+    overview = built('/apps/')
+    assert_equal apps.map { |a| "/apps/#{a['id']}/" }, overview.css('.ext-card-link').map { |a| a['href'] }
+    apps.each do |app|
+      page = built("/apps/#{app['id']}/")
+      assert_equal app['name'], page.at_css('h1').text.strip
+      assert page.at_css('#privacy'), "#{app['id']} has no privacy section"
+      assert_equal app['id'], page.at_css('#contact input[name="app"]')&.[]('value')
+      assert_equal (app['screenshots'] || []).size, page.css('.shots img').size
+      assert File.file?(File.join(ROOT, 'images/apps/badges/mac-app-store.svg')), 'no Mac App Store badge' if app['store']
+      refute page.at_css('#contact a[href*="calendly"], #contact .direct'), "#{app['id']}'s support form offers a call"
+    end
+  end
+
   def test_business_details_match_the_config
     company = YAML.load_file(File.join(ROOT, '_config.yml'), aliases: true)['company']
     business = built('/').css('script[type="application/ld+json"]').map { |script| JSON.parse(script.text) }

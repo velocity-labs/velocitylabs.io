@@ -95,6 +95,22 @@ class ContactFormTest < AppTest
     assert_equal ['contact@velocitylabs.io'], email['to']
   end
 
+  def test_app_support_names_the_app
+    with_fake_network { post '/contact-form', contact_params('app' => 'nocturnal') }
+
+    email = JSON.parse(@resend_requests.fetch(0).body)
+    assert_equal 'Nocturnal support from Jane Doe', email['subject']
+    assert_includes email['html'], '<td>App:</td><td>Nocturnal</td>'
+  end
+
+  def test_unknown_app_is_left_out
+    with_fake_network { post '/contact-form', contact_params('app' => '<script>') }
+
+    email = JSON.parse(@resend_requests.fetch(0).body)
+    refute_includes email['html'], 'App:'
+    assert_equal 'Contact form from Jane Doe', email['subject']
+  end
+
   # Only the listed extensions and browsers are passed on
   def test_unknown_extension_or_browser_is_left_out
     with_fake_network { post '/contact-form', contact_params('extension' => '<script>', 'browser' => 'Netscape <b>') }

@@ -196,6 +196,10 @@ SERVICE_NEEDS = YAML.load_file(File.expand_path('_data/services.yml', __dir__))
 EXTENSION_NAMES = YAML.load_file(File.expand_path('_data/extensions.yml', __dir__))
                       .to_h { |extension| [extension['id'], extension['name']] }
                       .freeze
+# An app page's support form sends its app (id => name)
+APP_NAMES = YAML.load_file(File.expand_path('_data/apps.yml', __dir__))
+                .to_h { |app| [app['id'], app['name']] }
+                .freeze
 SUPPORT_BROWSERS = YAML.load_file(File.expand_path('_data/support_browsers.yml', __dir__)).freeze
 
 def generate_form_token
@@ -345,8 +349,10 @@ post '/contact-form/?' do
     details << ['Need', need] if need
     # Unknown values (say, from a cached page) are left out, like an unknown need
     extension = EXTENSION_NAMES[params[:extension].to_s]
+    app       = APP_NAMES[params[:app].to_s]
     browser   = SUPPORT_BROWSERS.find { |name| name == params[:browser].to_s }
     details << ['Extension', extension] if extension
+    details << ['App', app] if app
     details << ['Browser', browser] if browser
 
     rows = details.map.with_index do |(label, value), i|
@@ -387,8 +393,8 @@ post '/contact-form/?' do
       from:     ENV.fetch('CONTACT_FORM_FROM', 'Velocity Labs <contact@velocitylabs.io>'),
       to:       ['contact@velocitylabs.io'],
       reply_to: params[:email].to_s, # validated above
-      subject:  if extension
-                  "#{extension} support from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}"
+      subject:  if extension || app
+                  "#{extension || app} support from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}"
                 else
                   "Contact form from #{params[:name].to_s.gsub(/[\r\n]+/, ' ').strip}#{" (#{need})" if need}"
                 end,

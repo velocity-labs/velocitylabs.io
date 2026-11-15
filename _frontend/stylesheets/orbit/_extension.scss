@@ -1,6 +1,7 @@
 @use 'breakpoints' as *;
 
-// One browser extension's page (_layouts/extension.html)
+// One browser extension's page (_layouts/extension.html), also used by the
+// app pages (_layouts/app.html) and their cards
 
 // What it does, beside the install box
 .ext-grid { display: grid; grid-template-columns: minmax(0, 1fr) 20rem; gap: 3rem; align-items: start; }
@@ -27,3 +28,7 @@
 @media (max-width: $phone) {
   .shots { grid-template-columns: minmax(0, 1fr); }
 }
+
+// App cards and pages: the platform line, and the icon's own rounded shape
+.app-platform { margin: -.25rem 0 .25rem; color: var(--dust); font-size: .85rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.ext-install img.app-icon { border-radius: 0; }

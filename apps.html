@@ -1,0 +1,34 @@
+---
+layout: page
+bands: true
+deco: true
+title: Apps
+description: "Free apps from Velocity Labs that you install on your own devices, starting with Nocturnal for the Mac. No accounts, no ads and no tracking."
+eyebrow: Apps
+heading: Apps you install, that keep to themselves
+lead: Free apps for your own devices. No accounts, no ads and no tracking, and nothing you do in them leaves your device.
+permalink: /apps/
+---
+{%- comment -%}
+  The cards come from _data/apps.yml; each links to the app's own page
+  (_layouts/app.html), which has its store link, privacy and support. Browser
+  extensions have their own page, /extensions/.
+{%- endcomment %}
+<section id="apps" aria-labelledby="apps-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="apps-title" data-reveal="rise">What we've built</h2>
+    </div>
+    {% include blocks/app-cards.html %}
+  </div>
+</section>
+
+<section id="more" aria-labelledby="more-title">
+  <div class="wrap prose">
+    <h2 id="more-title">For your browser</h2>
+    <p>We also make <a href="/extensions/">browser extensions</a> for Chrome, Edge, Firefox and
+      Safari, built the same way: each one sees a page only after you click it, and none of them
+      can send anything anywhere.</p>
+  </div>
+</section>
+{% include blocks/cta-band.html %}

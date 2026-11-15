@@ -9,9 +9,12 @@
   sending the form records it. extension: an extension page's id from
   _data/extensions.yml, which makes it a support form: it sends the extension
   instead of asking what they need, and asks which browser (filled in from the
-  visitor's browser by site/contact-form.js, and theirs to change).
+  visitor's browser by site/contact-form.js, and theirs to change). app: an
+  app page's id from _data/apps.yml, also a support form: it sends the app
+  instead of asking what they need.
 {%- endcomment -%}
 {%- assign page_extension = site.data.extensions | where: "id", include.extension | first -%}
+{%- assign page_app = site.data.apps | where: "id", include.app | first -%}
 {%- assign page_service = site.data.services | where: "id", include.service | first -%}
 <form class="contact-form" action="/contact-form" method="post" novalidate data-contact-form data-recaptcha-key="{{ site.recaptcha_v3_site_key }}"{% if page_service.conversion %} data-conversion="{{ page_service.conversion }}"{% endif %}>
   {%- comment %} data-missing names each required field in "Please add ..." {% endcomment %}
@@ -25,6 +28,8 @@
     <option>{{ browser }}</option>
     {%- endfor %}
   </select></div>
+  {%- elsif page_app %}
+  <input type="hidden" name="app" value="{{ page_app.id }}" data-label="{{ page_app.name }}">
   {%- elsif page_service.need %}
   <input type="hidden" name="need" value="{{ page_service.id }}" data-label="{{ page_service.need }}">
   {%- else %}

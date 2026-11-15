@@ -1,0 +1,90 @@
+---
+layout: base
+---
+{%- comment -%}
+  One app's page (/apps/<id>/). Front matter: app (its id in _data/apps.yml,
+  which supplies everything on the page) plus the page's title and
+  description. Sections: what it does, screenshots (when there are any), how
+  to use it, privacy (#privacy, the privacy policy URL the App Store listing
+  gives) and support (#contact, the support URL: a form that sends the app's
+  name). With a `store` URL, the install box shows Apple's official Mac App
+  Store badge from images/apps/badges/mac-app-store.svg: download it from
+  Apple's marketing resources as the listing goes live, and don't alter it.
+  The apps link here from their About windows, so keep the anchors.
+{%- endcomment -%}
+{%- assign app = site.data.apps | where: "id", page.app | first -%}
+{% include blocks/page-hero.html eyebrow=app.platform heading=app.name lede=app.tagline deco=true %}
+
+<section class="ext-intro" aria-labelledby="what-title">
+  <div class="wrap ext-grid">
+    <div class="prose">
+      <h2 id="what-title">What it does</h2>
+      {{ app.text | markdownify }}
+      <ul>
+        {%- for feature in app.features %}
+        <li>{{ feature }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <aside class="ext-install" aria-labelledby="install-title">
+      <img class="app-icon" src="{{ app.logo }}" alt="" width="96" height="96">
+      <h2 id="install-title">Get {{ app.name }}</h2>
+      {%- if app.store %}
+      <a class="store-badge" href="{{ app.store }}"><img src="/images/apps/badges/mac-app-store.svg" alt="Download on the Mac App Store" height="48"></a>
+      {%- else %}
+      <p class="ext-soon">Coming soon to the Mac App Store.</p>
+      {%- endif %}
+      <p class="ext-also">Free, with no ads or in-app purchases. Needs {{ app.requires }}.</p>
+    </aside>
+  </div>
+</section>
+
+{%- if app.screenshots.size > 0 %}
+<section class="ext-shots" aria-labelledby="shots-title">
+  <div class="wrap">
+    <h2 id="shots-title" class="sr">Screenshots</h2>
+    <ul class="shots">
+      {%- for shot in app.screenshots %}
+      <li><img src="/images/apps/{{ app.id }}/{{ shot.file }}" alt="{{ shot.alt }}" width="1280" height="800" loading="lazy" decoding="async"></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{%- endif %}
+
+<section class="ext-use" aria-labelledby="use-title">
+  <div class="wrap prose">
+    <h2 id="use-title">How to use it</h2>
+    <ol>
+      {%- for step in app.use %}
+      <li>{{ step | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+
+<section id="privacy" class="ext-privacy" aria-labelledby="privacy-title">
+  <div class="wrap prose">
+    <h2 id="privacy-title">Privacy</h2>
+    <ul>
+      {%- for line in app.privacy %}
+      <li>{{ line | markdownify | remove: "<p>" | remove: "</p>" | strip }}</li>
+      {%- endfor %}
+    </ul>
+    <p class="updated">Last updated November 15, 2026.</p>
+  </div>
+</section>
+
+{%- assign others = site.data.apps | where_exp: "a", "a.id != app.id" %}
+{%- if others.size > 0 %}
+<section class="ext-more" aria-labelledby="more-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="more-title" data-reveal="rise">More apps from us</h2>
+    </div>
+    {% include blocks/app-cards.html except=app.id %}
+  </div>
+</section>
+{%- endif %}
+
+{% include blocks/contact.html booking=false app=app.id heading="Questions or problems?" lede="Tell us what happened and we'll get back to you. Ideas for what it should do next are welcome too." question="What's going on?" %}

@@ -108,6 +108,8 @@ export function init(form) {
     if (need) lines.push(`Need: ${need}`);
     const extension = form.querySelector('input[name="extension"]')?.dataset.label;
     if (extension) lines.push(`Extension: ${extension}`);
+    const app = form.querySelector('input[name="app"]')?.dataset.label;
+    if (app) lines.push(`App: ${app}`);
     if (data.get('browser')) lines.push(`Browser: ${data.get('browser')}`);
     lines.push('', data.get('message') || '');
     return lines.join('\n');
@@ -162,7 +164,7 @@ export function init(form) {
         return;
       }
 
-      if (!data.get('extension')) track('generate_lead', { service: data.get('need') || 'none' }); // support isn't a lead
+      if (!data.get('extension') && !data.get('app')) track('generate_lead', { service: data.get('need') || 'none' }); // support isn't a lead
       form.classList.add('sent');
       show('success', "Thanks! Your message has been sent. We'll get back to you shortly.");
       form.reset();
