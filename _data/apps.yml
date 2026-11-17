@@ -42,3 +42,35 @@
     - "**Links.** The About window's links open this page in your browser. If you write to us below, we get only what you send, and use it only to answer you."
   store:
   screenshots: []
+- id: mutely
+  name: Mutely
+  platform: Mac app
+  tagline: Keep your mic muted until you mean to talk.
+  description: "Mutely is a Mac menu bar app that keeps your microphone muted until you hold your talk key, in every app at once, with a mode for each call app. Audio never leaves your Mac."
+  logo: /images/apps/mutely.png
+  requires: macOS 14 Sonoma or later
+  text: >-
+    Mutely lives in your menu bar and keeps your microphone muted until you hold your talk key.
+    Hold fn (or any key you choose), speak, and let go: you're muted again, in every app at once.
+    It mutes the microphone itself, so Zoom, Google Meet, Teams, Slack, FaceTime and your browser
+    all hear silence until you talk, and it keeps you muted if you switch to AirPods mid-call. Each
+    call app can have its own mode: push to talk at work, a toggle in Discord, an open mic with family.
+  features:
+    - Push to talk, toggle or open mic, with a mode for each call app
+    - Mutes the microphone itself, so every app hears silence until you talk
+    - Shows which app is using your mic, how long you've been on the call, and a live level meter
+    - A short release delay so your last word isn't cut off, and a double-tap to stay unmuted
+  use:
+    - Follow setup to pick your talk key. fn is the default.
+    - Hold the talk key to talk, and let go to mute. Double-tap it to stay unmuted, and press it again to mute.
+    - Click the microphone in your menu bar to mute or unmute, switch microphones, or change the current app's mode.
+    - Open **Settings** from the gear for your talk key, timing, sounds and per-app rules.
+  privacy:
+    - "**Nothing leaves your Mac.** Mutely has no analytics, no accounts and no servers. It runs in Apple's App Sandbox without permission to use the network, so it can't send anything anywhere."
+    - "**Your microphone.** Mutely mutes and unmutes your microphone; it never records. With your permission, it reads your mic's level to draw the meter during setup and during calls. The level is shown and then discarded, and the audio itself is never saved or sent."
+    - "**Your keyboard.** If your talk key is a single key like fn, macOS asks you to allow Input Monitoring so Mutely can see when you hold it. Mutely only reacts to your talk key and ignores every other key. Nothing you type is stored or sent. A key combination like Control-Option-M needs no permission at all."
+    - "**What it reads.** Which apps are using your microphone, so it can apply each app's mode, and the list of call apps installed in your Applications folder, to suggest rules."
+    - "**What it keeps.** Your settings, your per-app rules and which call apps have used your mic recently, stored in the app's own folder on your Mac. Deleting the app deletes them."
+    - "**Links.** The About window's links open this page in your browser. If you write to us below, we get only what you send, and use it only to answer you."
+  store:
+  screenshots: []
