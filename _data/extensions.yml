@@ -35,7 +35,8 @@
     - It asks for `activeTab` and `scripting` (to read the tables on the tab you clicked on), `downloads` (to save the file) and `storage` (to remember your format and whether to export media as URLs).
     - Your settings are kept in the extension's own storage, which websites can't read.
     - Safari has no downloads permission for extensions, so there Table Export saves the file from the page itself. Nothing leaves your computer either way.
-  stores: {}
+  stores:
+    firefox: https://addons.mozilla.org/firefox/addon/velocity-labs-table-export/
   screenshots:
     - file: 1-pick-a-table.webp
       alt: An article with a table of flour types. A download icon sits over the table, and the Table Export panel lists the page's two tables.
@@ -65,7 +66,8 @@
   privacy:
     - It asks for `activeTab` and `scripting` only, to count the words on the tab you clicked on.
     - It stores nothing, not even settings.
-  stores: {}
+  stores:
+    firefox: https://addons.mozilla.org/firefox/addon/velocity-labs-word-count/
   screenshots:
     - file: 1-reading-progress.webp
       alt: An article about sourdough with the Word Count panel showing a 3 minute read, a ring with 2 minutes left, and counts for speaking time, sentences and characters.
@@ -95,7 +97,8 @@
   privacy:
     - It asks for `activeTab` and `scripting` (to read the text you select on the tab you clicked on) and `storage` (to remember your format).
     - What you copy goes to your clipboard and nowhere else. Your format is kept in the extension's own storage, which websites can't read.
-  stores: {}
+  stores:
+    firefox: https://addons.mozilla.org/firefox/addon/velocity-labs-quote-with-link/
   screenshots:
     - file: 1-copy-button.webp
       alt: A highlighted passage in an article, with a Copy as Markdown button beside it and the Quote with Link panel.

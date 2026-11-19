@@ -46,6 +46,7 @@
 .ext-cards h3 { font-size: 1.25rem; }
 // The whole card opens the extension's page: the name's link covers it, and
 // the Privacy and Support links sit above that
+.ext-more { margin-top: 1.5rem; color: var(--dust); }
 .ext-card { position: relative; transition: border-color .2s; }
 .ext-card:hover, .ext-card:focus-within { border-color: var(--sun); }
 .ext-card-link { color: inherit; text-decoration: none; }
