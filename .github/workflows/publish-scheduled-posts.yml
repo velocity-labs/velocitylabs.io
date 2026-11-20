@@ -1,0 +1,138 @@
+# Publishes blog posts on their date. Jekyll leaves future-dated posts out of
+# the build (future: false in _config.yml), and Heroku only builds the site on
+# a deploy, so a post dated for a later day stays hidden until something
+# rebuilds the site. Every morning at 7:00 Arizona time (14:00 UTC; Arizona
+# has no daylight saving), this looks on main for a post dated today. If there
+# is one, and main has passed CI, Heroku builds and releases main again, and
+# then the job checks that the post is live.
+#
+# A post goes live on the date in its filename (_posts/YYYY-MM-DD-slug.md).
+# Needs a HEROKU_API_KEY repository secret: a Heroku authorization with write
+# scope. Run it by hand from the Actions tab, with "force" to rebuild even
+# when no post is due.
+#
+# GitHub can delay scheduled runs by a few minutes, and disables schedules in
+# public repos after 60 days without repository activity (it emails first).
+name: Publish scheduled posts
+
+on:
+  schedule:
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild and release main even if no post is dated today
+        type: boolean
+        default: false
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: publish-scheduled-posts
+  cancel-in-progress: false
+
+env:
+  APP: velocitylabs
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - id: due
+        name: Find posts dated today
+        env:
+          FORCE: ${{ inputs.force }}
+        run: |
+          shopt -s nullglob
+          paths=""
+          for post in _posts/"$(date -u +%F)"-*.md; do
+            name=$(basename "$post" .md)
+            paths+="/blog/${name:0:4}/${name:5:2}/${name:8:2}/${name:11}/ "
+          done
+          echo "Posts dated today: ${paths:-none}"
+          echo "paths=$paths" >> "$GITHUB_OUTPUT"
+          if [ -n "$paths" ] || [ "$FORCE" = "true" ]; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Only release a commit that passed CI, as Heroku's own auto-deploy does.
+      # If CI is still running, that auto-deploy will publish the post instead.
+      - id: ci
+        name: Check main passed CI
+        if: steps.due.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          sha=$(git rev-parse HEAD)
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          result=$(gh run list --workflow ci.yml --commit "$sha" --json status,conclusion --jq '.[0] // empty | "\(.status) \(.conclusion)"')
+          echo "CI for $sha: ${result:-no run found}"
+          case "$result" in
+            "completed success")
+              echo "release=true" >> "$GITHUB_OUTPUT" ;;
+            completed*)
+              echo "::error::CI didn't pass for $sha, so it won't be released. Today's post goes live with the next deploy that passes CI."
+              exit 1 ;;
+            "")
+              echo "::error::No CI run found for $sha."
+              exit 1 ;;
+            *)
+              echo "::notice::CI is still running for $sha. Heroku deploys it once CI passes, and that deploy publishes today's post." ;;
+          esac
+
+      - name: Build and release main on Heroku
+        if: steps.ci.outputs.release == 'true'
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          SHA: ${{ steps.ci.outputs.sha }}
+        run: |
+          if [ -z "$HEROKU_API_KEY" ]; then
+            echo "::error::Add a HEROKU_API_KEY repository secret (see the comment at the top of this workflow)."
+            exit 1
+          fi
+          api() {
+            curl -sS --fail-with-body --max-time 30 \
+              -H "Accept: application/vnd.heroku+json; version=3" \
+              -H "Authorization: Bearer $HEROKU_API_KEY" "$@"
+          }
+          body=$(jq -n --arg url "https://github.com/$GITHUB_REPOSITORY/archive/$SHA.tar.gz" --arg version "$SHA" \
+            '{source_blob: {url: $url, version: $version}}')
+          id=$(api -X POST -H "Content-Type: application/json" -d "$body" "https://api.heroku.com/apps/$APP/builds" | jq -r .id)
+          echo "Heroku build $id for $SHA"
+          for _ in $(seq 1 80); do
+            status=$(api "https://api.heroku.com/apps/$APP/builds/$id" | jq -r .status)
+            [ "$status" = pending ] || break
+            sleep 15
+          done
+          echo "Build finished: $status"
+          if [ "$status" != succeeded ]; then
+            echo "::error::Heroku build $id ended as '$status'."
+            exit 1
+          fi
+
+      - name: Check the posts are live
+        if: steps.ci.outputs.release == 'true' && steps.due.outputs.paths != ''
+        env:
+          PATHS: ${{ steps.due.outputs.paths }}
+        run: |
+          for path in $PATHS; do
+            for _ in $(seq 1 12); do
+              code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "https://velocitylabs.io$path" || true)
+              [ "$code" = 200 ] && break
+              sleep 15
+            done
+            echo "$path: HTTP $code"
+            if [ "$code" != 200 ]; then
+              echo "::error::$path isn't live (HTTP $code)."
+              exit 1
+            fi
+          done
