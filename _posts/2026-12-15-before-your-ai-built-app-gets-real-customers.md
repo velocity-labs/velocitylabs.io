@@ -14,7 +14,7 @@ AI tools can take an app from idea to working demo in days. A demo only has to w
 
 ## 1. Who can see whose data
 
-AI tools write code that works on the happy path, and they often skip the checks that keep each customer's data private. Sign in as two test users and try to open each other's records, including by changing the ID in the address bar. If your app uses Supabase, check row level security on every table. Our [Supabase post](/blog/2026/12/01/supabase-row-level-security-ai-built-apps/) explains how.
+AI tools write code that works on the happy path, and they often skip the checks that keep each customer's data private. Sign in as two test users and try to open each other's records, including by changing the ID in the address bar. If your app uses Supabase, check row level security on every table. Our [Supabase post](/blog/2026/12/08/supabase-row-level-security-ai-built-apps/) explains how.
 
 ## 2. Where your keys are
 
@@ -42,7 +42,7 @@ Set up error monitoring, so you hear about a crash when it happens and not when 
 
 ## 8. Accounts in your name
 
-The domain, the code repository, the hosting, and accounts like Stripe should all belong to your business. Our post on [what happens if your platform shuts down](/blog/2026/12/08/what-happens-if-your-app-platform-shuts-down/) covers what else to have in place.
+The domain, the code repository, the hosting, and accounts like Stripe should all belong to your business. Our post on [what happens if your platform shuts down](/blog/2026/12/01/what-happens-if-your-app-platform-shuts-down/) covers what else to have in place.
 
 ## 9. Tests around what matters
 
