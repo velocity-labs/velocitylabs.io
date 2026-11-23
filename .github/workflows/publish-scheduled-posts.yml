@@ -1,0 +1,133 @@
+# Publishes blog posts on their date. Jekyll leaves future-dated posts out of
+# the build (future: false in _config.yml), and Heroku only builds the site on
+# a deploy, so a post dated for a later day stays hidden until the next deploy.
+# Every morning at 7:00 Arizona time (14:00 UTC; Arizona has no daylight
+# saving), this looks on main for a post dated today. If there is one, it
+# pushes an empty "Publish" commit to main, which goes through CI and Heroku's
+# auto-deploy like any other commit, then waits for that deploy and checks the
+# post is live. No Heroku credentials are involved.
+#
+# A post goes live on the date in its filename (_posts/YYYY-MM-DD-slug.md).
+# Needs a PUBLISH_DEPLOY_KEY repository secret: the private half of a deploy
+# key with write access to this repository only (Settings > Deploy keys,
+# "Publish scheduled posts (GitHub Actions)"). Run it by hand from the
+# Actions tab, with "force" to push a publish commit even when no post is due.
+#
+# GitHub can delay scheduled runs by a few minutes, and disables schedules in
+# public repos after 60 days without repository activity (it emails first).
+name: Publish scheduled posts
+
+on:
+  schedule:
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Push a publish commit even if no post is dated today (tests the deploy path)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  deployments: read
+
+concurrency:
+  group: publish-scheduled-posts
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - id: due
+        name: Find posts dated today
+        env:
+          FORCE: ${{ inputs.force }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          today=$(date -u +%F)
+          paths=""
+          titles=""
+          for name in $(gh api "repos/$GH_REPO/contents/_posts?ref=main" --jq '.[].name' | grep "^$today-.*\.md$" || true); do
+            slug=${name%.md}
+            paths+="/blog/${slug:0:4}/${slug:5:2}/${slug:8:2}/${slug:11}/ "
+            title=$(gh api "repos/$GH_REPO/contents/_posts/$name?ref=main" -H "Accept: application/vnd.github.raw" | sed -n 's/^title: *"\{0,1\}\(.*[^"]\)"\{0,1\} *$/\1/p' | head -n 1)
+            titles+="${titles:+; }${title:-$slug}"
+          done
+          echo "Posts dated today: ${paths:-none}"
+          echo "paths=$paths" >> "$GITHUB_OUTPUT"
+          if [ -n "$paths" ]; then
+            echo "message=Publish: $titles" >> "$GITHUB_OUTPUT"
+          elif [ "$FORCE" = "true" ]; then
+            echo "message=Publish: test run, no post due today" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.due.outputs.message != ''
+        with:
+          ref: main
+          ssh-key: ${{ secrets.PUBLISH_DEPLOY_KEY }}
+
+      # An empty commit pushed with the deploy key triggers CI (a push made
+      # with the workflow's own token wouldn't), and Heroku deploys it once CI
+      # passes. If main moves before the push lands, that newer commit's
+      # deploy publishes the post instead.
+      - id: push
+        name: Push a publish commit
+        if: steps.due.outputs.message != ''
+        env:
+          MESSAGE: ${{ steps.due.outputs.message }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "$MESSAGE"
+          if git push origin HEAD:main; then
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            git fetch origin main
+            echo "::notice::main moved while publishing, so its newest commit's deploy will publish today's post."
+            echo "sha=$(git rev-parse origin/main)" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Heroku records each auto-deploy on GitHub as a deployment of the
+      # commit, and marks it success or failure once the build finishes.
+      - name: Wait for Heroku to deploy it
+        if: steps.push.outputs.sha != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SHA: ${{ steps.push.outputs.sha }}
+        run: |
+          for _ in $(seq 1 80); do
+            id=$(gh api "repos/$GH_REPO/deployments?sha=$SHA" --jq '.[0].id // empty')
+            if [ -n "$id" ]; then
+              states=$(gh api "repos/$GH_REPO/deployments/$id/statuses" --jq '[.[].state] | join(" ")')
+              case " $states " in
+                *" success "*) echo "Heroku deployed $SHA"; exit 0 ;;
+                *" failure "*|*" error "*) echo "::error::Heroku's deploy of $SHA failed ($states)."; exit 1 ;;
+              esac
+            fi
+            sleep 15
+          done
+          echo "::error::Heroku hadn't deployed $SHA after 20 minutes. Check CI on that commit: Heroku only deploys once it passes."
+          exit 1
+
+      - name: Check the posts are live
+        if: steps.push.outputs.sha != '' && steps.due.outputs.paths != ''
+        env:
+          PATHS: ${{ steps.due.outputs.paths }}
+        run: |
+          for path in $PATHS; do
+            for _ in $(seq 1 12); do
+              code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "https://velocitylabs.io$path" || true)
+              [ "$code" = 200 ] && break
+              sleep 15
+            done
+            echo "$path: HTTP $code"
+            if [ "$code" != 200 ]; then
+              echo "::error::$path isn't live (HTTP $code)."
+              exit 1
+            fi
+          done

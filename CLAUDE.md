@@ -78,7 +78,7 @@ Moved pages get one 301 each from the `MovedPages` middleware in main.rb, driven
 
 ## Blog Posts
 
-Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter: `layout: post`, `title`, `author_id` (an id in `_data/people.yml`), `excerpt`, `tags`; optional `noindex: true`. Older posts' Bootstrap and WordPress markup is styled in `_frontend/stylesheets/orbit/_legacy.scss`, and highlighted code in `_code.scss`.
+Create as `_posts/YYYY-MM-DD-slug.md` with YAML front matter: `layout: post`, `title`, `author_id` (an id in `_data/people.yml`), `excerpt`, `tags`; optional `noindex: true`. To schedule a post, date its filename in the future and merge it: the build leaves it out (`future: false`) until `publish-scheduled-posts.yml` rebuilds the site on that date. Preview scheduled posts locally with `jekyll build --future`, and only link from a post to posts dated on or before it. Older posts' Bootstrap and WordPress markup is styled in `_frontend/stylesheets/orbit/_legacy.scss`, and highlighted code in `_code.scss`.
 
 ## Deployment and CI
 
@@ -86,6 +86,7 @@ Heroku (app `velocitylabs`) auto-deploys `main` from GitHub, but only after CI p
 
 - `.github/workflows/link-check.yml` runs `bin/check-links` monthly and keeps a `link-check` issue open while dead links exist
 - `.github/workflows/version-check.yml` runs `bin/check-versions` monthly against the version panels on the code audit pages (`_data/versions/`) and keeps a `version-check` issue open while one needs updating
+- `.github/workflows/publish-scheduled-posts.yml` runs daily at 7am Arizona time (14:00 UTC): when a post in `_posts/` is dated today, it pushes an empty "Publish: <title>" commit to `main` with a write deploy key (the `PUBLISH_DEPLOY_KEY` secret), so CI and Heroku's auto-deploy publish it, then waits for the deploy and checks the post is live. No Heroku credentials: a Heroku token that can start builds would reach every app on its account
 - `.github/workflows/uptime.yml` checks the live site every 15 minutes (home page, app server, http redirect, certificate expiry) and keeps an `uptime` issue open while it's down
 - No Dependabot: update dependencies by hand (`bundle update --conservative`, `yarn upgrade`), keeping to the cooldown that `bin/check-cooldown` enforces in CI; `package.json` "resolutions" pins need manual review
 - `SecurityHeaders` in main.rb sets security headers and caching (hashed `/vite/assets/*` cached a year). HSTS is one year (`max-age=31536000`, raised from one day on 2026-11-12)
