@@ -11,7 +11,7 @@ and web apps since 2009. You can find us on the web at
 
 ## Prerequisites
 
-- **Ruby 4.0.7** (managed via RVM; see `.ruby-version`)
+- **Ruby 4.0.10** (managed via RVM; see `.ruby-version`)
 - **Node 26** (Heroku is pinned to 26.11.1 via `package.json` "engines"; any 26.x works locally)
 - **Yarn** (not npm — always use `yarn` for package management)
 - **Bundler** (`gem install bundler`)
@@ -180,7 +180,7 @@ Heroku deploys `main` automatically, once CI passes. The build:
 
 | Component | Version | Notes |
 |-----------|---------|-------|
-| Ruby | 4.0.7 | `.ruby-version`, managed by RVM |
+| Ruby | 4.0.10 | `.ruby-version`, managed by RVM |
 | Jekyll | ~> 4.3 | Static site generator |
 | Sinatra | ~> 4.0 | Dynamic routes + static file serving |
 | Puma | ~> 8.0 | Web server, bound to 0.0.0.0 in `Procfile` |

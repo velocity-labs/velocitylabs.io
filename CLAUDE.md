@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Velocity Labs company website and blog. Hybrid architecture: Jekyll 4.3 generates static HTML into `_site/`, and Sinatra 4.0 (main.rb) serves those files while handling dynamic routes (contact form). Runs on Ruby 4.0.7, deployed to Heroku via Puma 8. Assets compiled by Vite (via `jekyll-vite` gem).
+Velocity Labs company website and blog. Hybrid architecture: Jekyll 4.3 generates static HTML into `_site/`, and Sinatra 4.0 (main.rb) serves those files while handling dynamic routes (contact form). Runs on Ruby 4.0.10, deployed to Heroku via Puma 8. Assets compiled by Vite (via `jekyll-vite` gem).
 
 ## Development Commands
 
@@ -42,7 +42,7 @@ bundle exec puma -t 5:5 -p 3000
 jekyll build --trace
 
 # Claude Code jekyll build (RVM doesn't auto-switch in subshells, and it
-# doesn't recognize a bare "4.0.7" in .ruby-version, so pick the Ruby explicitly)
+# doesn't recognize a bare "4.0.10" in .ruby-version, so pick the Ruby explicitly)
 env -i HOME="$HOME" PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" LANG="en_US.UTF-8" LC_ALL="en_US.UTF-8" bash -l -c 'rvm use "ruby-$(cat .ruby-version)" >/dev/null && bundle exec jekyll build --trace'
 ```
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '4.0.7'
+ruby '4.0.10'
 
 # Web server (loaded by main.rb via Bundler.require)
 gem 'puma',               '~> 8.0'
